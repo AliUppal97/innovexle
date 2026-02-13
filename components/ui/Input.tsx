@@ -1,0 +1,74 @@
+import { forwardRef, type InputHTMLAttributes, type TextareaHTMLAttributes } from "react";
+import { cn } from "@/lib/utils";
+
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  error?: boolean;
+}
+
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type = "text", error, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          "flex h-11 w-full rounded-md border border-border bg-transparent px-4 py-2 text-body text-foreground placeholder:text-muted transition-colors",
+          "focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20",
+          "disabled:cursor-not-allowed disabled:opacity-50",
+          error && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
+);
+
+Input.displayName = "Input";
+
+export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+  error?: boolean;
+}
+
+const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+  ({ className, error, ...props }, ref) => {
+    return (
+      <textarea
+        className={cn(
+          "flex min-h-[120px] w-full rounded-md border border-border bg-transparent px-4 py-3 text-body text-foreground placeholder:text-muted transition-colors resize-none",
+          "focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20",
+          "disabled:cursor-not-allowed disabled:opacity-50",
+          error && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
+);
+
+Textarea.displayName = "Textarea";
+
+export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+  required?: boolean;
+}
+
+const Label = forwardRef<HTMLLabelElement, LabelProps>(
+  ({ className, children, required, ...props }, ref) => {
+    return (
+      <label
+        className={cn("block text-small font-medium text-foreground mb-2", className)}
+        ref={ref}
+        {...props}
+      >
+        {children}
+        {required && <span className="text-red-500 ml-1">*</span>}
+      </label>
+    );
+  }
+);
+
+Label.displayName = "Label";
+
+export { Input, Textarea, Label };

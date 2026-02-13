@@ -1,0 +1,73 @@
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
+import type { CaseStudy } from "@/lib/data/case-studies";
+
+interface CaseStudyCardProps {
+  caseStudy: CaseStudy;
+  featured?: boolean;
+}
+
+export function CaseStudyCard({ caseStudy, featured = false }: CaseStudyCardProps) {
+  return (
+    <Card hover className={`h-full ${featured ? "lg:col-span-1" : ""}`}>
+      <CardHeader>
+        <Badge variant="outline" className="mb-3 w-fit">
+          {caseStudy.industry}
+        </Badge>
+        <CardTitle className="group-hover:text-accent transition-colors">
+          {caseStudy.title}
+        </CardTitle>
+      </CardHeader>
+
+      <CardContent className="space-y-4">
+        {/* Problem */}
+        <div>
+          <h4 className="text-small font-semibold text-foreground uppercase tracking-wider mb-2">
+            Challenge
+          </h4>
+          <p className="text-small text-muted line-clamp-3">{caseStudy.problem}</p>
+        </div>
+
+        {/* Results */}
+        <div>
+          <h4 className="text-small font-semibold text-foreground uppercase tracking-wider mb-3">
+            Results
+          </h4>
+          <div className="grid grid-cols-3 gap-3">
+            {caseStudy.results.map((result) => (
+              <div key={result.metric} className="text-center">
+                <p className="text-h3 font-bold text-accent">{result.value}</p>
+                <p className="text-small text-muted">{result.metric}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Technologies */}
+        <div className="pt-4 border-t border-border">
+          <div className="flex flex-wrap gap-2">
+            {caseStudy.technologies.slice(0, 4).map((tech) => (
+              <Badge key={tech} variant="default">
+                {tech}
+              </Badge>
+            ))}
+          </div>
+        </div>
+
+        {/* Read more indicator */}
+        <div className="pt-2 flex items-center gap-2 text-small font-medium text-foreground group-hover:text-accent transition-colors">
+          Read full case study
+          <svg
+            className="h-4 w-4 group-hover:translate-x-1 transition-transform"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
