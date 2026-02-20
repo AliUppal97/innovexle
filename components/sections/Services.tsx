@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { Container } from "@/components/ui/Container";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
 import { Reveal, StaggerContainer, StaggerItem } from "@/components/ui/MotionWrapper";
