@@ -1,0 +1,185 @@
+{
+  "nav": {
+    "services": "Leistungen",
+    "caseStudies": "Fallstudien",
+    "careers": "Karriere",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "talkToEngineer": "Mit einem Ingenieur sprechen",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen"
+  },
+  "home": {
+    "heroTitle": "Backend Engineering, das skaliert",
+    "heroSubtitle": "Wir entwerfen und bauen Backend-Systeme für Unternehmen, die sich keine Ausfallzeiten leisten können.",
+    "heroCta": "Gespräch starten",
+    "heroSecondaryCta": "Unsere Arbeit ansehen",
+    "clientLogosTitle": "Vertraut von Engineering-Teams bei"
+  },
+  "services": {
+    "title": "Unsere Leistungen",
+    "subtitle": "Spezialisierte Backend-Engineering-Services mit Fokus auf Zuverlässigkeit, Leistung und Skalierbarkeit.",
+    "whatYouGet": "Was Sie bekommen",
+    "technologies": "Technologien",
+    "learnMore": "Mehr erfahren",
+    "ourApproach": "Unser Ansatz",
+    "approachSubtitle": "Jedes Projekt folgt einem strukturierten Ansatz.",
+    "weDontDo": "Was wir nicht tun",
+    "weAlwaysDo": "Was wir immer tun",
+    "relatedServices": "Verwandte Leistungen",
+    "readyToStart": "Bereit für {service}?"
+  },
+  "caseStudies": {
+    "title": "Fallstudien",
+    "subtitle": "Echte Probleme, messbare Ergebnisse.",
+    "featured": "Empfohlen",
+    "problem": "Herausforderung",
+    "solution": "Lösung",
+    "results": "Ergebnisse",
+    "techUsed": "Verwendete Technologien",
+    "keyTakeaways": "Wichtige Erkenntnisse",
+    "viewAll": "Alle Fallstudien ansehen"
+  },
+  "careers": {
+    "title": "Werden Sie Teil unseres Teams",
+    "subtitle": "Bauen Sie Systeme, die skalieren.",
+    "description": "Wir sind ein Remote-First-Team von Backend-Spezialisten.",
+    "whyUs": "Warum Innovexle?",
+    "openPositions": "Offene Stellen",
+    "roles": "{count} offene {count, plural, one {Stelle} other {Stellen}}",
+    "searchPlaceholder": "Suche nach Titel, Fähigkeit oder Stichwort...",
+    "allDepartments": "Alle Abteilungen",
+    "allLocations": "Alle Standorte",
+    "allLevels": "Alle Stufen",
+    "clearFilters": "Filter löschen",
+    "noPositions": "Keine Stellen gefunden",
+    "noPositionsHint": "Versuchen Sie, Ihre Filter anzupassen.",
+    "dontSeeRole": "Nicht die richtige Stelle?",
+    "dontSeeRoleDesc": "Wir suchen immer talentierte Ingenieure.",
+    "getInTouch": "Kontaktieren Sie uns",
+    "viewDetails": "Details ansehen",
+    "applyNow": "Jetzt bewerben",
+    "positionClosed": "Stelle geschlossen",
+    "aboutRole": "Über die Rolle",
+    "whatYoullDo": "Was Sie tun werden",
+    "requirements": "Anforderungen",
+    "niceToHave": "Wünschenswert",
+    "applyForPosition": "Für diese Stelle bewerben",
+    "skillsTech": "Fähigkeiten & Technologien",
+    "benefits": "Vorteile",
+    "quickInfo": "Kurzinfo",
+    "otherPositions": "Andere offene Stellen",
+    "viewAllPositions": "Alle Stellen ansehen",
+    "posted": "Veröffentlicht {time}",
+    "applyBy": "Bewerben bis {date}",
+    "deadlinePassed": "Frist abgelaufen",
+    "hiringUrgently": "Dringend",
+    "urgent": "Dringend",
+    "remoteFirst": "Remote-First",
+    "remoteFirstDesc": "Arbeiten Sie von überall.",
+    "meaningfulWork": "Sinnvolle Arbeit",
+    "meaningfulWorkDesc": "Bauen Sie Produktionssysteme für Millionen.",
+    "growthFocus": "Wachstumsfokus",
+    "growthFocusDesc": "Großzügiges Lernbudget und Mentoring.",
+    "workLifeBalance": "Work-Life-Balance",
+    "workLifeBalanceDesc": "Unbegrenzter Urlaub und flexible Arbeitszeiten."
+  },
+  "about": {
+    "title": "Über Innovexle",
+    "subtitle": "Wir sind Backend-Ingenieure mit jahrelanger Erfahrung im Bau skalierbarer Systeme.",
+    "whatWeBelieve": "Woran wir glauben",
+    "ourValues": "Unsere Werte",
+    "engineeringPrinciples": "Engineering-Prinzipien",
+    "howWeWork": "Wie wir arbeiten"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Erzählen Sie uns von Ihrem Projekt. Wir antworten innerhalb eines Werktages.",
+    "name": "Name",
+    "namePlaceholder": "Ihr Name",
+    "email": "E-Mail",
+    "emailPlaceholder": "sie@unternehmen.com",
+    "company": "Unternehmen",
+    "companyPlaceholder": "Ihr Unternehmen",
+    "message": "Wie können wir helfen?",
+    "messagePlaceholder": "Erzählen Sie uns von Ihrem Projekt...",
+    "send": "Nachricht senden",
+    "sending": "Wird gesendet...",
+    "preferEmail": "Bevorzugen Sie E-Mail?",
+    "thankYou": "Danke für Ihre Nachricht",
+    "thankYouMessage": "Wir werden uns innerhalb eines Werktages bei Ihnen melden.",
+    "whatHappensNext": "Was passiert als nächstes?",
+    "step1": "Unser Team prüft Ihre Anfrage innerhalb von 24 Stunden",
+    "step2": "Ein Senior-Ingenieur meldet sich bei Ihnen",
+    "step3": "Wir planen ein Discovery-Gespräch",
+    "sendAnother": "Weitere Nachricht senden",
+    "commonQuestions": "Häufige Fragen",
+    "nameError": "Name muss mindestens 2 Zeichen lang sein",
+    "emailError": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "messageError": "Nachricht muss mindestens 10 Zeichen lang sein"
+  },
+  "process": {
+    "title": "Wie Wir Arbeiten",
+    "subtitle": "Ein strukturierter Ansatz für vorhersagbare Ergebnisse.",
+    "discovery": "Entdeckung",
+    "discoveryDesc": "Wir beginnen damit, Ihre Anforderungen und Geschäftsziele zu verstehen.",
+    "architecture": "Architektur",
+    "architectureDesc": "Wir entwerfen Systeme, die Wachstum antizipieren.",
+    "build": "Entwicklung",
+    "buildDesc": "Wir liefern produktionsreifen Code mit Tests und Monitoring.",
+    "support": "Support",
+    "supportDesc": "Wir überwachen, iterieren und optimieren kontinuierlich."
+  },
+  "cta": {
+    "title": "Bereit, etwas Dauerhaftes zu bauen?",
+    "subtitle": "Lassen Sie uns über Ihre Backend-Herausforderungen sprechen.",
+    "button": "Gespräch starten"
+  },
+  "trust": {
+    "techStackTitle": "Gebaut Mit",
+    "testimonialsTitle": "Was Unsere Kunden Sagen"
+  },
+  "footer": {
+    "company": "Unternehmen",
+    "legal": "Rechtliches",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "privacy": {
+    "title": "Datenschutzrichtlinie",
+    "lastUpdated": "Zuletzt aktualisiert: 1. Februar 2026"
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "lastUpdated": "Zuletzt aktualisiert: 1. Februar 2026"
+  },
+  "accessibility": {
+    "title": "Erklärung zur Barrierefreiheit",
+    "subtitle": "Unser Engagement für digitale Barrierefreiheit."
+  },
+  "consent": {
+    "message": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern und den Website-Traffic zu analysieren.",
+    "accept": "Akzeptieren",
+    "decline": "Ablehnen",
+    "learnMore": "Mehr erfahren"
+  },
+  "region": {
+    "label": "Region",
+    "global": "Global (USD)",
+    "europe": "Europa (EUR)",
+    "uk": "Vereinigtes Königreich (GBP)",
+    "india": "Indien (INR)",
+    "canada": "Kanada (CAD)"
+  },
+  "errors": {
+    "somethingWentWrong": "Etwas ist schiefgelaufen",
+    "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten. Unser Team wurde benachrichtigt.",
+    "tryAgain": "Erneut versuchen",
+    "backToHome": "Zurück zur Startseite",
+    "notFound": "Seite nicht gefunden",
+    "notFoundDesc": "Die gesuchte Seite existiert nicht oder wurde verschoben."
+  },
+  "meta": {
+    "homeTitle": "Innovexle | Backend Engineering, das skaliert",
+    "homeDescription": "Backend Engineering für Unternehmen, die sich keine Ausfallzeiten leisten können."
+  }
+}

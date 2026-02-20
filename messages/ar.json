@@ -1,0 +1,185 @@
+{
+  "nav": {
+    "services": "الخدمات",
+    "caseStudies": "دراسات الحالة",
+    "careers": "الوظائف",
+    "about": "عنا",
+    "contact": "اتصل بنا",
+    "talkToEngineer": "تحدث مع مهندس",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة"
+  },
+  "home": {
+    "heroTitle": "هندسة خلفية قابلة للتوسع",
+    "heroSubtitle": "نصمم ونبني أنظمة خلفية للشركات التي لا تستطيع تحمل التوقف.",
+    "heroCta": "ابدأ محادثة",
+    "heroSecondaryCta": "اطلع على أعمالنا",
+    "clientLogosTitle": "موثوق من فرق الهندسة في"
+  },
+  "services": {
+    "title": "خدماتنا",
+    "subtitle": "خدمات هندسة خلفية متخصصة تركز على الموثوقية والأداء والتوسع.",
+    "whatYouGet": "ما تحصل عليه",
+    "technologies": "التقنيات",
+    "learnMore": "اعرف المزيد",
+    "ourApproach": "نهجنا",
+    "approachSubtitle": "كل مشروع يتبع نهجاً منظماً.",
+    "weDontDo": "ما لا نفعله",
+    "weAlwaysDo": "ما نفعله دائماً",
+    "relatedServices": "خدمات ذات صلة",
+    "readyToStart": "مستعد للبدء مع {service}؟"
+  },
+  "caseStudies": {
+    "title": "دراسات الحالة",
+    "subtitle": "مشاكل حقيقية، نتائج قابلة للقياس.",
+    "featured": "مميز",
+    "problem": "التحدي",
+    "solution": "الحل",
+    "results": "النتائج",
+    "techUsed": "التقنيات المستخدمة",
+    "keyTakeaways": "النقاط الرئيسية",
+    "viewAll": "عرض جميع الدراسات"
+  },
+  "careers": {
+    "title": "انضم إلى فريقنا",
+    "subtitle": "ابنِ أنظمة قابلة للتوسع.",
+    "description": "نحن فريق يعمل عن بعد من متخصصي الخلفية.",
+    "whyUs": "لماذا Innovexle؟",
+    "openPositions": "الوظائف المتاحة",
+    "roles": "{count} {count, plural, one {وظيفة متاحة} other {وظائف متاحة}}",
+    "searchPlaceholder": "البحث حسب العنوان أو المهارة...",
+    "allDepartments": "جميع الأقسام",
+    "allLocations": "جميع المواقع",
+    "allLevels": "جميع المستويات",
+    "clearFilters": "مسح الفلاتر",
+    "noPositions": "لم يتم العثور على وظائف",
+    "noPositionsHint": "حاول تعديل الفلاتر.",
+    "dontSeeRole": "لم تجد الوظيفة المناسبة؟",
+    "dontSeeRoleDesc": "نحن نبحث دائماً عن مهندسين موهوبين.",
+    "getInTouch": "تواصل معنا",
+    "viewDetails": "عرض التفاصيل",
+    "applyNow": "قدّم الآن",
+    "positionClosed": "الوظيفة مغلقة",
+    "aboutRole": "عن الوظيفة",
+    "whatYoullDo": "ما ستفعله",
+    "requirements": "المتطلبات",
+    "niceToHave": "مرغوب",
+    "applyForPosition": "التقدم لهذه الوظيفة",
+    "skillsTech": "المهارات والتقنيات",
+    "benefits": "المزايا",
+    "quickInfo": "معلومات سريعة",
+    "otherPositions": "وظائف أخرى متاحة",
+    "viewAllPositions": "عرض جميع الوظائف",
+    "posted": "نُشر {time}",
+    "applyBy": "قدّم قبل {date}",
+    "deadlinePassed": "انتهى الموعد النهائي",
+    "hiringUrgently": "توظيف عاجل",
+    "urgent": "عاجل",
+    "remoteFirst": "العمل عن بعد أولاً",
+    "remoteFirstDesc": "اعمل من أي مكان.",
+    "meaningfulWork": "عمل ذو معنى",
+    "meaningfulWorkDesc": "ابنِ أنظمة إنتاج يستخدمها الملايين.",
+    "growthFocus": "التركيز على النمو",
+    "growthFocusDesc": "ميزانية تعلم سخية وإرشاد.",
+    "workLifeBalance": "التوازن بين العمل والحياة",
+    "workLifeBalanceDesc": "إجازات غير محدودة وساعات مرنة."
+  },
+  "about": {
+    "title": "عن Innovexle",
+    "subtitle": "نحن مهندسو خلفية قضينا سنوات في بناء أنظمة تتعامل مع ملايين الطلبات.",
+    "whatWeBelieve": "ما نؤمن به",
+    "ourValues": "قيمنا",
+    "engineeringPrinciples": "مبادئ الهندسة",
+    "howWeWork": "كيف نعمل"
+  },
+  "contact": {
+    "title": "تواصل معنا",
+    "subtitle": "أخبرنا عن مشروعك. سنرد خلال يوم عمل واحد.",
+    "name": "الاسم",
+    "namePlaceholder": "اسمك",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "بريدك@شركتك.com",
+    "company": "الشركة",
+    "companyPlaceholder": "اسم شركتك",
+    "message": "كيف يمكننا المساعدة؟",
+    "messagePlaceholder": "أخبرنا عن مشروعك...",
+    "send": "إرسال الرسالة",
+    "sending": "جارٍ الإرسال...",
+    "preferEmail": "تفضل البريد الإلكتروني؟",
+    "thankYou": "شكراً لتواصلك",
+    "thankYouMessage": "سنراجع رسالتك ونرد عليك خلال يوم عمل واحد.",
+    "whatHappensNext": "ماذا سيحدث بعد ذلك؟",
+    "step1": "فريقنا يراجع استفسارك خلال 24 ساعة",
+    "step2": "مهندس كبير يتواصل معك",
+    "step3": "نحدد موعد مكالمة استكشافية",
+    "sendAnother": "إرسال رسالة أخرى",
+    "commonQuestions": "أسئلة شائعة",
+    "nameError": "يجب أن يكون الاسم على الأقل حرفين",
+    "emailError": "يرجى إدخال بريد إلكتروني صالح",
+    "messageError": "يجب أن تكون الرسالة على الأقل 10 أحرف"
+  },
+  "process": {
+    "title": "كيف نعمل",
+    "subtitle": "نهج منظم لنتائج قابلة للتوقع.",
+    "discovery": "الاكتشاف",
+    "discoveryDesc": "نبدأ بفهم قيودك ومتطلباتك وأهدافك.",
+    "architecture": "الهندسة المعمارية",
+    "architectureDesc": "نصمم أنظمة تتوقع النمو.",
+    "build": "البناء",
+    "buildDesc": "نقدم كوداً جاهزاً للإنتاج مع اختبارات ومراقبة.",
+    "support": "الدعم",
+    "supportDesc": "نراقب ونكرر ونحسن باستمرار."
+  },
+  "cta": {
+    "title": "مستعد لبناء شيء يدوم؟",
+    "subtitle": "لنتحدث عن تحديات الخلفية لديك.",
+    "button": "ابدأ محادثة"
+  },
+  "trust": {
+    "techStackTitle": "مبني بـ",
+    "testimonialsTitle": "ماذا يقول عملاؤنا"
+  },
+  "footer": {
+    "company": "الشركة",
+    "legal": "قانوني",
+    "rights": "جميع الحقوق محفوظة."
+  },
+  "privacy": {
+    "title": "سياسة الخصوصية",
+    "lastUpdated": "آخر تحديث: 1 فبراير 2026"
+  },
+  "terms": {
+    "title": "شروط الخدمة",
+    "lastUpdated": "آخر تحديث: 1 فبراير 2026"
+  },
+  "accessibility": {
+    "title": "بيان إمكانية الوصول",
+    "subtitle": "التزامنا بإمكانية الوصول الرقمي لجميع المستخدمين."
+  },
+  "consent": {
+    "message": "نستخدم ملفات تعريف الارتباط لتحسين تجربتك وتحليل حركة المرور.",
+    "accept": "قبول",
+    "decline": "رفض",
+    "learnMore": "اعرف المزيد"
+  },
+  "region": {
+    "label": "المنطقة",
+    "global": "عالمي (USD)",
+    "europe": "أوروبا (EUR)",
+    "uk": "المملكة المتحدة (GBP)",
+    "india": "الهند (INR)",
+    "canada": "كندا (CAD)"
+  },
+  "errors": {
+    "somethingWentWrong": "حدث خطأ",
+    "unexpectedError": "حدث خطأ غير متوقع. تم إخطار فريقنا.",
+    "tryAgain": "حاول مرة أخرى",
+    "backToHome": "العودة للرئيسية",
+    "notFound": "الصفحة غير موجودة",
+    "notFoundDesc": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها."
+  },
+  "meta": {
+    "homeTitle": "Innovexle | هندسة خلفية قابلة للتوسع",
+    "homeDescription": "هندسة خلفية للشركات التي لا تستطيع تحمل التوقف."
+  }
+}

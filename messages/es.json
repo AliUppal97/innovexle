@@ -1,0 +1,185 @@
+{
+  "nav": {
+    "services": "Servicios",
+    "caseStudies": "Casos de Estudio",
+    "careers": "Carreras",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "talkToEngineer": "Habla con un ingeniero",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "home": {
+    "heroTitle": "Ingeniería Backend Que Escala",
+    "heroSubtitle": "Diseñamos y construimos sistemas backend para empresas que no pueden permitirse tiempo de inactividad. Arquitectura de APIs, infraestructura cloud y optimización de rendimiento — construidos para durar.",
+    "heroCta": "Iniciar una conversación",
+    "heroSecondaryCta": "Ver nuestro trabajo",
+    "clientLogosTitle": "De confianza para equipos de ingeniería en"
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Servicios de ingeniería backend especializados enfocados en confiabilidad, rendimiento y escalabilidad.",
+    "whatYouGet": "Lo que obtienes",
+    "technologies": "Tecnologías",
+    "learnMore": "Saber más",
+    "ourApproach": "Nuestro Enfoque",
+    "approachSubtitle": "Cada proyecto sigue un enfoque estructurado que garantiza resultados predecibles.",
+    "weDontDo": "Lo que no hacemos",
+    "weAlwaysDo": "Lo que siempre hacemos",
+    "relatedServices": "Servicios relacionados",
+    "readyToStart": "¿Listo para comenzar con {service}?"
+  },
+  "caseStudies": {
+    "title": "Casos de Estudio",
+    "subtitle": "Problemas reales, resultados medibles. Así es como hemos ayudado a las empresas a escalar su infraestructura backend.",
+    "featured": "Destacado",
+    "problem": "Desafío",
+    "solution": "Solución",
+    "results": "Resultados",
+    "techUsed": "Tecnologías Utilizadas",
+    "keyTakeaways": "Conclusiones Clave",
+    "viewAll": "Ver todos los casos"
+  },
+  "careers": {
+    "title": "Únete a Nuestro Equipo",
+    "subtitle": "Construye sistemas que escalan. Trabaja con ingenieros que valoran la calidad.",
+    "description": "Somos un equipo remoto de especialistas en backend resolviendo problemas difíciles para empresas ambiciosas.",
+    "whyUs": "¿Por qué Innovexle?",
+    "openPositions": "Posiciones Abiertas",
+    "roles": "{count} {count, plural, one {puesto abierto} other {puestos abiertos}}",
+    "searchPlaceholder": "Buscar por título, habilidad o palabra clave...",
+    "allDepartments": "Todos los Departamentos",
+    "allLocations": "Todas las Ubicaciones",
+    "allLevels": "Todos los Niveles",
+    "clearFilters": "Limpiar filtros",
+    "noPositions": "No se encontraron posiciones",
+    "noPositionsHint": "Intenta ajustar tus filtros o búsqueda.",
+    "dontSeeRole": "¿No ves el puesto adecuado?",
+    "dontSeeRoleDesc": "Siempre buscamos ingenieros talentosos. Envíanos tu currículum.",
+    "getInTouch": "Contáctanos",
+    "viewDetails": "Ver detalles",
+    "applyNow": "Aplicar Ahora",
+    "positionClosed": "Posición Cerrada",
+    "aboutRole": "Sobre el Puesto",
+    "whatYoullDo": "Lo Que Harás",
+    "requirements": "Requisitos",
+    "niceToHave": "Deseable",
+    "applyForPosition": "Aplicar para esta Posición",
+    "skillsTech": "Habilidades y Tecnologías",
+    "benefits": "Beneficios",
+    "quickInfo": "Información Rápida",
+    "otherPositions": "Otras Posiciones Abiertas",
+    "viewAllPositions": "Ver todas las posiciones",
+    "posted": "Publicado {time}",
+    "applyBy": "Aplicar antes de {date}",
+    "deadlinePassed": "Fecha límite vencida",
+    "hiringUrgently": "Contratación Urgente",
+    "urgent": "Urgente",
+    "remoteFirst": "Remoto Primero",
+    "remoteFirstDesc": "Trabaja desde cualquier lugar.",
+    "meaningfulWork": "Trabajo Significativo",
+    "meaningfulWorkDesc": "Construye sistemas de producción usados por millones.",
+    "growthFocus": "Enfoque en Crecimiento",
+    "growthFocusDesc": "Presupuesto generoso de aprendizaje y mentoría.",
+    "workLifeBalance": "Balance Vida-Trabajo",
+    "workLifeBalanceDesc": "PTO ilimitado y horarios flexibles."
+  },
+  "about": {
+    "title": "Sobre Innovexle",
+    "subtitle": "Somos ingenieros backend que hemos pasado años construyendo sistemas que manejan millones de solicitudes.",
+    "whatWeBelieve": "Lo que creemos",
+    "ourValues": "Nuestros Valores",
+    "engineeringPrinciples": "Principios de Ingeniería",
+    "howWeWork": "Cómo trabajamos"
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "Cuéntanos sobre tu proyecto. Responderemos en un día hábil.",
+    "name": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "tu@empresa.com",
+    "company": "Empresa",
+    "companyPlaceholder": "Nombre de tu empresa",
+    "message": "¿Cómo podemos ayudarte?",
+    "messagePlaceholder": "Cuéntanos sobre tu proyecto, plazos y desafíos específicos...",
+    "send": "Enviar mensaje",
+    "sending": "Enviando...",
+    "preferEmail": "¿Prefieres email?",
+    "thankYou": "Gracias por contactarnos",
+    "thankYouMessage": "Revisaremos tu mensaje y te responderemos en un día hábil.",
+    "whatHappensNext": "¿Qué sigue?",
+    "step1": "Nuestro equipo revisa tu consulta en 24 horas",
+    "step2": "Un ingeniero senior se comunica contigo",
+    "step3": "Programamos una llamada de descubrimiento",
+    "sendAnother": "Enviar otro mensaje",
+    "commonQuestions": "Preguntas frecuentes",
+    "nameError": "El nombre debe tener al menos 2 caracteres",
+    "emailError": "Ingresa un correo electrónico válido",
+    "messageError": "El mensaje debe tener al menos 10 caracteres"
+  },
+  "process": {
+    "title": "Cómo Trabajamos",
+    "subtitle": "Un enfoque estructurado que garantiza resultados predecibles.",
+    "discovery": "Descubrimiento",
+    "discoveryDesc": "Comenzamos entendiendo tus restricciones, requisitos de escala y objetivos de negocio.",
+    "architecture": "Arquitectura",
+    "architectureDesc": "Diseñamos sistemas que anticipan el crecimiento. Cada decisión está documentada.",
+    "build": "Construcción",
+    "buildDesc": "Entregamos código listo para producción con pruebas y monitoreo.",
+    "support": "Soporte",
+    "supportDesc": "Monitoreamos, iteramos y optimizamos continuamente."
+  },
+  "cta": {
+    "title": "¿Listo para construir algo que perdure?",
+    "subtitle": "Hablemos sobre tus desafíos de backend. Sin discurso de ventas — solo una conversación honesta.",
+    "button": "Iniciar una conversación"
+  },
+  "trust": {
+    "techStackTitle": "Construido Con",
+    "testimonialsTitle": "Lo Que Dicen Nuestros Clientes"
+  },
+  "footer": {
+    "company": "Empresa",
+    "legal": "Legal",
+    "rights": "Todos los derechos reservados."
+  },
+  "privacy": {
+    "title": "Política de Privacidad",
+    "lastUpdated": "Última actualización: 1 de febrero de 2026"
+  },
+  "terms": {
+    "title": "Términos de Servicio",
+    "lastUpdated": "Última actualización: 1 de febrero de 2026"
+  },
+  "accessibility": {
+    "title": "Declaración de Accesibilidad",
+    "subtitle": "Nuestro compromiso con la accesibilidad digital para todos los usuarios."
+  },
+  "consent": {
+    "message": "Usamos cookies para mejorar tu experiencia y analizar el tráfico del sitio.",
+    "accept": "Aceptar",
+    "decline": "Rechazar",
+    "learnMore": "Saber más"
+  },
+  "region": {
+    "label": "Región",
+    "global": "Global (USD)",
+    "europe": "Europa (EUR)",
+    "uk": "Reino Unido (GBP)",
+    "india": "India (INR)",
+    "canada": "Canadá (CAD)"
+  },
+  "errors": {
+    "somethingWentWrong": "Algo salió mal",
+    "unexpectedError": "Ocurrió un error inesperado. Nuestro equipo ha sido notificado.",
+    "tryAgain": "Intentar de nuevo",
+    "backToHome": "Volver al inicio",
+    "notFound": "Página no encontrada",
+    "notFoundDesc": "La página que buscas no existe o ha sido movida."
+  },
+  "meta": {
+    "homeTitle": "Innovexle | Ingeniería Backend Que Escala",
+    "homeDescription": "Ingeniería backend para empresas que no pueden permitirse tiempo de inactividad."
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "nav": {
+    "services": "Services",
+    "caseStudies": "Études de Cas",
+    "careers": "Carrières",
+    "about": "À propos",
+    "contact": "Contact",
+    "talkToEngineer": "Parler à un ingénieur",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
+  },
+  "home": {
+    "heroTitle": "Ingénierie Backend Qui Passe à l'Échelle",
+    "heroSubtitle": "Nous concevons et construisons des systèmes backend pour les entreprises qui ne peuvent pas se permettre de temps d'arrêt.",
+    "heroCta": "Démarrer une conversation",
+    "heroSecondaryCta": "Voir nos réalisations",
+    "clientLogosTitle": "Approuvé par les équipes d'ingénierie de"
+  },
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Services d'ingénierie backend spécialisés axés sur la fiabilité, la performance et l'évolutivité.",
+    "whatYouGet": "Ce que vous obtenez",
+    "technologies": "Technologies",
+    "learnMore": "En savoir plus",
+    "ourApproach": "Notre Approche",
+    "approachSubtitle": "Chaque projet suit une approche structurée.",
+    "weDontDo": "Ce que nous ne faisons pas",
+    "weAlwaysDo": "Ce que nous faisons toujours",
+    "relatedServices": "Services associés",
+    "readyToStart": "Prêt à commencer avec {service} ?"
+  },
+  "caseStudies": {
+    "title": "Études de Cas",
+    "subtitle": "Des problèmes réels, des résultats mesurables.",
+    "featured": "En vedette",
+    "problem": "Défi",
+    "solution": "Solution",
+    "results": "Résultats",
+    "techUsed": "Technologies Utilisées",
+    "keyTakeaways": "Points Clés",
+    "viewAll": "Voir toutes les études"
+  },
+  "careers": {
+    "title": "Rejoignez Notre Équipe",
+    "subtitle": "Construisez des systèmes qui passent à l'échelle.",
+    "description": "Nous sommes une équipe remote-first de spécialistes backend.",
+    "whyUs": "Pourquoi Innovexle ?",
+    "openPositions": "Postes Ouverts",
+    "roles": "{count} {count, plural, one {poste ouvert} other {postes ouverts}}",
+    "searchPlaceholder": "Rechercher par titre, compétence ou mot-clé...",
+    "allDepartments": "Tous les Départements",
+    "allLocations": "Tous les Lieux",
+    "allLevels": "Tous les Niveaux",
+    "clearFilters": "Effacer les filtres",
+    "noPositions": "Aucun poste trouvé",
+    "noPositionsHint": "Essayez d'ajuster vos filtres.",
+    "dontSeeRole": "Vous ne trouvez pas le bon poste ?",
+    "dontSeeRoleDesc": "Nous recherchons toujours des ingénieurs talentueux.",
+    "getInTouch": "Contactez-nous",
+    "viewDetails": "Voir les détails",
+    "applyNow": "Postuler",
+    "positionClosed": "Poste Fermé",
+    "aboutRole": "À propos du Poste",
+    "whatYoullDo": "Ce Que Vous Ferez",
+    "requirements": "Exigences",
+    "niceToHave": "Souhaitable",
+    "applyForPosition": "Postuler pour ce Poste",
+    "skillsTech": "Compétences & Technologies",
+    "benefits": "Avantages",
+    "quickInfo": "Info Rapide",
+    "otherPositions": "Autres Postes Ouverts",
+    "viewAllPositions": "Voir tous les postes",
+    "posted": "Publié {time}",
+    "applyBy": "Postuler avant le {date}",
+    "deadlinePassed": "Date limite dépassée",
+    "hiringUrgently": "Recrutement Urgent",
+    "urgent": "Urgent",
+    "remoteFirst": "Remote-First",
+    "remoteFirstDesc": "Travaillez de n'importe où.",
+    "meaningfulWork": "Travail Significatif",
+    "meaningfulWorkDesc": "Construisez des systèmes de production pour des millions.",
+    "growthFocus": "Croissance",
+    "growthFocusDesc": "Budget d'apprentissage généreux et mentorat.",
+    "workLifeBalance": "Équilibre Vie-Travail",
+    "workLifeBalanceDesc": "PTO illimité et horaires flexibles."
+  },
+  "about": {
+    "title": "À propos d'Innovexle",
+    "subtitle": "Nous sommes des ingénieurs backend avec des années d'expérience dans la construction de systèmes évolutifs.",
+    "whatWeBelieve": "Ce que nous croyons",
+    "ourValues": "Nos Valeurs",
+    "engineeringPrinciples": "Principes d'Ingénierie",
+    "howWeWork": "Comment nous travaillons"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Parlez-nous de votre projet. Nous répondons sous un jour ouvré.",
+    "name": "Nom",
+    "namePlaceholder": "Votre nom",
+    "email": "E-mail",
+    "emailPlaceholder": "vous@entreprise.com",
+    "company": "Entreprise",
+    "companyPlaceholder": "Nom de votre entreprise",
+    "message": "Comment pouvons-nous vous aider ?",
+    "messagePlaceholder": "Parlez-nous de votre projet...",
+    "send": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "preferEmail": "Préférez-vous l'e-mail ?",
+    "thankYou": "Merci de nous avoir contacté",
+    "thankYouMessage": "Nous examinerons votre message et vous répondrons sous un jour ouvré.",
+    "whatHappensNext": "Que se passe-t-il ensuite ?",
+    "step1": "Notre équipe examine votre demande sous 24 heures",
+    "step2": "Un ingénieur senior vous contacte",
+    "step3": "Nous planifions un appel de découverte",
+    "sendAnother": "Envoyer un autre message",
+    "commonQuestions": "Questions fréquentes",
+    "nameError": "Le nom doit comporter au moins 2 caractères",
+    "emailError": "Veuillez entrer une adresse e-mail valide",
+    "messageError": "Le message doit comporter au moins 10 caractères"
+  },
+  "process": {
+    "title": "Comment Nous Travaillons",
+    "subtitle": "Une approche structurée pour des résultats prévisibles.",
+    "discovery": "Découverte",
+    "discoveryDesc": "Nous commençons par comprendre vos contraintes et objectifs.",
+    "architecture": "Architecture",
+    "architectureDesc": "Nous concevons des systèmes qui anticipent la croissance.",
+    "build": "Construction",
+    "buildDesc": "Nous livrons du code prêt pour la production.",
+    "support": "Support",
+    "supportDesc": "Nous surveillons, itérons et optimisons en continu."
+  },
+  "cta": {
+    "title": "Prêt à construire quelque chose qui dure ?",
+    "subtitle": "Parlons de vos défis backend.",
+    "button": "Démarrer une conversation"
+  },
+  "trust": {
+    "techStackTitle": "Construit Avec",
+    "testimonialsTitle": "Ce Que Disent Nos Clients"
+  },
+  "footer": {
+    "company": "Entreprise",
+    "legal": "Mentions Légales",
+    "rights": "Tous droits réservés."
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "lastUpdated": "Dernière mise à jour : 1er février 2026"
+  },
+  "terms": {
+    "title": "Conditions d'Utilisation",
+    "lastUpdated": "Dernière mise à jour : 1er février 2026"
+  },
+  "accessibility": {
+    "title": "Déclaration d'Accessibilité",
+    "subtitle": "Notre engagement envers l'accessibilité numérique."
+  },
+  "consent": {
+    "message": "Nous utilisons des cookies pour améliorer votre expérience et analyser le trafic du site.",
+    "accept": "Accepter",
+    "decline": "Refuser",
+    "learnMore": "En savoir plus"
+  },
+  "region": {
+    "label": "Région",
+    "global": "Global (USD)",
+    "europe": "Europe (EUR)",
+    "uk": "Royaume-Uni (GBP)",
+    "india": "Inde (INR)",
+    "canada": "Canada (CAD)"
+  },
+  "errors": {
+    "somethingWentWrong": "Quelque chose s'est mal passé",
+    "unexpectedError": "Une erreur inattendue s'est produite. Notre équipe a été informée.",
+    "tryAgain": "Réessayer",
+    "backToHome": "Retour à l'accueil",
+    "notFound": "Page non trouvée",
+    "notFoundDesc": "La page que vous recherchez n'existe pas ou a été déplacée."
+  },
+  "meta": {
+    "homeTitle": "Innovexle | Ingénierie Backend Qui Passe à l'Échelle",
+    "homeDescription": "Ingénierie backend pour les entreprises qui ne peuvent pas se permettre de temps d'arrêt."
+  }
+}
