@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { JobApplicationForm } from "@/components/sections/JobApplicationForm";
 import { ShareJob } from "@/components/sections/ShareJob";
+import { JsonLd, getJobPostingSchema, getBreadcrumbSchema } from "@/components/seo";
+import { siteConfig } from "@/lib/constants";
 import {
   jobs,
   getJobById,
@@ -60,6 +62,29 @@ export default function JobPage({ params }: JobPageProps) {
 
   return (
     <>
+      <JsonLd
+        data={getJobPostingSchema({
+          title: job.title,
+          description: job.description,
+          datePosted: job.postedDate,
+          validThrough: job.applicationDeadline,
+          employmentType: job.employmentType,
+          locationType: job.location.type,
+          salaryMin: job.salary?.min,
+          salaryMax: job.salary?.max,
+          salaryCurrency: job.salary?.currency,
+          city: job.location.city,
+          country: job.location.country,
+        })}
+      />
+      <JsonLd
+        data={getBreadcrumbSchema([
+          { name: "Home", url: siteConfig.url },
+          { name: "Careers", url: `${siteConfig.url}/careers` },
+          { name: job.title },
+        ])}
+      />
+
       {/* Breadcrumb & Header */}
       <section className="section-padding pb-8">
         <Container>
