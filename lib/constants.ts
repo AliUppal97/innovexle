@@ -73,20 +73,38 @@ export const techStack = [
 export const testimonials = [
   {
     quote:
-      "They rebuilt our API layer in 8 weeks. Zero downtime migration, 3x throughput improvement.",
+      "They rebuilt our API layer in 8 weeks. Zero downtime migration, 3x throughput improvement. The team communicated clearly at every step.",
     author: "Engineering Lead",
-    company: "Series B Fintech",
+    role: "Series B Fintech",
   },
   {
     quote:
-      "Finally, engineers who understand that reliability is a feature, not an afterthought.",
+      "Finally, engineers who understand that reliability is a feature, not an afterthought. Our uptime went from 99.5% to 99.99%.",
     author: "CTO",
-    company: "Healthcare Platform",
+    role: "Healthcare Platform",
   },
   {
     quote:
-      "Our infrastructure costs dropped 40% after their optimization work. ROI was immediate.",
+      "Our infrastructure costs dropped 40% after their optimization work. ROI was immediate and the documentation they left behind was excellent.",
     author: "VP Engineering",
-    company: "E-commerce Scale-up",
+    role: "E-commerce Scale-up",
+  },
+  {
+    quote:
+      "The migration was seamless — zero downtime, zero data loss. Our deployment frequency went from monthly to daily.",
+    author: "Head of Platform",
+    role: "SaaS Enterprise",
+  },
+  {
+    quote:
+      "They didn't just fix our performance issues — they taught our team how to prevent them. That knowledge transfer was invaluable.",
+    author: "Senior Architect",
+    role: "AdTech Leader",
+  },
+  {
+    quote:
+      "From day one they challenged our assumptions and proposed a simpler architecture. Saved us six months of work we didn't need to do.",
+    author: "Founder & CEO",
+    role: "Cloud Startup",
   },
 ];
