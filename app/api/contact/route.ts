@@ -1,48 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendContactEmail } from "@/lib/email";
-
-// Rate limiting store (in production, use Redis or similar)
-const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
-
-const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
-const RATE_LIMIT_MAX_REQUESTS = 3; // Max 3 requests per minute per IP
+import { checkRateLimit } from "@/lib/rate-limit";
 
 function getRateLimitKey(request: NextRequest): string {
   const forwarded = request.headers.get("x-forwarded-for");
   const ip = forwarded ? forwarded.split(",")[0].trim() : "unknown";
-  return ip;
+  return `contact:${ip}`;
 }
 
-function checkRateLimit(key: string): { allowed: boolean; retryAfter?: number } {
-  const now = Date.now();
-  const record = rateLimitStore.get(key);
-
-  if (!record || now > record.resetTime) {
-    rateLimitStore.set(key, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
-    return { allowed: true };
-  }
-
-  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
-    const retryAfter = Math.ceil((record.resetTime - now) / 1000);
-    return { allowed: false, retryAfter };
-  }
-
-  record.count++;
-  return { allowed: true };
-}
-
-// Honeypot field validation
 function isSpam(data: ContactFormData): boolean {
-  // If honeypot field is filled, it's a bot
   if (data.website && data.website.trim() !== "") {
     return true;
   }
 
-  // Check for suspicious patterns
   const message = data.message.toLowerCase();
   const spamPatterns = [
     /\b(viagra|casino|lottery|winner|congratulations)\b/i,
-    /https?:\/\/[^\s]+/g, // Multiple URLs
+    /https?:\/\/[^\s]+/g,
   ];
 
   for (const pattern of spamPatterns) {
@@ -60,7 +34,7 @@ interface ContactFormData {
   email: string;
   company?: string;
   message: string;
-  website?: string; // Honeypot field
+  website?: string;
 }
 
 function validateEmail(email: string): boolean {
@@ -79,9 +53,11 @@ function sanitizeInput(input: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting
     const rateLimitKey = getRateLimitKey(request);
-    const rateLimitResult = checkRateLimit(rateLimitKey);
+    const rateLimitResult = await checkRateLimit(rateLimitKey, {
+      windowMs: 60_000,
+      maxRequests: 3,
+    });
 
     if (!rateLimitResult.allowed) {
       return NextResponse.json(
@@ -89,23 +65,22 @@ export async function POST(request: NextRequest) {
         {
           status: 429,
           headers: {
-            "Retry-After": String(rateLimitResult.retryAfter),
+            "Retry-After": String(rateLimitResult.retryAfterSeconds),
+            "X-RateLimit-Remaining": "0",
           },
         }
       );
     }
 
-    // Parse and validate request body
     const body = await request.json();
     const data: ContactFormData = {
       name: sanitizeInput(body.name || ""),
       email: sanitizeInput(body.email || ""),
       company: sanitizeInput(body.company || ""),
       message: sanitizeInput(body.message || ""),
-      website: body.website || "", // Honeypot
+      website: body.website || "",
     };
 
-    // Validation
     const errors: string[] = [];
 
     if (!data.name || data.name.length < 2) {
@@ -128,15 +103,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: errors.join(". ") }, { status: 400 });
     }
 
-    // Spam check
     if (isSpam(data)) {
-      // Return success to not reveal spam detection
       return NextResponse.json({ success: true });
     }
 
-    // In production, integrate with your email service:
-    // - Resend (recommended for Next.js)
-    // - SendGrid
     await sendContactEmail({
       name: data.name,
       email: data.email,
@@ -157,7 +127,6 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// Reject other methods
 export async function GET() {
   return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
 }

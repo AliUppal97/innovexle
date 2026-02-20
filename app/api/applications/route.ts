@@ -2,9 +2,10 @@ import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 import { getJobById } from "@/lib/data/jobs";
+import { createFileStorage, saveFile } from "@/lib/storage";
 
-// Types for application data
-interface ApplicationData {
+interface ApplicationRecord {
+  id: string;
   jobId: string;
   jobCode: string;
   jobTitle: string;
@@ -24,24 +25,17 @@ interface ApplicationData {
   heardAbout?: string;
   resumeFileName?: string;
   resumeFileSize?: number;
+  resumeStoredAs?: string;
   submittedAt: string;
   applicationReference: string;
 }
 
-// In a production environment, you would:
-// 1. Store applications in a database (PostgreSQL, MongoDB, etc.)
-// 2. Upload resumes to cloud storage (S3, GCS, etc.)
-// 3. Send confirmation emails via a service (SendGrid, AWS SES, etc.)
-// 4. Integrate with ATS systems (Greenhouse, Lever, etc.)
-
-// For demo purposes, we'll log the application and return success
-const applications: ApplicationData[] = [];
+const applicationStore = createFileStorage<ApplicationRecord>("applications");
 
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
 
-    // Extract form fields
     const jobId = formData.get("jobId") as string;
     const jobCode = formData.get("jobCode") as string;
     const jobTitle = formData.get("jobTitle") as string;
@@ -61,7 +55,6 @@ export async function POST(request: Request) {
     const heardAbout = formData.get("heardAbout") as string;
     const resume = formData.get("resume") as File | null;
 
-    // Validation
     if (!jobId || !firstName || !lastName || !email || !phone) {
       return NextResponse.json(
         { success: false, message: "Missing required fields" },
@@ -69,7 +62,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Validate job exists and is active
     const job = getJobById(jobId);
     if (!job || !job.isActive) {
       return NextResponse.json(
@@ -78,7 +70,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Check application deadline
     if (job.applicationDeadline) {
       const deadline = new Date(job.applicationDeadline);
       if (deadline < new Date()) {
@@ -89,7 +80,6 @@ export async function POST(request: Request) {
       }
     }
 
-    // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return NextResponse.json(
@@ -98,11 +88,16 @@ export async function POST(request: Request) {
       );
     }
 
-    // Generate application reference
     const applicationReference = `${jobCode}-${Date.now().toString(36).toUpperCase()}`;
 
-    // Create application record
-    const application: ApplicationData = {
+    let resumeStoredAs: string | undefined;
+    if (resume && resume.size > 0) {
+      const buffer = Buffer.from(await resume.arrayBuffer());
+      resumeStoredAs = await saveFile(resume.name, buffer);
+    }
+
+    const application: ApplicationRecord = {
+      id: applicationReference,
       jobId,
       jobCode,
       jobTitle,
@@ -122,28 +117,21 @@ export async function POST(request: Request) {
       heardAbout: heardAbout || undefined,
       resumeFileName: resume?.name,
       resumeFileSize: resume?.size,
+      resumeStoredAs,
       submittedAt: new Date().toISOString(),
       applicationReference,
     };
 
-    // In production, you would:
-    // 1. Save to database
-    // 2. Upload resume to cloud storage
-    // 3. Send confirmation email to applicant
-    // 4. Send notification to hiring team
-    // 5. Create record in ATS
+    await applicationStore.create(application);
 
-    // For demo, store in memory (resets on server restart)
-    applications.push(application);
-
-    console.log("New application received:", {
+    console.log("New application persisted:", {
       reference: applicationReference,
       job: jobTitle,
       applicant: `${firstName} ${lastName}`,
       email,
+      resumeStored: !!resumeStoredAs,
     });
 
-    // Return success response
     return NextResponse.json({
       success: true,
       message: "Application submitted successfully",
@@ -163,30 +151,27 @@ export async function POST(request: Request) {
   }
 }
 
-// GET endpoint to list applications (would be protected in production)
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const jobId = searchParams.get("jobId");
 
-    let filteredApplications = applications;
+    let applications = await applicationStore.getAll();
 
     if (jobId) {
-      filteredApplications = applications.filter((app) => app.jobId === jobId);
+      applications = applications.filter((app) => app.jobId === jobId);
     }
 
-    // In production, this endpoint would require authentication
-    // and would fetch from a database
     return NextResponse.json({
       success: true,
-      data: filteredApplications.map((app) => ({
+      data: applications.map((app) => ({
         reference: app.applicationReference,
         jobTitle: app.jobTitle,
         applicant: `${app.firstName} ${app.lastName}`,
         email: app.email,
         submittedAt: app.submittedAt,
       })),
-      count: filteredApplications.length,
+      count: applications.length,
     });
   } catch (error) {
     console.error("Error fetching applications:", error);
