@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/Container";
+import { Reveal, StaggerContainer, StaggerItem } from "@/components/ui/MotionWrapper";
 import { techStack, testimonials } from "@/lib/constants";
 
 export function Trust() {
@@ -6,10 +7,11 @@ export function Trust() {
     <section className="section-padding" aria-labelledby="trust-heading">
       <Container>
         {/* Tech Stack */}
-        <div className="text-center">
-          <h2 id="trust-heading" className="text-small font-semibold text-muted uppercase tracking-wider">
-            Technologies we work with
-          </h2>
+        <Reveal>
+          <div className="text-center">
+            <h2 id="trust-heading" className="text-small font-semibold text-muted uppercase tracking-wider">
+              Technologies we work with
+            </h2>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-8 md:gap-12">
             {techStack.map((tech) => (
               <div
@@ -23,17 +25,20 @@ export function Trust() {
             ))}
           </div>
         </div>
+        </Reveal>
 
         {/* Testimonials */}
         <div className="mt-20">
-          <h3 className="text-center text-small font-semibold text-muted uppercase tracking-wider mb-12">
-            What our clients say
-          </h3>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {testimonials.map((testimonial, index) => (
+          <Reveal>
+            <h3 className="text-center text-small font-semibold text-muted uppercase tracking-wider mb-12">
+              What our clients say
+            </h3>
+          </Reveal>
+          <StaggerContainer className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {testimonials.slice(0, 6).map((testimonial, index) => (
+              <StaggerItem key={index}>
               <figure
-                key={index}
-                className="rounded-lg border border-border bg-card p-6"
+                className="rounded-lg border border-border bg-card p-6 h-full flex flex-col justify-between"
               >
                 <blockquote className="text-body text-foreground">
                   &ldquo;{testimonial.quote}&rdquo;
@@ -42,11 +47,12 @@ export function Trust() {
                   <p className="text-small font-medium text-foreground">
                     {testimonial.author}
                   </p>
-                  <p className="text-small text-muted">{testimonial.company}</p>
+                  <p className="text-small text-muted">{testimonial.role}</p>
                 </figcaption>
               </figure>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </Container>
     </section>

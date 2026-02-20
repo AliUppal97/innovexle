@@ -1,5 +1,6 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
+import { Counter } from "@/components/ui/Counter";
 import type { CaseStudy } from "@/lib/data/case-studies";
 
 interface CaseStudyCardProps {
@@ -36,7 +37,7 @@ export function CaseStudyCard({ caseStudy, featured = false }: CaseStudyCardProp
           <div className="grid grid-cols-3 gap-3">
             {caseStudy.results.map((result) => (
               <div key={result.metric} className="text-center">
-                <p className="text-h3 font-bold text-accent">{result.value}</p>
+                <Counter value={result.value} className="text-h3 font-bold text-accent" />
                 <p className="text-small text-muted">{result.metric}</p>
               </div>
             ))}

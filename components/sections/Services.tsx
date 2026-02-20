@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
+import { Reveal, StaggerContainer, StaggerItem } from "@/components/ui/MotionWrapper";
 import { services } from "@/lib/data/services";
 
 const serviceIcons: Record<string, JSX.Element> = {
@@ -56,28 +57,32 @@ export function Services({ showAll = false }: ServicesProps) {
   return (
     <section className="section-padding bg-card/50" aria-labelledby="services-heading">
       <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 id="services-heading" className="text-h1 font-bold text-foreground">
-            What we do
-          </h2>
-          <p className="mt-4 text-body text-muted">
-            Specialized backend engineering services focused on reliability, performance, and scale.
-          </p>
-        </div>
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 id="services-heading" className="text-h1 font-bold text-foreground">
+              What we do
+            </h2>
+            <p className="mt-4 text-body text-muted">
+              Specialized backend engineering services focused on reliability, performance, and scale.
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerContainer className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {displayedServices.map((service) => (
-            <Card key={service.id} hover className="group">
-              <CardHeader>
-                <div className="mb-4 text-foreground group-hover:text-accent transition-colors">
-                  {serviceIcons[service.id]}
-                </div>
-                <CardTitle>{service.title}</CardTitle>
-              </CardHeader>
-              <CardDescription>{service.description}</CardDescription>
-            </Card>
+            <StaggerItem key={service.id}>
+              <Card hover className="group h-full">
+                <CardHeader>
+                  <div className="mb-4 text-foreground group-hover:text-accent transition-colors">
+                    {serviceIcons[service.id]}
+                  </div>
+                  <CardTitle>{service.title}</CardTitle>
+                </CardHeader>
+                <CardDescription>{service.description}</CardDescription>
+              </Card>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {!showAll && (
           <div className="mt-12 text-center">

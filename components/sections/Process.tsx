@@ -1,18 +1,21 @@
 import { Container } from "@/components/ui/Container";
+import { Reveal, StaggerContainer, StaggerItem } from "@/components/ui/MotionWrapper";
 import { processSteps } from "@/lib/constants";
 
 export function Process() {
   return (
     <section className="section-padding" aria-labelledby="process-heading">
       <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 id="process-heading" className="text-h1 font-bold text-foreground">
-            How we work
-          </h2>
-          <p className="mt-4 text-body text-muted">
-            A structured approach that delivers predictable outcomes.
-          </p>
-        </div>
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 id="process-heading" className="text-h1 font-bold text-foreground">
+              How we work
+            </h2>
+            <p className="mt-4 text-body text-muted">
+              A structured approach that delivers predictable outcomes.
+            </p>
+          </div>
+        </Reveal>
 
         <div className="mt-16 relative">
           {/* Connection line */}
@@ -21,9 +24,9 @@ export function Process() {
             aria-hidden="true"
           />
 
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-4 lg:gap-8">
+          <StaggerContainer className="grid grid-cols-1 gap-12 lg:grid-cols-4 lg:gap-8" stagger={0.15}>
             {processSteps.map((step, index) => (
-              <div key={step.step} className="relative">
+              <StaggerItem key={step.step} className="relative">
                 <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                   {/* Step number */}
                   <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-border bg-background text-foreground font-bold text-h3 relative z-10">
@@ -51,9 +54,9 @@ export function Process() {
                     </svg>
                   </div>
                 )}
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </Container>
     </section>
