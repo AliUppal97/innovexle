@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { sendContactEmail } from "@/lib/email";
 
 // Rate limiting store (in production, use Redis or similar)
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
@@ -136,29 +137,12 @@ export async function POST(request: NextRequest) {
     // In production, integrate with your email service:
     // - Resend (recommended for Next.js)
     // - SendGrid
-    // - AWS SES
-    // - Nodemailer with SMTP
-    //
-    // Example with Resend:
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    // await resend.emails.send({
-    //   from: 'noreply@innovexle.com',
-    //   to: process.env.CONTACT_EMAIL,
-    //   subject: `New inquiry from ${data.name}`,
-    //   html: emailTemplate(data),
-    // });
-
-    // For now, log the submission (in production, this would send an email)
-    console.log("Contact form submission:", {
-      timestamp: new Date().toISOString(),
+    await sendContactEmail({
       name: data.name,
       email: data.email,
       company: data.company,
-      message: data.message.substring(0, 100) + "...",
+      message: data.message,
     });
-
-    // Store in database if configured
-    // await db.insert(contacts).values(data);
 
     return NextResponse.json({
       success: true,
