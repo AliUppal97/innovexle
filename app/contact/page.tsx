@@ -6,6 +6,7 @@ import { Input, Textarea, Label } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/constants";
 import { trackEvent } from "@/components/analytics";
+import { Accordion, AccordionItem } from "@/components/ui/Accordion";
 
 interface FormState {
   status: "idle" | "submitting" | "success" | "error";
@@ -345,54 +346,31 @@ export default function ContactPage() {
             Common questions
           </h2>
 
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-h3 font-semibold text-foreground">
-                What&apos;s your typical engagement look like?
-              </h3>
-              <p className="mt-2 text-body text-muted">
-                Most engagements start with a discovery phase where we understand
-                your current state and constraints. From there, we scope specific
-                deliverables with clear timelines. Engagements typically range from
-                focused 4-week sprints to multi-month partnerships.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-h3 font-semibold text-foreground">
-                Do you work with early-stage startups?
-              </h3>
-              <p className="mt-2 text-body text-muted">
-                Yes, we work with companies at various stages. For early-stage
-                companies, we often focus on setting up scalable foundations that
-                won&apos;t need to be rewritten as you grow. We&apos;re upfront about what
-                makes sense to build now vs. later.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-h3 font-semibold text-foreground">
-                What industries do you work with?
-              </h3>
-              <p className="mt-2 text-body text-muted">
-                We&apos;ve worked across fintech, healthcare, e-commerce, and SaaS.
-                The common thread is companies that need reliable, scalable backend
-                systems. Industry-specific compliance requirements (HIPAA, PCI,
-                SOC 2) are areas we have direct experience with.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-h3 font-semibold text-foreground">
-                How do you handle ongoing support?
-              </h3>
-              <p className="mt-2 text-body text-muted">
-                Every project includes comprehensive documentation and knowledge
-                transfer. For clients who want ongoing support, we offer retainer
-                arrangements for continued advisory and maintenance work.
-              </p>
-            </div>
-          </div>
+          <Accordion>
+            <AccordionItem title="What's your typical engagement look like?" defaultOpen>
+              Most engagements start with a discovery phase where we understand
+              your current state and constraints. From there, we scope specific
+              deliverables with clear timelines. Engagements typically range from
+              focused 4-week sprints to multi-month partnerships.
+            </AccordionItem>
+            <AccordionItem title="Do you work with early-stage startups?">
+              Yes, we work with companies at various stages. For early-stage
+              companies, we often focus on setting up scalable foundations that
+              won&apos;t need to be rewritten as you grow. We&apos;re upfront about what
+              makes sense to build now vs. later.
+            </AccordionItem>
+            <AccordionItem title="What industries do you work with?">
+              We&apos;ve worked across fintech, healthcare, e-commerce, and SaaS.
+              The common thread is companies that need reliable, scalable backend
+              systems. Industry-specific compliance requirements (HIPAA, PCI,
+              SOC 2) are areas we have direct experience with.
+            </AccordionItem>
+            <AccordionItem title="How do you handle ongoing support?">
+              Every project includes comprehensive documentation and knowledge
+              transfer. For clients who want ongoing support, we offer retainer
+              arrangements for continued advisory and maintenance work.
+            </AccordionItem>
+          </Accordion>
         </Container>
       </section>
     </>
