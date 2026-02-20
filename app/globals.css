@@ -15,18 +15,16 @@
     --card-foreground: 0 0% 9%;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: 0 0% 4%;
-      --foreground: 0 0% 93%;
-      --muted: 0 0% 64%;
-      --muted-foreground: 0 0% 60%;
-      --accent: 217 91% 70%;
-      --accent-foreground: 0 0% 9%;
-      --border: 0 0% 15%;
-      --card: 0 0% 7%;
-      --card-foreground: 0 0% 93%;
-    }
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 93%;
+    --muted: 0 0% 64%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 217 91% 70%;
+    --accent-foreground: 0 0% 9%;
+    --border: 0 0% 15%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 93%;
   }
 
   * {
@@ -39,9 +37,23 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   /* Focus styles for accessibility */

@@ -4,6 +4,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { ToastProvider } from "@/components/ui/Toast";
+import { TopLoader } from "@/components/ui/TopLoader";
 import { siteConfig } from "@/lib/constants";
 import { JsonLd, getOrganizationSchema, getWebSiteSchema } from "@/components/seo";
 import { Analytics } from "@/components/analytics";
@@ -82,20 +85,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
         <JsonLd data={[getOrganizationSchema(), getWebSiteSchema()]} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("innovexle-theme");var d=t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme:dark)").matches);document.documentElement.classList.toggle("dark",d)}catch(e){}})()`,
+          }}
+        />
       </head>
       <body className="min-h-screen bg-background font-sans antialiased">
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
-        <Header />
-        <main id="main-content">{children}</main>
-        <Footer />
-        <Suspense fallback={null}>
-          <Analytics />
-        </Suspense>
+        <ThemeProvider>
+          <ToastProvider>
+            <TopLoader />
+            <a href="#main-content" className="skip-link">
+              Skip to main content
+            </a>
+            <Header />
+            <main id="main-content">{children}</main>
+            <Footer />
+            <Suspense fallback={null}>
+              <Analytics />
+            </Suspense>
+          </ToastProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
