@@ -18,27 +18,33 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#171717",
+          backgroundColor: "#0A0A0A",
           borderRadius: 40,
         }}
       >
         <svg
           width="120"
           height="120"
-          viewBox="0 0 32 32"
+          viewBox="0 0 100 100"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M8 12L16 8L24 12V20L16 24L8 20V12Z"
+            d="M50 8L86.4 29v42L50 92l-36.4-21V29z"
             stroke="#FAFAFA"
-            strokeWidth="2"
+            strokeWidth="7"
+            strokeLinejoin="round"
             fill="none"
           />
           <path
-            d="M16 8V24M8 12L24 20M24 12L8 20"
+            d="M50 25.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 1 0 0-9z"
+            fill="#FAFAFA"
+          />
+          <path
+            d="M50 42V76"
             stroke="#FAFAFA"
-            strokeWidth="2"
+            strokeWidth="7"
+            strokeLinecap="round"
           />
         </svg>
       </div>

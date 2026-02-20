@@ -18,17 +18,23 @@ export default function Icon() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect width="32" height="32" rx="8" fill="#171717" />
+        <rect width="32" height="32" rx="7" fill="#0A0A0A" />
         <path
-          d="M8 12L16 8L24 12V20L16 24L8 20V12Z"
+          d="M16 5.5L27 11.5v11L16 28.5l-11-6v-11z"
           stroke="#FAFAFA"
           strokeWidth="2"
+          strokeLinejoin="round"
           fill="none"
         />
         <path
-          d="M16 8V24M8 12L24 20M24 12L8 20"
+          d="M16 10.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 1 0 0-3.2z"
+          fill="#FAFAFA"
+        />
+        <path
+          d="M16 15.5V25"
           stroke="#FAFAFA"
-          strokeWidth="2"
+          strokeWidth="2.2"
+          strokeLinecap="round"
         />
       </svg>
     ),

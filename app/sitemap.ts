@@ -1,6 +1,9 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/constants";
 import { getActiveJobs } from "@/lib/data/jobs";
+import { services } from "@/lib/data/services";
+import { caseStudies } from "@/lib/data/case-studies";
+import { locales, defaultLocale } from "@/i18n/config";
 
 interface SitemapEntry {
   route: string;
@@ -12,7 +15,6 @@ interface SitemapEntry {
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
 
-  // Static routes
   const staticRoutes: SitemapEntry[] = [
     { route: "", priority: 1, changeFrequency: "weekly" },
     { route: "/services", priority: 0.9, changeFrequency: "weekly" },
@@ -20,11 +22,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: "/careers", priority: 0.9, changeFrequency: "weekly" },
     { route: "/about", priority: 0.8, changeFrequency: "monthly" },
     { route: "/contact", priority: 0.8, changeFrequency: "monthly" },
+    { route: "/accessibility", priority: 0.3, changeFrequency: "yearly" },
     { route: "/privacy", priority: 0.3, changeFrequency: "yearly" },
     { route: "/terms", priority: 0.3, changeFrequency: "yearly" },
   ];
 
-  // Dynamic job pages
+  const serviceRoutes: SitemapEntry[] = services.map((service) => ({
+    route: `/services/${service.id}`,
+    priority: 0.8,
+    changeFrequency: "monthly",
+  }));
+
+  const caseStudyRoutes: SitemapEntry[] = caseStudies.map((cs) => ({
+    route: `/case-studies/${cs.id}`,
+    priority: 0.8,
+    changeFrequency: "monthly",
+  }));
+
   const jobs = getActiveJobs();
   const jobRoutes: SitemapEntry[] = jobs.map((job) => ({
     route: `/careers/${job.id}`,
@@ -33,12 +47,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(job.postedDate),
   }));
 
-  const allRoutes = [...staticRoutes, ...jobRoutes];
+  const allRoutes = [...staticRoutes, ...serviceRoutes, ...caseStudyRoutes, ...jobRoutes];
 
-  return allRoutes.map(({ route, priority, changeFrequency, lastModified }) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: lastModified || new Date(),
-    changeFrequency,
-    priority,
-  }));
+  const entries: MetadataRoute.Sitemap = [];
+
+  for (const { route, priority, changeFrequency, lastModified } of allRoutes) {
+    const alternates: Record<string, string> = {};
+    for (const locale of locales) {
+      const prefix = locale === defaultLocale ? "" : `/${locale}`;
+      alternates[locale] = `${baseUrl}${prefix}${route}`;
+    }
+
+    entries.push({
+      url: `${baseUrl}${route}`,
+      lastModified: lastModified || new Date(),
+      changeFrequency,
+      priority,
+      alternates: { languages: alternates },
+    });
+  }
+
+  return entries;
 }

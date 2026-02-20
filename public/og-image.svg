@@ -1,8 +1,6 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="1200" height="630" fill="#171717"/>
+  <rect width="1200" height="630" fill="#0A0A0A"/>
   
-  <!-- Grid pattern -->
   <defs>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#262626" stroke-width="1"/>
@@ -10,19 +8,29 @@
   </defs>
   <rect width="1200" height="630" fill="url(#grid)" opacity="0.5"/>
   
-  <!-- Logo -->
-  <g transform="translate(520, 180)">
-    <rect width="64" height="64" rx="12" fill="#FAFAFA"/>
-    <path d="M16 24L32 16L48 24V40L32 48L16 40V24Z" stroke="#171717" stroke-width="3" fill="none"/>
-    <path d="M32 16V48M16 24L48 40M48 24L16 40" stroke="#171717" stroke-width="3"/>
+  <g transform="translate(568, 160)">
+    <path
+      d="M32 5.2L55.2 18.5v26.6L32 58.4L8.8 45.1V18.5z"
+      stroke="#FAFAFA"
+      stroke-width="4.5"
+      stroke-linejoin="round"
+      fill="none"
+    />
+    <circle cx="32" cy="19.2" r="2.9" fill="#FAFAFA"/>
+    <line
+      x1="32" y1="26.8"
+      x2="32" y2="49"
+      stroke="#FAFAFA"
+      stroke-width="4.5"
+      stroke-linecap="round"
+    />
   </g>
   
-  <!-- Company name -->
-  <text x="600" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="700" fill="#FAFAFA" text-anchor="middle">Innovexle</text>
+  <text x="600" y="290" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="700" fill="#FAFAFA" text-anchor="middle">Innovexle</text>
   
-  <!-- Headline -->
-  <text x="600" y="400" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="700" fill="#FAFAFA" text-anchor="middle">We build systems that scale.</text>
+  <text x="600" y="390" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="700" fill="#FAFAFA" text-anchor="middle">We build systems that scale.</text>
   
-  <!-- Subtext -->
-  <text x="600" y="470" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#A3A3A3" text-anchor="middle">Backend engineering for companies that can't afford downtime.</text>
+  <text x="600" y="460" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#A3A3A3" text-anchor="middle">Backend engineering for companies that can't afford downtime.</text>
+  
+  <rect x="550" y="500" width="100" height="4" rx="2" fill="#60A5FA"/>
 </svg>
