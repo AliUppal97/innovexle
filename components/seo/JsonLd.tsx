@@ -73,7 +73,7 @@ type SchemaType =
   | BreadcrumbSchema;
 
 interface JsonLdProps {
-  data: SchemaType | SchemaType[];
+  data: SchemaType | SchemaType[] | ReturnType<typeof getJobPostingSchema>;
 }
 
 export function JsonLd({ data }: JsonLdProps) {
@@ -153,6 +153,53 @@ export function getFAQPageSchema(
         text: faq.answer,
       },
     })),
+  };
+}
+
+export function getJobPostingSchema(job: {
+  title: string;
+  description: string;
+  datePosted: string;
+  validThrough?: string;
+  employmentType: string;
+  locationType: string;
+  salaryMin?: number;
+  salaryMax?: number;
+  salaryCurrency?: string;
+  city?: string;
+  country?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title: job.title,
+    description: job.description,
+    datePosted: job.datePosted,
+    ...(job.validThrough && { validThrough: job.validThrough }),
+    employmentType: job.employmentType.toUpperCase().replace("-", "_"),
+    hiringOrganization: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      sameAs: siteConfig.url,
+    },
+    jobLocationType: job.locationType === "remote" ? "TELECOMMUTE" : undefined,
+    applicantLocationRequirements: {
+      "@type": "Country",
+      name: job.country || "US",
+    },
+    ...(job.salaryMin &&
+      job.salaryMax && {
+        baseSalary: {
+          "@type": "MonetaryAmount",
+          currency: job.salaryCurrency || "USD",
+          value: {
+            "@type": "QuantitativeValue",
+            minValue: job.salaryMin,
+            maxValue: job.salaryMax,
+            unitText: "YEAR",
+          },
+        },
+      }),
   };
 }
 

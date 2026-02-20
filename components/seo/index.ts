@@ -5,4 +5,5 @@ export {
   getServiceSchema,
   getFAQPageSchema,
   getBreadcrumbSchema,
+  getJobPostingSchema,
 } from "./JsonLd";
