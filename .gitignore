@@ -27,6 +27,9 @@ yarn-error.log*
 .env*.local
 !.env.example
 
+# Application data (job applications, uploads, rate limits)
+/.data
+
 # Vercel
 .vercel
 
