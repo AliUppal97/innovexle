@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { navigation, siteConfig } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -147,6 +148,7 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
+            <ThemeToggle />
             <Button asChild size="sm">
               <Link href="/contact">Talk to an engineer</Link>
             </Button>
