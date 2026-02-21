@@ -37,6 +37,9 @@ const config: Config = {
           border: "hsl(var(--success) / 0.3)",
         },
       },
+      ringOffsetColor: {
+        background: "hsl(var(--background))",
+      },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
@@ -54,9 +57,19 @@ const config: Config = {
         18: "4.5rem",
         22: "5.5rem",
       },
+      boxShadow: {
+        "card": "0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.04)",
+        "card-hover": "0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05)",
+      },
       animation: {
         "fade-in": "fadeIn 0.5s ease-out forwards",
         "slide-up": "slideUp 0.5s ease-out forwards",
+      },
+      transitionDuration: {
+        "400": "400ms",
+      },
+      transitionTimingFunction: {
+        "smooth": "cubic-bezier(0.21, 0.47, 0.32, 0.98)",
       },
       keyframes: {
         fadeIn: {

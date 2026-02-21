@@ -64,7 +64,7 @@
     }
   }
 
-  /* Focus styles for accessibility */
+  /* Focus styles for accessibility - world-class contrast */
   :focus-visible {
     outline: 2px solid hsl(var(--accent));
     outline-offset: 2px;
@@ -75,12 +75,22 @@
     background-color: hsl(var(--accent) / 0.2);
     color: hsl(var(--foreground));
   }
+
+  /* Smooth scroll target offset for fixed header */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+
+  /* Base link transition for consistency */
+  a {
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
 }
 
 @layer components {
   /* Skip to main content link for accessibility */
   .skip-link {
-    @apply absolute left-4 top-4 z-50 -translate-y-16 rounded-md bg-accent px-4 py-2 text-accent-foreground transition-transform focus:translate-y-0;
+    @apply absolute left-4 top-4 z-50 -translate-y-16 rounded-lg bg-accent px-4 py-2 text-accent-foreground transition-transform duration-200 focus:translate-y-0;
   }
 
   /* Container with responsive padding */
@@ -93,9 +103,14 @@
     @apply py-16 sm:py-20 lg:py-24;
   }
 
-  /* Card hover effect */
+  /* Card hover effect - world-class micro-interaction */
   .card-hover {
-    @apply transition-all duration-300 hover:border-accent/30 hover:shadow-lg;
+    @apply transition-all duration-200 ease-out hover:border-accent/30 hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-black/20;
+  }
+
+  /* Elevated card for testimonials, feature blocks */
+  .card-elevated {
+    @apply rounded-xl border border-border bg-card shadow-sm transition-all duration-200 hover:shadow-md hover:shadow-black/5 dark:hover:shadow-black/20;
   }
 
   /* Text gradient (subtle) */
