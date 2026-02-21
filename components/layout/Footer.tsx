@@ -40,9 +40,12 @@ export function Footer() {
               <p className="mt-4 max-w-md text-body text-muted">
                 {tMeta("siteDescription")}
               </p>
-              <p className="mt-4 text-small text-muted">
+              <p className="mt-4 flex flex-col gap-1 text-small text-muted">
                 <a href={`mailto:${siteConfig.email}`} className="hover:text-foreground transition-colors">
                   {siteConfig.email}
+                </a>
+                <a href={siteConfig.phoneHref} className="hover:text-foreground transition-colors" aria-label={tA11y("phone")}>
+                  {siteConfig.phone}
                 </a>
               </p>
             </div>
