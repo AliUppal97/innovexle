@@ -316,19 +316,14 @@ export default async function ServicePage({ params }: ServicePageProps) {
       )}
 
       {/* CTA */}
-      <section className="section-padding bg-accent text-accent-foreground">
+      <section className="section-padding bg-card border-y border-border">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-h3 sm:text-h2 lg:text-h1 font-bold">
+            <h2 className="text-h3 sm:text-h2 lg:text-h1 font-bold text-foreground">
               {t("readyToStart", { service: service.title.toLowerCase() })}
             </h2>
             <div className="mt-8">
-              <Button
-                asChild
-                variant="secondary"
-                size="lg"
-                className="bg-accent-foreground text-accent hover:bg-accent-foreground/90 border-accent-foreground"
-              >
+              <Button asChild size="lg">
                 <Link href="/contact">{t("learnMore")}</Link>
               </Button>
             </div>

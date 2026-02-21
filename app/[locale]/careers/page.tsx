@@ -69,14 +69,14 @@ export default function CareersPage() {
   return (
     <>
       {/* Hero */}
-      <section className="section-padding bg-accent text-accent-foreground">
+      <section className="section-padding bg-card border-b border-border">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-h1 font-bold">{t("title")}</h1>
-            <p className="mt-4 text-h3 font-normal text-accent-foreground/90">
+            <h1 className="text-h1 font-bold text-foreground">{t("title")}</h1>
+            <p className="mt-4 text-h3 font-normal text-muted">
               {t("subtitle")}
             </p>
-            <p className="mt-6 text-body text-accent-foreground/80">
+            <p className="mt-6 text-body text-muted">
               {t("description")}
             </p>
           </div>
