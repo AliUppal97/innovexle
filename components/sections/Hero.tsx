@@ -55,7 +55,7 @@ export async function Hero() {
         <Reveal variant="fade-in" delay={0.3}>
           <div className="mt-16 flex justify-center" aria-hidden="true">
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-accent/20 to-transparent blur-3xl" />
+              <div className="absolute -inset-4 bg-gradient-to-r from-muted/20 to-transparent blur-3xl" />
               <svg
                 className="h-32 w-32 sm:h-48 sm:w-48 lg:h-64 lg:w-64 text-foreground/10"
                 viewBox="0 0 200 200"
