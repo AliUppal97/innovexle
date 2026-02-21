@@ -26,8 +26,52 @@
     "approachSubtitle": "Every project follows a structured approach that ensures predictable outcomes.",
     "weDontDo": "We don't do",
     "weAlwaysDo": "We always do",
+    "weDontDoItems": [
+      "Quick fixes that create technical debt",
+      "Over-engineering for problems that don't exist",
+      "Vendor lock-in without clear justification",
+      "Solutions without documentation"
+    ],
+    "weAlwaysDoItems": [
+      "Document every architectural decision",
+      "Build with observability from day one",
+      "Design for failure and graceful degradation",
+      "Transfer knowledge to your team"
+    ],
     "relatedServices": "Related services",
-    "readyToStart": "Ready to get started with {service}?"
+    "readyToStart": "Ready to get started with {service}?",
+    "items": {
+      "apiArchitecture": {
+        "title": "API Architecture",
+        "description": "Design and implementation of robust, scalable APIs that handle millions of requests. RESTful and GraphQL architectures built for longevity.",
+        "outcomes": ["Sub-100ms response times at scale", "Comprehensive API documentation", "Versioning strategy that prevents breaking changes", "Rate limiting and security hardening"]
+      },
+      "databaseDesign": {
+        "title": "Database Design",
+        "description": "Data modeling and database architecture that scales with your business. We optimize for both read-heavy and write-heavy workloads.",
+        "outcomes": ["Query performance optimization", "Horizontal scaling strategies", "Data migration with zero downtime", "Backup and disaster recovery plans"]
+      },
+      "cloudInfrastructure": {
+        "title": "Cloud Infrastructure",
+        "description": "Infrastructure as code, container orchestration, and cloud-native architectures. We build systems that are reproducible and reliable.",
+        "outcomes": ["99.99% uptime SLAs", "Auto-scaling that responds to demand", "Cost optimization without compromising reliability", "Multi-region deployment capabilities"]
+      },
+      "systemIntegration": {
+        "title": "System Integration",
+        "description": "Connect disparate systems with reliable, maintainable integrations. We handle the complexity so your team can focus on product.",
+        "outcomes": ["Event-driven architectures", "Reliable message queuing", "Third-party API integrations", "Legacy system modernization"]
+      },
+      "performanceOptimization": {
+        "title": "Performance Optimization",
+        "description": "Identify bottlenecks, optimize critical paths, and reduce infrastructure costs. Data-driven improvements with measurable results.",
+        "outcomes": ["Detailed performance profiling", "Caching strategy implementation", "Database query optimization", "Infrastructure cost reduction"]
+      },
+      "securityAudits": {
+        "title": "Security Audits",
+        "description": "Comprehensive security reviews of your backend systems. We identify vulnerabilities before they become incidents.",
+        "outcomes": ["Penetration testing reports", "Security best practices implementation", "Compliance readiness (SOC 2, HIPAA)", "Incident response planning"]
+      }
+    }
   },
   "caseStudies": {
     "title": "Case Studies",
@@ -39,7 +83,59 @@
     "techUsed": "Technologies Used",
     "keyTakeaways": "Key Takeaways",
     "viewAll": "View all case studies",
-    "readMore": "Read full case study"
+    "readMore": "Read full case study",
+    "items": {
+      "fintechApiRebuild": {
+        "industry": "Fintech",
+        "title": "API Infrastructure Rebuild",
+        "problem": "A Series B fintech company was experiencing API latency issues during peak trading hours. Their monolithic architecture couldn't handle the growing user base, resulting in failed transactions and customer complaints.",
+        "results": [
+          { "metric": "Response Time", "value": "3x faster" },
+          { "metric": "Uptime", "value": "99.99%" },
+          { "metric": "Failed Transactions", "value": "-95%" }
+        ]
+      },
+      "healthcareDataPlatform": {
+        "industry": "Healthcare",
+        "title": "HIPAA-Compliant Data Platform",
+        "problem": "A healthcare platform needed to process and store sensitive patient data while maintaining HIPAA compliance. Their existing infrastructure lacked proper encryption, audit trails, and access controls.",
+        "results": [
+          { "metric": "Compliance", "value": "HIPAA Certified" },
+          { "metric": "Audit Time", "value": "-80%" },
+          { "metric": "Security Incidents", "value": "Zero" }
+        ]
+      },
+      "ecommerceScale": {
+        "industry": "E-commerce",
+        "title": "Infrastructure Cost Optimization",
+        "problem": "An e-commerce scale-up was spending heavily on cloud infrastructure with inefficient resource utilization. Their architecture wasn't optimized for their traffic patterns, leading to over-provisioning.",
+        "results": [
+          { "metric": "Infrastructure Cost", "value": "-40%" },
+          { "metric": "Page Load Time", "value": "-60%" },
+          { "metric": "Throughput", "value": "5x increase" }
+        ]
+      },
+      "saasMigration": {
+        "industry": "SaaS",
+        "title": "Legacy System Migration",
+        "problem": "A mature SaaS company was running on aging infrastructure with a monolithic application. Deployment cycles were slow, and the system was difficult to maintain and scale.",
+        "results": [
+          { "metric": "Deployment Frequency", "value": "10x faster" },
+          { "metric": "System Downtime", "value": "Zero" },
+          { "metric": "Developer Productivity", "value": "+50%" }
+        ]
+      },
+      "realtimeAnalytics": {
+        "industry": "AdTech",
+        "title": "Real-time Analytics Pipeline",
+        "problem": "An AdTech company needed to process millions of events per second for real-time bidding decisions. Their batch processing system couldn't meet the latency requirements.",
+        "results": [
+          { "metric": "Processing Latency", "value": "<50ms" },
+          { "metric": "Events/Second", "value": "2M+" },
+          { "metric": "Data Loss", "value": "Zero" }
+        ]
+      }
+    }
   },
   "careers": {
     "title": "Join Our Team",
@@ -69,6 +165,12 @@
     "skillsTech": "Skills & Technologies",
     "benefits": "Benefits & Perks",
     "quickInfo": "Quick Info",
+    "jobCode": "Job Code",
+    "departmentLabel": "Department",
+    "locationLabel": "Location",
+    "employmentTypeLabel": "Employment Type",
+    "experienceLevelLabel": "Experience Level",
+    "postedLabel": "Posted",
     "otherPositions": "Other Open Positions",
     "viewAllPositions": "View all positions",
     "posted": "Posted {time}",
@@ -83,7 +185,11 @@
     "growthFocus": "Growth Focus",
     "growthFocusDesc": "Generous L&D budget, mentorship, and challenging problems to solve.",
     "workLifeBalance": "Work-Life Balance",
-    "workLifeBalanceDesc": "Unlimited PTO, flexible hours, and a culture that respects your time."
+    "workLifeBalanceDesc": "Unlimited PTO, flexible hours, and a culture that respects your time.",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied!",
+    "shareJob": "Share this Job",
+    "linkCopiedToClipboard": "Link copied to clipboard!"
   },
   "about": {
     "title": "About Innovexle",
@@ -117,7 +223,16 @@
     "commonQuestions": "Common questions",
     "nameError": "Name must be at least 2 characters",
     "emailError": "Please enter a valid email address",
-    "messageError": "Message must be at least 10 characters"
+    "messageError": "Message must be at least 10 characters",
+    "honeypotLabel": "Website (leave empty)",
+    "faq1Title": "How do engagements typically work?",
+    "faq1Content": "Most engagements start with a discovery phase where we understand your current state and constraints. From there, we scope specific deliverables with clear timelines. Engagements typically range from focused 4-week sprints to multi-month partnerships.",
+    "faq2Title": "Do you work with early-stage startups?",
+    "faq2Content": "Yes, we work with companies at various stages. For early-stage companies, we often focus on setting up scalable foundations that won't need to be rewritten as you grow. We're upfront about what makes sense to build now vs. later.",
+    "faq3Title": "What industries do you work with?",
+    "faq3Content": "We've worked across fintech, healthcare, e-commerce, and SaaS. The common thread is companies that need reliable, scalable backend systems. Industry-specific compliance requirements (HIPAA, PCI, SOC 2) are areas we have direct experience with.",
+    "faq4Title": "How do you handle ongoing support?",
+    "faq4Content": "Every project includes comprehensive documentation and knowledge transfer. For clients who want ongoing support, we offer retainer arrangements for continued advisory and maintenance work."
   },
   "process": {
     "title": "How We Work",
@@ -138,7 +253,15 @@
   },
   "trust": {
     "techStackTitle": "Built With",
-    "testimonialsTitle": "What Our Clients Say"
+    "testimonialsTitle": "What Our Clients Say",
+    "testimonials": [
+      { "quote": "They rebuilt our API layer in 8 weeks. Zero downtime migration, 3x throughput improvement. The team communicated clearly at every step.", "author": "Engineering Lead", "role": "Series B Fintech" },
+      { "quote": "Finally, engineers who understand that reliability is a feature, not an afterthought. Our uptime went from 99.5% to 99.99%.", "author": "CTO", "role": "Healthcare Platform" },
+      { "quote": "Our infrastructure costs dropped 40% after their optimization work. ROI was immediate and the documentation they left behind was excellent.", "author": "VP Engineering", "role": "E-commerce Scale-up" },
+      { "quote": "The migration was seamless — zero downtime, zero data loss. Our deployment frequency went from monthly to daily.", "author": "Head of Platform", "role": "SaaS Enterprise" },
+      { "quote": "They didn't just fix our performance issues — they taught our team how to prevent them. That knowledge transfer was invaluable.", "author": "Senior Architect", "role": "AdTech Leader" },
+      { "quote": "From day one they challenged our assumptions and proposed a simpler architecture. Saved us six months of work we didn't need to do.", "author": "Founder & CEO", "role": "Cloud Startup" }
+    ]
   },
   "footer": {
     "company": "Company",
@@ -240,10 +363,91 @@
     "tryAgain": "Try again",
     "backToHome": "Back to home",
     "notFound": "Page not found",
-    "notFoundDesc": "The page you're looking for doesn't exist or has been moved."
+    "notFoundDesc": "The page you're looking for doesn't exist or has been moved.",
+    "submitError": "Something went wrong. Please try again.",
+    "jobNotFound": "Job Not Found",
+    "caseStudyNotFound": "Case Study Not Found",
+    "serviceNotFound": "Service Not Found"
   },
   "meta": {
-    "homeTitle": "Innovexle | Backend Engineering That Scales",
-    "homeDescription": "Backend engineering for companies that can't afford downtime. API architecture, cloud infrastructure, database design, and performance optimization."
+    "home": "Home",
+    "homeTitle": "Backend Engineering That Scales",
+    "homeDescription": "Backend engineering for companies that can't afford downtime. API architecture, cloud infrastructure, database design, and performance optimization.",
+    "servicesTitle": "Services",
+    "servicesDescription": "Specialized backend engineering services: API architecture, database design, cloud infrastructure, system integration, performance optimization, and security audits.",
+    "caseStudiesTitle": "Case Studies",
+    "caseStudiesDescription": "Real engineering projects with measurable results. See how we've helped companies solve complex backend challenges.",
+    "privacyTitle": "Privacy Policy",
+    "privacyDescription": "Learn how we collect, use, and protect your personal information.",
+    "termsTitle": "Terms of Service",
+    "termsDescription": "Read our terms and conditions for using our website and services.",
+    "accessibilityTitle": "Accessibility Statement",
+    "accessibilityDescription": "Our commitment to digital accessibility for all users.",
+    "contactTitle": "Contact",
+    "contactDescription": "Get in touch with Innovexle. Tell us about your backend engineering challenges and we'll respond within one business day.",
+    "careersTitle": "Careers",
+    "careersDescription": "Join Innovexle — open engineering positions at a remote-first backend consultancy. Build systems that scale.",
+    "aboutTitle": "About",
+    "aboutDescription": "We're backend engineers who've spent years building systems that scale. Learn about our approach and values.",
+    "siteDescription": "Backend engineering for companies that can't afford downtime. We build systems that scale."
+  },
+  "a11y": {
+    "trustedBy": "Trusted by",
+    "selectLanguage": "Select language",
+    "cookieConsent": "Cookie consent",
+    "mainNav": "Main navigation",
+    "mobileNav": "Mobile navigation",
+    "breadcrumb": "Breadcrumb",
+    "shareOnTwitter": "Share on Twitter",
+    "shareOnLinkedIn": "Share on LinkedIn",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "filterByDepartment": "Filter by department",
+    "filterByLocation": "Filter by location",
+    "filterByLevel": "Filter by experience level",
+    "dismiss": "Dismiss",
+    "scrollToTop": "Scroll to top",
+    "chatbotOpen": "Open chat",
+    "chatbotClose": "Close chat"
+  },
+  "chatbot": {
+    "title": "Chat with us",
+    "greeting": "Hi! How can I help you today? Select a question or type your own.",
+    "placeholder": "Type your question...",
+    "fallback": "I can help with questions about our services, careers, engagement process, and technologies. Try selecting one of the questions above or rephrase your question!",
+    "items": {
+      "services": {
+        "q": "What backend services do you offer?",
+        "a": "We offer six specialized backend engineering services: API Architecture, Database Design, Cloud Infrastructure, System Integration, Performance Optimization, and Security Audits. Each engagement is tailored to your specific needs. Our approach emphasizes documentation, observability, and knowledge transfer to your team."
+      },
+      "process": {
+        "q": "How does your engagement process work?",
+        "a": "Our process has four phases: Discovery (understanding your constraints and objectives), Architecture (designing systems for growth), Build (production-ready code with testing and monitoring), and Support (continuous monitoring and optimization). We document every decision and never over-engineer."
+      },
+      "contact": {
+        "q": "How can I get in touch?",
+        "a": "You can reach us through our contact page or email hello@innovexle.com. We typically respond within one business day. For urgent backend engineering challenges, we recommend filling out the contact form with your project details so we can provide a focused response."
+      },
+      "careers": {
+        "q": "Are you hiring? What roles are open?",
+        "a": "Yes! We're always looking for skilled backend engineers who care about reliability and scale. Our careers page lists all open positions with department, location, and experience level filters. We're a remote-first consultancy, so most roles offer flexible location."
+      },
+      "pricing": {
+        "q": "How do you price your services?",
+        "a": "Our pricing depends on project scope, timeline, and complexity. We don't publish fixed rates because every engagement is different. The best way to get a tailored proposal is to share your requirements through our contact form. We're transparent about costs and will discuss options before any commitment."
+      },
+      "technologies": {
+        "q": "What technologies do you work with?",
+        "a": "We work with cloud platforms (AWS, Google Cloud), databases (PostgreSQL, Redis), orchestration (Kubernetes, Docker), and modern backend stacks. We're technology-agnostic when it makes sense—we choose the right tools for your constraints, not the trend of the month."
+      },
+      "remote": {
+        "q": "Do you work remotely or on-site?",
+        "a": "We're a remote-first consultancy. Most of our work is done async with clear communication rhythms. We can do on-site workshops or discovery sessions when valuable. Our clients span multiple regions, and we've built our processes to support distributed collaboration."
+      },
+      "engagement": {
+        "q": "What does a typical engagement look like?",
+        "a": "Engagements vary from short architecture reviews to multi-month build projects. We start with a discovery call to understand your needs, then propose a tailored scope. We work in iterations, with regular demos and feedback. Every engagement includes documentation and knowledge transfer so your team can own the system."
+      }
+    }
   }
 }

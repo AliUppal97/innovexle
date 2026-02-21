@@ -27,7 +27,51 @@
     "weDontDo": "Was wir nicht tun",
     "weAlwaysDo": "Was wir immer tun",
     "relatedServices": "Verwandte Leistungen",
-    "readyToStart": "Bereit für {service}?"
+    "readyToStart": "Bereit für {service}?",
+    "weDontDoItems": [
+      "Schnelle Fixes, die technische Schulden schaffen",
+      "Over-Engineering für nicht existierende Probleme",
+      "Vendor Lock-in ohne klare Rechtfertigung",
+      "Lösungen ohne Dokumentation"
+    ],
+    "weAlwaysDoItems": [
+      "Jede architektonische Entscheidung dokumentieren",
+      "Von Anfang an mit Beobachtbarkeit bauen",
+      "Für Ausfälle und elegante Degradation designen",
+      "Wissen an Ihr Team übertragen"
+    ],
+    "items": {
+      "apiArchitecture": {
+        "title": "API-Architektur",
+        "description": "Design und Implementierung robuster, skalierbarer APIs für Millionen von Anfragen. RESTful- und GraphQL-Architekturen für Langlebigkeit.",
+        "outcomes": ["Sub-100ms Antwortzeiten in großem Maßstab", "Umfassende API-Dokumentation", "Versionierungsstrategie gegen Breaking Changes", "Rate Limiting und Security Hardening"]
+      },
+      "databaseDesign": {
+        "title": "Datenbankdesign",
+        "description": "Datenmodellierung und Datenbankarchitektur, die mit Ihrem Geschäft skaliert. Wir optimieren für Lese- und Schreiblasten.",
+        "outcomes": ["Abfrageperformance-Optimierung", "Horizontale Skalierungsstrategien", "Datenmigration ohne Ausfallzeit", "Backup- und Disaster-Recovery-Pläne"]
+      },
+      "cloudInfrastructure": {
+        "title": "Cloud-Infrastruktur",
+        "description": "Infrastructure as Code, Container-Orchestrierung und Cloud-native Architekturen. Wir bauen reproduzierbare und zuverlässige Systeme.",
+        "outcomes": ["99,99% Uptime SLAs", "Auto-Scaling bei Nachfrage", "Kostenoptimierung ohne Zuverlässigkeitsverlust", "Multi-Region-Deployment-Fähigkeiten"]
+      },
+      "systemIntegration": {
+        "title": "Systemintegration",
+        "description": "Verbinden Sie disparate Systeme mit zuverlässigen, wartbaren Integrationen. Wir übernehmen die Komplexität, damit Ihr Team sich auf das Produkt konzentrieren kann.",
+        "outcomes": ["Event-getriebene Architekturen", "Zuverlässige Message Queues", "Third-Party-API-Integrationen", "Modernisierung von Legacy-Systemen"]
+      },
+      "performanceOptimization": {
+        "title": "Performance-Optimierung",
+        "description": "Identifizieren Sie Engpässe, optimieren Sie kritische Pfade und reduzieren Sie Infrastrukturkosten. Datengetriebene Verbesserungen mit messbaren Ergebnissen.",
+        "outcomes": ["Detailliertes Performance-Profiling", "Caching-Strategie-Implementierung", "Datenbankabfrage-Optimierung", "Infrastrukturkostenreduktion"]
+      },
+      "securityAudits": {
+        "title": "Sicherheitsaudits",
+        "description": "Umfassende Sicherheitsüberprüfungen Ihrer Backend-Systeme. Wir identifizieren Schwachstellen, bevor sie zu Vorfällen werden.",
+        "outcomes": ["Penetrationstest-Berichte", "Implementierung von Security Best Practices", "Compliance-Bereitschaft (SOC 2, HIPAA)", "Incident-Response-Planung"]
+      }
+    }
   },
   "caseStudies": {
     "title": "Fallstudien",
@@ -39,7 +83,14 @@
     "techUsed": "Verwendete Technologien",
     "keyTakeaways": "Wichtige Erkenntnisse",
     "viewAll": "Alle Fallstudien ansehen",
-    "readMore": "Vollständige Fallstudie lesen"
+    "readMore": "Vollständige Fallstudie lesen",
+    "items": {
+      "fintechApiRebuild": { "industry": "Fintech", "title": "API-Infrastruktur-Rebuild", "problem": "Ein Fintech-Unternehmen der Serie B hatte API-Latenzprobleme während der Handelsspitzenzeiten. Ihre monolithische Architektur konnte die wachsende Nutzerbasis nicht bewältigen, was zu fehlgeschlagenen Transaktionen und Kundenbeschwerden führte.", "results": [{ "metric": "Antwortzeit", "value": "3x schneller" }, { "metric": "Verfügbarkeit", "value": "99.99%" }, { "metric": "Fehlgeschlagene Transaktionen", "value": "-95%" }] },
+      "healthcareDataPlatform": { "industry": "Gesundheitswesen", "title": "HIPAA-konforme Datenplattform", "problem": "Eine Gesundheitsplattform musste sensible Patientendaten verarbeiten und speichern und dabei HIPAA-Konformität einhalten. Die bestehende Infrastruktur fehlte Verschlüsselung, Audit-Trails und Zugriffskontrollen.", "results": [{ "metric": "Konformität", "value": "HIPAA zertifiziert" }, { "metric": "Audit-Zeit", "value": "-80%" }, { "metric": "Sicherheitsvorfälle", "value": "Null" }] },
+      "ecommerceScale": { "industry": "E-Commerce", "title": "Infrastrukturkosten-Optimierung", "problem": "Ein E-Commerce-Scale-up gab stark für Cloud-Infrastruktur mit ineffizienter Ressourcennutzung aus. Die Architektur war nicht für Traffic-Muster optimiert und führte zu Over-Provisioning.", "results": [{ "metric": "Infrastrukturkosten", "value": "-40%" }, { "metric": "Seitenladezeit", "value": "-60%" }, { "metric": "Durchsatz", "value": "5x Anstieg" }] },
+      "saasMigration": { "industry": "SaaS", "title": "Legacy-System-Migration", "problem": "Ein ausgereiftes SaaS-Unternehmen lief auf alternder Infrastruktur mit monolithischer Anwendung. Die Bereitstellungszyklen waren langsam und das System schwer zu warten und zu skalieren.", "results": [{ "metric": "Bereitstellungshäufigkeit", "value": "10x schneller" }, { "metric": "System-Ausfallzeit", "value": "Null" }, { "metric": "Entwicklerproduktivität", "value": "+50%" }] },
+      "realtimeAnalytics": { "industry": "AdTech", "title": "Echtzeit-Analyse-Pipeline", "problem": "Ein AdTech-Unternehmen musste Millionen von Ereignissen pro Sekunde für Echtzeit-Bietentscheidungen verarbeiten. Ihr Batch-Processing-System erfüllte die Latenzanforderungen nicht.", "results": [{ "metric": "Verarbeitungslatenz", "value": "<50ms" }, { "metric": "Ereignisse/Sekunde", "value": "2M+" }, { "metric": "Datenverlust", "value": "Null" }] }
+    }
   },
   "careers": {
     "title": "Werden Sie Teil unseres Teams",
@@ -69,6 +120,16 @@
     "skillsTech": "Fähigkeiten & Technologien",
     "benefits": "Vorteile",
     "quickInfo": "Kurzinfo",
+    "jobCode": "Stellenkennung",
+    "departmentLabel": "Abteilung",
+    "locationLabel": "Standort",
+    "employmentTypeLabel": "Art der Beschäftigung",
+    "experienceLevelLabel": "Erfahrungsstufe",
+    "postedLabel": "Veröffentlicht",
+    "copyLink": "Link kopieren",
+    "linkCopied": "Link kopiert",
+    "shareJob": "Diese Stelle teilen",
+    "linkCopiedToClipboard": "Link in die Zwischenablage kopiert",
     "otherPositions": "Andere offene Stellen",
     "viewAllPositions": "Alle Stellen ansehen",
     "posted": "Veröffentlicht {time}",
@@ -117,7 +178,16 @@
     "commonQuestions": "Häufige Fragen",
     "nameError": "Name muss mindestens 2 Zeichen lang sein",
     "emailError": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
-    "messageError": "Nachricht muss mindestens 10 Zeichen lang sein"
+    "messageError": "Nachricht muss mindestens 10 Zeichen lang sein",
+    "honeypotLabel": "Website (leer lassen)",
+    "faq1Title": "Wie funktionieren Engagements typischerweise?",
+    "faq1Content": "Die meisten Engagements beginnen mit einer Discovery-Phase, in der wir Ihren aktuellen Stand und Ihre Einschränkungen verstehen. Danach definieren wir konkrete Lieferungen mit klaren Zeitplänen. Engagements reichen typischerweise von fokussierten 4-Wochen-Sprints bis zu mehrjährigen Partnerschaften.",
+    "faq2Title": "Arbeiten Sie mit Early-Stage-Startups?",
+    "faq2Content": "Ja, wir arbeiten mit Unternehmen in verschiedenen Phasen. Bei Early-Stage-Unternehmen konzentrieren wir uns oft auf skalierbare Grundlagen, die nicht neu geschrieben werden müssen. Wir sind offen darüber, was jetzt vs. später sinnvoll zu bauen ist.",
+    "faq3Title": "Mit welchen Branchen arbeiten Sie?",
+    "faq3Content": "Wir haben in Fintech, Healthcare, E-Commerce und SaaS gearbeitet. Der gemeinsame Nenner sind Unternehmen, die zuverlässige, skalierbare Backend-Systeme benötigen. Branchenspezifische Compliance-Anforderungen (HIPAA, PCI, SOC 2) sind Bereiche, in denen wir direkte Erfahrung haben.",
+    "faq4Title": "Wie handhaben Sie laufenden Support?",
+    "faq4Content": "Jedes Projekt beinhaltet umfassende Dokumentation und Wissenstransfer. Für Kunden, die laufenden Support wünschen, bieten wir Retainer-Vereinbarungen für fortlaufende Beratung und Wartung."
   },
   "process": {
     "title": "Wie Wir Arbeiten",
@@ -138,7 +208,15 @@
   },
   "trust": {
     "techStackTitle": "Gebaut Mit",
-    "testimonialsTitle": "Was Unsere Kunden Sagen"
+    "testimonialsTitle": "Was Unsere Kunden Sagen",
+    "testimonials": [
+      { "quote": "Sie haben unsere API-Schicht in 8 Wochen neu aufgebaut. Migration ohne Ausfallzeit, 3x Durchsatzverbesserung. Das Team kommunizierte bei jedem Schritt klar.", "author": "Engineering Lead", "role": "Serie-B-Fintech" },
+      { "quote": "Endlich Ingenieure, die verstehen, dass Zuverlässigkeit eine Funktion ist und kein nachträglicher Einfall. Unsere Verfügbarkeit stieg von 99,5% auf 99,99%.", "author": "CTO", "role": "Gesundheitsplattform" },
+      { "quote": "Unsere Infrastrukturkosten sanken nach ihrer Optimierungsarbeit um 40%. Der ROI war sofort und die Dokumentation, die sie hinterließen, war ausgezeichnet.", "author": "VP Engineering", "role": "E-Commerce-Scale-up" },
+      { "quote": "Die Migration war nahtlos — null Ausfallzeit, null Datenverlust. Unsere Bereitstellungshäufigkeit ging von monatlich auf täglich.", "author": "Head of Platform", "role": "SaaS-Unternehmen" },
+      { "quote": "Sie haben nicht nur unsere Performance-Probleme behoben — sie haben unserem Team beigebracht, sie zu verhindern. Dieser Wissenstransfer war unbezahlbar.", "author": "Senior Architect", "role": "AdTech-Leader" },
+      { "quote": "Von Tag eins an haben sie unsere Annahmen hinterfragt und eine einfachere Architektur vorgeschlagen. Hat uns sechs Monate Arbeit gespart, die wir nicht brauchten.", "author": "Founder & CEO", "role": "Cloud-Startup" }
+    ]
   },
   "footer": {
     "company": "Unternehmen",
@@ -240,10 +318,91 @@
     "tryAgain": "Erneut versuchen",
     "backToHome": "Zurück zur Startseite",
     "notFound": "Seite nicht gefunden",
-    "notFoundDesc": "Die gesuchte Seite existiert nicht oder wurde verschoben."
+    "notFoundDesc": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "submitError": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "jobNotFound": "Stelle nicht gefunden",
+    "caseStudyNotFound": "Fallstudie nicht gefunden",
+    "serviceNotFound": "Leistung nicht gefunden"
   },
   "meta": {
-    "homeTitle": "Innovexle | Backend Engineering, das skaliert",
-    "homeDescription": "Backend Engineering für Unternehmen, die sich keine Ausfallzeiten leisten können."
+    "home": "Startseite",
+    "homeTitle": "Backend Engineering, das skaliert",
+    "homeDescription": "Backend Engineering für Unternehmen, die sich keine Ausfallzeiten leisten können.",
+    "servicesTitle": "Leistungen",
+    "servicesDescription": "Spezialisierte Backend-Engineering-Services: API-Architektur, Datenbankdesign, Cloud-Infrastruktur, Systemintegration, Performance-Optimierung und Sicherheitsaudits.",
+    "caseStudiesTitle": "Fallstudien",
+    "caseStudiesDescription": "Echte Engineering-Projekte mit messbaren Ergebnissen. Erfahren Sie, wie wir Unternehmen bei komplexen Backend-Herausforderungen geholfen haben.",
+    "privacyTitle": "Datenschutzrichtlinie",
+    "privacyDescription": "Erfahren Sie, wie wir Ihre personenbezogenen Daten erfassen, verwenden und schützen.",
+    "termsTitle": "Nutzungsbedingungen",
+    "termsDescription": "Lesen Sie unsere Allgemeinen Geschäftsbedingungen für die Nutzung unserer Website und Dienste.",
+    "accessibilityTitle": "Erklärung zur Barrierefreiheit",
+    "accessibilityDescription": "Unser Engagement für digitale Barrierefreiheit für alle Nutzer.",
+    "contactTitle": "Kontakt",
+    "contactDescription": "Kontaktieren Sie Innovexle. Erzählen Sie uns von Ihren Backend-Herausforderungen und wir antworten innerhalb eines Werktages.",
+    "careersTitle": "Karriere",
+    "careersDescription": "Treten Sie Innovexle bei — offene Engineering-Positionen bei einem Remote-First-Backend-Beratungsunternehmen. Bauen Sie Systeme, die skalieren.",
+    "aboutTitle": "Über uns",
+    "aboutDescription": "Wir sind Backend-Ingenieure, die Jahre damit verbracht haben, skalierbare Systeme zu bauen. Lernen Sie unseren Ansatz und unsere Werte kennen.",
+    "siteDescription": "Backend-Engineering für Unternehmen, die sich keine Ausfallzeiten leisten können. Wir bauen Systeme, die skalieren."
+  },
+  "a11y": {
+    "trustedBy": "Vertraut von",
+    "selectLanguage": "Sprache auswählen",
+    "cookieConsent": "Cookie-Einwilligung",
+    "mainNav": "Hauptnavigation",
+    "mobileNav": "Mobile Navigation",
+    "breadcrumb": "Brotkrumen-Navigation",
+    "shareOnTwitter": "Auf Twitter teilen",
+    "shareOnLinkedIn": "Auf LinkedIn teilen",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "filterByDepartment": "Nach Abteilung filtern",
+    "filterByLocation": "Nach Standort filtern",
+    "filterByLevel": "Nach Erfahrungsstufe filtern",
+    "dismiss": "Schließen",
+    "scrollToTop": "Nach oben scrollen",
+    "chatbotOpen": "Chat öffnen",
+    "chatbotClose": "Chat schließen"
+  },
+  "chatbot": {
+    "title": "Chat mit uns",
+    "greeting": "Hallo! Wie kann ich Ihnen heute helfen? Wählen Sie eine Frage oder stellen Sie Ihre eigene.",
+    "placeholder": "Geben Sie Ihre Frage ein...",
+    "fallback": "Ich kann bei Fragen zu unseren Dienstleistungen, Karrieren, unserem Prozess und Technologien helfen. Wählen Sie eine der Fragen oben oder formulieren Sie Ihre Frage um!",
+    "items": {
+      "services": {
+        "q": "Welche Backend-Dienste bieten Sie an?",
+        "a": "Wir bieten sechs spezialisierte Backend-Engineering-Dienste: API-Architektur, Datenbankdesign, Cloud-Infrastruktur, Systemintegration, Performance-Optimierung und Sicherheitsaudits. Jedes Projekt wird auf Ihre Bedürfnisse zugeschnitten. Unser Ansatz betont Dokumentation, Beobachtbarkeit und Wissenstransfer."
+      },
+      "process": {
+        "q": "Wie funktioniert Ihr Projektprozess?",
+        "a": "Unser Prozess hat vier Phasen: Discovery (Ihre Anforderungen verstehen), Architektur (Systeme für Wachstum entwerfen), Build (produktionsreifer Code) und Support (kontinuierliche Überwachung). Wir dokumentieren jede Entscheidung und über-ingenieren nie."
+      },
+      "contact": {
+        "q": "Wie kann ich Sie kontaktieren?",
+        "a": "Sie erreichen uns über unsere Kontaktseite oder hello@innovexle.com. Wir antworten in der Regel innerhalb eines Werktages. Für dringende Backend-Herausforderungen empfehlen wir, das Kontaktformular mit Ihren Projektdetails auszufüllen."
+      },
+      "careers": {
+        "q": "Stellen Sie ein? Welche Positionen sind offen?",
+        "a": "Ja! Wir suchen ständig talentierte Backend-Ingenieure. Unsere Karriereseite listet alle offenen Stellen mit Filtern. Wir sind ein Remote-First-Unternehmen, die meisten Rollen bieten flexible Standorte."
+      },
+      "pricing": {
+        "q": "Wie kalkulieren Sie Ihre Dienstleistungen?",
+        "a": "Unsere Preise hängen von Umfang, Zeitrahmen und Komplexität ab. Wir veröffentlichen keine Fixpreise, da jedes Projekt unterschiedlich ist. Der beste Weg zu einem Angebot ist, Ihre Anforderungen über unser Kontaktformular zu teilen."
+      },
+      "technologies": {
+        "q": "Mit welchen Technologien arbeiten Sie?",
+        "a": "Wir arbeiten mit AWS, Google Cloud, PostgreSQL, Redis, Kubernetes und Docker. Wir sind technologie-agnostisch: Wir wählen die richtigen Werkzeuge für Ihre Anforderungen, nicht den Trend des Monats."
+      },
+      "remote": {
+        "q": "Arbeiten Sie remote oder vor Ort?",
+        "a": "Wir sind eine Remote-First-Beratung. Die meiste Arbeit erfolgt asynchron. Wir können bei Bedarf Workshops oder Discovery-Sitzungen vor Ort durchführen. Unsere Kunden sind in mehreren Regionen."
+      },
+      "engagement": {
+        "q": "Wie sieht ein typisches Projekt aus?",
+        "a": "Projekte reichen von kurzen Architekturprüfungen bis zu mehrmonatigen Bauprojekten. Wir starten mit einem Discovery-Call, schlagen einen maßgeschneiderten Umfang vor und arbeiten iterativ mit regelmäßigen Demos. Jedes Projekt umfasst Dokumentation und Wissenstransfer."
+      }
+    }
   }
 }
