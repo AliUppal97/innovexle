@@ -14,6 +14,13 @@ interface OrganizationSchema {
     email: string;
     telephone?: string;
     contactType: string;
+    areaServed?: string[];
+  };
+  address?: {
+    "@type": "PostalAddress";
+    addressLocality: string;
+    addressRegion?: string;
+    addressCountry: string;
   };
 }
 
@@ -104,7 +111,17 @@ export function getOrganizationSchema(): OrganizationSchema {
       email: siteConfig.email,
       telephone: siteConfig.phone.replace(/\s/g, ""),
       contactType: "customer service",
+      areaServed: siteConfig.offices.map((o) => o.country || o.address),
     },
+    address: (() => {
+      const primary = siteConfig.offices[0];
+      return {
+        "@type": "PostalAddress" as const,
+        addressLocality: primary.city,
+        ...(primary.region && { addressRegion: primary.region }),
+        addressCountry: primary.country || primary.address,
+      };
+    })(),
   };
 }
 
