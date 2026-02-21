@@ -21,20 +21,8 @@ export default async function AccessibilityPage({
   setRequestLocale(locale);
   const t = await getTranslations("accessibility");
 
-  const measures = [
-    "Semantic HTML throughout the application",
-    "ARIA labels and roles for interactive components",
-    "Keyboard navigation support with visible focus indicators",
-    "Skip navigation link to main content",
-    "Color contrast ratios meeting WCAG AA standards",
-    "Responsive design for all screen sizes",
-    "Reduced motion support for users who prefer it",
-    "Focus trap management in modal dialogs",
-    "Form validation with accessible error messages",
-    "Structured headings for screen reader navigation",
-  ];
-
-  const techSpecs = ["HTML", "CSS", "JavaScript", "WAI-ARIA"];
+  const measures = t.raw("measuresItems") as string[];
+  const techSpecs = t.raw("techItems") as string[];
 
   return (
     <>
@@ -55,30 +43,24 @@ export default async function AccessibilityPage({
             <div className="space-y-8 text-body text-muted">
               <section>
                 <h2 className="text-h2 font-semibold text-foreground mb-4">
-                  Our Commitment
+                  {t("commitment")}
                 </h2>
-                <p>
-                  Innovexle is committed to ensuring digital accessibility for people with disabilities.
-                  We continually improve the user experience for everyone and apply the relevant accessibility standards.
-                </p>
+                <p>{t("commitmentText")}</p>
               </section>
 
               <section>
                 <h2 className="text-h2 font-semibold text-foreground mb-4">
-                  Conformance Status
+                  {t("conformance")}
                 </h2>
-                <p>
-                  We aim to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 at Level AA.
-                  These guidelines explain how to make web content more accessible to people with a wide array of disabilities.
-                </p>
+                <p>{t("conformanceText")}</p>
               </section>
 
               <section>
                 <h2 className="text-h2 font-semibold text-foreground mb-4">
-                  Measures Taken
+                  {t("measures")}
                 </h2>
                 <ul className="list-disc pl-6 space-y-2">
-                  {measures.map((measure) => (
+                  {measures.map((measure: string) => (
                     <li key={measure}>{measure}</li>
                   ))}
                 </ul>
@@ -86,13 +68,11 @@ export default async function AccessibilityPage({
 
               <section>
                 <h2 className="text-h2 font-semibold text-foreground mb-4">
-                  Technical Specifications
+                  {t("technicalSpecs")}
                 </h2>
-                <p className="mb-4">
-                  Accessibility of this website relies on the following technologies:
-                </p>
+                <p className="mb-4">{t("technicalSpecsText")}</p>
                 <ul className="list-disc pl-6 space-y-2">
-                  {techSpecs.map((spec) => (
+                  {techSpecs.map((spec: string) => (
                     <li key={spec}>{spec}</li>
                   ))}
                 </ul>
@@ -100,22 +80,17 @@ export default async function AccessibilityPage({
 
               <section>
                 <h2 className="text-h2 font-semibold text-foreground mb-4">
-                  Assessment Approach
+                  {t("assessment")}
                 </h2>
-                <p>
-                  Innovexle assesses the accessibility of this website through self-evaluation using
-                  automated testing tools (axe-core) integrated into our CI/CD pipeline, manual testing
-                  with screen readers, and keyboard-only navigation testing.
-                </p>
+                <p>{t("assessmentText")}</p>
               </section>
 
               <section>
                 <h2 className="text-h2 font-semibold text-foreground mb-4">
-                  Feedback
+                  {t("feedback")}
                 </h2>
                 <p>
-                  We welcome your feedback on the accessibility of the Innovexle website.
-                  Please let us know if you encounter accessibility barriers by contacting us at{" "}
+                  {t("feedbackText")}{" "}
                   <a href={`mailto:${siteConfig.email}`} className="text-accent hover:underline">
                     {siteConfig.email}
                   </a>.

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Link } from "@/i18n/routing";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { CaseStudyCard } from "@/components/sections/CaseStudyCard";
 import { caseStudies } from "@/lib/data/case-studies";
@@ -20,13 +20,14 @@ export const metadata: Metadata = {
 export default async function CaseStudiesPage({ params }: { params: { locale: string } }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("caseStudies");
 
   return (
     <>
       <JsonLd
         data={getBreadcrumbSchema([
           { name: "Home", url: siteConfig.url },
-          { name: "Case Studies" },
+          { name: t("title") },
         ])}
       />
 
@@ -34,9 +35,9 @@ export default async function CaseStudiesPage({ params }: { params: { locale: st
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-h1 font-bold text-foreground">Case Studies</h1>
+            <h1 className="text-2xl sm:text-3xl lg:text-h1 font-bold text-foreground">{t("title")}</h1>
             <p className="mt-4 text-body text-muted">
-              Real problems. Measurable results. No embellishment.
+              {t("subtitle")}
             </p>
           </div>
         </Container>
@@ -63,8 +64,8 @@ export default async function CaseStudiesPage({ params }: { params: { locale: st
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-h2 font-bold text-foreground text-center mb-12">
-              In-Depth Analysis
+            <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground text-center mb-12">
+              {t("keyTakeaways")}
             </h2>
 
             {caseStudies.slice(0, 3).map((caseStudy, index) => (
@@ -85,7 +86,7 @@ export default async function CaseStudiesPage({ params }: { params: { locale: st
                   {/* Problem */}
                   <div>
                     <h4 className="text-h3 font-semibold text-foreground mb-3">
-                      The Challenge
+                      {t("problem")}
                     </h4>
                     <p className="text-body text-muted">{caseStudy.problem}</p>
                   </div>
@@ -93,7 +94,7 @@ export default async function CaseStudiesPage({ params }: { params: { locale: st
                   {/* Solution */}
                   <div>
                     <h4 className="text-h3 font-semibold text-foreground mb-3">
-                      Our Approach
+                      {t("solution")}
                     </h4>
                     <p className="text-body text-muted">{caseStudy.solution}</p>
                   </div>
@@ -101,9 +102,9 @@ export default async function CaseStudiesPage({ params }: { params: { locale: st
                   {/* Results */}
                   <div>
                     <h4 className="text-h3 font-semibold text-foreground mb-4">
-                      Results
+                      {t("results")}
                     </h4>
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 min-[360px]:grid-cols-3 gap-4">
                       {caseStudy.results.map((result) => (
                         <div
                           key={result.metric}
@@ -123,7 +124,7 @@ export default async function CaseStudiesPage({ params }: { params: { locale: st
                   {/* Technologies */}
                   <div className="pt-4">
                     <h4 className="text-small font-semibold text-foreground uppercase tracking-wider mb-3">
-                      Technologies Used
+                      {t("techUsed")}
                     </h4>
                     <p className="text-body text-muted">
                       {caseStudy.technologies.join(" • ")}

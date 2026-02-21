@@ -39,75 +39,50 @@ export default async function TermsPage({
 
             <div className="space-y-8 text-body text-muted">
               <section>
-                <h2 className="text-h2 font-semibold text-foreground mb-4">Agreement to Terms</h2>
-                <p>
-                  By accessing or using the {siteConfig.name} website and services,
-                  you agree to be bound by these Terms of Service. If you do not
-                  agree to these terms, please do not use our website or services.
-                </p>
+                <h2 className="text-h2 font-semibold text-foreground mb-4">{t("agreement")}</h2>
+                <p>{t("agreementText", { name: siteConfig.name })}</p>
               </section>
 
               <section>
-                <h2 className="text-h2 font-semibold text-foreground mb-4">Services</h2>
-                <p>
-                  {siteConfig.name} provides backend engineering consulting and
-                  development services. The specific scope, deliverables, and terms
-                  for any engagement will be defined in a separate service agreement.
-                </p>
+                <h2 className="text-h2 font-semibold text-foreground mb-4">{t("services")}</h2>
+                <p>{t("servicesText", { name: siteConfig.name })}</p>
               </section>
 
               <section>
-                <h2 className="text-h2 font-semibold text-foreground mb-4">Intellectual Property</h2>
-                <p className="mb-4">
-                  The content on this website, including text, graphics, logos, and
-                  images, is the property of {siteConfig.name} and is protected by
-                  copyright and other intellectual property laws.
-                </p>
-                <p>
-                  For client engagements, intellectual property rights to
-                  deliverables will be specified in the service agreement.
-                </p>
+                <h2 className="text-h2 font-semibold text-foreground mb-4">{t("ip")}</h2>
+                <p className="mb-4">{t("ipText1", { name: siteConfig.name })}</p>
+                <p>{t("ipText2")}</p>
               </section>
 
               <section>
-                <h2 className="text-h2 font-semibold text-foreground mb-4">User Responsibilities</h2>
-                <p className="mb-4">When using our website, you agree to:</p>
+                <h2 className="text-h2 font-semibold text-foreground mb-4">{t("userResp")}</h2>
+                <p className="mb-4">{t("userRespText")}</p>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Provide accurate information when contacting us</li>
-                  <li>Not use our website for any unlawful purpose</li>
-                  <li>Not attempt to gain unauthorized access to our systems</li>
-                  <li>Not interfere with the proper functioning of our website</li>
+                  {(t.raw("userRespItems") as string[]).map((item: string) => (
+                    <li key={item}>{item}</li>
+                  ))}
                 </ul>
               </section>
 
               <section>
-                <h2 className="text-h2 font-semibold text-foreground mb-4">Limitation of Liability</h2>
-                <p>
-                  {siteConfig.name} provides this website and its content &quot;as is&quot;
-                  without any warranties. We shall not be liable for any damages arising from your use of this website.
-                </p>
+                <h2 className="text-h2 font-semibold text-foreground mb-4">{t("liability")}</h2>
+                <p>{t("liabilityText", { name: siteConfig.name })}</p>
               </section>
 
               <section>
-                <h2 className="text-h2 font-semibold text-foreground mb-4">Governing Law</h2>
-                <p>
-                  These Terms of Service shall be governed by and construed in
-                  accordance with applicable laws. For international clients, disputes shall be resolved according to the governing law specified in the service agreement.
-                </p>
+                <h2 className="text-h2 font-semibold text-foreground mb-4">{t("governingLaw")}</h2>
+                <p>{t("governingLawText", { name: siteConfig.name })}</p>
               </section>
 
               <section>
-                <h2 className="text-h2 font-semibold text-foreground mb-4">Changes to Terms</h2>
-                <p>
-                  We reserve the right to modify these terms at any time. Changes
-                  will be effective immediately upon posting.
-                </p>
+                <h2 className="text-h2 font-semibold text-foreground mb-4">{t("changesToTerms")}</h2>
+                <p>{t("changesToTermsText")}</p>
               </section>
 
               <section>
-                <h2 className="text-h2 font-semibold text-foreground mb-4">Contact Information</h2>
+                <h2 className="text-h2 font-semibold text-foreground mb-4">{t("contactInfo")}</h2>
                 <p>
-                  If you have any questions about these Terms of Service, please contact us at{" "}
+                  {t("contactInfoText")}{" "}
                   <a href={`mailto:${siteConfig.email}`} className="text-accent hover:underline">{siteConfig.email}</a>.
                 </p>
               </section>

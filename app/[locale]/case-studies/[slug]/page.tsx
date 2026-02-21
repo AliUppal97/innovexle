@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Link } from "@/i18n/routing";
 import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { caseStudies, type CaseStudy } from "@/lib/data/case-studies";
+import { CTA } from "@/components/sections/CTA";
 import { siteConfig } from "@/lib/constants";
 import { JsonLd, getBreadcrumbSchema } from "@/components/seo";
 import { locales } from "@/i18n/config";
@@ -66,6 +67,7 @@ function getRelatedCaseStudies(current: CaseStudy): CaseStudy[] {
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("caseStudies");
 
   const caseStudy = getCaseStudy(slug);
 
@@ -117,10 +119,10 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               {caseStudy.industry}
             </Badge>
 
-            <h1 className="text-h1 font-bold text-foreground">{caseStudy.title}</h1>
+            <h1 className="text-2xl sm:text-3xl lg:text-h1 font-bold text-foreground">{caseStudy.title}</h1>
 
             {/* Results Summary */}
-            <div className="mt-8 grid grid-cols-3 gap-4">
+            <div className="mt-8 grid grid-cols-1 min-[360px]:grid-cols-3 gap-4">
               {caseStudy.results.map((result) => (
                 <div
                   key={result.metric}
@@ -139,8 +141,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <section className="section-padding bg-card/50">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-h2 font-bold text-foreground mb-6">
-              The Challenge
+            <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-6">
+              {t("problem")}
             </h2>
             <p className="text-body text-muted leading-relaxed">
               {caseStudy.problem}
@@ -153,8 +155,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-h2 font-bold text-foreground mb-6">
-              Our Approach
+            <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-6">
+              {t("solution")}
             </h2>
             <p className="text-body text-muted leading-relaxed">
               {caseStudy.solution}
@@ -163,7 +165,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             {/* Technologies Used */}
             <div className="mt-8 pt-8 border-t border-border">
               <h3 className="text-small font-semibold text-foreground uppercase tracking-wider mb-4">
-                Technologies Used
+                {t("techUsed")}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {caseStudy.technologies.map((tech) => (
@@ -181,8 +183,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <section className="section-padding bg-card/50">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-h2 font-bold text-foreground mb-8">
-              Results in Detail
+            <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-8">
+              {t("results")}
             </h2>
             <div className="space-y-6">
               {caseStudy.results.map((result, index) => (
@@ -210,8 +212,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-h2 font-bold text-foreground mb-8">
-              Key Takeaways
+            <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-8">
+              {t("keyTakeaways")}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-6 rounded-lg border border-border bg-card">
@@ -272,8 +274,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         <section className="section-padding bg-card/50">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-h2 font-bold text-foreground mb-8">
-                Related Case Studies
+              <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-8">
+                {t("viewAll")}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {relatedCaseStudies.map((related) => (
@@ -306,29 +308,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         </section>
       )}
 
-      {/* CTA */}
-      <section className="section-padding bg-foreground text-background">
-        <Container>
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-h1 font-bold">
-              Facing similar challenges?
-            </h2>
-            <p className="mt-4 text-body text-background/70">
-              Let&apos;s discuss how we can help you achieve comparable results.
-            </p>
-            <div className="mt-8">
-              <Button
-                asChild
-                variant="secondary"
-                size="lg"
-                className="bg-background text-foreground hover:bg-background/90"
-              >
-                <Link href="/contact">Talk to an engineer</Link>
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <CTA />
     </>
   );
 }

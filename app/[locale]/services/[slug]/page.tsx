@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Link } from "@/i18n/routing";
 import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -111,6 +111,7 @@ function getRelatedServices(currentId: string): Service[] {
 export default async function ServicePage({ params }: ServicePageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("services");
 
   const service = getService(slug);
 
@@ -167,8 +168,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
               {serviceIcons[service.id]}
             </div>
 
-            <h1 className="text-h1 font-bold text-foreground">{service.title}</h1>
-            <p className="mt-4 text-h3 font-normal text-muted">
+            <h1 className="text-2xl sm:text-3xl lg:text-h1 font-bold text-foreground">{service.title}</h1>
+            <p className="mt-4 text-lg sm:text-xl lg:text-h3 font-normal text-muted">
               {service.description}
             </p>
 
@@ -187,8 +188,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <section className="section-padding bg-card/50">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-h2 font-bold text-foreground mb-8">
-              What you get
+            <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-8">
+              {t("whatYouGet")}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {service.outcomes.map((outcome, index) => (
@@ -223,8 +224,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-h2 font-bold text-foreground mb-8">
-              Our approach
+            <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-8">
+              {t("ourApproach")}
             </h2>
             <div className="space-y-8">
               <div>
@@ -277,8 +278,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
         <section className="section-padding bg-card/50">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-h2 font-bold text-foreground mb-8">
-                Related services
+              <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-8">
+                {t("relatedServices")}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {relatedServices.map((related) => (
@@ -312,12 +313,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <section className="section-padding bg-foreground text-background">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-h1 font-bold">
-              Ready to get started with {service.title.toLowerCase()}?
+            <h2 className="text-2xl sm:text-3xl lg:text-h1 font-bold">
+              {t("readyToStart", { service: service.title.toLowerCase() })}
             </h2>
-            <p className="mt-4 text-body text-background/70">
-              Let&apos;s discuss how we can help solve your specific challenges.
-            </p>
             <div className="mt-8">
               <Button
                 asChild
@@ -325,7 +323,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 size="lg"
                 className="bg-background text-foreground hover:bg-background/90"
               >
-                <Link href="/contact">Talk to an engineer</Link>
+                <Link href="/contact">{t("learnMore")}</Link>
               </Button>
             </div>
           </div>

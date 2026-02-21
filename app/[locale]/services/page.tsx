@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Link } from "@/i18n/routing";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -64,13 +64,14 @@ const serviceIcons: Record<string, JSX.Element> = {
 export default async function ServicesPage({ params }: { params: { locale: string } }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("services");
 
   return (
     <>
       <JsonLd
         data={getBreadcrumbSchema([
           { name: "Home", url: siteConfig.url },
-          { name: "Services" },
+          { name: t("title") },
         ])}
       />
 
@@ -78,10 +79,9 @@ export default async function ServicesPage({ params }: { params: { locale: strin
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-h1 font-bold text-foreground">Our Services</h1>
+            <h1 className="text-2xl sm:text-3xl lg:text-h1 font-bold text-foreground">{t("title")}</h1>
             <p className="mt-4 text-body text-muted">
-              Specialized backend engineering services focused on reliability,
-              performance, and scale. Every engagement is tailored to your specific needs.
+              {t("subtitle")}
             </p>
           </div>
         </Container>
@@ -115,7 +115,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
                     {/* Outcomes */}
                     <div>
                       <h4 className="text-small font-semibold text-foreground uppercase tracking-wider mb-3">
-                        What you get
+                        {t("whatYouGet")}
                       </h4>
                       <ul className="space-y-2">
                         {service.outcomes.map((outcome) => (
@@ -138,7 +138,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
                     {/* Technologies */}
                     <div className="pt-4 border-t border-border">
                       <h4 className="text-small font-semibold text-foreground uppercase tracking-wider mb-3">
-                        Technologies
+                        {t("technologies")}
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {service.technologies.map((tech) => (
@@ -151,7 +151,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
 
                     {/* Learn more indicator */}
                     <div className="pt-4 flex items-center gap-2 text-body font-medium text-foreground group-hover:text-accent transition-colors">
-                      Learn more
+                      {t("learnMore")}
                       <svg
                         className="h-4 w-4 group-hover:translate-x-1 transition-transform"
                         viewBox="0 0 24 24"
@@ -174,16 +174,16 @@ export default async function ServicesPage({ params }: { params: { locale: strin
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-2xl text-center mb-12">
-            <h2 className="text-h1 font-bold text-foreground">Our Approach</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-h1 font-bold text-foreground">{t("ourApproach")}</h2>
             <p className="mt-4 text-body text-muted">
-              Every project follows a structured approach that ensures predictable outcomes.
+              {t("approachSubtitle")}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="space-y-4">
               <h3 className="text-h3 font-semibold text-foreground">
-                We don&apos;t do
+                {t("weDontDo")}
               </h3>
               <ul className="space-y-3">
                 {[
@@ -210,7 +210,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
 
             <div className="space-y-4">
               <h3 className="text-h3 font-semibold text-foreground">
-                We always do
+                {t("weAlwaysDo")}
               </h3>
               <ul className="space-y-3">
                 {[
