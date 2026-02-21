@@ -1,9 +1,12 @@
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/MotionWrapper";
 
-export function Hero() {
+export async function Hero() {
+  const t = await getTranslations("home");
+
   return (
     <section className="relative overflow-hidden section-padding">
       <div className="absolute inset-0 -z-10" aria-hidden="true">
@@ -28,22 +31,22 @@ export function Hero() {
       <Container>
         <div className="mx-auto max-w-3xl text-center">
           <Reveal variant="fade-up">
-            <h1 className="text-display font-bold tracking-tight text-foreground">
-              We build systems that scale.
+            <h1 className="text-3xl sm:text-4xl lg:text-display font-bold tracking-tight text-foreground">
+              {t("heroTitle")}
             </h1>
           </Reveal>
           <Reveal variant="fade-up" delay={0.1}>
-            <p className="mt-6 text-h3 font-normal text-muted">
-              Backend engineering for companies that can&apos;t afford downtime.
+            <p className="mt-6 text-lg sm:text-xl lg:text-h3 font-normal text-muted">
+              {t("heroSubtitle")}
             </p>
           </Reveal>
           <Reveal variant="fade-up" delay={0.2}>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button asChild size="lg">
-                <Link href="/contact">Talk to an engineer</Link>
+                <Link href="/contact">{t("heroCta")}</Link>
               </Button>
               <Button asChild variant="secondary" size="lg">
-                <Link href="/case-studies">View our work</Link>
+                <Link href="/case-studies">{t("heroSecondaryCta")}</Link>
               </Button>
             </div>
           </Reveal>
@@ -54,7 +57,7 @@ export function Hero() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-accent/20 to-transparent blur-3xl" />
               <svg
-                className="h-64 w-64 text-foreground/10"
+                className="h-32 w-32 sm:h-48 sm:w-48 lg:h-64 lg:w-64 text-foreground/10"
                 viewBox="0 0 200 200"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

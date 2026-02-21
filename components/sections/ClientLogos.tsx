@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/MotionWrapper";
 
@@ -13,14 +14,16 @@ const clients = [
 ];
 
 export function ClientLogos() {
+  const t = useTranslations("home");
+
   return (
     <section className="py-12 border-b border-border" aria-label="Trusted by">
       <Container>
         <Reveal variant="fade-in">
           <p className="text-center text-small font-medium text-muted uppercase tracking-wider mb-8">
-            Trusted by engineering teams at
+            {t("clientLogosTitle")}
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-4 sm:gap-x-8 sm:gap-y-6 lg:gap-x-12">
             {clients.map((name) => (
               <div
                 key={name}

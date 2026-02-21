@@ -1,18 +1,26 @@
+import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { Reveal, StaggerContainer, StaggerItem } from "@/components/ui/MotionWrapper";
-import { processSteps } from "@/lib/constants";
 
-export function Process() {
+export async function Process() {
+  const t = await getTranslations("process");
+  const processSteps = [
+    { step: 1, title: t("discovery"), description: t("discoveryDesc") },
+    { step: 2, title: t("architecture"), description: t("architectureDesc") },
+    { step: 3, title: t("build"), description: t("buildDesc") },
+    { step: 4, title: t("support"), description: t("supportDesc") },
+  ];
+
   return (
     <section className="section-padding" aria-labelledby="process-heading">
       <Container>
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 id="process-heading" className="text-h1 font-bold text-foreground">
-              How we work
+            <h2 id="process-heading" className="text-2xl sm:text-3xl lg:text-h1 font-bold text-foreground">
+              {t("title")}
             </h2>
             <p className="mt-4 text-body text-muted">
-              A structured approach that delivers predictable outcomes.
+              {t("subtitle")}
             </p>
           </div>
         </Reveal>

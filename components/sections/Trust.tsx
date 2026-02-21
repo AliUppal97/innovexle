@@ -1,8 +1,11 @@
+import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { Reveal, StaggerContainer, StaggerItem } from "@/components/ui/MotionWrapper";
 import { techStack, testimonials } from "@/lib/constants";
 
-export function Trust() {
+export async function Trust() {
+  const t = await getTranslations("trust");
+
   return (
     <section className="section-padding" aria-labelledby="trust-heading">
       <Container>
@@ -10,15 +13,14 @@ export function Trust() {
         <Reveal>
           <div className="text-center">
             <h2 id="trust-heading" className="text-small font-semibold text-muted uppercase tracking-wider">
-              Technologies we work with
+              {t("techStackTitle")}
             </h2>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-8 md:gap-12">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 gap-y-4 sm:gap-x-8 sm:gap-y-6 md:gap-12">
             {techStack.map((tech) => (
               <div
                 key={tech.name}
                 className="flex items-center gap-2 text-muted hover:text-foreground transition-colors"
               >
-                {/* Placeholder for logo - using text for now */}
                 <TechLogo name={tech.name} />
                 <span className="text-small font-medium">{tech.name}</span>
               </div>
@@ -31,7 +33,7 @@ export function Trust() {
         <div className="mt-20">
           <Reveal>
             <h3 className="text-center text-small font-semibold text-muted uppercase tracking-wider mb-12">
-              What our clients say
+              {t("testimonialsTitle")}
             </h3>
           </Reveal>
           <StaggerContainer className="grid grid-cols-1 gap-8 md:grid-cols-3">

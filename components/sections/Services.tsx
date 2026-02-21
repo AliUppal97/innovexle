@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { Container } from "@/components/ui/Container";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
@@ -51,7 +52,8 @@ interface ServicesProps {
   showAll?: boolean;
 }
 
-export function Services({ showAll = false }: ServicesProps) {
+export async function Services({ showAll = false }: ServicesProps) {
+  const t = await getTranslations("services");
   const displayedServices = showAll ? services : services.slice(0, 6);
 
   return (
@@ -59,11 +61,11 @@ export function Services({ showAll = false }: ServicesProps) {
       <Container>
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 id="services-heading" className="text-h1 font-bold text-foreground">
-              What we do
+            <h2 id="services-heading" className="text-2xl sm:text-3xl lg:text-h1 font-bold text-foreground">
+              {t("title")}
             </h2>
             <p className="mt-4 text-body text-muted">
-              Specialized backend engineering services focused on reliability, performance, and scale.
+              {t("subtitle")}
             </p>
           </div>
         </Reveal>
@@ -90,7 +92,7 @@ export function Services({ showAll = false }: ServicesProps) {
               href="/services"
               className="text-body font-medium text-foreground hover:text-accent transition-colors inline-flex items-center gap-2"
             >
-              View all services
+              {t("learnMore")}
               <svg
                 className="h-4 w-4"
                 viewBox="0 0 24 24"
