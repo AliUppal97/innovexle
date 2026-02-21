@@ -12,6 +12,7 @@ interface OrganizationSchema {
   contactPoint: {
     "@type": "ContactPoint";
     email: string;
+    telephone?: string;
     contactType: string;
   };
 }
@@ -101,6 +102,7 @@ export function getOrganizationSchema(): OrganizationSchema {
     contactPoint: {
       "@type": "ContactPoint",
       email: siteConfig.email,
+      telephone: siteConfig.phone.replace(/\s/g, ""),
       contactType: "customer service",
     },
   };
