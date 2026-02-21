@@ -168,6 +168,7 @@
     "send": "Nachricht senden",
     "sending": "Wird gesendet...",
     "preferEmail": "Bevorzugen Sie E-Mail?",
+    "or": "oder",
     "thankYou": "Danke für Ihre Nachricht",
     "thankYouMessage": "Wir werden uns innerhalb eines Werktages bei Ihnen melden.",
     "whatHappensNext": "Was passiert als nächstes?",
@@ -250,7 +251,8 @@
     "changes": "Änderungen dieser Richtlinie",
     "changesText": "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neue Richtlinie auf dieser Seite veröffentlichen und das Datum der \"letzten Aktualisierung\" aktualisieren.",
     "contactUs": "Kontaktieren Sie uns",
-    "contactUsText": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, kontaktieren Sie uns unter"
+    "contactUsText": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, kontaktieren Sie uns unter",
+    "contact": { "or": "oder" }
   },
   "terms": {
     "title": "Nutzungsbedingungen",
@@ -278,7 +280,8 @@
     "changesToTerms": "Änderungen der Bedingungen",
     "changesToTermsText": "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Änderungen werden sofort nach Veröffentlichung auf dieser Website wirksam.",
     "contactInfo": "Kontaktinformationen",
-    "contactInfoText": "Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns unter"
+    "contactInfoText": "Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns unter",
+    "contact": { "or": "oder" }
   },
   "accessibility": {
     "title": "Erklärung zur Barrierefreiheit",
@@ -291,6 +294,7 @@
     "measuresItems": ["Semantisches HTML in der gesamten Anwendung", "ARIA-Labels und -Rollen für interaktive Komponenten", "Tastaturnavigation mit sichtbaren Fokusindikatoren", "Skip-Navigationslink zum Hauptinhalt", "Farbkontrastverhältnisse, die WCAG AA-Standards erfüllen", "Responsives Design für alle Bildschirmgrößen", "Unterstützung für reduzierte Bewegung", "Focus-Trap-Management in modalen Dialogen", "Formularvalidierung mit barrierefreien Fehlermeldungen", "Strukturierte Überschriften für die Bildschirmleser-Navigation"],
     "feedback": "Feedback",
     "feedbackText": "Wir freuen uns über Ihr Feedback zur Barrierefreiheit der Innovexle-Website. Bitte teilen Sie uns mit, wenn Sie auf Barrierefreiheitshindernisse stoßen, indem Sie uns kontaktieren unter",
+    "or": "oder",
     "phone": "Telefon",
     "technicalSpecs": "Technische Spezifikationen",
     "technicalSpecsText": "Die Barrierefreiheit dieser Website basiert auf den folgenden Technologien, um mit der jeweiligen Kombination aus Webbrowser und assistiven Technologien auf Ihrem Computer zu funktionieren:",
@@ -363,7 +367,8 @@
     "dismiss": "Schließen",
     "scrollToTop": "Nach oben scrollen",
     "chatbotOpen": "Chat öffnen",
-    "chatbotClose": "Chat schließen"
+    "chatbotClose": "Chat schließen",
+    "phone": "Rufen Sie uns an"
   },
   "chatbot": {
     "title": "Chat mit uns",
@@ -381,7 +386,7 @@
       },
       "contact": {
         "q": "Wie kann ich Sie kontaktieren?",
-        "a": "Sie erreichen uns über unsere Kontaktseite oder hello@innovexle.com. Wir antworten in der Regel innerhalb eines Werktages. Für dringende Backend-Herausforderungen empfehlen wir, das Kontaktformular mit Ihren Projektdetails auszufüllen."
+        "a": "Sie erreichen uns über unsere Kontaktseite, per E-Mail hello@innovexle.com oder telefonisch unter +92 318 6618194. Wir antworten in der Regel innerhalb eines Werktages. Für dringende Backend-Herausforderungen empfehlen wir, das Kontaktformular mit Ihren Projektdetails auszufüllen."
       },
       "careers": {
         "q": "Stellen Sie ein? Welche Positionen sind offen?",

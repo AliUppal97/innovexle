@@ -168,6 +168,7 @@
     "send": "Enviar mensaje",
     "sending": "Enviando...",
     "preferEmail": "¿Prefieres email?",
+    "or": "o",
     "thankYou": "Gracias por contactarnos",
     "thankYouMessage": "Revisaremos tu mensaje y te responderemos en un día hábil.",
     "whatHappensNext": "¿Qué sigue?",
@@ -250,7 +251,8 @@
     "changes": "Cambios a esta Política",
     "changesText": "Podemos actualizar esta política de privacidad de vez en cuando. Le notificaremos de cualquier cambio publicando la nueva política en esta página y actualizando la fecha de \"Última actualización\".",
     "contactUs": "Contáctenos",
-    "contactUsText": "Si tiene alguna pregunta sobre esta política de privacidad, contáctenos en"
+    "contactUsText": "Si tiene alguna pregunta sobre esta política de privacidad, contáctenos en",
+    "contact": { "or": "o" }
   },
   "terms": {
     "title": "Términos de Servicio",
@@ -278,7 +280,8 @@
     "changesToTerms": "Cambios a los Términos",
     "changesToTermsText": "Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios serán efectivos inmediatamente después de su publicación en este sitio web.",
     "contactInfo": "Información de Contacto",
-    "contactInfoText": "Si tiene alguna pregunta sobre estos Términos de Servicio, contáctenos en"
+    "contactInfoText": "Si tiene alguna pregunta sobre estos Términos de Servicio, contáctenos en",
+    "contact": { "or": "o" }
   },
   "accessibility": {
     "title": "Declaración de Accesibilidad",
@@ -291,6 +294,7 @@
     "measuresItems": ["HTML semántico en toda la aplicación", "Etiquetas y roles ARIA para componentes interactivos", "Soporte de navegación por teclado con indicadores de foco visibles", "Enlace de salto de navegación al contenido principal", "Ratios de contraste de color que cumplen los estándares WCAG AA", "Diseño responsivo para todos los tamaños de pantalla", "Soporte de movimiento reducido para usuarios que lo prefieran", "Gestión de trampa de foco en diálogos modales", "Validación de formularios con mensajes de error accesibles", "Encabezados estructurados para navegación con lector de pantalla"],
     "feedback": "Comentarios",
     "feedbackText": "Agradecemos sus comentarios sobre la accesibilidad del sitio web de Innovexle. Por favor, háganos saber si encuentra barreras de accesibilidad contactándonos en",
+    "or": "o",
     "phone": "Teléfono",
     "technicalSpecs": "Especificaciones Técnicas",
     "technicalSpecsText": "La accesibilidad de este sitio web depende de las siguientes tecnologías para funcionar con la combinación particular de navegador web y tecnologías de asistencia instaladas en su computadora:",
@@ -363,7 +367,8 @@
     "dismiss": "Cerrar",
     "scrollToTop": "Subir arriba",
     "chatbotOpen": "Abrir chat",
-    "chatbotClose": "Cerrar chat"
+    "chatbotClose": "Cerrar chat",
+    "phone": "Llámanos"
   },
   "chatbot": {
     "title": "Chatea con nosotros",
@@ -381,7 +386,7 @@
       },
       "contact": {
         "q": "¿Cómo puedo contactarlos?",
-        "a": "Puedes contactarnos por nuestra página de contacto o email hello@innovexle.com. Respondemos normalmente en un día hábil. Para desafíos urgentes, recomendamos completar el formulario con los detalles de tu proyecto."
+        "a": "Puedes contactarnos por nuestra página de contacto, email hello@innovexle.com o llamando al +92 318 6618194. Respondemos normalmente en un día hábil. Para desafíos urgentes, recomendamos completar el formulario con los detalles de tu proyecto."
       },
       "careers": {
         "q": "¿Están contratando? ¿Qué vacantes hay?",

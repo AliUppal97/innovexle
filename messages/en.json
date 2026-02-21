@@ -213,6 +213,7 @@
     "send": "Send message",
     "sending": "Sending...",
     "preferEmail": "Prefer email?",
+    "or": "or",
     "thankYou": "Thanks for reaching out",
     "thankYouMessage": "We'll review your message and get back to you within one business day.",
     "whatHappensNext": "What happens next?",
@@ -295,7 +296,8 @@
     "changes": "Changes to This Policy",
     "changesText": "We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the \"Last updated\" date.",
     "contactUs": "Contact Us",
-    "contactUsText": "If you have any questions about this privacy policy, please contact us at"
+    "contactUsText": "If you have any questions about this privacy policy, please contact us at",
+    "contact": { "or": "or" }
   },
   "terms": {
     "title": "Terms of Service",
@@ -323,7 +325,8 @@
     "changesToTerms": "Changes to Terms",
     "changesToTermsText": "We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting to this website. Your continued use of our website after any changes constitutes acceptance of the new terms.",
     "contactInfo": "Contact Information",
-    "contactInfoText": "If you have any questions about these Terms of Service, please contact us at"
+    "contactInfoText": "If you have any questions about these Terms of Service, please contact us at",
+    "contact": { "or": "or" }
   },
   "accessibility": {
     "title": "Accessibility Statement",
@@ -335,7 +338,8 @@
     "measures": "Measures Taken",
     "measuresItems": ["Semantic HTML throughout the application", "ARIA labels and roles for interactive components", "Keyboard navigation support with visible focus indicators", "Skip navigation link to main content", "Color contrast ratios meeting WCAG AA standards", "Responsive design for all screen sizes", "Reduced motion support for users who prefer it", "Focus trap management in modal dialogs", "Form validation with accessible error messages", "Structured headings for screen reader navigation"],
     "feedback": "Feedback",
-    "feedbackText": "We welcome your feedback on the accessibility of the Innovexle website. Please let us know if you encounter accessibility barriers:",
+    "feedbackText": "We welcome your feedback on the accessibility of the Innovexle website. Please let us know if you encounter accessibility barriers by contacting us at",
+    "or": "or",
     "phone": "Phone",
     "technicalSpecs": "Technical Specifications",
     "technicalSpecsText": "Accessibility of this website relies on the following technologies to work with the particular combination of web browser and any assistive technologies or plugins installed on your computer:",
@@ -408,7 +412,8 @@
     "dismiss": "Dismiss",
     "scrollToTop": "Scroll to top",
     "chatbotOpen": "Open chat",
-    "chatbotClose": "Close chat"
+    "chatbotClose": "Close chat",
+    "phone": "Call us"
   },
   "chatbot": {
     "title": "Chat with us",
@@ -426,7 +431,7 @@
       },
       "contact": {
         "q": "How can I get in touch?",
-        "a": "You can reach us through our contact page or email hello@innovexle.com. We typically respond within one business day. For urgent backend engineering challenges, we recommend filling out the contact form with your project details so we can provide a focused response."
+        "a": "You can reach us through our contact page, email hello@innovexle.com, or call +92 318 6618194. We typically respond within one business day. For urgent backend engineering challenges, we recommend filling out the contact form with your project details so we can provide a focused response."
       },
       "careers": {
         "q": "Are you hiring? What roles are open?",

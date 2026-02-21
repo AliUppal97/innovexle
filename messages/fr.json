@@ -168,6 +168,7 @@
     "send": "Envoyer le message",
     "sending": "Envoi en cours...",
     "preferEmail": "Préférez-vous l'e-mail ?",
+    "or": "ou",
     "thankYou": "Merci de nous avoir contacté",
     "thankYouMessage": "Nous examinerons votre message et vous répondrons sous un jour ouvré.",
     "whatHappensNext": "Que se passe-t-il ensuite ?",
@@ -250,7 +251,8 @@
     "changes": "Modifications de cette politique",
     "changesText": "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Nous vous informerons de tout changement en publiant la nouvelle politique sur cette page et en mettant à jour la date de « Dernière mise à jour ».",
     "contactUs": "Nous contacter",
-    "contactUsText": "Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter à"
+    "contactUsText": "Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter à",
+    "contact": { "or": "ou" }
   },
   "terms": {
     "title": "Conditions d'Utilisation",
@@ -278,7 +280,8 @@
     "changesToTerms": "Modifications des conditions",
     "changesToTermsText": "Nous nous réservons le droit de modifier ces conditions à tout moment. Les modifications prendront effet immédiatement après leur publication sur ce site web.",
     "contactInfo": "Coordonnées",
-    "contactInfoText": "Si vous avez des questions concernant ces Conditions d'Utilisation, veuillez nous contacter à"
+    "contactInfoText": "Si vous avez des questions concernant ces Conditions d'Utilisation, veuillez nous contacter à",
+    "contact": { "or": "ou" }
   },
   "accessibility": {
     "title": "Déclaration d'Accessibilité",
@@ -291,6 +294,7 @@
     "measuresItems": ["HTML sémantique dans toute l'application", "Étiquettes et rôles ARIA pour les composants interactifs", "Prise en charge de la navigation au clavier avec indicateurs de focus visibles", "Lien de navigation directe vers le contenu principal", "Ratios de contraste des couleurs conformes aux normes WCAG AA", "Design responsive pour toutes les tailles d'écran", "Prise en charge du mouvement réduit pour les utilisateurs qui le préfèrent", "Gestion du piège de focus dans les dialogues modaux", "Validation des formulaires avec messages d'erreur accessibles", "En-têtes structurés pour la navigation par lecteur d'écran"],
     "feedback": "Commentaires",
     "feedbackText": "Nous accueillons vos commentaires sur l'accessibilité du site web d'Innovexle. Veuillez nous informer si vous rencontrez des obstacles d'accessibilité en nous contactant à",
+    "or": "ou",
     "phone": "Téléphone",
     "technicalSpecs": "Spécifications techniques",
     "technicalSpecsText": "L'accessibilité de ce site web repose sur les technologies suivantes pour fonctionner avec la combinaison particulière de navigateur web et de technologies d'assistance installées sur votre ordinateur :",
@@ -363,7 +367,8 @@
     "dismiss": "Fermer",
     "scrollToTop": "Retour en haut",
     "chatbotOpen": "Ouvrir le chat",
-    "chatbotClose": "Fermer le chat"
+    "chatbotClose": "Fermer le chat",
+    "phone": "Appelez-nous"
   },
   "chatbot": {
     "title": "Discutez avec nous",
@@ -381,7 +386,7 @@
       },
       "contact": {
         "q": "Comment vous contacter ?",
-        "a": "Vous pouvez nous joindre via notre page contact ou hello@innovexle.com. Nous répondons généralement sous un jour ouvrable. Pour des défis urgents, remplissez le formulaire avec les détails de votre projet."
+        "a": "Vous pouvez nous joindre via notre page contact, par e-mail hello@innovexle.com ou au +92 318 6618194. Nous répondons généralement sous un jour ouvrable. Pour des défis urgents, remplissez le formulaire avec les détails de votre projet."
       },
       "careers": {
         "q": "Recrutez-vous ? Quels postes sont ouverts ?",
