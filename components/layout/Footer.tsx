@@ -47,6 +47,11 @@ export function Footer() {
                 <a href={siteConfig.phoneHref} className="hover:text-foreground transition-colors" aria-label={tA11y("phone")}>
                   {siteConfig.phone}
                 </a>
+                <span className="mt-2 flex flex-col gap-0.5 text-muted">
+                  {siteConfig.offices.map((office) => (
+                    <span key={office.address}>{office.address}</span>
+                  ))}
+                </span>
               </p>
             </div>
 
