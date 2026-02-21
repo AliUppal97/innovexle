@@ -5,6 +5,8 @@ export const siteConfig = {
   url: "https://innovexle.com",
   ogImage: "https://innovexle.com/og-image.png",
   email: "hello@innovexle.com",
+  phone: "+92 318 6618194",
+  phoneHref: "tel:+923186618194",
   links: {
     github: "https://github.com/innovexle",
     linkedin: "https://linkedin.com/company/innovexle",
