@@ -21,7 +21,7 @@ export async function Trust() {
             {techStack.map((tech) => (
               <div
                 key={tech.name}
-                className="flex items-center gap-2 text-muted hover:text-foreground transition-colors"
+                className="flex items-center gap-2 text-muted hover:text-foreground transition-colors duration-200"
               >
                 <TechLogo src={tech.logo} name={tech.name} />
                 <span className="text-small font-medium">{tech.name}</span>
@@ -42,7 +42,7 @@ export async function Trust() {
             {testimonials.map((testimonial, index) => (
               <StaggerItem key={index}>
               <figure
-                className="rounded-lg border border-border bg-card p-6 h-full flex flex-col justify-between"
+                className="card-elevated p-6 h-full flex flex-col justify-between transition-transform duration-200 hover:-translate-y-0.5"
               >
                 <blockquote className="text-body text-foreground">
                   &ldquo;{testimonial.quote}&rdquo;

@@ -37,7 +37,7 @@ export async function Process() {
               <StaggerItem key={step.step} className="relative">
                 <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                   {/* Step number */}
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-border bg-background text-foreground font-bold text-h3 relative z-10">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-border bg-background text-foreground font-bold text-h3 relative z-10 transition-colors duration-200">
                     {step.step}
                   </div>
 

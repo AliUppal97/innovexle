@@ -28,7 +28,7 @@ export function ClientLogos() {
             {clients.map((name) => (
               <div
                 key={name}
-                className="flex items-center gap-2 text-muted/60 hover:text-muted transition-colors"
+                className="flex items-center gap-2 text-muted/60 hover:text-muted transition-colors duration-200"
               >
                 <div className="h-8 w-8 rounded-md bg-muted/10 flex items-center justify-center text-small font-bold">
                   {name.charAt(0)}

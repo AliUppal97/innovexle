@@ -97,11 +97,11 @@ export async function Services({ showAll = false }: ServicesProps) {
           <div className="mt-12 text-center">
             <Link
               href="/services"
-              className="text-body font-medium text-foreground hover:text-accent transition-colors inline-flex items-center gap-2"
+              className="text-body font-medium text-foreground hover:text-accent transition-colors duration-200 inline-flex items-center gap-2 group"
             >
               {t("learnMore")}
               <svg
-                className="h-4 w-4"
+                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
