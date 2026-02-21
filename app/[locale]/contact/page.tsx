@@ -135,7 +135,7 @@ export default function ContactPage() {
         <Container size="sm">
           {formState.status === "success" ? (
             <div className="text-center py-12">
-              <div className="mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-accent/10 text-accent mb-6">
+              <div className="mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-accent/10 text-accent mb-6 transition-transform duration-200">
                 <svg
                   className="h-8 w-8"
                   viewBox="0 0 24 24"
@@ -181,7 +181,7 @@ export default function ContactPage() {
               </div>
               <button
                 onClick={() => setFormState({ status: "idle" })}
-                className="mt-8 text-small text-accent hover:underline"
+                className="mt-8 text-small text-accent hover:underline transition-colors duration-200"
               >
                 {t("sendAnother")}
               </button>
@@ -190,7 +190,7 @@ export default function ContactPage() {
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               {formState.status === "error" && (
                 <div
-                  className="p-4 rounded-lg bg-destructive-muted border border-destructive-border text-destructive text-body"
+                  className="p-4 rounded-xl bg-destructive-muted border border-destructive-border text-destructive text-body"
                   role="alert"
                 >
                   {formState.message}
@@ -324,14 +324,14 @@ export default function ContactPage() {
                   {t("preferEmail")}{" "}
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="text-accent hover:underline"
+                    className="text-accent hover:underline transition-colors duration-200"
                   >
                     {siteConfig.email}
                   </a>
                   {" · "}
                   <a
                     href={siteConfig.phoneHref}
-                    className="text-accent hover:underline"
+                    className="text-accent hover:underline transition-colors duration-200"
                   >
                     {siteConfig.phone}
                   </a>
