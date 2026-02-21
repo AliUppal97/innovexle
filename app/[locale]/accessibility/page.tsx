@@ -102,6 +102,10 @@ export default async function AccessibilityPage({
                   {t("feedbackText")}{" "}
                   <a href={`mailto:${siteConfig.email}`} className="text-accent hover:underline">
                     {siteConfig.email}
+                  </a>
+                  {" "}{t("or")}{" "}
+                  <a href={siteConfig.phoneHref} className="text-accent hover:underline">
+                    {siteConfig.phone}
                   </a>.
                 </p>
               </section>

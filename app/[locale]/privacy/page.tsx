@@ -118,7 +118,9 @@ export default async function PrivacyPage({
                 </h2>
                 <p>
                   {t("contactUsText")}{" "}
-                  <a href={`mailto:${siteConfig.email}`} className="text-accent hover:underline">{siteConfig.email}</a>.
+                  <a href={`mailto:${siteConfig.email}`} className="text-accent hover:underline">{siteConfig.email}</a>
+                  {" "}{t("contact.or")}{" "}
+                  <a href={siteConfig.phoneHref} className="text-accent hover:underline">{siteConfig.phone}</a>.
                 </p>
               </section>
             </div>

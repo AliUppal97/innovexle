@@ -327,6 +327,13 @@ export default function ContactPage() {
                 >
                   {siteConfig.email}
                 </a>
+                {" · "}
+                <a
+                  href={siteConfig.phoneHref}
+                  className="text-accent hover:underline"
+                >
+                  {siteConfig.phone}
+                </a>
               </p>
             </form>
           )}
