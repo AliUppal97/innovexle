@@ -4,13 +4,21 @@ import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/constants";
 import { JsonLd, getBreadcrumbSchema } from "@/components/seo";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: `Terms of Service for ${siteConfig.name}. Read our terms and conditions for using our website and services.`,
-  alternates: {
-    canonical: `${siteConfig.url}/terms`,
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const { setRequestLocale } = await import("next-intl/server");
+  setRequestLocale(locale);
+  const t = await import("next-intl/server").then((m) => m.getTranslations("meta"));
+  return {
+    title: t("termsTitle"),
+    description: `${siteConfig.name}. ${t("termsDescription")}`,
+    alternates: { canonical: `${siteConfig.url}/terms` },
+  };
+}
 
 export default async function TermsPage({
   params,
@@ -20,12 +28,13 @@ export default async function TermsPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("terms");
+  const tMeta = await getTranslations("meta");
 
   return (
     <>
       <JsonLd
         data={getBreadcrumbSchema([
-          { name: "Home", url: siteConfig.url },
+          { name: tMeta("home"), url: siteConfig.url },
           { name: t("title") },
         ])}
       />

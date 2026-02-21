@@ -3,14 +3,21 @@ import { setRequestLocale } from "next-intl/server";
 import { JsonLd, getFAQPageSchema, getBreadcrumbSchema } from "@/components/seo";
 import { siteConfig } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Get in touch with Innovexle. Tell us about your backend engineering challenges and we'll respond within one business day.",
-  alternates: {
-    canonical: `${siteConfig.url}/contact`,
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const { setRequestLocale } = await import("next-intl/server");
+  setRequestLocale(locale);
+  const t = await import("next-intl/server").then((m) => m.getTranslations("meta"));
+  return {
+    title: t("contactTitle"),
+    description: t("contactDescription"),
+    alternates: { canonical: `${siteConfig.url}/contact` },
+  };
+}
 
 const faqs = [
   {
@@ -44,14 +51,21 @@ export default async function ContactLayout({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await import("next-intl/server").then((m) => m.getTranslations("contact"));
+  const tMeta = await import("next-intl/server").then((m) => m.getTranslations("meta"));
 
   return (
     <>
-      <JsonLd data={getFAQPageSchema(faqs)} />
+      <JsonLd data={getFAQPageSchema([
+        { question: t("faq1Title"), answer: t("faq1Content") },
+        { question: t("faq2Title"), answer: t("faq2Content") },
+        { question: t("faq3Title"), answer: t("faq3Content") },
+        { question: t("faq4Title"), answer: t("faq4Content") },
+      ])} />
       <JsonLd
         data={getBreadcrumbSchema([
-          { name: "Home", url: siteConfig.url },
-          { name: "Contact" },
+          { name: tMeta("home"), url: siteConfig.url },
+          { name: tMeta("contactTitle") },
         ])}
       />
       {children}

@@ -9,14 +9,21 @@ import { CTA } from "@/components/sections/CTA";
 import { siteConfig } from "@/lib/constants";
 import { JsonLd, getBreadcrumbSchema } from "@/components/seo";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Specialized backend engineering services: API architecture, database design, cloud infrastructure, system integration, performance optimization, and security audits.",
-  alternates: {
-    canonical: `${siteConfig.url}/services`,
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const { setRequestLocale } = await import("next-intl/server");
+  setRequestLocale(locale);
+  const t = await import("next-intl/server").then((m) => m.getTranslations("meta"));
+  return {
+    title: t("servicesTitle"),
+    description: t("servicesDescription"),
+    alternates: { canonical: `${siteConfig.url}/services` },
+  };
+}
 
 const serviceIcons: Record<string, JSX.Element> = {
   "api-architecture": (
@@ -65,12 +72,13 @@ export default async function ServicesPage({ params }: { params: { locale: strin
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("services");
+  const tMeta = await getTranslations("meta");
 
   return (
     <>
       <JsonLd
         data={getBreadcrumbSchema([
-          { name: "Home", url: siteConfig.url },
+          { name: tMeta("home"), url: siteConfig.url },
           { name: t("title") },
         ])}
       />
@@ -79,7 +87,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-2xl sm:text-3xl lg:text-h1 font-bold text-foreground">{t("title")}</h1>
+            <h1 className="text-h3 sm:text-h2 lg:text-h1 font-bold text-foreground">{t("title")}</h1>
             <p className="mt-4 text-body text-muted">
               {t("subtitle")}
             </p>
@@ -91,7 +99,10 @@ export default async function ServicesPage({ params }: { params: { locale: strin
       <section className="section-padding bg-card/50">
         <Container>
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-            {services.map((service) => (
+            {services.map((service) => {
+              const key = service.id.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+              const outcomes = t.raw(`items.${key}.outcomes`) as string[];
+              return (
               <Link
                 key={service.id}
                 href={`/services/${service.id}`}
@@ -103,12 +114,12 @@ export default async function ServicesPage({ params }: { params: { locale: strin
                       {serviceIcons[service.id]}
                     </div>
                     <CardTitle className="text-h2 group-hover:text-accent transition-colors">
-                      {service.title}
+                      {t(`items.${key}.title`)}
                     </CardTitle>
                   </CardHeader>
 
                   <CardDescription className="text-body mb-6">
-                    {service.description}
+                    {t(`items.${key}.description`)}
                   </CardDescription>
 
                   <CardContent className="space-y-6">
@@ -118,7 +129,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
                         {t("whatYouGet")}
                       </h4>
                       <ul className="space-y-2">
-                        {service.outcomes.map((outcome) => (
+                        {outcomes.map((outcome) => (
                           <li key={outcome} className="flex items-start gap-2 text-body text-muted">
                             <svg
                               className="h-5 w-5 text-accent flex-shrink-0 mt-0.5"
@@ -165,7 +176,8 @@ export default async function ServicesPage({ params }: { params: { locale: strin
                   </CardContent>
                 </Card>
               </Link>
-            ))}
+            );
+            })}
           </div>
         </Container>
       </section>
@@ -174,7 +186,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-2xl text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-h1 font-bold text-foreground">{t("ourApproach")}</h2>
+            <h2 className="text-h3 sm:text-h2 lg:text-h1 font-bold text-foreground">{t("ourApproach")}</h2>
             <p className="mt-4 text-body text-muted">
               {t("approachSubtitle")}
             </p>
@@ -186,15 +198,10 @@ export default async function ServicesPage({ params }: { params: { locale: strin
                 {t("weDontDo")}
               </h3>
               <ul className="space-y-3">
-                {[
-                  "Quick fixes that create technical debt",
-                  "Over-engineering for problems that don't exist",
-                  "Vendor lock-in without clear justification",
-                  "Solutions without documentation",
-                ].map((item) => (
+                {(t.raw("weDontDoItems") as string[]).map((item) => (
                   <li key={item} className="flex items-start gap-2 text-body text-muted">
                     <svg
-                      className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5"
+                      className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -213,12 +220,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
                 {t("weAlwaysDo")}
               </h3>
               <ul className="space-y-3">
-                {[
-                  "Document every architectural decision",
-                  "Build with observability from day one",
-                  "Design for failure and graceful degradation",
-                  "Transfer knowledge to your team",
-                ].map((item) => (
+                {(t.raw("weAlwaysDoItems") as string[]).map((item) => (
                   <li key={item} className="flex items-start gap-2 text-body text-muted">
                     <svg
                       className="h-5 w-5 text-accent flex-shrink-0 mt-0.5"

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import type { Metadata } from "next";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
@@ -23,6 +23,8 @@ import {
 } from "@/lib/data/jobs";
 
 export default function CareersPage() {
+  const t = useTranslations("careers");
+  const tA11y = useTranslations("a11y");
   const activeJobs = getActiveJobs();
 
   // Filter states
@@ -67,17 +69,15 @@ export default function CareersPage() {
   return (
     <>
       {/* Hero */}
-      <section className="section-padding bg-foreground text-background">
+      <section className="section-padding bg-accent text-accent-foreground">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-h1 font-bold">Join Our Team</h1>
-            <p className="mt-4 text-h3 font-normal text-background/70">
-              Build systems that scale. Work with engineers who care about craft.
+            <h1 className="text-h1 font-bold">{t("title")}</h1>
+            <p className="mt-4 text-h3 font-normal text-accent-foreground/90">
+              {t("subtitle")}
             </p>
-            <p className="mt-6 text-body text-background/60">
-              We&apos;re a remote-first team of backend specialists solving hard problems
-              for ambitious companies. If you care about reliability, performance, and
-              clean code, you&apos;ll fit right in.
+            <p className="mt-6 text-body text-accent-foreground/80">
+              {t("description")}
             </p>
           </div>
         </Container>
@@ -88,13 +88,13 @@ export default function CareersPage() {
         <Container>
           <div className="mx-auto max-w-4xl">
             <h2 className="text-h2 font-bold text-foreground text-center mb-12">
-              Why Innovexle?
+              {t("whyUs")}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  title: "Remote-First",
-                  description: "Work from anywhere. We care about results, not hours in an office.",
+                  title: t("remoteFirst"),
+                  description: t("remoteFirstDesc"),
                   icon: (
                     <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <circle cx="12" cy="12" r="10" />
@@ -103,8 +103,8 @@ export default function CareersPage() {
                   ),
                 },
                 {
-                  title: "Meaningful Work",
-                  description: "Build production systems used by millions. No throwaway projects.",
+                  title: t("meaningfulWork"),
+                  description: t("meaningfulWorkDesc"),
                   icon: (
                     <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
@@ -112,8 +112,8 @@ export default function CareersPage() {
                   ),
                 },
                 {
-                  title: "Growth Focus",
-                  description: "Generous L&D budget, mentorship, and challenging problems to solve.",
+                  title: t("growthFocus"),
+                  description: t("growthFocusDesc"),
                   icon: (
                     <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M23 6l-9.5 9.5-5-5L1 18M17 6h6v6" strokeLinecap="round" strokeLinejoin="round" />
@@ -121,8 +121,8 @@ export default function CareersPage() {
                   ),
                 },
                 {
-                  title: "Work-Life Balance",
-                  description: "Unlimited PTO, flexible hours, and a culture that respects your time.",
+                  title: t("workLifeBalance"),
+                  description: t("workLifeBalanceDesc"),
                   icon: (
                     <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <circle cx="12" cy="12" r="10" />
@@ -148,9 +148,9 @@ export default function CareersPage() {
       <section className="section-padding bg-card/50" id="positions">
         <Container>
           <div className="mb-8">
-            <h2 className="text-h2 font-bold text-foreground">Open Positions</h2>
+            <h2 className="text-h2 font-bold text-foreground">{t("openPositions")}</h2>
             <p className="mt-2 text-body text-muted">
-              {activeJobs.length} open {activeJobs.length === 1 ? "role" : "roles"}
+              {t("roles", { count: activeJobs.length })}
             </p>
           </div>
 
@@ -170,7 +170,7 @@ export default function CareersPage() {
               </svg>
               <input
                 type="text"
-                placeholder="Search by title, skill, or keyword..."
+                placeholder={t("searchPlaceholder")}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full h-12 pl-12 pr-4 rounded-lg border border-border bg-background text-foreground placeholder:text-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
@@ -183,9 +183,9 @@ export default function CareersPage() {
                 value={selectedDepartment}
                 onChange={(e) => setSelectedDepartment(e.target.value)}
                 className="h-10 px-4 rounded-lg border border-border bg-background text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-                aria-label="Filter by department"
+                aria-label={tA11y("filterByDepartment")}
               >
-                <option value="all">All Departments</option>
+                <option value="all">{t("allDepartments")}</option>
                 {departments.map((dept) => (
                   <option key={dept} value={dept}>
                     {dept}
@@ -197,9 +197,9 @@ export default function CareersPage() {
                 value={selectedLocation}
                 onChange={(e) => setSelectedLocation(e.target.value as LocationType | "all")}
                 className="h-10 px-4 rounded-lg border border-border bg-background text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-                aria-label="Filter by location"
+                aria-label={tA11y("filterByLocation")}
               >
-                <option value="all">All Locations</option>
+                <option value="all">{t("allLocations")}</option>
                 {(Object.keys(locationTypeLabels) as LocationType[]).map((loc) => (
                   <option key={loc} value={loc}>
                     {locationTypeLabels[loc]}
@@ -211,9 +211,9 @@ export default function CareersPage() {
                 value={selectedLevel}
                 onChange={(e) => setSelectedLevel(e.target.value as ExperienceLevel | "all")}
                 className="h-10 px-4 rounded-lg border border-border bg-background text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-                aria-label="Filter by experience level"
+                aria-label={tA11y("filterByLevel")}
               >
-                <option value="all">All Levels</option>
+                <option value="all">{t("allLevels")}</option>
                 {(Object.keys(experienceLevelLabels) as ExperienceLevel[]).map((level) => (
                   <option key={level} value={level}>
                     {experienceLevelLabels[level]}
@@ -226,7 +226,7 @@ export default function CareersPage() {
                   onClick={clearFilters}
                   className="h-10 px-4 text-small text-muted hover:text-foreground transition-colors"
                 >
-                  Clear filters
+                  {t("clearFilters")}
                 </button>
               )}
             </div>
@@ -236,7 +236,7 @@ export default function CareersPage() {
           {filteredJobs.length > 0 ? (
             <div className="space-y-4">
               {filteredJobs.map((job) => (
-                <JobCard key={job.id} job={job} />
+                <JobCard key={job.id} job={job} t={t} />
               ))}
             </div>
           ) : (
@@ -252,16 +252,16 @@ export default function CareersPage() {
                 <path d="M21 21l-4.35-4.35" strokeLinecap="round" />
               </svg>
               <h3 className="mt-4 text-h3 font-semibold text-foreground">
-                No positions found
+                {t("noPositions")}
               </h3>
               <p className="mt-2 text-body text-muted">
-                Try adjusting your filters or search query.
+                {t("noPositionsHint")}
               </p>
               <button
                 onClick={clearFilters}
                 className="mt-4 text-accent hover:underline"
               >
-                Clear all filters
+                {t("clearFilters")}
               </button>
             </div>
           )}
@@ -273,16 +273,14 @@ export default function CareersPage() {
         <Container size="sm">
           <div className="text-center">
             <h2 className="text-h2 font-bold text-foreground">
-              Don&apos;t see the right role?
+              {t("dontSeeRole")}
             </h2>
             <p className="mt-4 text-body text-muted">
-              We&apos;re always looking for talented engineers. Send us your resume and
-              tell us what you&apos;re passionate about. We&apos;ll reach out when we have a
-              matching opportunity.
+              {t("dontSeeRoleDesc")}
             </p>
             <div className="mt-8">
               <Button asChild>
-                <Link href="/contact">Get in touch</Link>
+                <Link href="/contact">{t("getInTouch")}</Link>
               </Button>
             </div>
           </div>
@@ -292,7 +290,7 @@ export default function CareersPage() {
   );
 }
 
-function JobCard({ job }: { job: Job }) {
+function JobCard({ job, t }: { job: Job; t: ReturnType<typeof useTranslations<"careers">> }) {
   return (
     <Link href={`/careers/${job.id}`} className="block group">
       <Card hover className="p-6 transition-all">
@@ -302,7 +300,7 @@ function JobCard({ job }: { job: Job }) {
             <div className="flex flex-wrap items-center gap-2">
               {job.isUrgent && (
                 <Badge variant="accent" className="text-xs">
-                  Urgent
+                  {t("urgent")}
                 </Badge>
               )}
               <Badge variant="outline" className="text-xs">
@@ -374,10 +372,10 @@ function JobCard({ job }: { job: Job }) {
               </p>
             )}
             <p className="text-small text-muted">
-              Posted {getRelativeTime(job.postedDate)}
+              {t("posted", { time: getRelativeTime(job.postedDate) })}
             </p>
             <span className="text-accent text-small font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-              View details
+              {t("viewDetails")}
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

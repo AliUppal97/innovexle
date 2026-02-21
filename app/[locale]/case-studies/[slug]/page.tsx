@@ -28,19 +28,21 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: CaseStudyPageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("errors");
   const caseStudy = getCaseStudy(slug);
 
   if (!caseStudy) {
     return {
-      title: "Case Study Not Found",
+      title: t("caseStudyNotFound"),
     };
   }
 
   const description = `${caseStudy.industry} case study: ${caseStudy.title}. ${caseStudy.results.map((r) => `${r.metric}: ${r.value}`).join(". ")}`;
 
   return {
-    title: `${caseStudy.title} | ${caseStudy.industry}`,
+    title: `${caseStudy.title} (${caseStudy.industry})`,
     description,
     alternates: {
       canonical: `${siteConfig.url}/case-studies/${caseStudy.id}`,
@@ -68,6 +70,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("caseStudies");
+  const tMeta = await getTranslations("meta");
+  const tA11y = await getTranslations("a11y");
 
   const caseStudy = getCaseStudy(slug);
 
@@ -81,8 +85,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     <>
       <JsonLd
         data={getBreadcrumbSchema([
-          { name: "Home", url: siteConfig.url },
-          { name: "Case Studies", url: `${siteConfig.url}/case-studies` },
+          { name: tMeta("home"), url: siteConfig.url },
+          { name: t("title"), url: `${siteConfig.url}/case-studies` },
           { name: caseStudy.title },
         ])}
       />
@@ -92,11 +96,11 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         <Container>
           <div className="mx-auto max-w-3xl">
             {/* Breadcrumb */}
-            <nav className="mb-8" aria-label="Breadcrumb">
+            <nav className="mb-8" aria-label={tA11y("breadcrumb")}>
               <ol className="flex items-center gap-2 text-small text-muted">
                 <li>
                   <Link href="/" className="hover:text-foreground transition-colors">
-                    Home
+                    {tMeta("home")}
                   </Link>
                 </li>
                 <li aria-hidden="true">/</li>
@@ -105,7 +109,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                     href="/case-studies"
                     className="hover:text-foreground transition-colors"
                   >
-                    Case Studies
+                    {t("title")}
                   </Link>
                 </li>
                 <li aria-hidden="true">/</li>
@@ -119,7 +123,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               {caseStudy.industry}
             </Badge>
 
-            <h1 className="text-2xl sm:text-3xl lg:text-h1 font-bold text-foreground">{caseStudy.title}</h1>
+            <h1 className="text-h3 sm:text-h2 lg:text-h1 font-bold text-foreground">{caseStudy.title}</h1>
 
             {/* Results Summary */}
             <div className="mt-8 grid grid-cols-1 min-[360px]:grid-cols-3 gap-4">
@@ -141,7 +145,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <section className="section-padding bg-card/50">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-6">
+            <h2 className="text-h3 sm:text-h2 lg:text-h2 font-bold text-foreground mb-6">
               {t("problem")}
             </h2>
             <p className="text-body text-muted leading-relaxed">
@@ -155,7 +159,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-6">
+            <h2 className="text-h3 sm:text-h2 lg:text-h2 font-bold text-foreground mb-6">
               {t("solution")}
             </h2>
             <p className="text-body text-muted leading-relaxed">
@@ -183,7 +187,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <section className="section-padding bg-card/50">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-8">
+            <h2 className="text-h3 sm:text-h2 lg:text-h2 font-bold text-foreground mb-8">
               {t("results")}
             </h2>
             <div className="space-y-6">
@@ -212,7 +216,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-8">
+            <h2 className="text-h3 sm:text-h2 lg:text-h2 font-bold text-foreground mb-8">
               {t("keyTakeaways")}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -274,7 +278,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         <section className="section-padding bg-card/50">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-8">
+              <h2 className="text-h3 sm:text-h2 lg:text-h2 font-bold text-foreground mb-8">
                 {t("viewAll")}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

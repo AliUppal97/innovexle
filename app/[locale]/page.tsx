@@ -8,16 +8,25 @@ import { Trust } from "@/components/sections/Trust";
 import { CTA } from "@/components/sections/CTA";
 import { ClientLogos } from "@/components/sections/ClientLogos";
 
-export const metadata: Metadata = {
-  title: "Innovexle | Backend Engineering That Scales",
-  description:
-    "Backend engineering for companies that can't afford downtime. API architecture, cloud infrastructure, database design, and performance optimization.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const { setRequestLocale } = await import("next-intl/server");
+  setRequestLocale(locale);
+  const t = await import("next-intl/server").then((m) => m.getTranslations("meta"));
+  return {
+    title: t("homeTitle"),
+    description: t("homeDescription"),
+  };
+}
 
 export default async function Home({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);

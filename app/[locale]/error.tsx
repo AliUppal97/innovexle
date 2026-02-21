@@ -23,9 +23,9 @@ export default function Error({
     <section className="section-padding min-h-[60vh] flex items-center">
       <Container>
         <div className="mx-auto max-w-lg text-center">
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-red-500/10">
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-destructive-muted">
             <svg
-              className="h-8 w-8 text-red-500"
+              className="h-8 w-8 text-destructive"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"

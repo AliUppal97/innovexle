@@ -4,13 +4,21 @@ import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/constants";
 import { JsonLd, getBreadcrumbSchema } from "@/components/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: `Privacy Policy for ${siteConfig.name}. Learn how we collect, use, and protect your personal information.`,
-  alternates: {
-    canonical: `${siteConfig.url}/privacy`,
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const { setRequestLocale } = await import("next-intl/server");
+  setRequestLocale(locale);
+  const t = await import("next-intl/server").then((m) => m.getTranslations("meta"));
+  return {
+    title: t("privacyTitle"),
+    description: `${siteConfig.name}. ${t("privacyDescription")}`,
+    alternates: { canonical: `${siteConfig.url}/privacy` },
+  };
+}
 
 export default async function PrivacyPage({
   params,
@@ -20,12 +28,13 @@ export default async function PrivacyPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("privacy");
+  const tMeta = await getTranslations("meta");
 
   return (
     <>
       <JsonLd
         data={getBreadcrumbSchema([
-          { name: "Home", url: siteConfig.url },
+          { name: tMeta("home"), url: siteConfig.url },
           { name: t("title") },
         ])}
       />

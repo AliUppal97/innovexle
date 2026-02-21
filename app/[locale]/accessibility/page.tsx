@@ -4,13 +4,21 @@ import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/constants";
 import { JsonLd, getBreadcrumbSchema } from "@/components/seo";
 
-export const metadata: Metadata = {
-  title: "Accessibility Statement",
-  description: `Accessibility statement for ${siteConfig.name}. Our commitment to digital accessibility for all users.`,
-  alternates: {
-    canonical: `${siteConfig.url}/accessibility`,
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const { setRequestLocale } = await import("next-intl/server");
+  setRequestLocale(locale);
+  const t = await import("next-intl/server").then((m) => m.getTranslations("meta"));
+  return {
+    title: t("accessibilityTitle"),
+    description: `${siteConfig.name}. ${t("accessibilityDescription")}`,
+    alternates: { canonical: `${siteConfig.url}/accessibility` },
+  };
+}
 
 export default async function AccessibilityPage({
   params,
@@ -20,6 +28,7 @@ export default async function AccessibilityPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("accessibility");
+  const tMeta = await getTranslations("meta");
 
   const measures = t.raw("measuresItems") as string[];
   const techSpecs = t.raw("techItems") as string[];
@@ -28,7 +37,7 @@ export default async function AccessibilityPage({
     <>
       <JsonLd
         data={getBreadcrumbSchema([
-          { name: "Home", url: siteConfig.url },
+          { name: tMeta("home"), url: siteConfig.url },
           { name: t("title") },
         ])}
       />

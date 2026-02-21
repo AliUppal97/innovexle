@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent, useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { Input, Textarea, Label } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
@@ -20,6 +21,8 @@ interface FormErrors {
 }
 
 export default function ContactPage() {
+  const t = useTranslations("contact");
+  const tErrors = useTranslations("errors");
   const [formState, setFormState] = useState<FormState>({ status: "idle" });
   const [errors, setErrors] = useState<FormErrors>({});
   const formStartTracked = useRef(false);
@@ -39,16 +42,16 @@ export default function ContactPage() {
     const message = formData.get("message") as string;
 
     if (!name || name.trim().length < 2) {
-      errors.name = "Name must be at least 2 characters";
+      errors.name = t("nameError");
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailRegex.test(email)) {
-      errors.email = "Please enter a valid email address";
+      errors.email = t("emailError");
     }
 
     if (!message || message.trim().length < 10) {
-      errors.message = "Message must be at least 10 characters";
+      errors.message = t("messageError");
     }
 
     return errors;
@@ -104,15 +107,13 @@ export default function ContactPage() {
     } catch (error) {
       // Track error
       trackEvent("contact_form_error", {
-        error: error instanceof Error ? error.message : "Unknown error",
+        error: error instanceof Error ? error.message : tErrors("submitError"),
       });
 
       setFormState({
         status: "error",
         message:
-          error instanceof Error
-            ? error.message
-            : "Something went wrong. Please try again.",
+          error instanceof Error ? error.message : tErrors("submitError"),
       });
     }
   };
@@ -123,10 +124,8 @@ export default function ContactPage() {
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-h1 font-bold text-foreground">Get in touch</h1>
-            <p className="mt-4 text-body text-muted">
-              Tell us about your project. We&apos;ll respond within one business day.
-            </p>
+            <h1 className="text-h1 font-bold text-foreground">{t("title")}</h1>
+            <p className="mt-4 text-body text-muted">{t("subtitle")}</p>
           </div>
         </Container>
       </section>
@@ -152,36 +151,31 @@ export default function ContactPage() {
                 </svg>
               </div>
               <h2 className="text-h2 font-bold text-foreground">
-                Thanks for reaching out
+                {t("thankYou")}
               </h2>
               <p className="mt-4 text-body text-muted">
-                {formState.message ||
-                  "We'll review your message and get back to you within one business day."}
+                {formState.message || t("thankYouMessage")}
               </p>
               <div className="mt-8 space-y-4">
-                <p className="text-small text-muted">What happens next?</p>
+                <p className="text-small text-muted">{t("whatHappensNext")}</p>
                 <ol className="text-left max-w-md mx-auto space-y-3">
                   <li className="flex items-start gap-3 text-body text-muted">
                     <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-accent/10 text-accent text-small font-medium">
                       1
                     </span>
-                    <span>Our team reviews your inquiry within 24 hours</span>
+                    <span>{t("step1")}</span>
                   </li>
                   <li className="flex items-start gap-3 text-body text-muted">
                     <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-accent/10 text-accent text-small font-medium">
                       2
                     </span>
-                    <span>
-                      A senior engineer reaches out to discuss your needs
-                    </span>
+                    <span>{t("step2")}</span>
                   </li>
                   <li className="flex items-start gap-3 text-body text-muted">
                     <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-accent/10 text-accent text-small font-medium">
                       3
                     </span>
-                    <span>
-                      We schedule a discovery call to understand your challenges
-                    </span>
+                    <span>{t("step3")}</span>
                   </li>
                 </ol>
               </div>
@@ -189,14 +183,14 @@ export default function ContactPage() {
                 onClick={() => setFormState({ status: "idle" })}
                 className="mt-8 text-small text-accent hover:underline"
               >
-                Send another message
+                {t("sendAnother")}
               </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               {formState.status === "error" && (
                 <div
-                  className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-body"
+                  className="p-4 rounded-lg bg-destructive-muted border border-destructive-border text-destructive text-body"
                   role="alert"
                 >
                   {formState.message}
@@ -206,12 +200,12 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <Label htmlFor="name" required>
-                    Name
+                    {t("name")}
                   </Label>
                   <Input
                     id="name"
                     name="name"
-                    placeholder="Your name"
+                    placeholder={t("namePlaceholder")}
                     required
                     autoComplete="name"
                     error={!!errors.name}
@@ -219,27 +213,27 @@ export default function ContactPage() {
                     onFocus={handleFormStart}
                   />
                   {errors.name && (
-                    <p id="name-error" className="mt-1 text-small text-red-500">
+                    <p id="name-error" className="mt-1 text-small text-destructive">
                       {errors.name}
                     </p>
                   )}
                 </div>
                 <div>
                   <Label htmlFor="email" required>
-                    Email
+                    {t("email")}
                   </Label>
                   <Input
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="you@company.com"
+                    placeholder={t("emailPlaceholder")}
                     required
                     autoComplete="email"
                     error={!!errors.email}
                     aria-describedby={errors.email ? "email-error" : undefined}
                   />
                   {errors.email && (
-                    <p id="email-error" className="mt-1 text-small text-red-500">
+                    <p id="email-error" className="mt-1 text-small text-destructive">
                       {errors.email}
                     </p>
                   )}
@@ -247,30 +241,30 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <Label htmlFor="company">Company</Label>
+                <Label htmlFor="company">{t("company")}</Label>
                 <Input
                   id="company"
                   name="company"
-                  placeholder="Your company name"
+                  placeholder={t("companyPlaceholder")}
                   autoComplete="organization"
                 />
               </div>
 
               <div>
                 <Label htmlFor="message" required>
-                  How can we help?
+                  {t("message")}
                 </Label>
                 <Textarea
                   id="message"
                   name="message"
-                  placeholder="Tell us about your project, timeline, and any specific challenges you're facing..."
+                  placeholder={t("messagePlaceholder")}
                   required
                   rows={6}
                   error={!!errors.message}
                   aria-describedby={errors.message ? "message-error" : undefined}
                 />
                 {errors.message && (
-                  <p id="message-error" className="mt-1 text-small text-red-500">
+                  <p id="message-error" className="mt-1 text-small text-destructive">
                     {errors.message}
                   </p>
                 )}
@@ -279,7 +273,7 @@ export default function ContactPage() {
               {/* Honeypot field - hidden from users, visible to bots */}
               <div className="absolute -left-[9999px] opacity-0" aria-hidden="true">
                 <label htmlFor="website">
-                  Website (leave empty)
+                  {t("honeypotLabel")}
                   <input
                     type="text"
                     id="website"
@@ -317,16 +311,16 @@ export default function ContactPage() {
                           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                         />
                       </svg>
-                      Sending...
+                      {t("sending")}
                     </span>
                   ) : (
-                    "Send message"
+                    t("send")
                   )}
                 </Button>
               </div>
 
               <p className="text-small text-muted">
-                Prefer email?{" "}
+                {t("preferEmail")}{" "}
                 <a
                   href={`mailto:${siteConfig.email}`}
                   className="text-accent hover:underline"
@@ -343,32 +337,21 @@ export default function ContactPage() {
       <section className="section-padding">
         <Container size="sm">
           <h2 className="text-h2 font-bold text-foreground text-center mb-12">
-            Common questions
+            {t("commonQuestions")}
           </h2>
 
           <Accordion>
-            <AccordionItem title="What's your typical engagement look like?" defaultOpen>
-              Most engagements start with a discovery phase where we understand
-              your current state and constraints. From there, we scope specific
-              deliverables with clear timelines. Engagements typically range from
-              focused 4-week sprints to multi-month partnerships.
+            <AccordionItem title={t("faq1Title")} defaultOpen>
+              {t("faq1Content")}
             </AccordionItem>
-            <AccordionItem title="Do you work with early-stage startups?">
-              Yes, we work with companies at various stages. For early-stage
-              companies, we often focus on setting up scalable foundations that
-              won&apos;t need to be rewritten as you grow. We&apos;re upfront about what
-              makes sense to build now vs. later.
+            <AccordionItem title={t("faq2Title")}>
+              {t("faq2Content")}
             </AccordionItem>
-            <AccordionItem title="What industries do you work with?">
-              We&apos;ve worked across fintech, healthcare, e-commerce, and SaaS.
-              The common thread is companies that need reliable, scalable backend
-              systems. Industry-specific compliance requirements (HIPAA, PCI,
-              SOC 2) are areas we have direct experience with.
+            <AccordionItem title={t("faq3Title")}>
+              {t("faq3Content")}
             </AccordionItem>
-            <AccordionItem title="How do you handle ongoing support?">
-              Every project includes comprehensive documentation and knowledge
-              transfer. For clients who want ongoing support, we offer retainer
-              arrangements for continued advisory and maintenance work.
+            <AccordionItem title={t("faq4Title")}>
+              {t("faq4Content")}
             </AccordionItem>
           </Accordion>
         </Container>

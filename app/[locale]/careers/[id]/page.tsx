@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Link } from "@/i18n/routing";
 import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { locales } from "@/i18n/config";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
@@ -38,14 +38,16 @@ export async function generateMetadata({ params }: JobPageProps): Promise<Metada
 
   const job = getJobById(id);
 
+  const t = await getTranslations("errors");
+
   if (!job) {
     return {
-      title: "Job Not Found",
+      title: t("jobNotFound"),
     };
   }
 
   return {
-    title: `${job.title} - Careers`,
+    title: `${job.title}`,
     description: job.description.slice(0, 160),
     openGraph: {
       title: `${job.title} at Innovexle`,
@@ -57,6 +59,10 @@ export async function generateMetadata({ params }: JobPageProps): Promise<Metada
 export default async function JobPage({ params }: JobPageProps) {
   const { locale, id } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("careers");
+  const tNav = await getTranslations("nav");
+  const tMeta = await getTranslations("meta");
+  const tA11y = await getTranslations("a11y");
 
   const job = getJobById(id);
 
@@ -87,8 +93,8 @@ export default async function JobPage({ params }: JobPageProps) {
       />
       <JsonLd
         data={getBreadcrumbSchema([
-          { name: "Home", url: siteConfig.url },
-          { name: "Careers", url: `${siteConfig.url}/careers` },
+          { name: tMeta("home"), url: siteConfig.url },
+          { name: tNav("careers"), url: `${siteConfig.url}/careers` },
           { name: job.title },
         ])}
       />
@@ -97,11 +103,11 @@ export default async function JobPage({ params }: JobPageProps) {
       <section className="section-padding pb-8">
         <Container>
           {/* Breadcrumb */}
-          <nav className="mb-8" aria-label="Breadcrumb">
+          <nav className="mb-8" aria-label={tA11y("breadcrumb")}>
             <ol className="flex items-center gap-2 text-small text-muted">
               <li>
                 <Link href="/careers" className="hover:text-foreground transition-colors">
-                  Careers
+                  {tNav("careers")}
                 </Link>
               </li>
               <li>
@@ -119,7 +125,7 @@ export default async function JobPage({ params }: JobPageProps) {
               {/* Badges */}
               <div className="flex flex-wrap items-center gap-2">
                 {job.isUrgent && (
-                  <Badge variant="accent">Hiring Urgently</Badge>
+                  <Badge variant="accent">{t("hiringUrgently")}</Badge>
                 )}
                 <Badge variant="outline">{job.code}</Badge>
                 <Badge variant="outline">{job.department}</Badge>
@@ -178,14 +184,14 @@ export default async function JobPage({ params }: JobPageProps) {
 
               <div className="flex flex-col gap-2">
                 <Button asChild size="lg" disabled={isExpired}>
-                  <a href="#apply">{isExpired ? "Position Closed" : "Apply Now"}</a>
+                  <a href="#apply">{isExpired ? t("positionClosed") : t("applyNow")}</a>
                 </Button>
                 <p className="text-small text-muted">
-                  Posted {getRelativeTime(job.postedDate)}
+                  {t("posted", { time: getRelativeTime(job.postedDate) })}
                 </p>
                 {job.applicationDeadline && (
-                  <p className={`text-small ${isExpired ? "text-red-500" : "text-muted"}`}>
-                    {isExpired ? "Deadline passed" : `Apply by ${formatDate(job.applicationDeadline)}`}
+                  <p className={`text-small ${isExpired ? "text-destructive" : "text-muted"}`}>
+                    {isExpired ? t("deadlinePassed") : t("applyBy", { date: formatDate(job.applicationDeadline) })}
                   </p>
                 )}
               </div>
@@ -203,7 +209,7 @@ export default async function JobPage({ params }: JobPageProps) {
               {/* Description */}
               <div>
                 <h2 className="text-h2 font-bold text-foreground mb-4">
-                  About the Role
+                  {t("aboutRole")}
                 </h2>
                 <p className="text-body text-muted leading-relaxed">
                   {job.description}
@@ -213,7 +219,7 @@ export default async function JobPage({ params }: JobPageProps) {
               {/* Responsibilities */}
               <div>
                 <h2 className="text-h2 font-bold text-foreground mb-4">
-                  What You&apos;ll Do
+                  {t("whatYoullDo")}
                 </h2>
                 <ul className="space-y-3">
                   {job.responsibilities.map((item, index) => (
@@ -236,7 +242,7 @@ export default async function JobPage({ params }: JobPageProps) {
               {/* Requirements */}
               <div>
                 <h2 className="text-h2 font-bold text-foreground mb-4">
-                  Requirements
+                  {t("requirements")}
                 </h2>
                 <ul className="space-y-3">
                   {job.requirements.map((item, index) => (
@@ -261,7 +267,7 @@ export default async function JobPage({ params }: JobPageProps) {
               {job.niceToHave.length > 0 && (
                 <div>
                   <h2 className="text-h2 font-bold text-foreground mb-4">
-                    Nice to Have
+                    {t("niceToHave")}
                   </h2>
                   <ul className="space-y-3">
                     {job.niceToHave.map((item, index) => (
@@ -286,7 +292,7 @@ export default async function JobPage({ params }: JobPageProps) {
               {!isExpired && (
                 <div id="apply" className="scroll-mt-24">
                   <h2 className="text-h2 font-bold text-foreground mb-4">
-                    Apply for this Position
+                    {t("applyForPosition")}
                   </h2>
                   <JobApplicationForm jobId={job.id} jobTitle={job.title} jobCode={job.code} />
                 </div>
@@ -298,7 +304,7 @@ export default async function JobPage({ params }: JobPageProps) {
               {/* Skills */}
               <div className="rounded-lg border border-border bg-card p-6">
                 <h3 className="text-h3 font-semibold text-foreground mb-4">
-                  Skills & Technologies
+                  {t("skillsTech")}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {job.skills.map((skill) => (
@@ -312,7 +318,7 @@ export default async function JobPage({ params }: JobPageProps) {
               {/* Benefits */}
               <div className="rounded-lg border border-border bg-card p-6">
                 <h3 className="text-h3 font-semibold text-foreground mb-4">
-                  Benefits & Perks
+                  {t("benefits")}
                 </h3>
                 <ul className="space-y-3">
                   {job.benefits.map((benefit, index) => (
@@ -335,41 +341,41 @@ export default async function JobPage({ params }: JobPageProps) {
               {/* Quick Info */}
               <div className="rounded-lg border border-border bg-card p-6">
                 <h3 className="text-h3 font-semibold text-foreground mb-4">
-                  Quick Info
+                  {t("quickInfo")}
                 </h3>
                 <dl className="space-y-4">
                   <div>
-                    <dt className="text-small font-medium text-muted">Job Code</dt>
+                    <dt className="text-small font-medium text-muted">{t("jobCode")}</dt>
                     <dd className="text-body text-foreground">{job.code}</dd>
                   </div>
                   <div>
-                    <dt className="text-small font-medium text-muted">Department</dt>
+                    <dt className="text-small font-medium text-muted">{t("departmentLabel")}</dt>
                     <dd className="text-body text-foreground">
                       {job.department}
                       {job.team && ` · ${job.team}`}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-small font-medium text-muted">Location</dt>
+                    <dt className="text-small font-medium text-muted">{t("locationLabel")}</dt>
                     <dd className="text-body text-foreground">
                       {locationTypeLabels[job.location.type]}
                       {job.location.city && `, ${job.location.city}`}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-small font-medium text-muted">Employment Type</dt>
+                    <dt className="text-small font-medium text-muted">{t("employmentTypeLabel")}</dt>
                     <dd className="text-body text-foreground">
                       {employmentTypeLabels[job.employmentType]}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-small font-medium text-muted">Experience Level</dt>
+                    <dt className="text-small font-medium text-muted">{t("experienceLevelLabel")}</dt>
                     <dd className="text-body text-foreground">
                       {experienceLevelLabels[job.level]}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-small font-medium text-muted">Posted</dt>
+                    <dt className="text-small font-medium text-muted">{t("postedLabel")}</dt>
                     <dd className="text-body text-foreground">{formatDate(job.postedDate)}</dd>
                   </div>
                 </dl>
@@ -386,7 +392,7 @@ export default async function JobPage({ params }: JobPageProps) {
       <section className="section-padding bg-card/50">
         <Container>
           <h2 className="text-h2 font-bold text-foreground mb-8">
-            Other Open Positions
+            {t("otherPositions")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {getActiveJobs()
@@ -415,7 +421,7 @@ export default async function JobPage({ params }: JobPageProps) {
           </div>
           <div className="mt-8 text-center">
             <Button asChild variant="secondary">
-              <Link href="/careers#positions">View all positions</Link>
+              <Link href="/careers#positions">{t("viewAllPositions")}</Link>
             </Button>
           </div>
         </Container>

@@ -11,6 +11,8 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ToastProvider } from "@/components/ui/Toast";
 import { TopLoader } from "@/components/ui/TopLoader";
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
+import { Chatbot } from "@/components/ui/Chatbot";
 import { RegionProvider } from "@/components/ui/RegionSelector";
 import { siteConfig } from "@/lib/constants";
 import { JsonLd, getOrganizationSchema, getWebSiteSchema } from "@/components/seo";
@@ -30,6 +32,14 @@ export const metadata: Metadata = {
   title: {
     default: `${siteConfig.name} | Backend Engineering`,
     template: `%s | ${siteConfig.name}`,
+  },
+  icons: {
+    icon: [
+      { url: "/icon", type: "image/png", sizes: "32x32" },
+      { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/apple-icon",
   },
   description: siteConfig.description,
   keywords: [
@@ -139,6 +149,8 @@ export default async function RootLayout({
                 <main id="main-content">{children}</main>
                 <Footer />
                 <CookieConsent />
+                <Chatbot />
+                <ScrollToTop />
                 <Suspense fallback={null}>
                   <Analytics />
                   <WebVitals />

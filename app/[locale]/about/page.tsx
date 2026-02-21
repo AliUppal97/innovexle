@@ -5,14 +5,21 @@ import { CTA } from "@/components/sections/CTA";
 import { siteConfig } from "@/lib/constants";
 import { JsonLd, getBreadcrumbSchema } from "@/components/seo";
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "We're backend engineers who've spent years building systems that scale. Learn about our approach and values.",
-  alternates: {
-    canonical: `${siteConfig.url}/about`,
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const { setRequestLocale } = await import("next-intl/server");
+  setRequestLocale(locale);
+  const t = await import("next-intl/server").then((m) => m.getTranslations("meta"));
+  return {
+    title: t("aboutTitle"),
+    description: t("aboutDescription"),
+    alternates: { canonical: `${siteConfig.url}/about` },
+  };
+}
 
 const values = [
   {
@@ -49,17 +56,18 @@ const principles = [
 export default async function AboutPage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const tMeta = await import("next-intl/server").then((m) => m.getTranslations("meta"));
 
   return (
     <>
       <JsonLd
         data={getBreadcrumbSchema([
-          { name: "Home", url: siteConfig.url },
-          { name: "About" },
+          { name: tMeta("home"), url: siteConfig.url },
+          { name: tMeta("aboutTitle") },
         ])}
       />
 

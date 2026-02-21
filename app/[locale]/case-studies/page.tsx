@@ -8,25 +8,33 @@ import { CTA } from "@/components/sections/CTA";
 import { siteConfig } from "@/lib/constants";
 import { JsonLd, getBreadcrumbSchema } from "@/components/seo";
 
-export const metadata: Metadata = {
-  title: "Case Studies",
-  description:
-    "Real engineering projects with measurable results. See how we've helped companies solve complex backend challenges.",
-  alternates: {
-    canonical: `${siteConfig.url}/case-studies`,
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const { setRequestLocale } = await import("next-intl/server");
+  setRequestLocale(locale);
+  const t = await import("next-intl/server").then((m) => m.getTranslations("meta"));
+  return {
+    title: t("caseStudiesTitle"),
+    description: t("caseStudiesDescription"),
+    alternates: { canonical: `${siteConfig.url}/case-studies` },
+  };
+}
 
 export default async function CaseStudiesPage({ params }: { params: { locale: string } }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("caseStudies");
+  const tMeta = await getTranslations("meta");
 
   return (
     <>
       <JsonLd
         data={getBreadcrumbSchema([
-          { name: "Home", url: siteConfig.url },
+          { name: tMeta("home"), url: siteConfig.url },
           { name: t("title") },
         ])}
       />
@@ -35,7 +43,7 @@ export default async function CaseStudiesPage({ params }: { params: { locale: st
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-2xl sm:text-3xl lg:text-h1 font-bold text-foreground">{t("title")}</h1>
+            <h1 className="text-h3 sm:text-h2 lg:text-h1 font-bold text-foreground">{t("title")}</h1>
             <p className="mt-4 text-body text-muted">
               {t("subtitle")}
             </p>
@@ -64,7 +72,7 @@ export default async function CaseStudiesPage({ params }: { params: { locale: st
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground text-center mb-12">
+            <h2 className="text-h3 sm:text-h2 lg:text-h2 font-bold text-foreground text-center mb-12">
               {t("keyTakeaways")}
             </h2>
 

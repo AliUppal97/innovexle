@@ -28,12 +28,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: ServicePageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("errors");
   const service = getService(slug);
 
   if (!service) {
     return {
-      title: "Service Not Found",
+      title: t("serviceNotFound"),
     };
   }
 
@@ -112,6 +114,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("services");
+  const tNav = await getTranslations("nav");
+  const tMeta = await getTranslations("meta");
+  const tA11y = await getTranslations("a11y");
 
   const service = getService(slug);
 
@@ -119,22 +124,23 @@ export default async function ServicePage({ params }: ServicePageProps) {
     notFound();
   }
 
+  const serviceKey = service.id.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
   const relatedServices = getRelatedServices(service.id);
 
   return (
     <>
       <JsonLd
         data={getServiceSchema(
-          service.title,
-          service.description,
-          "Backend Engineering"
+          t(`items.${serviceKey}.title`),
+          t(`items.${serviceKey}.description`),
+          tNav("services")
         )}
       />
       <JsonLd
         data={getBreadcrumbSchema([
-          { name: "Home", url: siteConfig.url },
-          { name: "Services", url: `${siteConfig.url}/services` },
-          { name: service.title },
+          { name: tMeta("home"), url: siteConfig.url },
+          { name: tNav("services"), url: `${siteConfig.url}/services` },
+          { name: t(`items.${serviceKey}.title`) },
         ])}
       />
 
@@ -143,22 +149,22 @@ export default async function ServicePage({ params }: ServicePageProps) {
         <Container>
           <div className="mx-auto max-w-3xl">
             {/* Breadcrumb */}
-            <nav className="mb-8" aria-label="Breadcrumb">
+            <nav className="mb-8" aria-label={tA11y("breadcrumb")}>
               <ol className="flex items-center gap-2 text-small text-muted">
                 <li>
                   <Link href="/" className="hover:text-foreground transition-colors">
-                    Home
+                    {tMeta("home")}
                   </Link>
                 </li>
                 <li aria-hidden="true">/</li>
                 <li>
                   <Link href="/services" className="hover:text-foreground transition-colors">
-                    Services
+                    {tNav("services")}
                   </Link>
                 </li>
                 <li aria-hidden="true">/</li>
                 <li className="text-foreground" aria-current="page">
-                  {service.title}
+                  {t(`items.${serviceKey}.title`)}
                 </li>
               </ol>
             </nav>
@@ -168,9 +174,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
               {serviceIcons[service.id]}
             </div>
 
-            <h1 className="text-2xl sm:text-3xl lg:text-h1 font-bold text-foreground">{service.title}</h1>
-            <p className="mt-4 text-lg sm:text-xl lg:text-h3 font-normal text-muted">
-              {service.description}
+            <h1 className="text-h3 sm:text-h2 lg:text-h1 font-bold text-foreground">{t(`items.${serviceKey}.title`)}</h1>
+            <p className="mt-4 text-body sm:text-h3 lg:text-h3 font-normal text-muted">
+              {t(`items.${serviceKey}.description`)}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-2">
@@ -188,11 +194,11 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <section className="section-padding bg-card/50">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-8">
+            <h2 className="text-h3 sm:text-h2 lg:text-h2 font-bold text-foreground mb-8">
               {t("whatYouGet")}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {service.outcomes.map((outcome, index) => (
+              {(t.raw(`items.${serviceKey}.outcomes`) as string[]).map((outcome, index) => (
                 <div
                   key={index}
                   className="flex items-start gap-4 p-6 rounded-lg border border-border bg-card"
@@ -224,7 +230,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-8">
+            <h2 className="text-h3 sm:text-h2 lg:text-h2 font-bold text-foreground mb-8">
               {t("ourApproach")}
             </h2>
             <div className="space-y-8">
@@ -278,7 +284,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         <section className="section-padding bg-card/50">
           <Container>
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-xl sm:text-2xl lg:text-h2 font-bold text-foreground mb-8">
+              <h2 className="text-h3 sm:text-h2 lg:text-h2 font-bold text-foreground mb-8">
                 {t("relatedServices")}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -310,10 +316,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
       )}
 
       {/* CTA */}
-      <section className="section-padding bg-foreground text-background">
+      <section className="section-padding bg-accent text-accent-foreground">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl sm:text-3xl lg:text-h1 font-bold">
+            <h2 className="text-h3 sm:text-h2 lg:text-h1 font-bold">
               {t("readyToStart", { service: service.title.toLowerCase() })}
             </h2>
             <div className="mt-8">
@@ -321,7 +327,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 asChild
                 variant="secondary"
                 size="lg"
-                className="bg-background text-foreground hover:bg-background/90"
+                className="bg-accent-foreground text-accent hover:bg-accent-foreground/90 border-accent-foreground"
               >
                 <Link href="/contact">{t("learnMore")}</Link>
               </Button>
