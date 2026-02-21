@@ -79,6 +79,9 @@ export default async function AboutPage({
               We&apos;re backend engineers who&apos;ve spent years building systems that
               handle millions of requests. Now we help other companies do the same.
             </p>
+            <p className="mt-4 text-body text-muted">
+              With offices in Lahore (Punjab, Pakistan), London (UK), and USA, we serve clients globally.
+            </p>
           </div>
         </Container>
       </section>

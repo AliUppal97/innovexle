@@ -319,22 +319,28 @@ export default function ContactPage() {
                 </Button>
               </div>
 
-              <p className="text-small text-muted">
-                {t("preferEmail")}{" "}
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="text-accent hover:underline"
-                >
-                  {siteConfig.email}
-                </a>
-                {" · "}
-                <a
-                  href={siteConfig.phoneHref}
-                  className="text-accent hover:underline"
-                >
-                  {siteConfig.phone}
-                </a>
-              </p>
+              <div className="space-y-2 text-small text-muted">
+                <p>
+                  {t("preferEmail")}{" "}
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="text-accent hover:underline"
+                  >
+                    {siteConfig.email}
+                  </a>
+                  {" · "}
+                  <a
+                    href={siteConfig.phoneHref}
+                    className="text-accent hover:underline"
+                  >
+                    {siteConfig.phone}
+                  </a>
+                </p>
+                <p>
+                  <span className="font-medium text-foreground">{t("officeLocations")}:</span>{" "}
+                  {siteConfig.offices.map((o) => o.address).join(" · ")}
+                </p>
+              </div>
             </form>
           )}
         </Container>
