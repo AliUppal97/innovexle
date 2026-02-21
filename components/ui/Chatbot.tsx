@@ -165,14 +165,16 @@ export function Chatbot() {
     (key: ChatbotItemKey) => {
       const question = t(`chatbot.items.${key}.q`);
       const answer = t(`chatbot.items.${key}.a`);
-      if (!question || !answer) return;
+      if (!question || !answer || typingKey) return;
 
-      setMessages((prev) => [...prev, { role: "user", content: question }]);
-      const msgId = `msg-${Date.now()}`;
-      setTypingKey(msgId);
-      setMessages((prev) => [...prev, { role: "assistant", content: answer, typing: true }]);
+      setTypingKey(`typing-${key}`);
+      setMessages((prev) => [
+        ...prev,
+        { role: "user", content: question },
+        { role: "assistant", content: answer, typing: true },
+      ]);
     },
-    [t]
+    [t, typingKey]
   );
 
   const handleTypingComplete = useCallback(() => {
@@ -191,7 +193,7 @@ export function Chatbot() {
         aria-expanded={open}
         className={cn(
           "fixed z-[48] flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-lg shadow-black/10 transition-colors hover:bg-muted/10 hover:border-accent/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 dark:shadow-black/30 sm:h-11 sm:w-11",
-          "bottom-[max(1.25rem,env(safe-area-inset-bottom,0px))] start-[max(1.25rem,env(safe-area-inset-inline-start,0px))] sm:bottom-6 sm:start-6"
+          "bottom-[max(1.25rem,env(safe-area-inset-bottom,0px))] end-[max(1.25rem,env(safe-area-inset-inline-end,0px))] sm:bottom-6 sm:end-6"
         )}
       >
         <svg
@@ -215,7 +217,7 @@ export function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: prefersReducedMotion ? 0.01 : 0.2, ease: "easeOut" }}
-            className="fixed z-[49] flex w-[calc(100vw-2rem)] max-w-sm flex-col rounded-xl border border-border bg-card shadow-xl dark:shadow-black/30 bottom-[max(5.5rem,calc(env(safe-area-inset-bottom,0px)+5.5rem))] start-4 end-auto sm:bottom-[5.5rem] sm:start-6 sm:max-w-md"
+            className="fixed z-[49] flex w-[calc(100vw-2rem)] max-w-sm flex-col rounded-xl border border-border bg-card shadow-xl dark:shadow-black/30 bottom-[max(5.5rem,calc(env(safe-area-inset-bottom,0px)+5.5rem))] end-4 start-auto sm:bottom-[5.5rem] sm:end-6 sm:max-w-md"
           >
             <div className="flex items-center justify-between border-b border-border px-4 py-3">
               <h2 className="text-small font-semibold text-foreground">{t("chatbot.title")}</h2>
@@ -235,56 +237,70 @@ export function Chatbot() {
               {messages.length === 0 ? (
                 <>
                   <p className="text-small text-muted">{t("chatbot.greeting")}</p>
-                  <div className="flex flex-col gap-2">
-                    {chatbotItemKeys.map((key) => {
-                      const q = t(`chatbot.items.${key}.q`);
-                      if (!q || q === `chatbot.items.${key}.q`) return null;
-                      return (
-                        <button
-                          key={key}
-                          type="button"
-                          onClick={() => handleQuestionClick(key)}
-                          className="text-left rounded-lg border border-border bg-muted/30 px-3 py-2.5 text-small text-foreground hover:bg-muted/60 hover:border-accent/30 transition-colors"
-                        >
-                          {q}
-                        </button>
-                      );
-                    })}
+                  <div>
+                    <h3 className="text-small font-semibold text-foreground mb-2">
+                      {t("chatbot.suggestedQuestions")}
+                    </h3>
+                    <div className="flex flex-col gap-2">
+                      {chatbotItemKeys.map((key) => {
+                        const q = t(`chatbot.items.${key}.q`);
+                        if (!q || q === `chatbot.items.${key}.q`) return null;
+                        return (
+                          <button
+                            key={key}
+                            type="button"
+                            onClick={() => handleQuestionClick(key)}
+                            className="text-left rounded-lg border border-border bg-muted/30 px-3 py-2.5 text-small text-foreground hover:bg-muted/60 hover:border-accent/30 transition-colors"
+                          >
+                            {q}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
                 </>
               ) : (
                 <>
-                  {messages.map((msg, i) => (
-                    <div
-                      key={i}
-                      className={cn(
-                        "flex",
-                        msg.role === "user" ? "justify-end" : "justify-start"
-                      )}
-                    >
+                  <div className="space-y-4">
+                    {messages.map((msg, i) => (
                       <div
+                        key={i}
                         className={cn(
-                          "max-w-[85%] rounded-lg px-3 py-2",
-                          msg.role === "user"
-                            ? "bg-accent text-accent-foreground"
-                            : "border border-border bg-muted/30"
+                          "flex",
+                          msg.role === "user" ? "justify-end" : "justify-start"
                         )}
                       >
-                        {msg.role === "user" ? (
-                          <p className="text-small">{msg.content}</p>
-                        ) : msg.typing ? (
-                          <TypewriterText
-                            text={msg.content}
-                            onComplete={handleTypingComplete}
-                            speedMs={TYPEWRITER_DELAY_MS}
-                            prefersReducedMotion={prefersReducedMotion}
-                          />
-                        ) : (
-                          <p className="text-small text-foreground leading-relaxed">{msg.content}</p>
-                        )}
+                        <div
+                          className={cn(
+                            "max-w-[85%] rounded-lg px-3 py-2",
+                            msg.role === "user"
+                              ? "bg-accent text-accent-foreground"
+                              : "border border-border bg-muted/30"
+                          )}
+                        >
+                          {msg.role === "user" ? (
+                            <p className="text-small">{msg.content}</p>
+                          ) : msg.typing ? (
+                            <TypewriterText
+                              text={msg.content}
+                              onComplete={handleTypingComplete}
+                              speedMs={TYPEWRITER_DELAY_MS}
+                              prefersReducedMotion={prefersReducedMotion}
+                            />
+                          ) : (
+                            <p className="text-small text-foreground leading-relaxed">{msg.content}</p>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => { setMessages([]); setTypingKey(null); }}
+                    className="text-small text-accent hover:underline"
+                  >
+                    {t("chatbot.viewMoreQuestions")}
+                  </button>
                   <div ref={messagesEndRef} />
                 </>
               )}
