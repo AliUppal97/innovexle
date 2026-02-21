@@ -1,14 +1,11 @@
 import { NextResponse } from "next/server";
-
-export const dynamic = "force-dynamic";
 import {
   getActiveJobs,
-  getJobsByDepartment,
-  getJobsByLocation,
-  getJobsByLevel,
   type LocationType,
   type ExperienceLevel,
 } from "@/lib/data/jobs";
+
+export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   try {
