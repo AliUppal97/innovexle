@@ -7,6 +7,11 @@ export const siteConfig = {
   email: "hello@innovexle.com",
   phone: "+92 318 6618194",
   phoneHref: "tel:+923186618194",
+  offices: [
+    { city: "Lahore", region: "Punjab", country: "Pakistan", address: "Lahore, Punjab, Pakistan" },
+    { city: "London", country: "UK", address: "London, UK" },
+    { city: "USA", address: "USA" },
+  ],
   links: {
     github: "https://github.com/innovexle",
     linkedin: "https://linkedin.com/company/innovexle",
