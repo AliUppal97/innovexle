@@ -52,6 +52,10 @@ interface ServicesProps {
   showAll?: boolean;
 }
 
+function serviceIdToKey(id: string): string {
+  return id.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+}
+
 export async function Services({ showAll = false }: ServicesProps) {
   const t = await getTranslations("services");
   const displayedServices = showAll ? services : services.slice(0, 6);
@@ -61,7 +65,7 @@ export async function Services({ showAll = false }: ServicesProps) {
       <Container>
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 id="services-heading" className="text-2xl sm:text-3xl lg:text-h1 font-bold text-foreground">
+            <h2 id="services-heading" className="text-h3 sm:text-h2 lg:text-h1 font-bold text-foreground">
               {t("title")}
             </h2>
             <p className="mt-4 text-body text-muted">
@@ -71,19 +75,22 @@ export async function Services({ showAll = false }: ServicesProps) {
         </Reveal>
 
         <StaggerContainer className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {displayedServices.map((service) => (
-            <StaggerItem key={service.id}>
-              <Card hover className="group h-full">
-                <CardHeader>
-                  <div className="mb-4 text-foreground group-hover:text-accent transition-colors">
-                    {serviceIcons[service.id]}
-                  </div>
-                  <CardTitle>{service.title}</CardTitle>
-                </CardHeader>
-                <CardDescription>{service.description}</CardDescription>
-              </Card>
-            </StaggerItem>
-          ))}
+          {displayedServices.map((service) => {
+            const key = serviceIdToKey(service.id);
+            return (
+              <StaggerItem key={service.id}>
+                <Card hover className="group h-full">
+                  <CardHeader>
+                    <div className="mb-4 text-foreground group-hover:text-accent transition-colors">
+                      {serviceIcons[service.id]}
+                    </div>
+                    <CardTitle>{t(`items.${key}.title`)}</CardTitle>
+                  </CardHeader>
+                  <CardDescription>{t(`items.${key}.description`)}</CardDescription>
+                </Card>
+              </StaggerItem>
+            );
+          })}
         </StaggerContainer>
 
         {!showAll && (

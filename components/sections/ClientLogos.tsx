@@ -15,9 +15,10 @@ const clients = [
 
 export function ClientLogos() {
   const t = useTranslations("home");
+  const tA11y = useTranslations("a11y");
 
   return (
-    <section className="py-12 border-b border-border" aria-label="Trusted by">
+    <section className="py-12 border-b border-border" aria-label={tA11y("trustedBy")}>
       <Container>
         <Reveal variant="fade-in">
           <p className="text-center text-small font-medium text-muted uppercase tracking-wider mb-8">

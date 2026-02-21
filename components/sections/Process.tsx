@@ -16,7 +16,7 @@ export async function Process() {
       <Container>
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 id="process-heading" className="text-2xl sm:text-3xl lg:text-h1 font-bold text-foreground">
+            <h2 id="process-heading" className="text-h3 sm:text-h2 lg:text-h1 font-bold text-foreground">
               {t("title")}
             </h2>
             <p className="mt-4 text-body text-muted">

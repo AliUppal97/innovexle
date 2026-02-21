@@ -31,12 +31,12 @@ export async function Hero() {
       <Container>
         <div className="mx-auto max-w-3xl text-center">
           <Reveal variant="fade-up">
-            <h1 className="text-3xl sm:text-4xl lg:text-display font-bold tracking-tight text-foreground">
+            <h1 className="text-h2 sm:text-h1 lg:text-display font-bold tracking-tight text-foreground">
               {t("heroTitle")}
             </h1>
           </Reveal>
           <Reveal variant="fade-up" delay={0.1}>
-            <p className="mt-6 text-lg sm:text-xl lg:text-h3 font-normal text-muted">
+            <p className="mt-6 text-body sm:text-h3 lg:text-h3 font-normal text-muted">
               {t("heroSubtitle")}
             </p>
           </Reveal>

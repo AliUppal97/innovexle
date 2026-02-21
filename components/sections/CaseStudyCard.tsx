@@ -9,17 +9,23 @@ interface CaseStudyCardProps {
   featured?: boolean;
 }
 
+function caseStudyIdToKey(id: string): string {
+  return id.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+}
+
 export async function CaseStudyCard({ caseStudy, featured = false }: CaseStudyCardProps) {
   const t = await getTranslations("caseStudies");
+  const key = caseStudyIdToKey(caseStudy.id);
+  const results = t.raw(`items.${key}.results`) as Array<{ metric: string; value: string }>;
 
   return (
     <Card hover className={`h-full ${featured ? "lg:col-span-1" : ""}`}>
       <CardHeader>
         <Badge variant="outline" className="mb-3 w-fit">
-          {caseStudy.industry}
+          {t(`items.${key}.industry`)}
         </Badge>
         <CardTitle className="group-hover:text-accent transition-colors">
-          {caseStudy.title}
+          {t(`items.${key}.title`)}
         </CardTitle>
       </CardHeader>
 
@@ -28,7 +34,7 @@ export async function CaseStudyCard({ caseStudy, featured = false }: CaseStudyCa
           <h4 className="text-small font-semibold text-foreground uppercase tracking-wider mb-2">
             {t("problem")}
           </h4>
-          <p className="text-small text-muted line-clamp-3">{caseStudy.problem}</p>
+          <p className="text-small text-muted line-clamp-3">{t(`items.${key}.problem`)}</p>
         </div>
 
         <div>
@@ -36,7 +42,7 @@ export async function CaseStudyCard({ caseStudy, featured = false }: CaseStudyCa
             {t("results")}
           </h4>
           <div className="grid grid-cols-1 min-[360px]:grid-cols-3 gap-3">
-            {caseStudy.results.map((result) => (
+            {results.map((result) => (
               <div key={result.metric} className="text-center">
                 <Counter value={result.value} className="text-h3 font-bold text-accent" />
                 <p className="text-small text-muted">{result.metric}</p>

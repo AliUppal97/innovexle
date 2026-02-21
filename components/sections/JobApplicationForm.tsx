@@ -478,8 +478,8 @@ export function JobApplicationForm({ jobId, jobTitle, jobCode }: JobApplicationF
 
         {/* Error Message */}
         {error && (
-          <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20">
-            <p className="text-small text-red-500">{error}</p>
+          <div className="p-4 rounded-lg bg-destructive-muted border border-destructive-border">
+            <p className="text-small text-destructive">{error}</p>
           </div>
         )}
 
