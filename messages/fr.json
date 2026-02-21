@@ -168,6 +168,7 @@
     "send": "Envoyer le message",
     "sending": "Envoi en cours...",
     "preferEmail": "Préférez-vous l'e-mail ?",
+    "officeLocations": "Bureaux",
     "or": "ou",
     "thankYou": "Merci de nous avoir contacté",
     "thankYouMessage": "Nous examinerons votre message et vous répondrons sous un jour ouvré.",
@@ -222,6 +223,7 @@
   "footer": {
     "company": "Entreprise",
     "legal": "Mentions Légales",
+    "officeLocations": "Bureaux",
     "rights": "Tous droits réservés.",
     "privacyPolicy": "Politique de Confidentialité",
     "termsOfService": "Conditions d'Utilisation",
@@ -372,7 +374,9 @@
   },
   "chatbot": {
     "title": "Discutez avec nous",
-    "greeting": "Bonjour ! Comment puis-je vous aider aujourd'hui ? Choisissez une question ou posez la vôtre.",
+    "greeting": "Bonjour ! Comment puis-je vous aider aujourd'hui ? Choisissez une question ci-dessous ou posez la vôtre.",
+    "suggestedQuestions": "Questions fréquentes",
+    "viewMoreQuestions": "Voir plus de questions",
     "placeholder": "Tapez votre question...",
     "fallback": "Je peux aider avec des questions sur nos services, carrières, processus et technologies. Essayez de sélectionner une question ci-dessus ou reformulez votre question !",
     "items": {
@@ -386,7 +390,7 @@
       },
       "contact": {
         "q": "Comment vous contacter ?",
-        "a": "Vous pouvez nous joindre via notre page contact, par e-mail hello@innovexle.com ou au +92 318 6618194. Nous répondons généralement sous un jour ouvrable. Pour des défis urgents, remplissez le formulaire avec les détails de votre projet."
+        "a": "Vous pouvez nous joindre via notre page contact, par e-mail hello@innovexle.com ou au +92 318 6618194. Nous avons des bureaux à Lahore (Punjab, Pakistan), Londres (Royaume-Uni) et aux États-Unis. Nous répondons généralement sous un jour ouvrable. Pour des défis urgents, remplissez le formulaire avec les détails de votre projet."
       },
       "careers": {
         "q": "Recrutez-vous ? Quels postes sont ouverts ?",

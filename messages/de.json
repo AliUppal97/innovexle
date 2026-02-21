@@ -168,6 +168,7 @@
     "send": "Nachricht senden",
     "sending": "Wird gesendet...",
     "preferEmail": "Bevorzugen Sie E-Mail?",
+    "officeLocations": "Bürostandorte",
     "or": "oder",
     "thankYou": "Danke für Ihre Nachricht",
     "thankYouMessage": "Wir werden uns innerhalb eines Werktages bei Ihnen melden.",
@@ -222,6 +223,7 @@
   "footer": {
     "company": "Unternehmen",
     "legal": "Rechtliches",
+    "officeLocations": "Bürostandorte",
     "rights": "Alle Rechte vorbehalten.",
     "privacyPolicy": "Datenschutzrichtlinie",
     "termsOfService": "Nutzungsbedingungen",
@@ -372,7 +374,9 @@
   },
   "chatbot": {
     "title": "Chat mit uns",
-    "greeting": "Hallo! Wie kann ich Ihnen heute helfen? Wählen Sie eine Frage oder stellen Sie Ihre eigene.",
+    "greeting": "Hallo! Wie kann ich Ihnen heute helfen? Wählen Sie eine Frage unten oder stellen Sie Ihre eigene.",
+    "suggestedQuestions": "Häufig gestellte Fragen",
+    "viewMoreQuestions": "Weitere Fragen anzeigen",
     "placeholder": "Geben Sie Ihre Frage ein...",
     "fallback": "Ich kann bei Fragen zu unseren Dienstleistungen, Karrieren, unserem Prozess und Technologien helfen. Wählen Sie eine der Fragen oben oder formulieren Sie Ihre Frage um!",
     "items": {
@@ -386,7 +390,7 @@
       },
       "contact": {
         "q": "Wie kann ich Sie kontaktieren?",
-        "a": "Sie erreichen uns über unsere Kontaktseite, per E-Mail hello@innovexle.com oder telefonisch unter +92 318 6618194. Wir antworten in der Regel innerhalb eines Werktages. Für dringende Backend-Herausforderungen empfehlen wir, das Kontaktformular mit Ihren Projektdetails auszufüllen."
+        "a": "Sie erreichen uns über unsere Kontaktseite, per E-Mail hello@innovexle.com oder telefonisch unter +92 318 6618194. Wir haben Büros in Lahore (Punjab, Pakistan), London (UK) und den USA. Wir antworten in der Regel innerhalb eines Werktages. Für dringende Backend-Herausforderungen empfehlen wir, das Kontaktformular mit Ihren Projektdetails auszufüllen."
       },
       "careers": {
         "q": "Stellen Sie ein? Welche Positionen sind offen?",

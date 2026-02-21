@@ -168,6 +168,7 @@
     "send": "Enviar mensaje",
     "sending": "Enviando...",
     "preferEmail": "¿Prefieres email?",
+    "officeLocations": "Oficinas",
     "or": "o",
     "thankYou": "Gracias por contactarnos",
     "thankYouMessage": "Revisaremos tu mensaje y te responderemos en un día hábil.",
@@ -222,6 +223,7 @@
   "footer": {
     "company": "Empresa",
     "legal": "Legal",
+    "officeLocations": "Oficinas",
     "rights": "Todos los derechos reservados.",
     "privacyPolicy": "Política de Privacidad",
     "termsOfService": "Términos de Servicio",
@@ -372,7 +374,9 @@
   },
   "chatbot": {
     "title": "Chatea con nosotros",
-    "greeting": "¡Hola! ¿En qué puedo ayudarte hoy? Selecciona una pregunta o escribe la tuya.",
+    "greeting": "¡Hola! ¿En qué puedo ayudarte hoy? Selecciona una pregunta abajo o escribe la tuya.",
+    "suggestedQuestions": "Preguntas frecuentes",
+    "viewMoreQuestions": "Ver más preguntas",
     "placeholder": "Escribe tu pregunta...",
     "fallback": "Puedo ayudar con preguntas sobre nuestros servicios, carreras, proceso de trabajo y tecnologías. ¡Prueba seleccionando una de las preguntas de arriba o reformula tu pregunta!",
     "items": {
@@ -386,7 +390,7 @@
       },
       "contact": {
         "q": "¿Cómo puedo contactarlos?",
-        "a": "Puedes contactarnos por nuestra página de contacto, email hello@innovexle.com o llamando al +92 318 6618194. Respondemos normalmente en un día hábil. Para desafíos urgentes, recomendamos completar el formulario con los detalles de tu proyecto."
+        "a": "Puedes contactarnos por nuestra página de contacto, email hello@innovexle.com o llamando al +92 318 6618194. Tenemos oficinas en Lahore (Punjab, Pakistán), Londres (Reino Unido) y EE. UU. Respondemos normalmente en un día hábil. Para desafíos urgentes, recomendamos completar el formulario con los detalles de tu proyecto."
       },
       "careers": {
         "q": "¿Están contratando? ¿Qué vacantes hay?",

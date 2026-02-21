@@ -213,6 +213,7 @@
     "send": "Send message",
     "sending": "Sending...",
     "preferEmail": "Prefer email?",
+    "officeLocations": "Office locations",
     "or": "or",
     "thankYou": "Thanks for reaching out",
     "thankYouMessage": "We'll review your message and get back to you within one business day.",
@@ -267,6 +268,7 @@
   "footer": {
     "company": "Company",
     "legal": "Legal",
+    "officeLocations": "Office locations",
     "rights": "All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
@@ -417,7 +419,9 @@
   },
   "chatbot": {
     "title": "Chat with us",
-    "greeting": "Hi! How can I help you today? Select a question or type your own.",
+    "greeting": "Hi! How can I help you today? Select a question below or type your own.",
+    "suggestedQuestions": "Frequently asked questions",
+    "viewMoreQuestions": "View more questions",
     "placeholder": "Type your question...",
     "fallback": "I can help with questions about our services, careers, engagement process, and technologies. Try selecting one of the questions above or rephrase your question!",
     "items": {
@@ -431,7 +435,7 @@
       },
       "contact": {
         "q": "How can I get in touch?",
-        "a": "You can reach us through our contact page, email hello@innovexle.com, or call +92 318 6618194. We typically respond within one business day. For urgent backend engineering challenges, we recommend filling out the contact form with your project details so we can provide a focused response."
+        "a": "You can reach us through our contact page, email hello@innovexle.com, or call +92 318 6618194. We have offices in Lahore (Punjab, Pakistan), London (UK), and USA. We typically respond within one business day. For urgent backend engineering challenges, we recommend filling out the contact form with your project details so we can provide a focused response."
       },
       "careers": {
         "q": "Are you hiring? What roles are open?",
