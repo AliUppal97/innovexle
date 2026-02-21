@@ -19,11 +19,11 @@ function getButtonClasses(
   className?: string
 ) {
   return cn(
-    "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]",
     {
-      "bg-accent text-accent-foreground hover:bg-accent/90":
+      "bg-accent text-accent-foreground hover:bg-accent/90 shadow-sm":
         variant === "primary",
-      "border border-border bg-transparent text-foreground hover:bg-muted/10":
+      "border border-border bg-transparent text-foreground hover:bg-muted/10 hover:border-accent/30":
         variant === "secondary",
       "bg-transparent text-foreground hover:bg-muted/10": variant === "ghost",
     },

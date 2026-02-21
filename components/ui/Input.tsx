@@ -11,8 +11,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       <input
         type={type}
         className={cn(
-          "flex h-11 w-full rounded-md border border-border bg-transparent px-4 py-2 text-body text-foreground placeholder:text-muted transition-colors",
-          "focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20",
+          "flex h-11 w-full rounded-lg border border-border bg-transparent px-4 py-2 text-body text-foreground placeholder:text-muted transition-all duration-200",
+          "focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 focus:ring-offset-2 focus:ring-offset-background",
           "disabled:cursor-not-allowed disabled:opacity-50",
           error && "border-destructive focus:border-destructive focus:ring-destructive/20",
           className
@@ -35,8 +35,8 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <textarea
         className={cn(
-          "flex min-h-[120px] w-full rounded-md border border-border bg-transparent px-4 py-3 text-body text-foreground placeholder:text-muted transition-colors resize-none",
-          "focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20",
+          "flex min-h-[120px] w-full rounded-lg border border-border bg-transparent px-4 py-3 text-body text-foreground placeholder:text-muted transition-all duration-200 resize-none",
+          "focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 focus:ring-offset-2 focus:ring-offset-background",
           "disabled:cursor-not-allowed disabled:opacity-50",
           error && "border-destructive focus:border-destructive focus:ring-destructive/20",
           className

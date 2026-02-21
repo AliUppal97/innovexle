@@ -55,7 +55,7 @@ export function RegionSelector() {
         const found = getRegionById(e.target.value);
         if (found) setRegion(found);
       }}
-      className="h-8 rounded-md border border-border bg-background px-2 text-small text-muted hover:text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-colors"
+      className="h-8 rounded-lg border border-border bg-background px-2 text-small text-muted hover:text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 focus:ring-offset-2 focus:ring-offset-background transition-all duration-200"
       aria-label={t("label")}
     >
       {regions.map((r) => (

@@ -21,7 +21,7 @@ export function AccordionItem({
     <div className="border-b border-border">
       <button
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between py-5 text-left text-h3 font-semibold text-foreground hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset"
+        className="flex w-full items-center justify-between py-5 text-left text-h3 font-semibold text-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset rounded-sm"
         aria-expanded={open}
       >
         {title}

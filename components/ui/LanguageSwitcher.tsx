@@ -33,7 +33,7 @@ export function LanguageSwitcher() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 rounded-md px-2 py-1.5 text-small font-medium text-muted hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        className="flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-small font-medium text-muted hover:text-foreground transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         aria-expanded={open}
         aria-haspopup="listbox"
         aria-label={t("selectLanguage")}
@@ -52,7 +52,7 @@ export function LanguageSwitcher() {
         <div
           role="listbox"
           aria-label={t("selectLanguage")}
-          className="absolute right-0 top-full mt-2 min-w-[160px] rounded-lg border border-border bg-card py-1 shadow-xl z-50"
+          className="absolute right-0 top-full mt-2 min-w-[160px] rounded-xl border border-border bg-card py-1 shadow-xl z-50"
         >
           {locales.map((l) => (
             <button
@@ -61,7 +61,7 @@ export function LanguageSwitcher() {
               aria-selected={l === locale}
               onClick={() => handleChange(l)}
               className={cn(
-                "flex w-full items-center gap-2 px-4 py-2 text-small transition-colors",
+                "flex w-full items-center gap-2 px-4 py-2 text-small transition-colors duration-200",
                 l === locale
                   ? "bg-accent/10 text-accent font-medium"
                   : "text-muted hover:text-foreground hover:bg-muted/10"
