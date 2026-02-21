@@ -24,11 +24,24 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+          muted: "hsl(var(--destructive) / 0.1)",
+          border: "hsl(var(--destructive) / 0.2)",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+          muted: "hsl(var(--success) / 0.1)",
+          border: "hsl(var(--success) / 0.3)",
+        },
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       fontSize: {
+        xs: ["0.75rem", { lineHeight: "1.4" }],
         display: ["4.5rem", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
         h1: ["3rem", { lineHeight: "1.2", letterSpacing: "-0.02em" }],
         h2: ["2.25rem", { lineHeight: "1.3", letterSpacing: "-0.01em" }],
@@ -37,6 +50,7 @@ const config: Config = {
         small: ["0.875rem", { lineHeight: "1.5" }],
       },
       spacing: {
+        13: "3.25rem",
         18: "4.5rem",
         22: "5.5rem",
       },
