@@ -23,6 +23,7 @@ const navItems = [
 
 export function Header() {
   const t = useTranslations("nav");
+  const tA11y = useTranslations("a11y");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
@@ -110,7 +111,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <Container>
-        <nav className="flex h-16 items-center justify-between" aria-label="Main navigation">
+        <nav className="flex h-16 items-center justify-between" aria-label={tA11y("mainNav")}>
           <Link
             href="/"
             className="flex items-center font-semibold text-foreground"
@@ -125,7 +126,7 @@ export function Header() {
                 key={item.key}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-foreground",
+                  "text-small font-medium transition-colors hover:text-foreground",
                   isActive(item.href) ? "text-foreground" : "text-muted"
                 )}
               >
@@ -173,7 +174,7 @@ export function Header() {
               className="fixed inset-x-0 top-16 bottom-0 md:hidden border-t border-border bg-background z-50 overflow-y-auto"
               role="dialog"
               aria-modal="true"
-              aria-label="Mobile navigation"
+              aria-label={tA11y("mobileNav")}
             >
               <Container>
                 <div className="flex flex-col py-6">
@@ -183,7 +184,7 @@ export function Header() {
                       ref={index === 0 ? firstFocusableRef : undefined}
                       href={item.href}
                       className={cn(
-                        "text-lg font-medium transition-colors hover:text-foreground py-4 border-b border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset",
+                        "text-body font-medium transition-colors hover:text-foreground py-4 border-b border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset",
                         isActive(item.href) ? "text-foreground" : "text-muted"
                       )}
                       onClick={() => setMobileMenuOpen(false)}
