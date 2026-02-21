@@ -7,6 +7,7 @@ import {
   useCallback,
   type ReactNode,
 } from "react";
+import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -27,6 +28,7 @@ const ToastContext = createContext<ToastContextValue | undefined>(undefined);
 let toastId = 0;
 
 export function ToastProvider({ children }: { children: ReactNode }) {
+  const tA11y = useTranslations("a11y");
   const [toasts, setToasts] = useState<Toast[]>([]);
 
   const addToast = useCallback((message: string, variant: ToastVariant = "default") => {
@@ -62,9 +64,9 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                 {
                   "border-border bg-card text-card-foreground":
                     t.variant === "default",
-                  "border-green-500/30 bg-green-500/10 text-green-700 dark:text-green-300":
+                  "border-success-border bg-success-muted text-success":
                     t.variant === "success",
-                  "border-red-500/30 bg-red-500/10 text-red-700 dark:text-red-300":
+                  "border-destructive-border bg-destructive-muted text-destructive":
                     t.variant === "error",
                 }
               )}
@@ -74,7 +76,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                 <button
                   onClick={() => dismiss(t.id)}
                   className="flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity"
-                  aria-label="Dismiss"
+                  aria-label={tA11y("dismiss")}
                 >
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />

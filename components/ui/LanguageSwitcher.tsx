@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
 import { locales, localeNames, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 
 export function LanguageSwitcher() {
   const locale = useLocale() as Locale;
+  const t = useTranslations("a11y");
   const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -35,7 +36,7 @@ export function LanguageSwitcher() {
         className="flex items-center gap-1.5 rounded-md px-2 py-1.5 text-small font-medium text-muted hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         aria-expanded={open}
         aria-haspopup="listbox"
-        aria-label="Select language"
+        aria-label={t("selectLanguage")}
       >
         <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
           <circle cx="12" cy="12" r="10" />
@@ -50,7 +51,7 @@ export function LanguageSwitcher() {
       {open && (
         <div
           role="listbox"
-          aria-label="Languages"
+          aria-label={t("selectLanguage")}
           className="absolute right-0 top-full mt-2 min-w-[160px] rounded-lg border border-border bg-card py-1 shadow-xl z-50"
         >
           {locales.map((l) => (

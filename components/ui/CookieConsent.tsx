@@ -16,6 +16,7 @@ export function getConsentStatus(): ConsentStatus {
 
 export function CookieConsent() {
   const t = useTranslations("consent");
+  const tA11y = useTranslations("a11y");
   const [status, setStatus] = useState<ConsentStatus>("pending");
   const [visible, setVisible] = useState(false);
 
@@ -47,7 +48,7 @@ export function CookieConsent() {
   return (
     <div
       role="dialog"
-      aria-label="Cookie consent"
+      aria-label={tA11y("cookieConsent")}
       className={cn(
         "fixed bottom-0 left-0 right-0 z-50 p-4 transition-transform duration-500",
         visible ? "translate-y-0" : "translate-y-full"

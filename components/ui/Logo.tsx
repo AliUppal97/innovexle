@@ -51,7 +51,7 @@ export function Logo({
       {showText && (
         <span
           className={cn(
-            "text-lg font-semibold tracking-tight text-foreground",
+            "text-body font-semibold tracking-tight text-foreground",
             textClassName
           )}
         >
