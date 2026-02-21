@@ -13,9 +13,9 @@ const companyLinks = [
 ] as const;
 
 const legalLinks = [
-  { key: "privacy", href: "/privacy", label: "Privacy Policy" },
-  { key: "terms", href: "/terms", label: "Terms of Service" },
-  { key: "accessibility", href: "/accessibility", label: "Accessibility" },
+  { key: "privacyPolicy", href: "/privacy" },
+  { key: "termsOfService", href: "/terms" },
+  { key: "accessibility", href: "/accessibility" },
 ] as const;
 
 export function Footer() {
@@ -68,7 +68,7 @@ export function Footer() {
                 {legalLinks.map((item) => (
                   <li key={item.key}>
                     <Link href={item.href} className="text-body text-muted hover:text-foreground transition-colors">
-                      {item.label}
+                      {t(`footer.${item.key}`)}
                     </Link>
                   </li>
                 ))}
