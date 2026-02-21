@@ -126,7 +126,7 @@ export function Header() {
                 key={item.key}
                 href={item.href}
                 className={cn(
-                  "text-small font-medium transition-colors hover:text-foreground",
+                  "text-small font-medium transition-colors duration-200 hover:text-foreground",
                   isActive(item.href) ? "text-foreground" : "text-muted"
                 )}
               >
@@ -146,7 +146,7 @@ export function Header() {
           <button
             ref={menuButtonRef}
             type="button"
-            className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-foreground hover:bg-muted/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-foreground hover:bg-muted/10 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -184,7 +184,7 @@ export function Header() {
                       ref={index === 0 ? firstFocusableRef : undefined}
                       href={item.href}
                       className={cn(
-                        "text-body font-medium transition-colors hover:text-foreground py-4 border-b border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset",
+                        "text-body font-medium transition-colors duration-200 hover:text-foreground py-4 border-b border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset",
                         isActive(item.href) ? "text-foreground" : "text-muted"
                       )}
                       onClick={() => setMobileMenuOpen(false)}
