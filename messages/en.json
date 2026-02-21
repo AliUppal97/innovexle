@@ -38,7 +38,8 @@
     "results": "Results",
     "techUsed": "Technologies Used",
     "keyTakeaways": "Key Takeaways",
-    "viewAll": "View all case studies"
+    "viewAll": "View all case studies",
+    "readMore": "Read full case study"
   },
   "careers": {
     "title": "Join Our Team",
@@ -142,7 +143,10 @@
   "footer": {
     "company": "Company",
     "legal": "Legal",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "accessibility": "Accessibility"
   },
   "privacy": {
     "title": "Privacy Policy",
