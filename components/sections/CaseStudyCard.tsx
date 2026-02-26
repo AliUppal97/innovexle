@@ -41,11 +41,11 @@ export async function CaseStudyCard({ caseStudy, featured = false }: CaseStudyCa
           <h4 className="text-small font-semibold text-foreground uppercase tracking-wider mb-3">
             {t("results")}
           </h4>
-          <div className="grid grid-cols-1 min-[360px]:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {results.map((result) => (
-              <div key={result.metric} className="text-center">
-                <Counter value={result.value} className="text-h3 font-bold text-accent" />
-                <p className="text-small text-muted">{result.metric}</p>
+              <div key={result.metric} className="min-w-0 text-center">
+                <Counter value={result.value} className="text-h3 font-bold text-accent break-words" />
+                <p className="text-small text-muted break-words">{result.metric}</p>
               </div>
             ))}
           </div>

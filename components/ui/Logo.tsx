@@ -46,12 +46,12 @@ export function Logo({
   textClassName,
 }: LogoProps) {
   return (
-    <span className={cn("inline-flex items-center gap-2", className)}>
-      <LogoMark />
+    <span className={cn("inline-flex min-w-0 items-center gap-2", className)}>
+      <LogoMark className="shrink-0" />
       {showText && (
         <span
           className={cn(
-            "text-body font-semibold tracking-tight text-foreground",
+            "truncate text-body font-semibold tracking-tight text-foreground",
             textClassName
           )}
         >

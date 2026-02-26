@@ -233,7 +233,7 @@ export function Chatbot() {
               </button>
             </div>
 
-            <div className="max-h-[min(60vh,320px)] overflow-y-auto p-4 space-y-4">
+            <div className="max-h-[min(60vh,320px)] overflow-y-auto scrollbar-thin p-4 space-y-4">
               {messages.length === 0 ? (
                 <>
                   <p className="text-small text-muted">{t("chatbot.greeting")}</p>
