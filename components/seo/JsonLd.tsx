@@ -109,7 +109,7 @@ export function getOrganizationSchema(): OrganizationSchema {
     contactPoint: {
       "@type": "ContactPoint",
       email: siteConfig.email,
-      telephone: siteConfig.phone.replace(/\s/g, ""),
+      telephone: siteConfig.phones.map((p) => p.number.replace(/\s/g, "")).join(", "),
       contactType: "customer service",
       areaServed: siteConfig.offices.map((o) => o.country || o.address),
     },
