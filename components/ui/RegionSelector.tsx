@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, useRef, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
+import { BanknotesIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { regions, getDefaultRegion, getRegionById, type Region } from "@/lib/regions";
 import { cn } from "@/lib/utils";
 
@@ -165,14 +166,10 @@ export function RegionSelector({ className, inMobileMenu = false }: RegionSelect
         aria-label={t("label")}
         title={t(region.id as "global" | "europe" | "uk" | "india" | "canada" | "pakistan")}
       >
-        <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM10.5 4.5a.75.75 0 0 1 .75.75v.816a3.836 3.836 0 0 1 1.72.756c.712.566 1.112 1.35 1.112 2.178 0 .829-.4 1.612-1.112 2.178a3.836 3.836 0 0 1-1.72.756v2.608a3.836 3.836 0 0 1 1.72.756c.712.566 1.112 1.35 1.112 2.178 0 .829-.4 1.612-1.112 2.178a3.836 3.836 0 0 1-1.72.756V18a.75.75 0 0 1-1.5 0v-.81a4.124 4.124 0 0 1-1.821-.749c-.745-.559-1.179-1.344-1.179-2.191 0-.847.434-1.632 1.179-2.191a4.122 4.122 0 0 1 1.821-.75V8.354a4.124 4.124 0 0 1-1.821-.749C6.434 6.856 6 6.071 6 5.224c0-.847.434-1.632 1.179-2.191a4.122 4.122 0 0 1 1.821-.75V4.5a.75.75 0 0 1 .75-.75Z" />
-        </svg>
+        <BanknotesIcon className="h-4 w-4 shrink-0" aria-hidden />
         <span className="shrink-0 font-medium tabular-nums">{region.currencySymbol}</span>
         <span className="min-w-0 truncate max-w-[4.5rem]">{region.currency}</span>
-        <svg className={cn("h-3 w-3 shrink-0 transition-transform duration-200", open && "rotate-180")} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <ChevronDownIcon className={cn("h-3.5 w-3.5 shrink-0 transition-transform duration-200", open && "rotate-180")} aria-hidden />
       </button>
 
       {open && (
