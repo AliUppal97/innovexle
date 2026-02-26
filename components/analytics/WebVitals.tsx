@@ -5,7 +5,9 @@ import { onCLS, onINP, onLCP, onFCP, onTTFB, type Metric } from "web-vitals";
 
 function sendMetric(metric: Metric) {
   if (process.env.NODE_ENV === "development") {
-    console.log("[Web Vitals]", metric.name, Math.round(metric.value), metric.rating);
+    if (process.env.NEXT_PUBLIC_ANALYTICS_DEBUG === "true") {
+      console.log("[Web Vitals]", metric.name, Math.round(metric.value), metric.rating);
+    }
     return;
   }
 

@@ -32,8 +32,10 @@ function hasConsent(): boolean {
 }
 
 export function trackEvent(event: AnalyticsEvent, properties?: EventProperties) {
-  if (process.env.NODE_ENV === "development" && !process.env.NEXT_PUBLIC_ANALYTICS_DEBUG) {
-    console.log("[Analytics Debug]", event, properties);
+  if (process.env.NODE_ENV === "development") {
+    if (process.env.NEXT_PUBLIC_ANALYTICS_DEBUG === "true") {
+      console.log("[Analytics Debug]", event, properties);
+    }
     return;
   }
 
@@ -68,7 +70,7 @@ function usePageTracking() {
     if (typeof window !== "undefined" && window.fathom) {
       window.fathom.trackPageview();
     }
-    if (process.env.NODE_ENV === "development" || process.env.NEXT_PUBLIC_ANALYTICS_DEBUG) {
+    if (process.env.NODE_ENV === "development" && process.env.NEXT_PUBLIC_ANALYTICS_DEBUG === "true") {
       console.log("[Analytics Debug] Page view:", url);
     }
   }, [pathname, searchParams]);
