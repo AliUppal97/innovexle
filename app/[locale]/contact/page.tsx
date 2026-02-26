@@ -329,12 +329,17 @@ export default function ContactPage() {
                     {siteConfig.email}
                   </a>
                   {" · "}
-                  <a
-                    href={siteConfig.phoneHref}
-                    className="text-accent hover:underline transition-colors duration-200"
-                  >
-                    {siteConfig.phone}
-                  </a>
+                  {siteConfig.phones.map((p, i) => (
+                    <span key={p.href}>
+                      {i > 0 && " · "}
+                      <a
+                        href={p.href}
+                        className="text-accent hover:underline transition-colors duration-200"
+                      >
+                        {p.number}
+                      </a>
+                    </span>
+                  ))}
                 </p>
                 <p>
                   <span className="font-medium text-foreground">{t("officeLocations")}:</span>{" "}

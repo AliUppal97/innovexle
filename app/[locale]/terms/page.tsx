@@ -94,7 +94,12 @@ export default async function TermsPage({
                   {t("contactInfoText")}{" "}
                   <a href={`mailto:${siteConfig.email}`} className="text-accent hover:underline">{siteConfig.email}</a>
                   {" "}{t("contact.or")}{" "}
-                  <a href={siteConfig.phoneHref} className="text-accent hover:underline">{siteConfig.phone}</a>.
+                  {siteConfig.phones.map((p, i) => (
+                    <span key={p.href}>
+                      {i > 0 && " "}{t("contact.or")}{" "}
+                      <a href={p.href} className="text-accent hover:underline">{p.number}</a>
+                    </span>
+                  ))}.
                 </p>
               </section>
             </div>

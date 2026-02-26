@@ -104,9 +104,12 @@ export default async function AccessibilityPage({
                     {siteConfig.email}
                   </a>
                   {" "}{t("or")}{" "}
-                  <a href={siteConfig.phoneHref} className="text-accent hover:underline">
-                    {siteConfig.phone}
-                  </a>.
+                  {siteConfig.phones.map((p, i) => (
+                    <span key={p.href}>
+                      {i > 0 && " "}{t("or")}{" "}
+                      <a href={p.href} className="text-accent hover:underline">{p.number}</a>
+                    </span>
+                  ))}.
                 </p>
               </section>
             </div>
