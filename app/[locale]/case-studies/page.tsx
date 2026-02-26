@@ -112,16 +112,16 @@ export default async function CaseStudiesPage({ params }: { params: { locale: st
                     <h4 className="text-h3 font-semibold text-foreground mb-4">
                       {t("results")}
                     </h4>
-                    <div className="grid grid-cols-1 min-[360px]:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                       {caseStudy.results.map((result) => (
                         <div
                           key={result.metric}
-                          className="text-center p-4 rounded-lg border border-border bg-card"
+                          className="min-w-0 text-center p-4 rounded-lg border border-border bg-card"
                         >
-                          <p className="text-h2 font-bold text-accent">
+                          <p className="text-h3 sm:text-h2 font-bold text-accent break-words">
                             {result.value}
                           </p>
-                          <p className="text-small text-muted mt-1">
+                          <p className="text-small text-muted mt-1 break-words">
                             {result.metric}
                           </p>
                         </div>

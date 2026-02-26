@@ -95,9 +95,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <section className="section-padding">
         <Container>
           <div className="mx-auto max-w-3xl">
-            {/* Breadcrumb */}
+            {/* Breadcrumb - wraps on narrow screens per WCAG 2.2 */}
             <nav className="mb-8" aria-label={tA11y("breadcrumb")}>
-              <ol className="flex items-center gap-2 text-small text-muted">
+              <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-small text-muted">
                 <li>
                   <Link href="/" className="hover:text-foreground transition-colors">
                     {tMeta("home")}
@@ -125,15 +125,15 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
             <h1 className="text-h3 sm:text-h2 lg:text-h1 font-bold text-foreground">{caseStudy.title}</h1>
 
-            {/* Results Summary */}
-            <div className="mt-8 grid grid-cols-1 min-[360px]:grid-cols-3 gap-4">
+            {/* Results Summary - stack on mobile, 2 cols at sm, 3 cols at lg for adequate space */}
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {caseStudy.results.map((result) => (
                 <div
                   key={result.metric}
-                  className="text-center p-4 rounded-lg border border-border bg-card"
+                  className="min-w-0 text-center p-4 rounded-lg border border-border bg-card"
                 >
-                  <p className="text-h2 font-bold text-accent">{result.value}</p>
-                  <p className="text-small text-muted mt-1">{result.metric}</p>
+                  <p className="text-h3 sm:text-h2 font-bold text-accent break-words">{result.value}</p>
+                  <p className="text-small text-muted mt-1 break-words">{result.metric}</p>
                 </div>
               ))}
             </div>
@@ -194,16 +194,14 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               {caseStudy.results.map((result, index) => (
                 <div
                   key={result.metric}
-                  className="flex items-center gap-6 p-6 rounded-lg border border-border bg-card"
+                  className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 p-4 sm:p-6 rounded-lg border border-border bg-card min-w-0"
                 >
                   <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent font-bold text-h3">
                     {index + 1}
                   </div>
-                  <div>
-                    <p className="text-h3 font-bold text-accent">
-                      {result.value}
-                    </p>
-                    <p className="text-body text-muted">{result.metric}</p>
+                  <div className="min-w-0">
+                    <p className="text-h3 font-bold text-accent break-words">{result.value}</p>
+                    <p className="text-body text-muted break-words">{result.metric}</p>
                   </div>
                 </div>
               ))}
@@ -220,7 +218,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               {t("keyTakeaways")}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 rounded-lg border border-border bg-card">
+              <div className="p-4 sm:p-6 rounded-lg border border-border bg-card min-w-0">
                 <div className="w-10 h-10 flex items-center justify-center rounded-full bg-accent/10 text-accent mb-4">
                   <svg
                     className="h-5 w-5"
@@ -244,7 +242,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   predictable outcomes and minimizes risk.
                 </p>
               </div>
-              <div className="p-6 rounded-lg border border-border bg-card">
+              <div className="p-4 sm:p-6 rounded-lg border border-border bg-card min-w-0">
                 <div className="w-10 h-10 flex items-center justify-center rounded-full bg-accent/10 text-accent mb-4">
                   <svg
                     className="h-5 w-5"
@@ -286,19 +284,19 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   <Link
                     key={related.id}
                     href={`/case-studies/${related.id}`}
-                    className="group p-6 rounded-lg border border-border bg-card hover:border-accent/30 hover:shadow-lg transition-all"
+                    className="group p-4 sm:p-6 rounded-lg border border-border bg-card hover:border-accent/30 hover:shadow-lg transition-all min-w-0"
                   >
                     <Badge variant="outline" className="mb-3">
                       {related.industry}
                     </Badge>
-                    <h3 className="text-h3 font-semibold text-foreground group-hover:text-accent transition-colors">
+                    <h3 className="text-h3 font-semibold text-foreground group-hover:text-accent transition-colors break-words">
                       {related.title}
                     </h3>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {related.results.slice(0, 2).map((result) => (
                         <span
                           key={result.metric}
-                          className="text-small text-muted"
+                          className="text-small text-muted break-words"
                         >
                           {result.value} {result.metric}
                         </span>

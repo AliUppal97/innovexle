@@ -150,7 +150,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           <div className="mx-auto max-w-3xl">
             {/* Breadcrumb */}
             <nav className="mb-8" aria-label={tA11y("breadcrumb")}>
-              <ol className="flex items-center gap-2 text-small text-muted">
+              <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-small text-muted">
                 <li>
                   <Link href="/" className="hover:text-foreground transition-colors">
                     {tMeta("home")}
@@ -201,7 +201,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               {(t.raw(`items.${serviceKey}.outcomes`) as string[]).map((outcome, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-4 p-6 rounded-lg border border-border bg-card"
+                  className="flex items-start gap-4 p-4 sm:p-6 rounded-lg border border-border bg-card min-w-0"
                 >
                   <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-accent/10 text-accent">
                     <svg
@@ -218,7 +218,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                       />
                     </svg>
                   </div>
-                  <p className="text-body text-foreground">{outcome}</p>
+                  <p className="text-body text-foreground min-w-0 break-words">{outcome}</p>
                 </div>
               ))}
             </div>
