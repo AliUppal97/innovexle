@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -25,18 +26,13 @@ export function AccordionItem({
         aria-expanded={open}
       >
         {title}
-        <svg
+        <ChevronDownIcon
           className={cn(
             "h-5 w-5 flex-shrink-0 text-muted transition-transform duration-200",
             open && "rotate-180"
           )}
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+          aria-hidden
+        />
       </button>
       <AnimatePresence initial={false}>
         {open && (

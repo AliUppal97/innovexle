@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { ArrowUpIcon } from "@heroicons/react/24/outline";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -59,18 +60,7 @@ export function ScrollToTop() {
           }}
           className="fixed z-[48] flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-lg shadow-black/10 transition-colors hover:bg-muted/10 hover:border-accent/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 dark:shadow-black/30 bottom-[max(1.25rem,env(safe-area-inset-bottom,0px))] start-[max(1.25rem,env(safe-area-inset-inline-start,0px))] sm:bottom-6 sm:start-6 sm:h-11 sm:w-11"
         >
-          <svg
-            className="h-5 w-5 sm:h-[18px] sm:w-[18px]"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden
-          >
-            <path d="M12 19V5M5 12l7-7 7 7" />
-          </svg>
+          <ArrowUpIcon className="h-5 w-5 sm:h-[18px] sm:w-[18px]" aria-hidden />
         </motion.button>
       )}
     </AnimatePresence>
