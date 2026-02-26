@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 const MOBILE_MENU_Z_BACKDROP = 9998;
 const MOBILE_MENU_Z_PANEL = 9999;
 const HEADER_HEIGHT = 4; // 4rem = 16 (h-16)
+const SCROLL_THRESHOLD = 12; // px — transition when user scrolls past this
 
 const navItems = [
   { key: "services", href: "/services" },
@@ -31,7 +32,17 @@ export function Header() {
   const t = useTranslations("nav");
   const tA11y = useTranslations("a11y");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > SCROLL_THRESHOLD);
+    };
+    handleScroll(); // Set initial state
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const firstFocusableRef = useRef<HTMLAnchorElement>(null);
@@ -116,8 +127,17 @@ export function Header() {
     return cleanPath === href || cleanPath.startsWith(href + "/");
   };
 
+  const showElevatedNav = isScrolled || mobileMenuOpen;
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full transition-all duration-300 ease-out",
+        showElevatedNav
+          ? "border-b border-border bg-background/95 shadow-sm shadow-black/5 backdrop-blur supports-[backdrop-filter]:bg-background/80 dark:shadow-black/20"
+          : "border-b border-transparent bg-transparent"
+      )}
+    >
       <Container className="min-w-0">
         <nav className="flex h-16 items-center justify-between gap-2 sm:gap-4 min-w-0" aria-label={tA11y("mainNav")}>
           <Link

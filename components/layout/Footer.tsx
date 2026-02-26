@@ -44,9 +44,11 @@ export function Footer() {
                 <a href={`mailto:${siteConfig.email}`} className="hover:text-foreground transition-colors duration-200">
                   {siteConfig.email}
                 </a>
-                <a href={siteConfig.phoneHref} className="hover:text-foreground transition-colors duration-200" aria-label={tA11y("phone")}>
-                  {siteConfig.phone}
-                </a>
+                {siteConfig.phones.map((p) => (
+                  <a key={p.href} href={p.href} className="hover:text-foreground transition-colors duration-200" aria-label={tA11y("phone")}>
+                    {p.number}
+                  </a>
+                ))}
                 <span className="mt-2 flex flex-col gap-0.5 text-muted">
                   {siteConfig.offices.map((office) => (
                     <span key={office.address}>{office.address}</span>
