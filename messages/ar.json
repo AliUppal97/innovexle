@@ -361,7 +361,8 @@
     "europe": "أوروبا (EUR)",
     "uk": "المملكة المتحدة (GBP)",
     "india": "الهند (INR)",
-    "canada": "كندا (CAD)"
+    "canada": "كندا (CAD)",
+    "pakistan": "باكستان (PKR)"
   },
   "errors": {
     "somethingWentWrong": "حدث خطأ",
