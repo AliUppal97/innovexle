@@ -48,6 +48,14 @@ export const regions: Region[] = [
     exchangeRate: 1.36,
     locale: "en-CA",
   },
+  {
+    id: "pakistan",
+    name: "Pakistan",
+    currency: "PKR",
+    currencySymbol: "₨",
+    exchangeRate: 278,
+    locale: "en-PK",
+  },
 ];
 
 export function getDefaultRegion(): Region {
