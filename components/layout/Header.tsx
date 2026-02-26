@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
@@ -12,6 +13,10 @@ import { RegionSelector } from "@/components/ui/RegionSelector";
 import { Logo } from "@/components/ui/Logo";
 import { siteConfig } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+
+const MOBILE_MENU_Z_BACKDROP = 9998;
+const MOBILE_MENU_Z_PANEL = 9999;
+const HEADER_HEIGHT = 4; // 4rem = 16 (h-16)
 
 const navItems = [
   { key: "services", href: "/services" },
@@ -98,9 +103,11 @@ export function Header() {
   }, [handleEscapeKey, handleTabKey, handleClickOutside]);
 
   useEffect(() => {
-    if (mobileMenuOpen && firstFocusableRef.current) {
-      firstFocusableRef.current.focus();
-    }
+    if (!mobileMenuOpen) return;
+    const id = requestAnimationFrame(() => {
+      firstFocusableRef.current?.focus();
+    });
+    return () => cancelAnimationFrame(id);
   }, [mobileMenuOpen]);
 
   const isActive = (href: string) => {
@@ -110,35 +117,35 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <Container>
-        <nav className="flex h-16 items-center justify-between" aria-label={tA11y("mainNav")}>
+      <Container className="min-w-0">
+        <nav className="flex h-16 items-center justify-between gap-2 sm:gap-4 min-w-0" aria-label={tA11y("mainNav")}>
           <Link
             href="/"
-            className="flex items-center font-semibold text-foreground"
+            className="flex min-w-0 shrink items-center gap-2 font-semibold text-foreground overflow-hidden"
             aria-label={`${siteConfig.name} home`}
           >
             <Logo />
           </Link>
 
-          <div className="hidden md:flex md:items-center md:gap-6">
+          <div className="hidden lg:flex lg:items-center lg:gap-4 xl:gap-6 lg:min-w-0 lg:flex-1 lg:justify-end">
             {navItems.map((item) => (
               <Link
                 key={item.key}
                 href={item.href}
                 className={cn(
-                  "text-small font-medium transition-colors duration-200 hover:text-foreground",
+                  "shrink-0 text-small font-medium transition-colors duration-200 hover:text-foreground whitespace-nowrap",
                   isActive(item.href) ? "text-foreground" : "text-muted"
                 )}
               >
                 {t(item.key)}
               </Link>
             ))}
-            <div className="flex items-center gap-2 pl-2 border-l border-border">
+            <div className="flex shrink-0 items-center gap-2 pl-2 border-l border-border">
               <LanguageSwitcher />
               <RegionSelector />
               <ThemeToggle />
             </div>
-            <Button asChild size="sm">
+            <Button asChild size="sm" className="shrink-0">
               <Link href="/contact">{t("talkToEngineer")}</Link>
             </Button>
           </div>
@@ -146,7 +153,7 @@ export function Header() {
           <button
             ref={menuButtonRef}
             type="button"
-            className="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-foreground hover:bg-muted/10 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="lg:hidden shrink-0 inline-flex items-center justify-center rounded-lg min-w-[44px] min-h-[44px] p-2 text-foreground hover:bg-muted/10 active:bg-muted/20 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -165,49 +172,73 @@ export function Header() {
           </button>
         </nav>
 
-        {mobileMenuOpen && (
-          <>
-            <div className="fixed inset-0 top-16 bg-background/80 backdrop-blur-sm md:hidden z-40" aria-hidden="true" />
-            <div
-              ref={menuRef}
-              id="mobile-menu"
-              className="fixed inset-x-0 top-16 bottom-0 md:hidden border-t border-border bg-background z-50 overflow-y-auto"
-              role="dialog"
-              aria-modal="true"
-              aria-label={tA11y("mobileNav")}
-            >
-              <Container>
-                <div className="flex flex-col py-6">
-                  {navItems.map((item, index) => (
-                    <Link
-                      key={item.key}
-                      ref={index === 0 ? firstFocusableRef : undefined}
-                      href={item.href}
-                      className={cn(
-                        "text-body font-medium transition-colors duration-200 hover:text-foreground py-4 border-b border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset",
-                        isActive(item.href) ? "text-foreground" : "text-muted"
-                      )}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {t(item.key)}
-                    </Link>
-                  ))}
-                  <div className="mt-6 flex items-center gap-3">
-                    <LanguageSwitcher />
-                    <RegionSelector />
+        {typeof document !== "undefined" &&
+          mobileMenuOpen &&
+          createPortal(
+            <>
+              <div
+                className="fixed inset-0 lg:hidden bg-black/50 backdrop-blur-sm"
+                style={{
+                  top: `${HEADER_HEIGHT}rem`,
+                  zIndex: MOBILE_MENU_Z_BACKDROP,
+                }}
+                aria-hidden="true"
+                onClick={() => setMobileMenuOpen(false)}
+              />
+              <div
+                ref={menuRef}
+                id="mobile-menu"
+                role="dialog"
+                aria-modal="true"
+                aria-label={tA11y("mobileNav")}
+                className={cn(
+                  "fixed inset-x-0 bottom-0 lg:hidden overflow-y-auto scrollbar-thin",
+                  "bg-background text-foreground border-t border-border",
+                  "animate-[slideUp_0.2s_ease-out]"
+                )}
+                style={{
+                  top: `${HEADER_HEIGHT}rem`,
+                  zIndex: MOBILE_MENU_Z_PANEL,
+                  maxHeight: `calc(100dvh - ${HEADER_HEIGHT}rem)`,
+                  paddingBottom: "env(safe-area-inset-bottom, 0px)",
+                }}
+              >
+                <Container className="py-6">
+                  <div className="flex flex-col">
+                    {navItems.map((item, index) => (
+                      <Link
+                        key={item.key}
+                        ref={index === 0 ? firstFocusableRef : undefined}
+                        href={item.href}
+                        className={cn(
+                          "py-4 text-body font-medium border-b border-border last:border-b-0",
+                          "transition-colors duration-200 hover:bg-muted/20 hover:text-foreground",
+                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                          isActive(item.href) ? "text-foreground" : "text-muted-foreground"
+                        )}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {t(item.key)}
+                      </Link>
+                    ))}
                   </div>
-                  <div className="mt-4">
+                  <div className="mt-6 pt-6 border-t border-border flex flex-wrap items-center gap-3 gap-y-4 min-w-0">
+                    <LanguageSwitcher inMobileMenu />
+                    <RegionSelector inMobileMenu />
+                    <ThemeToggle />
+                  </div>
+                  <div className="mt-6">
                     <Button asChild className="w-full" size="lg">
                       <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
                         {t("talkToEngineer")}
                       </Link>
                     </Button>
                   </div>
-                </div>
-              </Container>
-            </div>
-          </>
-        )}
+                </Container>
+              </div>
+            </>,
+            document.body
+          )}
       </Container>
     </header>
   );
