@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+  /* Futuristic cyan-teal accent — Vercel/Linear-inspired, tech-forward */
   :root {
     --background: 0 0% 98%;
     --foreground: 0 0% 9%;
     --muted: 0 0% 45%;
     --muted-foreground: 0 0% 40%;
-    --accent: 217 91% 60%;
+    --accent: 188 86% 42%;
     --accent-foreground: 0 0% 100%;
     --border: 0 0% 90%;
     --card: 0 0% 100%;
@@ -24,8 +25,8 @@
     --foreground: 0 0% 93%;
     --muted: 0 0% 64%;
     --muted-foreground: 0 0% 60%;
-    --accent: 217 91% 70%;
-    --accent-foreground: 0 0% 9%;
+    --accent: 188 78% 55%;
+    --accent-foreground: 220 25% 8%;
     --border: 0 0% 15%;
     --card: 0 0% 7%;
     --card-foreground: 0 0% 93%;
