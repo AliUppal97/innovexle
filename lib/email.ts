@@ -80,7 +80,7 @@ function formatHtml(data: ContactEmailPayload): string {
         </tr>
         <tr>
           <td style="padding: 8px 0; color: #737373; font-size: 14px;">Email</td>
-          <td style="padding: 8px 0;"><a href="mailto:${escapeHtml(data.email)}" style="color: #3B82F6;">${escapeHtml(data.email)}</a></td>
+          <td style="padding: 8px 0;"><a href="mailto:${escapeHtml(data.email)}" style="color: #0d9488;">${escapeHtml(data.email)}</a></td>
         </tr>
         ${
           data.company

@@ -5,11 +5,14 @@ export const siteConfig = {
   url: "https://innovexle.com",
   ogImage: "https://innovexle.com/og-image.png",
   email: "hello@innovexle.com",
-  phone: "+92 318 6618194",
-  phoneHref: "tel:+923186618194",
+  phones: [
+    { number: "+92 318 6618194", href: "tel:+923186618194" },
+    { number: "+44 7501 701609", href: "tel:+447501701609" },
+  ],
   offices: [
     { city: "Lahore", region: "Punjab", country: "Pakistan", address: "Lahore, Punjab, Pakistan" },
     { city: "London", country: "UK", address: "London, UK" },
+    { city: "Manchester", country: "UK", address: "Manchester, UK" },
     { city: "USA", address: "USA" },
   ],
   links: {
