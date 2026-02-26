@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
+import { GlobeAltIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { locales, localeNames, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 
@@ -122,14 +123,9 @@ export function LanguageSwitcher({ inMobileMenu = false }: LanguageSwitcherProps
         aria-haspopup="listbox"
         aria-label={t("selectLanguage")}
       >
-        <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
-        </svg>
+        <GlobeAltIcon className="h-4 w-4 shrink-0" aria-hidden />
         <span className="uppercase">{locale}</span>
-        <svg className={cn("h-3 w-3 shrink-0 transition-transform duration-200", open && "rotate-180")} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <ChevronDownIcon className={cn("h-3.5 w-3.5 shrink-0 transition-transform duration-200", open && "rotate-180")} aria-hidden />
       </button>
 
       {open && (
