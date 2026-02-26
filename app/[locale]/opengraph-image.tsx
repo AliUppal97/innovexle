@@ -93,7 +93,7 @@ export default async function Image() {
             display: "flex",
             width: 100,
             height: 4,
-            backgroundColor: "#60A5FA",
+            backgroundColor: "#0d9488",
             marginTop: 40,
             borderRadius: 2,
           }}
