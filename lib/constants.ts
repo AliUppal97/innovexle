@@ -74,6 +74,7 @@ export const processSteps = [
 export const techStack: { name: string; logo?: string }[] = [
   { name: "MERN" },
   { name: "MEAN" },
+  { name: "Python" },
   { name: "Django" },
   { name: "Ruby on Rails" },
   { name: "Java" },
