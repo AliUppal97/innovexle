@@ -60,6 +60,11 @@ const config: Config = {
       boxShadow: {
         "card": "0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.04)",
         "card-hover": "0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05)",
+        /* Material elevation 4 / Apple HIG — premium floating nav */
+        "nav-floating":
+          "0 4px 6px -1px rgb(0 0 0 / 0.07), 0 10px 20px -5px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.04)",
+        "nav-floating-dark":
+          "0 4px 6px -1px rgb(0 0 0 / 0.3), 0 10px 20px -5px rgb(0 0 0 / 0.25), 0 2px 4px -2px rgb(0 0 0 / 0.2)",
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-out forwards",
