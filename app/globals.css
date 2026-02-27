@@ -1,3 +1,5 @@
+@import "@fontsource/noto-nastaliq-urdu/400.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -50,6 +52,11 @@
     color: hsl(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
+  }
+
+  /* Urdu: Noto Nastaliq Urdu - readable Nastaliq font for Urdu script */
+  html[lang="ur"] body {
+    font-family: "Noto Nastaliq Urdu", "Urdu Typesetting", "Nafees Nastaleeq", serif;
   }
 
   @media (prefers-reduced-motion: reduce) {

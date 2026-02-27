@@ -147,7 +147,9 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-background font-sans antialiased">
+      <body
+        className={`min-h-screen bg-background antialiased ${locale === "ur" ? "font-urdu" : "font-sans"}`}
+      >
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <RegionProvider>

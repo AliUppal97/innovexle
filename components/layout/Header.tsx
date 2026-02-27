@@ -123,7 +123,7 @@ export function Header() {
   }, [mobileMenuOpen]);
 
   const isActive = (href: string) => {
-    const cleanPath = pathname.replace(/^\/(en|es|de|fr|ar)/, "") || "/";
+    const cleanPath = pathname.replace(/^\/(en|es|de|fr|ar|ur)/, "") || "/";
     return cleanPath === href || cleanPath.startsWith(href + "/");
   };
 

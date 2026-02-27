@@ -9,13 +9,14 @@ import {
 
 describe("regions", () => {
   it("has all expected regions", () => {
-    expect(regions).toHaveLength(5);
+    expect(regions).toHaveLength(6);
     expect(regions.map((r) => r.id)).toEqual([
       "global",
       "europe",
       "uk",
       "india",
       "canada",
+      "pakistan",
     ]);
   });
 

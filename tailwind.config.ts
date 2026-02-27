@@ -42,6 +42,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        urdu: ["Noto Nastaliq Urdu", "Urdu Typesetting", "Nafees Nastaleeq", "serif"],
       },
       fontSize: {
         xs: ["0.75rem", { lineHeight: "1.4" }],
