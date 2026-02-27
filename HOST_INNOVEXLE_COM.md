@@ -67,7 +67,7 @@ After deploy you’ll have a URL like `innovexle-xxx.vercel.app`. Next we point 
 If Vercel displays different values, use those -they go in your **registrar’s DNS** (e.g. Namecheap), not in Vercel.
 
 5. **Masked vs unmasked:** If you are asked this for a redirect elsewhere (e.g. “Redirect Domain”), choose **unmasked**. Unmasked = real HTTP redirect (URL bar updates, works with SSL). Masked = frame redirect (can break SSL and SEO); avoid it for your main site.
-6. Save. Wait 5–30 minutes for DNS to propagate.
+6. Save. Wait 5-30 minutes for DNS to propagate.
 
 ### 2.3 Verify in Vercel
 

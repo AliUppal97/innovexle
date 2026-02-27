@@ -176,7 +176,7 @@ Or use Vercel nameservers for easier management:
 
 ### Step 4.3  - Wait for SSL
 
-1. After DNS propagates (often 5–30 minutes), Vercel issues an SSL certificate
+1. After DNS propagates (often 5-30 minutes), Vercel issues an SSL certificate
 2. Domains show **Valid Configuration**
 3. Test: `https://innovexle.com` and `https://www.innovexle.com`
 
@@ -340,7 +340,7 @@ Total recurring: **$0** if you stay within free tiers.
 ## Troubleshooting
 
 ### Domain not resolving
-- Wait 24–48 hours for DNS propagation
+- Wait 24-48 hours for DNS propagation
 - Confirm A record for `@` = `76.76.21.21` and CNAME for `www` = `cname.vercel-dns.com`
 - Check [dnschecker.org](https://dnschecker.org)
 
@@ -364,8 +364,8 @@ Total recurring: **$0** if you stay within free tiers.
 
 1. **Day 1:** Push to GitHub → import to Vercel → add env vars → deploy
 2. **Day 1:** Sign up Resend → create API key → add domain → verify DNS
-3. **Day 1–2:** Point Namecheap DNS to Vercel → wait for SSL
+3. **Day 1-2:** Point Namecheap DNS to Vercel → wait for SSL
 4. **Day 2:** Test contact form and full site
 5. **Optional:** Add Supabase (Phase 6) and Upstash (Phase 7) later
 
-You can be fully live in 1–2 days with everything staying free for at least 2 years.
+You can be fully live in 1-2 days with everything staying free for at least 2 years.
