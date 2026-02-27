@@ -6,13 +6,14 @@ describe("i18n config", () => {
     expect(defaultLocale).toBe("en");
   });
 
-  it("supports 5 locales", () => {
-    expect(locales).toHaveLength(5);
+  it("supports 6 locales", () => {
+    expect(locales).toHaveLength(6);
     expect(locales).toContain("en");
     expect(locales).toContain("es");
     expect(locales).toContain("de");
     expect(locales).toContain("fr");
     expect(locales).toContain("ar");
+    expect(locales).toContain("ur");
   });
 
   it("has names for all locales", () => {
@@ -26,6 +27,7 @@ describe("i18n config", () => {
       expect(["ltr", "rtl"]).toContain(localeDirection[locale]);
     }
     expect(localeDirection.ar).toBe("rtl");
+    expect(localeDirection.ur).toBe("rtl");
     expect(localeDirection.en).toBe("ltr");
   });
 });
