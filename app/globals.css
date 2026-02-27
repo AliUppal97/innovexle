@@ -101,9 +101,39 @@
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
-  /* Section spacing */
+  /* Section spacing — consistent throughout */
   .section-padding {
     @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  /* First section: premium nav-to-content spacing — 48–80px gap from 64px nav */
+  main > section:first-of-type:not(.section-hero) {
+    padding-top: 3rem; /* 48px gap on mobile */
+  }
+  @media (min-width: 640px) {
+    main > section:first-of-type:not(.section-hero) {
+      padding-top: 4rem; /* 64px gap on tablet */
+    }
+  }
+  @media (min-width: 1024px) {
+    main > section:first-of-type:not(.section-hero) {
+      padding-top: 5rem; /* 80px gap on desktop — industry standard */
+    }
+  }
+
+  /* Hero: -mt-16 pulls section to top; pt sets gap between nav (64px) and h1 title */
+  main > section.section-hero {
+    padding-top: 7.5rem; /* 72px gap: nav ends 64px, title at 120px */
+  }
+  @media (min-width: 640px) {
+    main > section.section-hero {
+      padding-top: 8.5rem; /* 80px gap: title at 136px */
+    }
+  }
+  @media (min-width: 1024px) {
+    main > section.section-hero {
+      padding-top: 9rem; /* 80px gap: title at 144px — recommended nav-to-headline spacing */
+    }
   }
 
   /* Card hover effect - world-class micro-interaction */
