@@ -15,7 +15,7 @@ export async function sendContactEmail(data: ContactEmailPayload) {
   const recipient = process.env.CONTACT_EMAIL || "hello@innovexle.com";
 
   if (!resend) {
-    console.log("[Email] Resend not configured — logging submission:", {
+    console.log("[Email] Resend not configured - logging submission:", {
       to: recipient,
       from: data.email,
       name: data.name,

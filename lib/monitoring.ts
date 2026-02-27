@@ -65,7 +65,7 @@ async function sendToMonitoringService(report: ErrorReport): Promise<void> {
       body: JSON.stringify(report),
     });
   } catch {
-    // Silently fail — don't throw in the error reporter
+    // Silently fail - don't throw in the error reporter
   }
 }
 
