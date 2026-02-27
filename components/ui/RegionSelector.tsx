@@ -12,11 +12,11 @@ const VIEWPORT_PADDING = 16;
 const DROPDOWN_GAP = 8;
 
 /**
- * Region dropdown design — industry standards:
+ * Region dropdown design - industry standards:
  * - Trigger: 36px min height (WCAG 2.5.5 touch target), 14px font
  * - Options: 44px min height (48dp Material / 44px Apple HIG), 14px font
  * - Hover: 150ms ease-out, subtle bg change
- * - Width: 224px (14rem) — accommodates labels like "United Kingdom (GBP)" / "Vereinigtes Königreich (GBP)"
+ * - Width: 224px (14rem) - accommodates labels like "United Kingdom (GBP)" / "Vereinigtes Königreich (GBP)"
  */
 const DROPDOWN_WIDTH = 224;
 const TRIGGER_CLASSES =

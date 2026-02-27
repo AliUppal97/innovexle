@@ -95,10 +95,10 @@ export default async function ServicesPage({ params }: { params: { locale: strin
         </Container>
       </section>
 
-      {/* Services Grid */}
+      {/* Services Grid: responsive, no overlapping on any viewport */}
       <section className="section-padding bg-card/50">
         <Container>
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-2 min-w-0">
             {services.map((service) => {
               const key = service.id.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
               const outcomes = t.raw(`items.${key}.outcomes`) as string[];
@@ -106,49 +106,50 @@ export default async function ServicesPage({ params }: { params: { locale: strin
               <Link
                 key={service.id}
                 href={`/services/${service.id}`}
-                className="group"
+                className="group block min-w-0 w-full"
               >
-                <Card className="p-8 h-full card-hover">
+                <Card className="p-5 sm:p-6 lg:p-8 h-full card-hover min-w-0 overflow-hidden">
                   <CardHeader>
-                    <div className="mb-4 text-foreground group-hover:text-accent transition-colors">
+                    <div className="mb-5 sm:mb-6 shrink-0 w-10 h-10 flex items-center justify-center overflow-hidden text-foreground group-hover:text-accent transition-colors [&>svg]:size-10 [&>svg]:shrink-0">
                       {serviceIcons[service.id]}
                     </div>
-                    <CardTitle className="text-h2 group-hover:text-accent transition-colors">
+                    <CardTitle className="text-h3 sm:text-h2 group-hover:text-accent transition-colors min-w-0 break-words">
                       {t(`items.${key}.title`)}
                     </CardTitle>
                   </CardHeader>
 
-                  <CardDescription className="text-body mb-6">
+                  <CardDescription className="text-body mb-4 sm:mb-6 min-w-0 break-words">
                     {t(`items.${key}.description`)}
                   </CardDescription>
 
-                  <CardContent className="space-y-6">
+                  <CardContent className="space-y-4 sm:space-y-6 min-w-0">
                     {/* Outcomes */}
-                    <div>
-                      <h4 className="text-small font-semibold text-foreground uppercase tracking-wider mb-3">
+                    <div className="min-w-0">
+                      <h4 className="text-small font-semibold text-foreground uppercase tracking-wider mb-2 sm:mb-3">
                         {t("whatYouGet")}
                       </h4>
                       <ul className="space-y-2">
                         {outcomes.map((outcome) => (
-                          <li key={outcome} className="flex items-start gap-2 text-body text-muted">
+                          <li key={outcome} className="flex items-start gap-2 text-body text-muted min-w-0">
                             <svg
-                              className="h-5 w-5 text-accent flex-shrink-0 mt-0.5"
+                              className="h-5 w-5 text-accent shrink-0 mt-0.5 flex-shrink-0"
                               viewBox="0 0 24 24"
                               fill="none"
                               stroke="currentColor"
                               strokeWidth="2"
+                              aria-hidden
                             >
                               <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
-                            {outcome}
+                            <span className="min-w-0 break-words">{outcome}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     {/* Technologies */}
-                    <div className="pt-4 border-t border-border">
-                      <h4 className="text-small font-semibold text-foreground uppercase tracking-wider mb-3">
+                    <div className="pt-3 sm:pt-4 border-t border-border min-w-0">
+                      <h4 className="text-small font-semibold text-foreground uppercase tracking-wider mb-2 sm:mb-3">
                         {t("technologies")}
                       </h4>
                       <div className="flex flex-wrap gap-2">
@@ -161,7 +162,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
                     </div>
 
                     {/* Learn more indicator */}
-                    <div className="pt-4 flex items-center gap-2 text-body font-medium text-foreground group-hover:text-accent transition-colors">
+                    <div className="pt-3 sm:pt-4 flex items-center gap-2 text-body font-medium text-foreground group-hover:text-accent transition-colors shrink-0">
                       {t("learnMore")}
                       <svg
                         className="h-4 w-4 group-hover:translate-x-1 transition-transform"

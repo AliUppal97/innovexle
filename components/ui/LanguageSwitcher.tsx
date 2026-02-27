@@ -11,10 +11,10 @@ const DROPDOWN_MAX_HEIGHT = 280;
 const VIEWPORT_PADDING = 16;
 const DROPDOWN_GAP = 8;
 
-/** Shared with RegionSelector — industry-standard dropdown design */
+/** Shared with RegionSelector - industry-standard dropdown design */
 const TRIGGER_CLASSES =
   "flex h-9 min-w-[5rem] shrink-0 items-center gap-2 rounded-lg px-3 py-2 text-[0.875rem] font-medium leading-tight text-muted hover:bg-muted/10 hover:text-foreground transition-colors duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background active:bg-muted/15";
-/** 224px (14rem) — Material/Apple HIG readability, accommodates locale names without truncation */
+/** 224px (14rem) - Material/Apple HIG readability, accommodates locale names without truncation */
 const DROPDOWN_WIDTH = 224;
 const DROPDOWN_BASE_CLASSES =
   "absolute rounded-xl border border-border bg-card px-1.5 py-1.5 shadow-lg ring-1 ring-black/5 z-[100] overflow-x-hidden overflow-y-auto scrollbar-thin";

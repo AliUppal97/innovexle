@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 const MOBILE_MENU_Z_BACKDROP = 9998;
 const MOBILE_MENU_Z_PANEL = 9999;
 const HEADER_HEIGHT = 4; // 4rem = 16 (h-16)
-const SCROLL_THRESHOLD = 8; // px — Material/Apple-style: subtle threshold for premium feel
+const SCROLL_THRESHOLD = 8; // px - Material/Apple-style: subtle threshold for premium feel
 
 const navItems = [
   { key: "services", href: "/services" },
@@ -131,7 +131,7 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full">
-      {/* Floating wrapper: transparent at top, elevated card on scroll — margins on all sides */}
+      {/* Floating wrapper: transparent at top, elevated card on scroll, margins on all sides */}
       <div
         className={cn(
           "transition-all duration-300 ease-out motion-reduce:transition-none",

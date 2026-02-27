@@ -241,7 +241,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 <p className="text-body text-muted">
                   We begin with a thorough analysis of your current infrastructure,
                   identifying bottlenecks, security gaps, and opportunities for
-                  improvement. No assumptions—just data-driven insights.
+                  improvement. No assumptions - just data-driven insights.
                 </p>
               </div>
               <div>
@@ -294,14 +294,12 @@ export default async function ServicePage({ params }: ServicePageProps) {
                     href={`/services/${related.id}`}
                     className="group p-6 rounded-lg border border-border bg-card hover:border-accent/30 hover:shadow-lg transition-all"
                   >
-                    <div className="mb-3 text-foreground group-hover:text-accent transition-colors">
-                      {serviceIcons[related.id] && (
-                        <div className="h-8 w-8">
-                          {serviceIcons[related.id]}
-                        </div>
-                      )}
-                    </div>
-                    <h3 className="text-h3 font-semibold text-foreground group-hover:text-accent transition-colors">
+                    {serviceIcons[related.id] && (
+                      <div className="mb-5 shrink-0 w-8 h-8 flex items-center justify-center overflow-hidden text-foreground group-hover:text-accent transition-colors [&>svg]:size-8 [&>svg]:shrink-0">
+                        {serviceIcons[related.id]}
+                      </div>
+                    )}
+                    <h3 className="text-h3 font-semibold text-foreground group-hover:text-accent transition-colors min-w-0 break-words">
                       {related.title}
                     </h3>
                     <p className="mt-2 text-small text-muted line-clamp-2">

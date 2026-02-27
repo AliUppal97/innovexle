@@ -92,7 +92,7 @@ export default async function AboutPage({
             <h2 className="text-h2 font-bold text-foreground">What we believe</h2>
             <div className="mt-8 space-y-6">
               <p className="text-body text-muted">
-                Most infrastructure problems aren&apos;t technology problems—they&apos;re
+                Most infrastructure problems aren&apos;t technology problems - they&apos;re
                 clarity problems. Companies struggle not because the right tools
                 don&apos;t exist, but because they haven&apos;t clearly defined what they
                 need those tools to do.

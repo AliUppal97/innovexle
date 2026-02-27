@@ -74,19 +74,19 @@ export async function Services({ showAll = false }: ServicesProps) {
           </div>
         </Reveal>
 
-        <StaggerContainer className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerContainer className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 min-w-0">
           {displayedServices.map((service) => {
             const key = serviceIdToKey(service.id);
             return (
-              <StaggerItem key={service.id}>
-                <Card hover className="group h-full">
+              <StaggerItem key={service.id} className="min-w-0">
+                <Card hover className="group h-full min-w-0 overflow-hidden">
                   <CardHeader>
-                    <div className="mb-4 text-foreground group-hover:text-accent transition-colors">
+                    <div className="mb-5 shrink-0 w-8 h-8 flex items-center justify-center overflow-hidden text-foreground group-hover:text-accent transition-colors [&>svg]:size-8 [&>svg]:shrink-0">
                       {serviceIcons[service.id]}
                     </div>
-                    <CardTitle>{t(`items.${key}.title`)}</CardTitle>
+                    <CardTitle className="min-w-0 break-words">{t(`items.${key}.title`)}</CardTitle>
                   </CardHeader>
-                  <CardDescription>{t(`items.${key}.description`)}</CardDescription>
+                  <CardDescription className="min-w-0 break-words">{t(`items.${key}.description`)}</CardDescription>
                 </Card>
               </StaggerItem>
             );
