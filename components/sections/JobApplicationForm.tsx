@@ -4,6 +4,7 @@ import { useState, useRef, type FormEvent, type ChangeEvent } from "react";
 import { Input, Textarea, Label } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import { Select } from "@/components/ui/Select";
 
 interface JobApplicationFormProps {
   jobId: string;
@@ -286,42 +287,42 @@ export function JobApplicationForm({ jobId, jobTitle, jobCode }: JobApplicationF
               <Label htmlFor="yearsOfExperience" required>
                 Years of Experience
               </Label>
-              <select
+              <Select
                 id="yearsOfExperience"
                 name="yearsOfExperience"
                 value={formData.yearsOfExperience}
-                onChange={handleInputChange}
+                onChange={(v) => setFormData((prev) => ({ ...prev, yearsOfExperience: v }))}
+                options={[
+                  { value: "0-1", label: "0-1 years" },
+                  { value: "1-3", label: "1-3 years" },
+                  { value: "3-5", label: "3-5 years" },
+                  { value: "5-7", label: "5-7 years" },
+                  { value: "7-10", label: "7-10 years" },
+                  { value: "10+", label: "10+ years" },
+                ]}
+                placeholder="Select experience"
                 required
-                className="flex h-11 w-full rounded-md border border-border bg-transparent px-4 py-2 text-body text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-              >
-                <option value="">Select experience</option>
-                <option value="0-1">0-1 years</option>
-                <option value="1-3">1-3 years</option>
-                <option value="3-5">3-5 years</option>
-                <option value="5-7">5-7 years</option>
-                <option value="7-10">7-10 years</option>
-                <option value="10+">10+ years</option>
-              </select>
+              />
             </div>
             <div>
               <Label htmlFor="noticePeriod" required>
                 Notice Period
               </Label>
-              <select
+              <Select
                 id="noticePeriod"
                 name="noticePeriod"
                 value={formData.noticePeriod}
-                onChange={handleInputChange}
+                onChange={(v) => setFormData((prev) => ({ ...prev, noticePeriod: v }))}
+                options={[
+                  { value: "immediate", label: "Immediately available" },
+                  { value: "2-weeks", label: "2 weeks" },
+                  { value: "1-month", label: "1 month" },
+                  { value: "2-months", label: "2 months" },
+                  { value: "3-months", label: "3+ months" },
+                ]}
+                placeholder="Select notice period"
                 required
-                className="flex h-11 w-full rounded-md border border-border bg-transparent px-4 py-2 text-body text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-              >
-                <option value="">Select notice period</option>
-                <option value="immediate">Immediately available</option>
-                <option value="2-weeks">2 weeks</option>
-                <option value="1-month">1 month</option>
-                <option value="2-months">2 months</option>
-                <option value="3-months">3+ months</option>
-              </select>
+              />
             </div>
           </div>
         </div>
@@ -346,21 +347,21 @@ export function JobApplicationForm({ jobId, jobTitle, jobCode }: JobApplicationF
               <Label htmlFor="workAuthorization" required>
                 Work Authorization
               </Label>
-              <select
+              <Select
                 id="workAuthorization"
                 name="workAuthorization"
                 value={formData.workAuthorization}
-                onChange={handleInputChange}
+                onChange={(v) => setFormData((prev) => ({ ...prev, workAuthorization: v }))}
+                options={[
+                  { value: "citizen", label: "US Citizen" },
+                  { value: "permanent-resident", label: "Permanent Resident" },
+                  { value: "visa-holder", label: "Visa Holder (H1B, L1, etc.)" },
+                  { value: "authorized-other", label: "Authorized to work (Other)" },
+                  { value: "requires-sponsorship", label: "Requires Sponsorship" },
+                ]}
+                placeholder="Select authorization"
                 required
-                className="flex h-11 w-full rounded-md border border-border bg-transparent px-4 py-2 text-body text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-              >
-                <option value="">Select authorization</option>
-                <option value="citizen">US Citizen</option>
-                <option value="permanent-resident">Permanent Resident</option>
-                <option value="visa-holder">Visa Holder (H1B, L1, etc.)</option>
-                <option value="authorized-other">Authorized to work (Other)</option>
-                <option value="requires-sponsorship">Requires Sponsorship</option>
-              </select>
+              />
             </div>
           </div>
         </div>
@@ -459,21 +460,22 @@ export function JobApplicationForm({ jobId, jobTitle, jobCode }: JobApplicationF
         {/* How did you hear about us */}
         <div>
           <Label htmlFor="heardAbout">How did you hear about this position?</Label>
-          <select
+          <Select
             id="heardAbout"
             name="heardAbout"
             value={formData.heardAbout}
-            onChange={handleInputChange}
-            className="flex h-11 w-full rounded-md border border-border bg-transparent px-4 py-2 text-body text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-          >
-            <option value="">Select an option</option>
-            <option value="linkedin">LinkedIn</option>
-            <option value="twitter">Twitter / X</option>
-            <option value="referral">Employee Referral</option>
-            <option value="job-board">Job Board (Indeed, etc.)</option>
-            <option value="company-website">Company Website</option>
-            <option value="other">Other</option>
-          </select>
+            onChange={(v) => setFormData((prev) => ({ ...prev, heardAbout: v }))}
+            options={[
+              { value: "linkedin", label: "LinkedIn" },
+              { value: "twitter", label: "Twitter / X" },
+              { value: "referral", label: "Employee Referral" },
+              { value: "job-board", label: "Job Board (Indeed, etc.)" },
+              { value: "company-website", label: "Company Website" },
+              { value: "other", label: "Other" },
+            ]}
+            placeholder="Select an option"
+            allowEmpty
+          />
         </div>
 
         {/* Error Message */}

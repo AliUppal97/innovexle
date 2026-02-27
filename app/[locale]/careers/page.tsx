@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { Select } from "@/components/ui/Select";
 import {
   jobs,
   getActiveJobs,
@@ -179,47 +180,50 @@ export default function CareersPage() {
 
             {/* Filter dropdowns */}
             <div className="flex flex-wrap gap-4">
-              <select
+              <Select
                 value={selectedDepartment}
-                onChange={(e) => setSelectedDepartment(e.target.value)}
-                className="h-10 px-4 rounded-lg border border-border bg-background text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-                aria-label={tA11y("filterByDepartment")}
-              >
-                <option value="all">{t("allDepartments")}</option>
-                {departments.map((dept) => (
-                  <option key={dept} value={dept}>
-                    {dept}
-                  </option>
-                ))}
-              </select>
+                onChange={setSelectedDepartment}
+                options={[
+                  { value: "all", label: t("allDepartments") },
+                  ...departments.map((dept) => ({ value: dept, label: dept })),
+                ]}
+                ariaLabel={tA11y("filterByDepartment")}
+                fullWidth={false}
+                allowEmpty={false}
+                className="min-w-[14rem]"
+              />
 
-              <select
+              <Select
                 value={selectedLocation}
-                onChange={(e) => setSelectedLocation(e.target.value as LocationType | "all")}
-                className="h-10 px-4 rounded-lg border border-border bg-background text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-                aria-label={tA11y("filterByLocation")}
-              >
-                <option value="all">{t("allLocations")}</option>
-                {(Object.keys(locationTypeLabels) as LocationType[]).map((loc) => (
-                  <option key={loc} value={loc}>
-                    {locationTypeLabels[loc]}
-                  </option>
-                ))}
-              </select>
+                onChange={(v) => setSelectedLocation(v as LocationType | "all")}
+                options={[
+                  { value: "all", label: t("allLocations") },
+                  ...(Object.keys(locationTypeLabels) as LocationType[]).map((loc) => ({
+                    value: loc,
+                    label: locationTypeLabels[loc],
+                  })),
+                ]}
+                ariaLabel={tA11y("filterByLocation")}
+                fullWidth={false}
+                allowEmpty={false}
+                className="min-w-[14rem]"
+              />
 
-              <select
+              <Select
                 value={selectedLevel}
-                onChange={(e) => setSelectedLevel(e.target.value as ExperienceLevel | "all")}
-                className="h-10 px-4 rounded-lg border border-border bg-background text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-                aria-label={tA11y("filterByLevel")}
-              >
-                <option value="all">{t("allLevels")}</option>
-                {(Object.keys(experienceLevelLabels) as ExperienceLevel[]).map((level) => (
-                  <option key={level} value={level}>
-                    {experienceLevelLabels[level]}
-                  </option>
-                ))}
-              </select>
+                onChange={(v) => setSelectedLevel(v as ExperienceLevel | "all")}
+                options={[
+                  { value: "all", label: t("allLevels") },
+                  ...(Object.keys(experienceLevelLabels) as ExperienceLevel[]).map((level) => ({
+                    value: level,
+                    label: experienceLevelLabels[level],
+                  })),
+                ]}
+                ariaLabel={tA11y("filterByLevel")}
+                fullWidth={false}
+                allowEmpty={false}
+                className="min-w-[14rem]"
+              />
 
               {hasActiveFilters && (
                 <button
