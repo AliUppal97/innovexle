@@ -16,14 +16,15 @@ const DROPDOWN_GAP = 8;
  * - Trigger: 36px min height (WCAG 2.5.5 touch target), 14px font
  * - Options: 44px min height (48dp Material / 44px Apple HIG), 14px font
  * - Hover: 150ms ease-out, subtle bg change
- * - Width: 200px min for readability
+ * - Width: 224px (14rem) — accommodates labels like "United Kingdom (GBP)" / "Vereinigtes Königreich (GBP)"
  */
+const DROPDOWN_WIDTH = 224;
 const TRIGGER_CLASSES =
   "flex h-9 min-w-[6.5rem] shrink-0 items-center gap-2 rounded-lg px-3 py-2 text-[0.875rem] font-medium leading-tight text-muted hover:bg-muted/10 hover:text-foreground transition-colors duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background active:bg-muted/15";
 const DROPDOWN_BASE_CLASSES =
-  "absolute w-[200px] min-w-[200px] max-w-[min(220px,100vw-2rem)] rounded-xl border border-border bg-card py-1.5 shadow-lg ring-1 ring-black/5 z-[100] overflow-y-auto scrollbar-thin";
+  "absolute rounded-xl border border-border bg-card px-1.5 py-1.5 shadow-lg ring-1 ring-black/5 z-[100] overflow-x-hidden overflow-y-auto scrollbar-thin";
 const OPTION_BASE_CLASSES =
-  "flex min-h-[2.75rem] w-full items-center gap-3 px-4 py-2.5 text-[0.875rem] leading-snug transition-colors duration-150 ease-out text-left rounded-lg mx-1";
+  "flex min-h-[2.75rem] w-full items-center gap-3 px-3 py-2.5 text-[0.875rem] leading-snug transition-colors duration-150 ease-out text-left rounded-lg";
 const OPTION_SELECTED_CLASSES =
   "bg-accent/10 text-accent font-semibold hover:bg-accent/15";
 const OPTION_DEFAULT_CLASSES =
@@ -116,7 +117,6 @@ export function RegionSelector({ className, inMobileMenu = false }: RegionSelect
       const rect = buttonRef.current!.getBoundingClientRect();
       const spaceAbove = rect.top - VIEWPORT_PADDING;
       const spaceBelow = window.innerHeight - rect.bottom - VIEWPORT_PADDING;
-      const DROPDOWN_WIDTH = 200;
 
       let openAbove: boolean;
       let maxHeight: number;
@@ -177,7 +177,12 @@ export function RegionSelector({ className, inMobileMenu = false }: RegionSelect
           role="listbox"
           aria-label={t("label")}
           className={cn(DROPDOWN_BASE_CLASSES, dropdownPlacement, dropdownAlignment)}
-          style={{ maxHeight: position.maxHeight }}
+          style={{
+            maxHeight: position.maxHeight,
+            width: DROPDOWN_WIDTH,
+            minWidth: DROPDOWN_WIDTH,
+            maxWidth: `min(${DROPDOWN_WIDTH}px, calc(100vw - 2rem))`,
+          }}
         >
           {regions.map((r) => {
             const label = t(r.id as "global" | "europe" | "uk" | "india" | "canada" | "pakistan");
