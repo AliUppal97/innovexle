@@ -379,9 +379,9 @@
   "meta": {
     "home": "Home",
     "homeTitle": "Your vision. Our craft. Zero shortcuts. | Innovexle",
-    "homeDescription": "Full-stack engineering that actually ships. Fintech, SaaS, healthcare, AI — MERN, MEAN, Python, Django, Rails, Java. ML/AI ready. We listen, build, and stick around.",
+    "homeDescription": "Full-stack engineering that actually ships. Fintech, SaaS, healthcare, AI - MERN, MEAN, Python, Django, Rails, Java. ML/AI ready. We listen, build, and stick around.",
     "servicesTitle": "Services",
-    "servicesDescription": "Your stack, your industry. We don't do cookie-cutter. MERN, MEAN, Python, Django, Rails, Java — fintech, SaaS, healthcare, ML/AI. Built for you.",
+    "servicesDescription": "Your stack, your industry. We don't do cookie-cutter. MERN, MEAN, Python, Django, Rails, Java - fintech, SaaS, healthcare, ML/AI. Built for you.",
     "caseStudiesTitle": "Case Studies",
     "caseStudiesDescription": "Real teams, real wins. Fintech, SaaS, healthcare  - see what happens when we roll up our sleeves and ship.",
     "privacyTitle": "Privacy Policy",
@@ -396,7 +396,7 @@
     "careersDescription": "Build things that matter. Work with people who give a damn. Remote-first, full-stack, no busywork.",
     "aboutTitle": "About",
     "aboutDescription": "Builders at heart. We've shipped in fintech, healthcare, SaaS, AI  - and we're still learning. Meet the team.",
-    "siteDescription": "Your vision. Our craft. Full-stack engineering that ships. Fintech, SaaS, healthcare, ML/AI — MERN, MEAN, Python, Django, Rails, Java."
+    "siteDescription": "Your vision. Our craft. Full-stack engineering that ships. Fintech, SaaS, healthcare, ML/AI - MERN, MEAN, Python, Django, Rails, Java."
   },
   "a11y": {
     "trustedBy": "Trusted by",
@@ -428,7 +428,7 @@
     "items": {
       "services": {
         "q": "What services do you offer?",
-        "a": "We build across MERN, MEAN, Python, Django, Rails, and Java — for fintech, SaaS, e-commerce, healthcare, and AI. Python powers our ML/AI and data work. API design, databases, cloud infra, integrations, performance tuning, security audits. No cookie-cutter: we figure out your stack and industry, then tailor everything. We document, we observe, we transfer knowledge — so you can own it."
+        "a": "We build across MERN, MEAN, Python, Django, Rails, and Java - for fintech, SaaS, e-commerce, healthcare, and AI. Python powers our ML/AI and data work. API design, databases, cloud infra, integrations, performance tuning, security audits. No cookie-cutter: we figure out your stack and industry, then tailor everything. We document, we observe, we transfer knowledge - so you can own it."
       },
       "process": {
         "q": "How does your engagement process work?",
@@ -448,7 +448,7 @@
       },
       "technologies": {
         "q": "What technologies and stacks do you work with?",
-        "a": "MERN, MEAN, Python, Django, Rails, Java — plus AWS, GCP, PostgreSQL, Redis, Kubernetes, Docker. Python for ML/AI and data pipelines. Fintech, SaaS, e-commerce, healthcare, AI. We pick what fits your reality, not whatever's trending on HN this week."
+        "a": "MERN, MEAN, Python, Django, Rails, Java - plus AWS, GCP, PostgreSQL, Redis, Kubernetes, Docker. Python for ML/AI and data pipelines. Fintech, SaaS, e-commerce, healthcare, AI. We pick what fits your reality, not whatever's trending on HN this week."
       },
       "remote": {
         "q": "Do you work remotely or on-site?",
