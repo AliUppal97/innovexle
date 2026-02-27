@@ -69,8 +69,8 @@ export default function CareersPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="section-padding bg-card border-b border-border">
+      {/* Hero - no bg-card on first section so navbar stays transparent at top (matches About, Services) */}
+      <section className="section-padding border-b border-border">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-h1 font-bold text-foreground">{t("title")}</h1>
