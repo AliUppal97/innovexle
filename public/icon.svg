@@ -1,18 +1,24 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="32" height="32" rx="7" fill="#0A0A0A"/>
+  <style>
+    .logo { stroke: #171717; fill: #171717; }
+    path.logo { fill: none; }
+    @media (prefers-color-scheme: dark) {
+      .logo { stroke: #FAFAFA; fill: #FAFAFA; }
+    }
+  </style>
   <path
+    class="logo"
     d="M16 5.5L27 11.5v11L16 28.5l-11-6v-11z"
-    stroke="#FAFAFA"
     stroke-width="2"
     stroke-linejoin="round"
-    fill="none"
   />
-  <circle cx="16" cy="12" r="1.6" fill="#FAFAFA"/>
+  <circle class="logo" cx="16" cy="12" r="1.6" stroke="none"/>
   <line
+    class="logo"
     x1="16" y1="15.5"
     x2="16" y2="25"
-    stroke="#FAFAFA"
     stroke-width="2.2"
     stroke-linecap="round"
+    fill="none"
   />
 </svg>

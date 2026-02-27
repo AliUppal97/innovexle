@@ -2,13 +2,9 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const size = {
-  width: 32,
-  height: 32,
-};
-export const contentType = "image/png";
+const size = { width: 32, height: 32 };
 
-export default function Icon() {
+export async function GET() {
   return new ImageResponse(
     (
       <svg
@@ -20,18 +16,18 @@ export default function Icon() {
       >
         <path
           d="M16 5.5L27 11.5v11L16 28.5l-11-6v-11z"
-          stroke="#171717"
+          stroke="#FAFAFA"
           strokeWidth="2"
           strokeLinejoin="round"
           fill="none"
         />
         <path
           d="M16 10.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 1 0 0-3.2z"
-          fill="#171717"
+          fill="#FAFAFA"
         />
         <path
           d="M16 15.5V25"
-          stroke="#171717"
+          stroke="#FAFAFA"
           strokeWidth="2.2"
           strokeLinecap="round"
         />
@@ -39,6 +35,9 @@ export default function Icon() {
     ),
     {
       ...size,
+      headers: {
+        "Cache-Control": "public, max-age=31536000, immutable",
+      },
     }
   );
 }
