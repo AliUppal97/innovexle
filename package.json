@@ -21,6 +21,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@fontsource/noto-nastaliq-urdu": "^5.2.8",
     "@heroicons/react": "^2.2.0",
     "clsx": "^2.1.0",
     "framer-motion": "^12.34.2",
