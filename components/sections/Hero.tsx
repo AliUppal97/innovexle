@@ -8,7 +8,7 @@ export async function Hero() {
   const t = await getTranslations("home");
 
   return (
-    <section className="relative overflow-hidden section-padding -mt-16">
+    <section className="section-hero section-padding -mt-16 relative overflow-hidden">
       <div className="absolute inset-0 -z-10" aria-hidden="true">
         <svg
           className="absolute h-full w-full stroke-border [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
@@ -31,17 +31,17 @@ export async function Hero() {
       <Container>
         <div className="mx-auto max-w-3xl text-center">
           <Reveal variant="fade-up">
-            <h1 className="text-h2 sm:text-h1 lg:text-display font-bold tracking-tight text-foreground">
+            <h1 className="text-h2 sm:text-h1 lg:text-display font-bold tracking-tight text-foreground leading-[1.15]">
               {t("heroTitle")}
             </h1>
           </Reveal>
           <Reveal variant="fade-up" delay={0.1}>
-            <p className="mt-6 text-body sm:text-h3 lg:text-h3 font-normal text-muted">
+            <p className="mt-8 text-body sm:text-h3 lg:text-h3 font-normal text-muted max-w-2xl mx-auto">
               {t("heroSubtitle")}
             </p>
           </Reveal>
           <Reveal variant="fade-up" delay={0.2}>
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button asChild size="lg">
                 <Link href="/contact">{t("heroCta")}</Link>
               </Button>
@@ -53,7 +53,7 @@ export async function Hero() {
         </div>
 
         <Reveal variant="fade-in" delay={0.3}>
-          <div className="mt-16 flex justify-center" aria-hidden="true">
+          <div className="mt-20 lg:mt-24 flex justify-center" aria-hidden="true">
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-muted/20 to-transparent blur-3xl" />
               <svg
