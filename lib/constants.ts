@@ -71,13 +71,8 @@ export const processSteps = [
   },
 ];
 
-export const techStack: { name: string; logo?: string }[] = [
-  { name: "MERN" },
-  { name: "MEAN" },
-  { name: "Python" },
-  { name: "Django" },
-  { name: "Ruby on Rails" },
-  { name: "Java" },
+/** Only technologies with official logos. Stacks (MERN, Python, etc.) are in hero/services copy. */
+export const techStack: { name: string; logo: string }[] = [
   { name: "AWS", logo: "/logos/aws.svg" },
   { name: "Google Cloud", logo: "/logos/gcp.svg" },
   { name: "PostgreSQL", logo: "/logos/postgresql.svg" },
