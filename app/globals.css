@@ -128,18 +128,18 @@
     }
   }
 
-  /* Hero: -mt-16 pulls section to top; pt sets gap between nav (64px) and h1 title */
+  /* Hero: -mt-16 pulls section to top; tighter pt so hero + trust logos fit above fold on desktop */
   main > section.section-hero {
-    padding-top: 7.5rem; /* 72px gap: nav ends 64px, title at 120px */
+    padding-top: 6.5rem; /* nav to title gap */
   }
   @media (min-width: 640px) {
     main > section.section-hero {
-      padding-top: 8.5rem; /* 80px gap: title at 136px */
+      padding-top: 7rem;
     }
   }
   @media (min-width: 1024px) {
     main > section.section-hero {
-      padding-top: 9rem; /* 80px gap: title at 144px - recommended nav-to-headline spacing */
+      padding-top: 7.5rem;
     }
   }
 
