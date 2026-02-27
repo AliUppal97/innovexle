@@ -87,5 +87,5 @@ export function formatRegionalSalary(
     maximumFractionDigits: 0,
   });
 
-  return `${formatter.format(convertedMin)} – ${formatter.format(convertedMax)}`;
+  return `${formatter.format(convertedMin)} - ${formatter.format(convertedMax)}`;
 }

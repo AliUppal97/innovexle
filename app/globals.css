@@ -113,7 +113,7 @@
     @apply py-16 sm:py-20 lg:py-24;
   }
 
-  /* First section: premium nav-to-content spacing - 48–80px gap from 64px nav */
+  /* First section: premium nav-to-content spacing - 48-80px gap from 64px nav */
   main > section:first-of-type:not(.section-hero) {
     padding-top: 3rem; /* 48px gap on mobile */
   }

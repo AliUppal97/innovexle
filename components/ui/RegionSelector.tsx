@@ -234,7 +234,7 @@ export function RegionalSalary({
 
   return (
     <span className={cn(className)}>
-      {formatter.format(min)} – {formatter.format(max)}
+      {formatter.format(min)} - {formatter.format(max)}
     </span>
   );
 }
