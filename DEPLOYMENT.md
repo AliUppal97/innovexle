@@ -6,7 +6,7 @@ This guide covers deploying Innovexle to Vercel and connecting a custom domain f
 
 - [Vercel account](https://vercel.com/signup)
 - [Namecheap account](https://www.namecheap.com/) with your domain registered
-- Git repository on GitHub — see **[GITHUB.md](./GITHUB.md)** for creating the repo and first push
+- Git repository on GitHub  - see **[GITHUB.md](./GITHUB.md)** for creating the repo and first push
 
 ## Deploy to Vercel
 
@@ -17,7 +17,7 @@ This guide covers deploying Innovexle to Vercel and connecting a custom domain f
    ```bash
    git init
    git add .
-   git commit -m "chore: initial commit — Innovexle portfolio"
+   git commit -m "chore: initial commit  - Innovexle portfolio"
    git branch -M main
    git remote add origin https://github.com/your-username/innovexle.git
    git push -u origin main

@@ -18,7 +18,7 @@ This guide covers creating a GitHub repository and pushing the Innovexle portfol
    - **Repository name**: `innovexle` (or `innovexle-website` if you prefer).
    - **Description**: e.g. `Innovexle company portfolio and marketing website. Next.js 14, TypeScript, Tailwind.`
    - **Visibility**: **Private** (until launch) or **Public** (for open portfolio).
-   - **Do not** check "Add a README", ".gitignore", or "License" — the project already has these.
+   - **Do not** check "Add a README", ".gitignore", or "License"  - the project already has these.
 4. Click **Create repository**.
 5. Leave the "Quick setup" page open; you will use the repository URL in step 4 below.
 
@@ -96,7 +96,7 @@ content: update case study for Project Alpha
 
 ```bash
 git add .
-git commit -m "chore: initial commit — Innovexle portfolio (Next.js 14, TypeScript, Tailwind)"
+git commit -m "chore: initial commit  - Innovexle portfolio (Next.js 14, TypeScript, Tailwind)"
 ```
 
 ---

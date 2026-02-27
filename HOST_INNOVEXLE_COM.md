@@ -10,7 +10,7 @@ This guide walks you through deploying the site to **innovexle.com** and making 
 
 ---
 
-## Part 1 — Deploy the site to Vercel
+## Part 1  - Deploy the site to Vercel
 
 ### 1.1 Import from GitHub
 
@@ -22,7 +22,7 @@ This guide walks you through deploying the site to **innovexle.com** and making 
    - **Root Directory:** `./`  
    - **Build Command:** `npm run build`  
    - **Install Command:** `npm install`
-5. **Do not deploy yet** — add environment variables first (Step 1.2).
+5. **Do not deploy yet**  - add environment variables first (Step 1.2).
 6. Then click **Deploy**.
 
 ### 1.2 Environment variables (required for site + email)
@@ -42,7 +42,7 @@ After deploy you’ll have a URL like `innovexle-xxx.vercel.app`. Next we point 
 
 ---
 
-## Part 2 — Point innovexle.com to Vercel
+## Part 2  - Point innovexle.com to Vercel
 
 ### 2.1 Add domain in Vercel
 
@@ -64,7 +64,7 @@ After deploy you’ll have a URL like `innovexle-xxx.vercel.app`. Next we point 
 | A     | `@`  | `216.198.79.1` (or the IP Vercel shows for innovexle.com) |
 | CNAME | `www` | `cname.vercel-dns.com` |
 
-If Vercel displays different values, use those—they go in your **registrar’s DNS** (e.g. Namecheap), not in Vercel.
+If Vercel displays different values, use those -they go in your **registrar’s DNS** (e.g. Namecheap), not in Vercel.
 
 5. **Masked vs unmasked:** If you are asked this for a redirect elsewhere (e.g. “Redirect Domain”), choose **unmasked**. Unmasked = real HTTP redirect (URL bar updates, works with SSL). Masked = frame redirect (can break SSL and SEO); avoid it for your main site.
 6. Save. Wait 5–30 minutes for DNS to propagate.
@@ -78,7 +78,7 @@ Your site is now hosted on **innovexle.com**. Next we make the contact form send
 
 ---
 
-## Part 3 — Email: Resend (sending from innovexle.com)
+## Part 3  - Email: Resend (sending from innovexle.com)
 
 The app uses [Resend](https://resend.com) to send contact form emails. You need an API key and domain verification so mail is “from” your domain and delivers correctly.
 
@@ -108,7 +108,7 @@ Resend’s records are for sending/authentication; your inbox provider’s MX re
 
 ---
 
-## Part 4 — Receiving email at hello@innovexle.com
+## Part 4  - Receiving email at hello@innovexle.com
 
 You want messages sent via the site to land in **hello@innovexle.com**.
 
@@ -124,7 +124,7 @@ If you’re not sure about MX:
 
 ---
 
-## Part 5 — Test the full flow
+## Part 5  - Test the full flow
 
 1. **Site:** Open **https://innovexle.com** and **https://innovexle.com/contact** (or your locale, e.g. `/en/contact`).
 2. **Contact form:** Submit a test message (use your own email so you can check reply-to).

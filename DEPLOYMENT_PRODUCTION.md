@@ -1,4 +1,4 @@
-# Innovexle — Complete Production Deployment Guide
+# Innovexle  - Complete Production Deployment Guide
 
 **Goal:** Deploy innovexle.com to production and keep it running for **at least 2 years without extra cost** beyond your Namecheap domain and email.
 
@@ -26,14 +26,14 @@ Your project is a **Next.js 14 full‑stack app** (frontend + API routes in one)
 
 Your app uses **file-based storage** for job applications and rate limiting. Vercel runs on **serverless functions**, so:
 
-- **Writes to disk are ephemeral** — data is lost on deploy and often across requests.
-- **Job applications** — Will not persist reliably on Vercel alone.
-- **Resume uploads** — Will not persist on Vercel.
+- **Writes to disk are ephemeral**  - data is lost on deploy and often across requests.
+- **Job applications**  - Will not persist reliably on Vercel alone.
+- **Resume uploads**  - Will not persist on Vercel.
 
 **Options:**
 
-1. **Vercel only** — Site works; contact form (Resend) works; job applications and resumes won’t persist. Good if you mainly need the marketing site and contact form.
-2. **Vercel + Supabase** — Add Supabase (free) for job applications and resume storage. Requires adding a storage adapter and small API changes.
+1. **Vercel only**  - Site works; contact form (Resend) works; job applications and resumes won’t persist. Good if you mainly need the marketing site and contact form.
+2. **Vercel + Supabase**  - Add Supabase (free) for job applications and resume storage. Requires adding a storage adapter and small API changes.
 
 This guide covers the primary path (Vercel + Resend) and includes the Supabase migration path if you want persistent job applications.
 
@@ -43,31 +43,31 @@ This guide covers the primary path (Vercel + Resend) and includes the Supabase m
 
 ## Phase 1: Prepare Your Repo and Environment
 
-### Step 1.1 — Verify GitHub
+### Step 1.1  - Verify GitHub
 
 1. Ensure code is on GitHub: `https://github.com/YOUR_USERNAME/innovexle`
 2. Set default branch to `main`
-3. Ensure `.env.local` (or secrets) is **not** committed — only `.env.example` should be in the repo
+3. Ensure `.env.local` (or secrets) is **not** committed  - only `.env.example` should be in the repo
 
-### Step 1.2 — List Required Environment Variables
+### Step 1.2  - List Required Environment Variables
 
 You’ll set these in Vercel:
 
 | Variable | Required | Description | Free source |
 |----------|----------|-------------|-------------|
-| `NEXT_PUBLIC_SITE_URL` | Yes | `https://innovexle.com` | — |
+| `NEXT_PUBLIC_SITE_URL` | Yes | `https://innovexle.com` |  - |
 | `CONTACT_EMAIL` | Yes | `hello@innovexle.com` | Namecheap |
 | `RESEND_API_KEY` | Yes (for contact) | Resend API key | Resend free tier |
 | `NEXT_PUBLIC_ANALYTICS_ID` | No | Plausible site / GA4 ID | Plausible / GA4 |
 | `NEXT_PUBLIC_SENTRY_DSN` | No | Sentry DSN | Sentry free tier |
-| `NEXT_PUBLIC_ERROR_ENDPOINT` | No | Custom error endpoint | — |
-| `NEXT_PUBLIC_VITALS_ENDPOINT` | No | Web Vitals endpoint | — |
+| `NEXT_PUBLIC_ERROR_ENDPOINT` | No | Custom error endpoint |  - |
+| `NEXT_PUBLIC_VITALS_ENDPOINT` | No | Web Vitals endpoint |  - |
 
 ---
 
 ## Phase 2: Deploy on Vercel
 
-### Step 2.1 — Create Vercel Project
+### Step 2.1  - Create Vercel Project
 
 1. Go to [vercel.com](https://vercel.com) and sign up / log in (GitHub recommended)
 2. **Add New Project** → import your GitHub repo `innovexle`
@@ -78,7 +78,7 @@ You’ll set these in Vercel:
 7. **Output Directory:** leave default
 8. **Install Command:** `npm install`
 
-### Step 2.2 — Add Environment Variables
+### Step 2.2  - Add Environment Variables
 
 Before first deploy:
 
@@ -88,38 +88,38 @@ Before first deploy:
    ```
    NEXT_PUBLIC_SITE_URL = https://innovexle.com
    CONTACT_EMAIL = hello@innovexle.com
-   RESEND_API_KEY = (from Resend — Step 3)
+   RESEND_API_KEY = (from Resend  - Step 3)
    ```
 
 3. Enable for **Production**, **Preview**, and **Development**
 4. Save
 
-### Step 2.3 — Deploy
+### Step 2.3  - Deploy
 
 1. Click **Deploy**
 2. Wait for the build; note the `*.vercel.app` URL
 3. Test:
    - Homepage
-   - `/contact` — form submit
-   - `/careers` — job listings
+   - `/contact`  - form submit
+   - `/careers`  - job listings
 
 ---
 
 ## Phase 3: Configure Resend for hello@innovexle.com
 
-### Step 3.1 — Resend Account
+### Step 3.1  - Resend Account
 
 1. Go to [resend.com](https://resend.com) and sign up
 2. Verify email
 
-### Step 3.2 — Create API Key
+### Step 3.2  - Create API Key
 
 1. **API Keys** → **Create API Key**
 2. Name: `innovexle-production`
 3. Permission: **Sending access**
 4. Copy the key (starts with `re_`) and paste into Vercel `RESEND_API_KEY`
 
-### Step 3.3 — Add and Verify Domain
+### Step 3.3  - Add and Verify Domain
 
 1. **Domains** → **Add Domain**
 2. Enter: `innovexle.com`
@@ -131,19 +131,19 @@ Before first deploy:
 
 **Note:** You can use Resend for **sending** (contact form) and keep **receiving** in Namecheap Private Email. In that case, you only need the sending DNS records Resend provides.
 
-### Step 3.4 — Test Contact Form
+### Step 3.4  - Test Contact Form
 
 1. Send a test message via your contact form
 2. Check the inbox for `hello@innovexle.com` (Namecheap)
 3. Check Resend dashboard for delivery status
 
-**Resend free tier:** 100 emails/day, 3,000/month — more than enough for a contact form.
+**Resend free tier:** 100 emails/day, 3,000/month  - more than enough for a contact form.
 
 ---
 
 ## Phase 4: Connect Custom Domain (Namecheap → Vercel)
 
-### Step 4.1 — Add Domain in Vercel
+### Step 4.1  - Add Domain in Vercel
 
 1. Vercel project → **Settings** → **Domains**
 2. Click **Add**
@@ -152,7 +152,7 @@ Before first deploy:
    - `www.innovexle.com`
 4. Vercel will suggest DNS records
 
-### Step 4.2 — Configure Namecheap DNS
+### Step 4.2  - Configure Namecheap DNS
 
 1. Log in to [Namecheap](https://www.namecheap.com)
 2. **Domain List** → **Manage** for `innovexle.com`
@@ -174,7 +174,7 @@ Or use Vercel nameservers for easier management:
 
 (Set under Namecheap → Domain → Nameservers → Custom DNS)
 
-### Step 4.3 — Wait for SSL
+### Step 4.3  - Wait for SSL
 
 1. After DNS propagates (often 5–30 minutes), Vercel issues an SSL certificate
 2. Domains show **Valid Configuration**
@@ -186,7 +186,7 @@ Or use Vercel nameservers for easier management:
 
 You already bought email from Namecheap. Configure it as follows.
 
-### Step 5.1 — Incoming Mail (Inbox)
+### Step 5.1  - Incoming Mail (Inbox)
 
 Namecheap Private Email uses:
 
@@ -195,7 +195,7 @@ Namecheap Private Email uses:
 
 Follow Namecheap’s setup guide for your domain and create the mailbox `hello@innovexle.com`.
 
-### Step 5.2 — Resend vs Namecheap for Sending
+### Step 5.2  - Resend vs Namecheap for Sending
 
 - **Resend:** Used by your contact form API (via `RESEND_API_KEY`). Handles sending from hello@innovexle.com.
 - **Namecheap:** Handles receiving email at hello@innovexle.com.
@@ -204,11 +204,11 @@ Add Resend’s DNS records as shown in Phase 3 so Resend can send from `hello@in
 
 ---
 
-## Phase 6: Optional — Persistent Job Applications (Supabase)
+## Phase 6: Optional  - Persistent Job Applications (Supabase)
 
 If you need job applications and resumes to persist, add Supabase on the free tier.
 
-### Step 6.1 — Supabase Project
+### Step 6.1  - Supabase Project
 
 1. Go to [supabase.com](https://supabase.com) and sign up
 2. **New Project**:
@@ -216,7 +216,7 @@ If you need job applications and resumes to persist, add Supabase on the free ti
    - Database password: store securely
    - Region: choose closest to your users
 
-### Step 6.2 — Schema
+### Step 6.2  - Schema
 
 In Supabase SQL editor, run:
 
@@ -262,7 +262,7 @@ Create a Storage bucket for resumes:
 1. **Storage** → **New bucket** → `resumes`
 2. Make it private; use the Supabase client with service role for upload/read
 
-### Step 6.3 — Environment Variables
+### Step 6.3  - Environment Variables
 
 In Vercel, add:
 
@@ -271,7 +271,7 @@ NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT_REF.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 ```
 
-### Step 6.4 — Code Changes
+### Step 6.4  - Code Changes
 
 You’ll need a Supabase adapter in `lib/storage.ts` that:
 
@@ -283,7 +283,7 @@ This is a small refactor. The existing file-based implementation can remain as f
 
 ---
 
-## Phase 7: Optional — Persistent Rate Limiting (Upstash Redis)
+## Phase 7: Optional  - Persistent Rate Limiting (Upstash Redis)
 
 If you want rate limiting to persist across serverless invocations:
 

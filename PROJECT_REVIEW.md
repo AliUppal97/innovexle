@@ -1,4 +1,4 @@
-# Innovexle — Project Review & International Readiness
+# Innovexle  - Project Review & International Readiness
 
 **Review focus:** Worth, rating, and gap analysis for targeting world-class software-engineering companies and the international market.  
 **Reviewed:** Codebase, architecture, SEO, a11y, deployment, and feature set.  
@@ -33,31 +33,31 @@ Innovexle is a **backend-engineering marketing and recruitment site** built with
 
 ### Critical (International Readiness)
 
-1. **Internationalization (i18n)** — `next-intl` with locale routing (`/en`, `/es`, `/de`, `/fr`, `/ar`), RTL support for Arabic, translated UI chrome across all pages, `localePrefix: 'as-needed'` preserving existing English URLs.
+1. **Internationalization (i18n)**  - `next-intl` with locale routing (`/en`, `/es`, `/de`, `/fr`, `/ar`), RTL support for Arabic, translated UI chrome across all pages, `localePrefix: 'as-needed'` preserving existing English URLs.
 
-2. **Complete Sitemap** — Dynamic sitemap now includes all services, case studies, and job detail pages with locale alternate links for SEO.
+2. **Complete Sitemap**  - Dynamic sitemap now includes all services, case studies, and job detail pages with locale alternate links for SEO.
 
-3. **Persistent Job Applications** — File-based JSON storage adapter (`lib/storage.ts`) with resume file upload support. Production-ready adapter pattern easily swappable to database.
+3. **Persistent Job Applications**  - File-based JSON storage adapter (`lib/storage.ts`) with resume file upload support. Production-ready adapter pattern easily swappable to database.
 
-4. **Production Rate Limiting** — File-based persistent rate limiter (`lib/rate-limit.ts`) that survives serverless cold starts. Swappable to Redis/Vercel KV for production.
+4. **Production Rate Limiting**  - File-based persistent rate limiter (`lib/rate-limit.ts`) that survives serverless cold starts. Swappable to Redis/Vercel KV for production.
 
 ### High (Expected by World-Class Firms)
 
-5. **Automated Testing** — Vitest test suite with 34 tests covering utilities, data integrity, regions, rate limiting, and i18n configuration. CI pipeline runs tests before build.
+5. **Automated Testing**  - Vitest test suite with 34 tests covering utilities, data integrity, regions, rate limiting, and i18n configuration. CI pipeline runs tests before build.
 
-6. **Analytics with GDPR Consent** — Cookie consent banner with accept/decline. Analytics scripts only load after explicit consent. Respects Do Not Track.
+6. **Analytics with GDPR Consent**  - Cookie consent banner with accept/decline. Analytics scripts only load after explicit consent. Respects Do Not Track.
 
-7. **Error & Performance Monitoring** — Error boundary with automatic error reporting (`lib/monitoring.ts`), Core Web Vitals tracking (CLS, INP, LCP, FCP, TTFB) via `web-vitals`.
+7. **Error & Performance Monitoring**  - Error boundary with automatic error reporting (`lib/monitoring.ts`), Core Web Vitals tracking (CLS, INP, LCP, FCP, TTFB) via `web-vitals`.
 
 ### Important (Competitive for International)
 
-8. **Region-Aware Content** — Region selector with 5 regions (Global/USD, Europe/EUR, UK/GBP, India/INR, Canada/CAD). Salary displays convert to selected region's currency with proper formatting.
+8. **Region-Aware Content**  - Region selector with 5 regions (Global/USD, Europe/EUR, UK/GBP, India/INR, Canada/CAD). Salary displays convert to selected region's currency with proper formatting.
 
-9. **Localized Legal Pages** — Privacy Policy and Terms of Service with locale-aware translations. Enhanced Privacy Policy includes GDPR section, international data rights, and cookie consent details.
+9. **Localized Legal Pages**  - Privacy Policy and Terms of Service with locale-aware translations. Enhanced Privacy Policy includes GDPR section, international data rights, and cookie consent details.
 
-10. **Accessibility Conformance** — WCAG 2.1 AA conformance statement page (`/accessibility`). CI workflow includes test stage. axe-core assessment approach documented.
+10. **Accessibility Conformance**  - WCAG 2.1 AA conformance statement page (`/accessibility`). CI workflow includes test stage. axe-core assessment approach documented.
 
-11. **Language Switcher** — Dropdown language selector in header supporting all 5 locales with proper locale-aware navigation.
+11. **Language Switcher**  - Dropdown language selector in header supporting all 5 locales with proper locale-aware navigation.
 
 ---
 

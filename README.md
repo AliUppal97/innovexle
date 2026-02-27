@@ -126,8 +126,8 @@ npm run lint
 
 ## Deployment
 
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)** — Deploy to Vercel and connect a custom domain (e.g. Namecheap).
-- **[GITHUB.md](./GITHUB.md)** — Create the GitHub repo, commit standards, and push steps for the portfolio.
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)**  - Deploy to Vercel and connect a custom domain (e.g. Namecheap).
+- **[GITHUB.md](./GITHUB.md)**  - Create the GitHub repo, commit standards, and push steps for the portfolio.
 
 ## Performance
 

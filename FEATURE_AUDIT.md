@@ -1,7 +1,7 @@
-# Innovexle — End-to-End Feature Audit
+# Innovexle  - End-to-End Feature Audit
 
 **Audit date:** February 2026  
-**Scope:** Complete project review — architecture, pages, features, UX, SEO, security, testing, deployment
+**Scope:** Complete project review  - architecture, pages, features, UX, SEO, security, testing, deployment
 
 ---
 
@@ -30,28 +30,28 @@ A strong, production-ready marketing site with excellent i18n, SEO, and UX. Nota
 ## Implemented Features
 
 ### Pages & Routing
-- **Home** — Hero, Services, Process, Case Studies, Trust, CTA
-- **About** — Company overview, values, principles, office locations
-- **Services** — Listing + dynamic `/services/[slug]` with outcomes
-- **Case Studies** — Listing + dynamic `/case-studies/[slug]` with metrics
-- **Careers** — Job listings with filters (dept, location, level, search)
-- **Careers Detail** — Job page with application form, share, related jobs
-- **Contact** — Form with validation, FAQ accordion
-- **Privacy** — GDPR-oriented policy
-- **Terms** — Terms of service
-- **Accessibility** — WCAG 2.1 AA conformance statement
+- **Home**  - Hero, Services, Process, Case Studies, Trust, CTA
+- **About**  - Company overview, values, principles, office locations
+- **Services**  - Listing + dynamic `/services/[slug]` with outcomes
+- **Case Studies**  - Listing + dynamic `/case-studies/[slug]` with metrics
+- **Careers**  - Job listings with filters (dept, location, level, search)
+- **Careers Detail**  - Job page with application form, share, related jobs
+- **Contact**  - Form with validation, FAQ accordion
+- **Privacy**  - GDPR-oriented policy
+- **Terms**  - Terms of service
+- **Accessibility**  - WCAG 2.1 AA conformance statement
 
 ### Core Features
-- **Contact form** — Client + server validation, rate limit (3/min), honeypot, Resend
-- **Job applications** — Form, resume upload (PDF/DOC, 5MB), file storage
-- **Chatbot** — FAQ-style Q&A, typewriter effect, 5 locales
-- **Scroll-to-top** — Appears after 400px, smooth scroll, reduced motion
-- **Cookie consent** — Accept/decline, localStorage, analytics gated
-- **Theme toggle** — Dark/light/system, FOUC prevention
-- **Language switcher** — 5 locales, locale-aware navigation
-- **Region selector** — 5 regions, multi-currency salary display
-- **TopLoader** — Navigation progress bar
-- **Toast** — Toast notifications
+- **Contact form**  - Client + server validation, rate limit (3/min), honeypot, Resend
+- **Job applications**  - Form, resume upload (PDF/DOC, 5MB), file storage
+- **Chatbot**  - FAQ-style Q&A, typewriter effect, 5 locales
+- **Scroll-to-top**  - Appears after 400px, smooth scroll, reduced motion
+- **Cookie consent**  - Accept/decline, localStorage, analytics gated
+- **Theme toggle**  - Dark/light/system, FOUC prevention
+- **Language switcher**  - 5 locales, locale-aware navigation
+- **Region selector**  - 5 regions, multi-currency salary display
+- **TopLoader**  - Navigation progress bar
+- **Toast**  - Toast notifications
 
 ### SEO & Metadata
 - Dynamic sitemap with locale alternates
@@ -87,46 +87,46 @@ A strong, production-ready marketing site with excellent i18n, SEO, and UX. Nota
 ## Features That Are Missing
 
 ### Critical
-1. **Auth for applications API** — GET endpoint exposes PII publicly.
+1. **Auth for applications API**  - GET endpoint exposes PII publicly.
 
 ### High
-2. **API route tests** — No tests for `/api/contact`, `/api/applications`, `/api/jobs`.
-3. **Rate limiting on applications POST** — Abuse risk (spam, DoS).
-4. **Do Not Track support** — Documented but not implemented in Analytics.
+2. **API route tests**  - No tests for `/api/contact`, `/api/applications`, `/api/jobs`.
+3. **Rate limiting on applications POST**  - Abuse risk (spam, DoS).
+4. **Do Not Track support**  - Documented but not implemented in Analytics.
 
 ### Medium
-5. **Component tests** — No tests for ContactForm, JobApplicationForm, Chatbot.
-6. **axe-core in CI** — Documentation says it’s in CI; it isn’t.
-7. **E2E tests** — No Playwright/Cypress for critical paths.
-8. **Per-page OG images** — Services/careers use default; could have custom.
+5. **Component tests**  - No tests for ContactForm, JobApplicationForm, Chatbot.
+6. **axe-core in CI**  - Documentation says it’s in CI; it isn’t.
+7. **E2E tests**  - No Playwright/Cypress for critical paths.
+8. **Per-page OG images**  - Services/careers use default; could have custom.
 
 ### Low
-9. **Blog/news section** — Optional for marketing site.
-10. **Search** — Site-wide search for jobs/services.
-11. **Sitemap index** — For very large sites; not needed yet.
-12. **PWA installability** — Manifest exists; could add service worker.
+9. **Blog/news section**  - Optional for marketing site.
+10. **Search**  - Site-wide search for jobs/services.
+11. **Sitemap index**  - For very large sites; not needed yet.
+12. **PWA installability**  - Manifest exists; could add service worker.
 
 ---
 
 ## Prioritized Recommendations
 
-### P0 — Critical (Security)
-1. **Secure or remove Applications GET** — Add API key/auth or remove; do not expose PII.
+### P0  - Critical (Security)
+1. **Secure or remove Applications GET**  - Add API key/auth or remove; do not expose PII.
 
-### P1 — High
-2. **Rate limit Applications POST** — Align with contact (e.g. 5 applications/hour per IP).
-3. **Implement Do Not Track** — Honor DNT in Analytics when loading scripts.
-4. **Add API tests** — Basic tests for contact, applications, jobs.
+### P1  - High
+2. **Rate limit Applications POST**  - Align with contact (e.g. 5 applications/hour per IP).
+3. **Implement Do Not Track**  - Honor DNT in Analytics when loading scripts.
+4. **Add API tests**  - Basic tests for contact, applications, jobs.
 
-### P2 — Medium
-5. **Add axe-core to CI** — Run accessibility tests in pipeline.
-6. **Harden CSP** — Reduce or eliminate `unsafe-inline` / `unsafe-eval`.
-7. **Add component tests** — Start with contact and job application forms.
+### P2  - Medium
+5. **Add axe-core to CI**  - Run accessibility tests in pipeline.
+6. **Harden CSP**  - Reduce or eliminate `unsafe-inline` / `unsafe-eval`.
+7. **Add component tests**  - Start with contact and job application forms.
 
-### P3 — Low
-8. **E2E tests** — Critical paths (home → contact, careers → apply).
-9. **Per-page OG images** — For key services/careers.
-10. **Monitoring docs** — Document Sentry/error endpoint setup.
+### P3  - Low
+8. **E2E tests**  - Critical paths (home → contact, careers → apply).
+9. **Per-page OG images**  - For key services/careers.
+10. **Monitoring docs**  - Document Sentry/error endpoint setup.
 
 ---
 
