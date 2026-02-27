@@ -215,8 +215,8 @@
       { "quote": "Sie haben unsere API-Schicht in 8 Wochen neu aufgebaut. Migration ohne Ausfallzeit, 3x Durchsatzverbesserung. Das Team kommunizierte bei jedem Schritt klar.", "author": "Engineering Lead", "role": "Serie-B-Fintech" },
       { "quote": "Endlich Ingenieure, die verstehen, dass Zuverlässigkeit eine Funktion ist und kein nachträglicher Einfall. Unsere Verfügbarkeit stieg von 99,5% auf 99,99%.", "author": "CTO", "role": "Gesundheitsplattform" },
       { "quote": "Unsere Infrastrukturkosten sanken nach ihrer Optimierungsarbeit um 40%. Der ROI war sofort und die Dokumentation, die sie hinterließen, war ausgezeichnet.", "author": "VP Engineering", "role": "E-Commerce-Scale-up" },
-      { "quote": "Die Migration war nahtlos — null Ausfallzeit, null Datenverlust. Unsere Bereitstellungshäufigkeit ging von monatlich auf täglich.", "author": "Head of Platform", "role": "SaaS-Unternehmen" },
-      { "quote": "Sie haben nicht nur unsere Performance-Probleme behoben — sie haben unserem Team beigebracht, sie zu verhindern. Dieser Wissenstransfer war unbezahlbar.", "author": "Senior Architect", "role": "AdTech-Leader" },
+      { "quote": "Die Migration war nahtlos  - null Ausfallzeit, null Datenverlust. Unsere Bereitstellungshäufigkeit ging von monatlich auf täglich.", "author": "Head of Platform", "role": "SaaS-Unternehmen" },
+      { "quote": "Sie haben nicht nur unsere Performance-Probleme behoben  - sie haben unserem Team beigebracht, sie zu verhindern. Dieser Wissenstransfer war unbezahlbar.", "author": "Senior Architect", "role": "AdTech-Leader" },
       { "quote": "Von Tag eins an haben sie unsere Annahmen hinterfragt und eine einfachere Architektur vorgeschlagen. Hat uns sechs Monate Arbeit gespart, die wir nicht brauchten.", "author": "Founder & CEO", "role": "Cloud-Startup" }
     ]
   },
@@ -348,7 +348,7 @@
     "contactTitle": "Kontakt",
     "contactDescription": "Kontaktieren Sie Innovexle. Erzählen Sie uns von Ihren Backend-Herausforderungen und wir antworten innerhalb eines Werktages.",
     "careersTitle": "Karriere",
-    "careersDescription": "Treten Sie Innovexle bei — offene Engineering-Positionen bei einem Remote-First-Backend-Beratungsunternehmen. Bauen Sie Systeme, die skalieren.",
+    "careersDescription": "Treten Sie Innovexle bei  - offene Engineering-Positionen bei einem Remote-First-Backend-Beratungsunternehmen. Bauen Sie Systeme, die skalieren.",
     "aboutTitle": "Über uns",
     "aboutDescription": "Wir sind Backend-Ingenieure, die Jahre damit verbracht haben, skalierbare Systeme zu bauen. Lernen Sie unseren Ansatz und unsere Werte kennen.",
     "siteDescription": "Backend-Engineering für Unternehmen, die sich keine Ausfallzeiten leisten können. Wir bauen Systeme, die skalieren."

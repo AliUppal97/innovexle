@@ -23,7 +23,7 @@ export async function Trust() {
                 key={tech.name}
                 className="flex items-center gap-2 text-muted hover:text-foreground transition-colors duration-200"
               >
-                <TechLogo src={tech.logo} name={tech.name} />
+                <TechLogo src={tech.logo ?? undefined} name={tech.name} />
                 <span className="text-small font-medium">{tech.name}</span>
               </div>
             ))}

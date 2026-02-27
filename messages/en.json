@@ -5,77 +5,77 @@
     "careers": "Careers",
     "about": "About",
     "contact": "Contact",
-    "talkToEngineer": "Talk to an engineer",
+    "talkToEngineer": "Let's talk",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
   },
   "home": {
-    "heroTitle": "Backend Engineering That Scales",
-    "heroSubtitle": "We design and build backend systems for companies that can't afford downtime. API architecture, cloud infrastructure, and performance optimization — built to last.",
-    "heroCta": "Start a conversation",
-    "heroSecondaryCta": "View our work",
-    "clientLogosTitle": "Trusted by engineering teams at"
+    "heroTitle": "Your vision. Our craft. Zero shortcuts.",
+    "heroSubtitle": "Whether you're building fintech or healthcare, SaaS or AI  - we speak your stack. MERN, Django, Rails, Java. We show up, listen, and ship.",
+    "heroCta": "Let's talk",
+    "heroSecondaryCta": "See what we've built",
+    "clientLogosTitle": "Teams who trust us"
   },
   "services": {
-    "title": "Our Services",
-    "subtitle": "Specialized backend engineering services focused on reliability, performance, and scale. Every engagement is tailored to your specific needs.",
+    "title": "What we do",
+    "subtitle": "We don't do cookie-cutter. Your stack, your industry, your constraints  - we figure it out together and build something you'll be proud of.",
     "whatYouGet": "What you get",
     "technologies": "Technologies",
     "learnMore": "Learn more",
-    "ourApproach": "Our Approach",
-    "approachSubtitle": "Every project follows a structured approach that ensures predictable outcomes.",
-    "weDontDo": "We don't do",
-    "weAlwaysDo": "We always do",
+    "ourApproach": "How we roll",
+    "approachSubtitle": "No surprises. No scope creep. Just a clear path from idea to production.",
+    "weDontDo": "What we skip",
+    "weAlwaysDo": "What we never skip",
     "weDontDoItems": [
-      "Quick fixes that create technical debt",
-      "Over-engineering for problems that don't exist",
-      "Vendor lock-in without clear justification",
-      "Solutions without documentation"
+      "Quick fixes that bite you later",
+      "Over-building for problems you don't have",
+      "Locking you into something you can't escape",
+      "Handing you code without a roadmap"
     ],
     "weAlwaysDoItems": [
-      "Document every architectural decision",
-      "Build with observability from day one",
-      "Design for failure and graceful degradation",
-      "Transfer knowledge to your team"
+      "Document why we made every call",
+      "Build observability in from day one",
+      "Plan for when things break  - because they will",
+      "Leave your team knowing how to own it"
     ],
     "relatedServices": "Related services",
-    "readyToStart": "Ready to get started with {service}?",
+    "readyToStart": "Want to dive into {service}?",
     "items": {
       "apiArchitecture": {
         "title": "API Architecture",
-        "description": "Design and implementation of robust, scalable APIs that handle millions of requests. RESTful and GraphQL architectures built for longevity.",
+        "description": "APIs that actually hold up when the traffic spikes. REST, GraphQL  - we build them so they last, not just so they work today.",
         "outcomes": ["Sub-100ms response times at scale", "Comprehensive API documentation", "Versioning strategy that prevents breaking changes", "Rate limiting and security hardening"]
       },
       "databaseDesign": {
         "title": "Database Design",
-        "description": "Data modeling and database architecture that scales with your business. We optimize for both read-heavy and write-heavy workloads.",
+        "description": "Data that grows with you. We model it right so you're not redoing it in a year. Reads, writes, migrations  - we've got you.",
         "outcomes": ["Query performance optimization", "Horizontal scaling strategies", "Data migration with zero downtime", "Backup and disaster recovery plans"]
       },
       "cloudInfrastructure": {
         "title": "Cloud Infrastructure",
-        "description": "Infrastructure as code, container orchestration, and cloud-native architectures. We build systems that are reproducible and reliable.",
+        "description": "Infra you can actually reproduce. IaC, containers, cloud-native  - we build it so anyone can run it, and it doesn't fall over at 2am.",
         "outcomes": ["99.99% uptime SLAs", "Auto-scaling that responds to demand", "Cost optimization without compromising reliability", "Multi-region deployment capabilities"]
       },
       "systemIntegration": {
         "title": "System Integration",
-        "description": "Connect disparate systems with reliable, maintainable integrations. We handle the complexity so your team can focus on product.",
+        "description": "Making systems talk to each other without the headache. We untangle the mess so your team can focus on building, not debugging integrations.",
         "outcomes": ["Event-driven architectures", "Reliable message queuing", "Third-party API integrations", "Legacy system modernization"]
       },
       "performanceOptimization": {
         "title": "Performance Optimization",
-        "description": "Identify bottlenecks, optimize critical paths, and reduce infrastructure costs. Data-driven improvements with measurable results.",
+        "description": "Find what's slow, fix it, cut your bills. We use data, not guesswork. You get metrics you can show your boss.",
         "outcomes": ["Detailed performance profiling", "Caching strategy implementation", "Database query optimization", "Infrastructure cost reduction"]
       },
       "securityAudits": {
         "title": "Security Audits",
-        "description": "Comprehensive security reviews of your backend systems. We identify vulnerabilities before they become incidents.",
+        "description": "We find the holes before someone else does. Compliance-ready, incident-ready. Sleep better knowing what's actually exposed.",
         "outcomes": ["Penetration testing reports", "Security best practices implementation", "Compliance readiness (SOC 2, HIPAA)", "Incident response planning"]
       }
     }
   },
   "caseStudies": {
     "title": "Case Studies",
-    "subtitle": "Real problems, measurable results. Here's how we've helped companies scale their backend infrastructure.",
+    "subtitle": "Real teams, real challenges, real wins. Here's what happens when we roll up our sleeves.",
     "featured": "Featured",
     "problem": "Challenge",
     "solution": "Solution",
@@ -138,9 +138,9 @@
     }
   },
   "careers": {
-    "title": "Join Our Team",
-    "subtitle": "Build systems that scale. Work with engineers who care about craft.",
-    "description": "We're a remote-first team of backend specialists solving hard problems for ambitious companies. If you care about reliability, performance, and clean code, you'll fit right in.",
+    "title": "Join us",
+    "subtitle": "Build things that matter. Work with people who give a damn.",
+    "description": "We're a remote-first crew who love solving hard problems. Fintech, healthcare, SaaS, AI  - you name it. If you care about craft and hate half-measures, you belong here.",
     "whyUs": "Why Innovexle?",
     "openPositions": "Open Positions",
     "roles": "{count} open {count, plural, one {role} other {roles}}",
@@ -152,7 +152,7 @@
     "noPositions": "No positions found",
     "noPositionsHint": "Try adjusting your filters or search query.",
     "dontSeeRole": "Don't see the right role?",
-    "dontSeeRoleDesc": "We're always looking for talented engineers. Send us your resume and tell us what you're passionate about.",
+    "dontSeeRoleDesc": "We're always on the lookout for great people. Send us your CV and tell us what gets you excited.",
     "getInTouch": "Get in touch",
     "viewDetails": "View details",
     "applyNow": "Apply Now",
@@ -179,29 +179,29 @@
     "hiringUrgently": "Hiring Urgently",
     "urgent": "Urgent",
     "remoteFirst": "Remote-First",
-    "remoteFirstDesc": "Work from anywhere. We care about results, not hours in an office.",
+    "remoteFirstDesc": "Work from anywhere. We care about what you ship, not where you sit.",
     "meaningfulWork": "Meaningful Work",
-    "meaningfulWorkDesc": "Build production systems used by millions. No throwaway projects.",
+    "meaningfulWorkDesc": "Build things people actually use. No throwaway projects or busywork.",
     "growthFocus": "Growth Focus",
-    "growthFocusDesc": "Generous L&D budget, mentorship, and challenging problems to solve.",
+    "growthFocusDesc": "We invest in you. L&D budget, mentorship, and problems worth solving.",
     "workLifeBalance": "Work-Life Balance",
-    "workLifeBalanceDesc": "Unlimited PTO, flexible hours, and a culture that respects your time.",
+    "workLifeBalanceDesc": "Unlimited PTO, flexible hours. We respect your time  - and your life.",
     "copyLink": "Copy link",
     "linkCopied": "Link copied!",
     "shareJob": "Share this Job",
     "linkCopiedToClipboard": "Link copied to clipboard!"
   },
   "about": {
-    "title": "About Innovexle",
-    "subtitle": "We're backend engineers who've spent years building systems that handle millions of requests. Now we help other companies do the same.",
-    "whatWeBelieve": "What we believe",
-    "ourValues": "Our Values",
-    "engineeringPrinciples": "Engineering Principles",
+    "title": "About us",
+    "subtitle": "We're builders at heart. We've shipped in fintech, healthcare, SaaS, and AI  - and we're still learning. Every project teaches us something. Every client makes us sharper.",
+    "whatWeBelieve": "What drives us",
+    "ourValues": "What we stand for",
+    "engineeringPrinciples": "How we think",
     "howWeWork": "How we work"
   },
   "contact": {
-    "title": "Get in touch",
-    "subtitle": "Tell us about your project. We'll respond within one business day.",
+    "title": "Say hello",
+    "subtitle": "Got a project? A wild idea? Drop us a line. A real human will get back to you within 24 hours.",
     "name": "Name",
     "namePlaceholder": "Your name",
     "email": "Email",
@@ -209,59 +209,59 @@
     "company": "Company",
     "companyPlaceholder": "Your company name",
     "message": "How can we help?",
-    "messagePlaceholder": "Tell us about your project, timeline, and any specific challenges you're facing...",
+    "messagePlaceholder": "What's on your mind? Your idea, timeline, blockers  - we're listening.",
     "send": "Send message",
     "sending": "Sending...",
     "preferEmail": "Prefer email?",
     "officeLocations": "Office locations",
     "or": "or",
     "thankYou": "Thanks for reaching out",
-    "thankYouMessage": "We'll review your message and get back to you within one business day.",
-    "whatHappensNext": "What happens next?",
-    "step1": "Our team reviews your inquiry within 24 hours",
-    "step2": "A senior engineer reaches out to discuss your needs",
-    "step3": "We schedule a discovery call to understand your challenges",
+    "thankYouMessage": "We got it. Someone from our team will be in touch within 24 hours  - promise.",
+    "whatHappensNext": "What happens next",
+    "step1": "We read everything. Usually over coffee.",
+    "step2": "A senior engineer reaches out  - no bots, no script",
+    "step3": "We jump on a call and figure out how we can actually help",
     "sendAnother": "Send another message",
-    "commonQuestions": "Common questions",
+    "commonQuestions": "Questions we hear a lot",
     "nameError": "Name must be at least 2 characters",
     "emailError": "Please enter a valid email address",
     "messageError": "Message must be at least 10 characters",
     "honeypotLabel": "Website (leave empty)",
     "faq1Title": "How do engagements typically work?",
-    "faq1Content": "Most engagements start with a discovery phase where we understand your current state and constraints. From there, we scope specific deliverables with clear timelines. Engagements typically range from focused 4-week sprints to multi-month partnerships.",
+    "faq1Content": "We always start by listening. Discovery first  - your current setup, your constraints, what you're trying to achieve. Then we scope deliverables with clear timelines. Could be a tight 4-week sprint or a longer partnership. No surprises.",
     "faq2Title": "Do you work with early-stage startups?",
-    "faq2Content": "Yes, we work with companies at various stages. For early-stage companies, we often focus on setting up scalable foundations that won't need to be rewritten as you grow. We're upfront about what makes sense to build now vs. later.",
-    "faq3Title": "What industries do you work with?",
-    "faq3Content": "We've worked across fintech, healthcare, e-commerce, and SaaS. The common thread is companies that need reliable, scalable backend systems. Industry-specific compliance requirements (HIPAA, PCI, SOC 2) are areas we have direct experience with.",
+    "faq2Content": "Absolutely. Early-stage, growth, enterprise  - we've seen it. For startups, we focus on foundations that scale without needing a rewrite in 18 months. We'll tell you straight: what to build now, what can wait.",
+    "faq3Title": "What industries and stacks do you work with?",
+    "faq3Content": "Fintech, SaaS, e-commerce, healthcare, AI  - we've shipped in all of them. Stacks: MERN, MEAN, Django, Rails, Java. HIPAA, PCI, SOC 2? We've done it. We pick what fits your industry and constraints.",
     "faq4Title": "How do you handle ongoing support?",
-    "faq4Content": "Every project includes comprehensive documentation and knowledge transfer. For clients who want ongoing support, we offer retainer arrangements for continued advisory and maintenance work."
+    "faq4Content": "Every project comes with docs and knowledge transfer  - so you're not left guessing. Need us to stick around? We do retainers for ongoing advice and maintenance. We're here when you need us."
   },
   "process": {
-    "title": "How We Work",
-    "subtitle": "A structured approach that ensures predictable outcomes.",
+    "title": "How we work",
+    "subtitle": "Simple, transparent, no surprises. Here's how we roll.",
     "discovery": "Discovery",
-    "discoveryDesc": "We start by understanding your constraints, scale requirements, and business objectives. No assumptions.",
+    "discoveryDesc": "We listen first. Your constraints, your goals, your reality. No assumptions.",
     "architecture": "Architecture",
-    "architectureDesc": "We design systems that anticipate growth. Every decision is documented and justified.",
+    "architectureDesc": "We design for where you're going  - not just where you are. Everything documented, nothing forgotten.",
     "build": "Build",
-    "buildDesc": "We ship production-ready code with comprehensive testing, monitoring, and documentation.",
+    "buildDesc": "We ship. Production-ready, tested, monitored. Code you can actually maintain.",
     "support": "Support",
-    "supportDesc": "We monitor, iterate, and optimize. Your systems improve continuously."
+    "supportDesc": "We stick around. Iterate, optimize, fix what breaks. Your systems get better over time."
   },
   "cta": {
-    "title": "Ready to build something that lasts?",
-    "subtitle": "Let's discuss your backend challenges. No sales pitch — just an honest conversation about what you need.",
-    "button": "Start a conversation"
+    "title": "Got something brewing?",
+    "subtitle": "Fintech, SaaS, healthcare, AI  - we've been there. Let's turn your idea into something that ships.",
+    "button": "Let's talk"
   },
   "trust": {
-    "techStackTitle": "Built With",
-    "testimonialsTitle": "What Our Clients Say",
+    "techStackTitle": "Stacks we love",
+    "testimonialsTitle": "What folks say about us",
     "testimonials": [
       { "quote": "They rebuilt our API layer in 8 weeks. Zero downtime migration, 3x throughput improvement. The team communicated clearly at every step.", "author": "Engineering Lead", "role": "Series B Fintech" },
       { "quote": "Finally, engineers who understand that reliability is a feature, not an afterthought. Our uptime went from 99.5% to 99.99%.", "author": "CTO", "role": "Healthcare Platform" },
       { "quote": "Our infrastructure costs dropped 40% after their optimization work. ROI was immediate and the documentation they left behind was excellent.", "author": "VP Engineering", "role": "E-commerce Scale-up" },
-      { "quote": "The migration was seamless — zero downtime, zero data loss. Our deployment frequency went from monthly to daily.", "author": "Head of Platform", "role": "SaaS Enterprise" },
-      { "quote": "They didn't just fix our performance issues — they taught our team how to prevent them. That knowledge transfer was invaluable.", "author": "Senior Architect", "role": "AdTech Leader" },
+      { "quote": "The migration was seamless  - zero downtime, zero data loss. Our deployment frequency went from monthly to daily.", "author": "Head of Platform", "role": "SaaS Enterprise" },
+      { "quote": "They didn't just fix our performance issues  - they taught our team how to prevent them. That knowledge transfer was invaluable.", "author": "Senior Architect", "role": "AdTech Leader" },
       { "quote": "From day one they challenged our assumptions and proposed a simpler architecture. Saved us six months of work we didn't need to do.", "author": "Founder & CEO", "role": "Cloud Startup" }
     ]
   },
@@ -307,7 +307,7 @@
     "agreement": "Agreement to Terms",
     "agreementText": "By accessing or using the {name} website and services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website or services.",
     "services": "Services",
-    "servicesText": "{name} provides backend engineering consulting and development services. The specific scope, deliverables, and terms for any engagement will be defined in a separate service agreement between {name} and the client.",
+    "servicesText": "{name} provides full-stack engineering consulting and development services across MERN, MEAN, Django, Rails, and Java for fintech, SaaS, e-commerce, healthcare, and ML/AI. The specific scope, deliverables, and terms for any engagement will be defined in a separate service agreement between {name} and the client.",
     "ip": "Intellectual Property",
     "ipText1": "The content on this website, including text, graphics, logos, and images, is the property of {name} and is protected by copyright and other intellectual property laws.",
     "ipText2": "For client engagements, intellectual property rights to deliverables will be specified in the service agreement.",
@@ -332,7 +332,7 @@
   },
   "accessibility": {
     "title": "Accessibility Statement",
-    "subtitle": "Our commitment to digital accessibility for all users.",
+    "subtitle": "We believe everyone deserves access. Here's how we're making it happen.",
     "commitment": "Our Commitment",
     "commitmentText": "Innovexle is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone and apply the relevant accessibility standards.",
     "conformance": "Conformance Status",
@@ -350,7 +350,7 @@
     "assessmentText": "Innovexle assesses the accessibility of this website through self-evaluation using automated testing tools (axe-core) integrated into our CI/CD pipeline, manual testing with screen readers, and keyboard-only navigation testing."
   },
   "consent": {
-    "message": "We use cookies to enhance your experience and analyze site traffic. By continuing to use our site, you consent to our use of cookies.",
+    "message": "We use cookies to make this site work better and understand how you use it. Stick around and we'll assume that's cool with you.",
     "accept": "Accept",
     "decline": "Decline",
     "learnMore": "Learn more"
@@ -366,24 +366,24 @@
   },
   "errors": {
     "somethingWentWrong": "Something went wrong",
-    "unexpectedError": "An unexpected error occurred. Our team has been notified and we're working on a fix.",
+    "unexpectedError": "Oops  - something went sideways. We've been notified and we're on it. Try again in a moment?",
     "tryAgain": "Try again",
     "backToHome": "Back to home",
     "notFound": "Page not found",
-    "notFoundDesc": "The page you're looking for doesn't exist or has been moved.",
-    "submitError": "Something went wrong. Please try again.",
+    "notFoundDesc": "This page took a wrong turn. Maybe it never existed. Maybe we moved it. Either way  - you're not crazy.",
+    "submitError": "Hmm, that didn't go through. Give it another shot?",
     "jobNotFound": "Job Not Found",
     "caseStudyNotFound": "Case Study Not Found",
     "serviceNotFound": "Service Not Found"
   },
   "meta": {
     "home": "Home",
-    "homeTitle": "Backend Engineering That Scales",
-    "homeDescription": "Backend engineering for companies that can't afford downtime. API architecture, cloud infrastructure, database design, and performance optimization.",
+    "homeTitle": "Your vision. Our craft. Zero shortcuts. | Innovexle",
+    "homeDescription": "Full-stack engineering that actually ships. Fintech, SaaS, healthcare, AI  - MERN, Django, Rails, Java. We listen, build, and stick around.",
     "servicesTitle": "Services",
-    "servicesDescription": "Specialized backend engineering services: API architecture, database design, cloud infrastructure, system integration, performance optimization, and security audits.",
+    "servicesDescription": "Your stack, your industry. We don't do cookie-cutter. MERN, Django, Rails, Java  - fintech, SaaS, healthcare, AI. Built for you.",
     "caseStudiesTitle": "Case Studies",
-    "caseStudiesDescription": "Real engineering projects with measurable results. See how we've helped companies solve complex backend challenges.",
+    "caseStudiesDescription": "Real teams, real wins. Fintech, SaaS, healthcare  - see what happens when we roll up our sleeves and ship.",
     "privacyTitle": "Privacy Policy",
     "privacyDescription": "Learn how we collect, use, and protect your personal information.",
     "termsTitle": "Terms of Service",
@@ -391,12 +391,12 @@
     "accessibilityTitle": "Accessibility Statement",
     "accessibilityDescription": "Our commitment to digital accessibility for all users.",
     "contactTitle": "Contact",
-    "contactDescription": "Get in touch with Innovexle. Tell us about your backend engineering challenges and we'll respond within one business day.",
+    "contactDescription": "Got a project? Say hello. A real human will get back within 24 hours. Fintech, SaaS, healthcare, AI  - we've got you.",
     "careersTitle": "Careers",
-    "careersDescription": "Join Innovexle — open engineering positions at a remote-first backend consultancy. Build systems that scale.",
+    "careersDescription": "Build things that matter. Work with people who give a damn. Remote-first, full-stack, no busywork.",
     "aboutTitle": "About",
-    "aboutDescription": "We're backend engineers who've spent years building systems that scale. Learn about our approach and values.",
-    "siteDescription": "Backend engineering for companies that can't afford downtime. We build systems that scale."
+    "aboutDescription": "Builders at heart. We've shipped in fintech, healthcare, SaaS, AI  - and we're still learning. Meet the team.",
+    "siteDescription": "Your vision. Our craft. Full-stack engineering that ships. Fintech, SaaS, healthcare, AI  - MERN, Django, Rails, Java."
   },
   "a11y": {
     "trustedBy": "Trusted by",
@@ -420,43 +420,43 @@
   },
   "chatbot": {
     "title": "Chat with us",
-    "greeting": "Hi! How can I help you today? Select a question below or type your own.",
-    "suggestedQuestions": "Frequently asked questions",
+    "greeting": "Hey! What's on your mind? Pick a question or just ask  - we're here.",
+    "suggestedQuestions": "Quick answers",
     "viewMoreQuestions": "View more questions",
-    "placeholder": "Type your question...",
-    "fallback": "I can help with questions about our services, careers, engagement process, and technologies. Try selecting one of the questions above or rephrase your question!",
+    "placeholder": "Ask me anything...",
+    "fallback": "Hmm, I'm not sure I caught that. Try one of the questions above, or rephrase  - I'm better at services, careers, and how we work!",
     "items": {
       "services": {
-        "q": "What backend services do you offer?",
-        "a": "We offer six specialized backend engineering services: API Architecture, Database Design, Cloud Infrastructure, System Integration, Performance Optimization, and Security Audits. Each engagement is tailored to your specific needs. Our approach emphasizes documentation, observability, and knowledge transfer to your team."
+        "q": "What services do you offer?",
+        "a": "We build across MERN, MEAN, Django, Rails, and Java  - for fintech, SaaS, e-commerce, healthcare, and AI. API design, databases, cloud infra, integrations, performance tuning, security audits. No cookie-cutter: we figure out your stack and industry, then tailor everything. We document, we observe, we transfer knowledge  - so you can own it."
       },
       "process": {
         "q": "How does your engagement process work?",
-        "a": "Our process has four phases: Discovery (understanding your constraints and objectives), Architecture (designing systems for growth), Build (production-ready code with testing and monitoring), and Support (continuous monitoring and optimization). We document every decision and never over-engineer."
+        "a": "Four phases: Discovery (we listen  - your constraints, your goals), Architecture (we design for where you're going), Build (we ship production-ready code), Support (we stick around and iterate). We document everything and never over-build. No surprises."
       },
       "contact": {
         "q": "How can I get in touch?",
-        "a": "You can reach us through our contact page, email hello@innovexle.com, or call +92 318 6618194 or +44 7501 701609. We have offices in Lahore (Punjab, Pakistan), London (UK), Manchester (UK), and USA. We typically respond within one business day. For urgent backend engineering challenges, we recommend filling out the contact form with your project details so we can provide a focused response."
+        "a": "Contact form on our site, email hello@innovexle.com, or call +92 318 6618194 / +44 7501 701609. We're in Lahore, London, Manchester, and the US. A real human replies within 24 hours  - no bots. For urgent stuff, drop your project details in the form and we'll prioritize it."
       },
       "careers": {
         "q": "Are you hiring? What roles are open?",
-        "a": "Yes! We're always looking for skilled backend engineers who care about reliability and scale. Our careers page lists all open positions with department, location, and experience level filters. We're a remote-first consultancy, so most roles offer flexible location."
+        "a": "Yes! We're always on the lookout for people who care about craft. Full-stack, backend, infra  - check our careers page. Remote-first, so you can work from wherever. No cookie-cutter roles."
       },
       "pricing": {
         "q": "How do you price your services?",
-        "a": "Our pricing depends on project scope, timeline, and complexity. We don't publish fixed rates because every engagement is different. The best way to get a tailored proposal is to share your requirements through our contact form. We're transparent about costs and will discuss options before any commitment."
+        "a": "Depends on scope, timeline, and complexity  - every project's different. No fixed rates. Best way to get a real quote: tell us what you need via the contact form. We'll be upfront about costs and options before you commit to anything."
       },
       "technologies": {
-        "q": "What technologies do you work with?",
-        "a": "We work with cloud platforms (AWS, Google Cloud), databases (PostgreSQL, Redis), orchestration (Kubernetes, Docker), and modern backend stacks. We're technology-agnostic when it makes sense—we choose the right tools for your constraints, not the trend of the month."
+        "q": "What technologies and stacks do you work with?",
+        "a": "MERN, MEAN, Django, Rails, Java  - plus AWS, GCP, PostgreSQL, Redis, Kubernetes, Docker. Fintech, SaaS, e-commerce, healthcare, AI. We pick what fits your reality, not whatever's trending on HN this week."
       },
       "remote": {
         "q": "Do you work remotely or on-site?",
-        "a": "We're a remote-first consultancy. Most of our work is done async with clear communication rhythms. We can do on-site workshops or discovery sessions when valuable. Our clients span multiple regions, and we've built our processes to support distributed collaboration."
+        "a": "Remote-first. Most work happens async with clear check-ins. We'll fly in for workshops or discovery when it actually helps. Our clients are all over  - we built our process for that."
       },
       "engagement": {
         "q": "What does a typical engagement look like?",
-        "a": "Engagements vary from short architecture reviews to multi-month build projects. We start with a discovery call to understand your needs, then propose a tailored scope. We work in iterations, with regular demos and feedback. Every engagement includes documentation and knowledge transfer so your team can own the system."
+        "a": "Could be a quick architecture review or a multi-month build. We start with a call to understand your situation, then propose a scope that actually makes sense. We work in sprints, demo often, get feedback. You get docs and knowledge transfer  - so your team can own it when we're done."
       }
     }
   }

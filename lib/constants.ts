@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Innovexle",
   description:
-    "Backend engineering for companies that can't afford downtime. We build systems that scale.",
+    "Your vision. Our craft. Full-stack engineering that ships. Fintech, SaaS, healthcare, AI  - we listen, build, and stick around.",
   url: "https://innovexle.com",
   ogImage: "https://innovexle.com/og-image.png",
   email: "hello@innovexle.com",
@@ -49,29 +49,34 @@ export const processSteps = [
     step: "01",
     title: "Discovery",
     description:
-      "We start by understanding your constraints, scale requirements, and business objectives. No assumptions.",
+      "We listen first. Your constraints, your goals, your reality. No assumptions.",
   },
   {
     step: "02",
     title: "Architecture",
     description:
-      "We design systems that anticipate growth. Every decision is documented and justified.",
+      "We design for where you're going  - not just where you are. Everything documented.",
   },
   {
     step: "03",
     title: "Build",
     description:
-      "We ship production-ready code with comprehensive testing, monitoring, and documentation.",
+      "We ship. Production-ready, tested, monitored. Code you can actually maintain.",
   },
   {
     step: "04",
     title: "Support",
     description:
-      "We monitor, iterate, and optimize. Your systems improve continuously.",
+      "We stick around. Iterate, optimize, fix what breaks. Your systems get better over time.",
   },
 ];
 
-export const techStack = [
+export const techStack: { name: string; logo?: string }[] = [
+  { name: "MERN" },
+  { name: "MEAN" },
+  { name: "Django" },
+  { name: "Ruby on Rails" },
+  { name: "Java" },
   { name: "AWS", logo: "/logos/aws.svg" },
   { name: "Google Cloud", logo: "/logos/gcp.svg" },
   { name: "PostgreSQL", logo: "/logos/postgresql.svg" },
@@ -101,13 +106,13 @@ export const testimonials = [
   },
   {
     quote:
-      "The migration was seamless — zero downtime, zero data loss. Our deployment frequency went from monthly to daily.",
+      "The migration was seamless  - zero downtime, zero data loss. Our deployment frequency went from monthly to daily.",
     author: "Head of Platform",
     role: "SaaS Enterprise",
   },
   {
     quote:
-      "They didn't just fix our performance issues — they taught our team how to prevent them. That knowledge transfer was invaluable.",
+      "They didn't just fix our performance issues  - they taught our team how to prevent them. That knowledge transfer was invaluable.",
     author: "Senior Architect",
     role: "AdTech Leader",
   },

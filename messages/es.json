@@ -11,7 +11,7 @@
   },
   "home": {
     "heroTitle": "Ingeniería Backend Que Escala",
-    "heroSubtitle": "Diseñamos y construimos sistemas backend para empresas que no pueden permitirse tiempo de inactividad. Arquitectura de APIs, infraestructura cloud y optimización de rendimiento — construidos para durar.",
+    "heroSubtitle": "Diseñamos y construimos sistemas backend para empresas que no pueden permitirse tiempo de inactividad. Arquitectura de APIs, infraestructura cloud y optimización de rendimiento  - construidos para durar.",
     "heroCta": "Iniciar una conversación",
     "heroSecondaryCta": "Ver nuestro trabajo",
     "clientLogosTitle": "De confianza para equipos de ingeniería en"
@@ -205,7 +205,7 @@
   },
   "cta": {
     "title": "¿Listo para construir algo que perdure?",
-    "subtitle": "Hablemos sobre tus desafíos de backend. Sin discurso de ventas — solo una conversación honesta.",
+    "subtitle": "Hablemos sobre tus desafíos de backend. Sin discurso de ventas  - solo una conversación honesta.",
     "button": "Iniciar una conversación"
   },
   "trust": {
@@ -215,8 +215,8 @@
       { "quote": "Reconstruyeron nuestra capa API en 8 semanas. Migración sin tiempo de inactividad, mejora de 3x en rendimiento. El equipo se comunicó claramente en cada paso.", "author": "Líder de Ingeniería", "role": "Fintech Serie B" },
       { "quote": "Por fin, ingenieros que entienden que la fiabilidad es una característica, no una ocurrencia tardía. Nuestro tiempo activo pasó del 99.5% al 99.99%.", "author": "CTO", "role": "Plataforma de Salud" },
       { "quote": "Nuestros costes de infraestructura bajaron un 40% tras su trabajo de optimización. El ROI fue inmediato y la documentación que dejaron fue excelente.", "author": "VP de Ingeniería", "role": "Scale-up E-commerce" },
-      { "quote": "La migración fue perfecta — cero tiempo de inactividad, cero pérdida de datos. Nuestra frecuencia de despliegue pasó de mensual a diaria.", "author": "Jefe de Plataforma", "role": "Empresa SaaS" },
-      { "quote": "No solo arreglaron nuestros problemas de rendimiento — enseñaron a nuestro equipo a prevenirlos. Esa transferencia de conocimiento fue invaluable.", "author": "Arquitecto Senior", "role": "Líder AdTech" },
+      { "quote": "La migración fue perfecta  - cero tiempo de inactividad, cero pérdida de datos. Nuestra frecuencia de despliegue pasó de mensual a diaria.", "author": "Jefe de Plataforma", "role": "Empresa SaaS" },
+      { "quote": "No solo arreglaron nuestros problemas de rendimiento  - enseñaron a nuestro equipo a prevenirlos. Esa transferencia de conocimiento fue invaluable.", "author": "Arquitecto Senior", "role": "Líder AdTech" },
       { "quote": "Desde el primer día desafió nuestras suposiciones y propuso una arquitectura más simple. Nos ahorró seis meses de trabajo que no necesitábamos.", "author": "Fundador y CEO", "role": "Startup Cloud" }
     ]
   },
@@ -348,7 +348,7 @@
     "contactTitle": "Contacto",
     "contactDescription": "Contáctanos. Cuéntanos sobre tus desafíos de ingeniería backend y responderemos en un día hábil.",
     "careersTitle": "Carreras",
-    "careersDescription": "Únete a Innovexle — posiciones abiertas en una consultora remota de backend. Construye sistemas que escalan.",
+    "careersDescription": "Únete a Innovexle  - posiciones abiertas en una consultora remota de backend. Construye sistemas que escalan.",
     "aboutTitle": "Nosotros",
     "aboutDescription": "Somos ingenieros backend con años construyendo sistemas que escalan. Conoce nuestro enfoque y valores.",
     "siteDescription": "Ingeniería backend para empresas que no pueden permitirse tiempo de inactividad. Construimos sistemas que escalan."
