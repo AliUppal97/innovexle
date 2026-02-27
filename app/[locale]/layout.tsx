@@ -35,7 +35,18 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/icon", type: "image/png", sizes: "32x32" },
+      {
+        url: "/icon",
+        type: "image/png",
+        sizes: "32x32",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/icon-dark",
+        type: "image/png",
+        sizes: "32x32",
+        media: "(prefers-color-scheme: dark)",
+      },
       { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
     ],
     shortcut: "/favicon.svg",
