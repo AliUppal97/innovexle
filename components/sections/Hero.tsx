@@ -8,7 +8,7 @@ export async function Hero() {
   const t = await getTranslations("home");
 
   return (
-    <section className="relative overflow-hidden section-padding">
+    <section className="relative overflow-hidden section-padding -mt-16">
       <div className="absolute inset-0 -z-10" aria-hidden="true">
         <svg
           className="absolute h-full w-full stroke-border [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
