@@ -9,7 +9,7 @@ export async function Hero() {
   const t = await getTranslations("home");
 
   return (
-    <section className="section-hero -mt-16 relative overflow-hidden min-h-screen flex flex-col pb-6 sm:pb-8 lg:pb-10">
+    <section className="section-hero -mt-16 relative overflow-hidden h-screen max-h-screen flex flex-col min-h-0 pb-6 sm:pb-8 lg:pb-10">
       <div className="absolute inset-0 -z-10" aria-hidden="true">
         <svg
           className="absolute h-full w-full stroke-border [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
@@ -29,8 +29,8 @@ export async function Hero() {
         </svg>
       </div>
 
-      <Container className="flex flex-1 flex-col justify-between">
-        <div>
+      <Container className="flex flex-1 flex-col justify-between min-h-0">
+        <div className="min-h-0 shrink-0 mt-6 sm:mt-8 lg:mt-10">
           <div className="mx-auto max-w-3xl text-center">
             <Reveal variant="fade-up">
               <h1 className="text-h2 sm:text-h1 lg:text-display font-bold tracking-tight text-foreground leading-[1.15]">

@@ -128,18 +128,18 @@
     }
   }
 
-  /* Hero: -mt-16 pulls section to top; tighter pt so hero + trust logos fit above fold on desktop */
+  /* Hero: -mt-16 pulls section to top; pt = space between navbar and hero title */
   main > section.section-hero {
-    padding-top: 6.5rem; /* nav to title gap */
+    padding-top: 7rem; /* 112px nav to title gap */
   }
   @media (min-width: 640px) {
     main > section.section-hero {
-      padding-top: 7rem;
+      padding-top: 7.5rem; /* 120px */
     }
   }
   @media (min-width: 1024px) {
     main > section.section-hero {
-      padding-top: 7.5rem;
+      padding-top: 8rem; /* 128px */
     }
   }
 
