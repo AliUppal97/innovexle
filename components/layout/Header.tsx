@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 const MOBILE_MENU_Z_BACKDROP = 9998;
 const MOBILE_MENU_Z_PANEL = 9999;
 const HEADER_HEIGHT = 4; // 4rem = 16 (h-16)
-const SCROLL_THRESHOLD = 12; // px — transition when user scrolls past this
+const SCROLL_THRESHOLD = 8; // px — Material/Apple-style: subtle threshold for premium feel
 
 const navItems = [
   { key: "services", href: "/services" },
@@ -130,16 +130,29 @@ export function Header() {
   const showElevatedNav = isScrolled || mobileMenuOpen;
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300 ease-out",
-        showElevatedNav
-          ? "border-b border-border bg-background/95 shadow-sm shadow-black/5 backdrop-blur supports-[backdrop-filter]:bg-background/80 dark:shadow-black/20"
-          : "border-b border-transparent bg-transparent"
-      )}
-    >
-      <Container className="min-w-0">
-        <nav className="flex h-16 items-center justify-between gap-2 sm:gap-4 min-w-0" aria-label={tA11y("mainNav")}>
+    <header className="fixed top-0 left-0 right-0 z-50 w-full">
+      {/* Floating wrapper: transparent at top, elevated card on scroll — margins on all sides */}
+      <div
+        className={cn(
+          "transition-all duration-300 ease-out motion-reduce:transition-none",
+          showElevatedNav
+            ? "pt-4 pb-4 px-4 sm:px-5 lg:px-8 sm:pt-5 sm:pb-5"
+            : ""
+        )}
+      >
+        <div
+          className={cn(
+            "mx-auto w-full transition-all duration-300 ease-out motion-reduce:transition-none",
+            "min-w-0 max-w-7xl",
+            showElevatedNav
+              ? "rounded-2xl border border-border bg-background/80 shadow-nav-floating dark:shadow-nav-floating-dark backdrop-blur-xl supports-[backdrop-filter]:bg-background/75 dark:supports-[backdrop-filter]:bg-background/80"
+              : "rounded-none border-0 border-transparent bg-transparent shadow-none"
+          )}
+        >
+          <nav
+            className="flex h-16 items-center justify-between gap-2 sm:gap-4 min-w-0 px-4 sm:px-6 lg:px-8"
+            aria-label={tA11y("mainNav")}
+          >
           <Link
             href="/"
             className="flex min-w-0 shrink items-center gap-2 font-semibold text-foreground overflow-hidden"
@@ -187,76 +200,77 @@ export function Header() {
               <Bars3Icon className="h-6 w-6" aria-hidden />
             )}
           </button>
-        </nav>
+          </nav>
 
-        {typeof document !== "undefined" &&
-          mobileMenuOpen &&
-          createPortal(
-            <>
-              <div
-                className="fixed inset-0 lg:hidden bg-black/50 backdrop-blur-sm"
-                style={{
-                  top: `${HEADER_HEIGHT}rem`,
-                  zIndex: MOBILE_MENU_Z_BACKDROP,
-                }}
-                aria-hidden="true"
-                onClick={() => setMobileMenuOpen(false)}
-              />
-              <div
-                ref={menuRef}
-                id="mobile-menu"
-                role="dialog"
-                aria-modal="true"
-                aria-label={tA11y("mobileNav")}
-                className={cn(
-                  "fixed inset-x-0 bottom-0 lg:hidden overflow-y-auto scrollbar-thin",
-                  "bg-background text-foreground border-t border-border",
-                  "animate-[slideUp_0.2s_ease-out]"
-                )}
-                style={{
-                  top: `${HEADER_HEIGHT}rem`,
-                  zIndex: MOBILE_MENU_Z_PANEL,
-                  maxHeight: `calc(100dvh - ${HEADER_HEIGHT}rem)`,
-                  paddingBottom: "env(safe-area-inset-bottom, 0px)",
-                }}
-              >
-                <Container className="py-6">
-                  <div className="flex flex-col">
-                    {navItems.map((item, index) => (
-                      <Link
-                        key={item.key}
-                        ref={index === 0 ? firstFocusableRef : undefined}
-                        href={item.href}
-                        className={cn(
-                          "py-4 text-body font-medium border-b border-border last:border-b-0",
-                          "transition-colors duration-200 hover:bg-muted/20 hover:text-foreground",
-                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                          isActive(item.href) ? "text-foreground" : "text-muted-foreground"
-                        )}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {t(item.key)}
-                      </Link>
-                    ))}
-                  </div>
-                  <div className="mt-6 pt-6 border-t border-border flex flex-wrap items-center gap-3 gap-y-4 min-w-0">
-                    <LanguageSwitcher inMobileMenu />
-                    <RegionSelector inMobileMenu />
-                    <ThemeToggle />
-                  </div>
-                  <div className="mt-6">
-                    <Button asChild className="w-full" size="lg">
-                      <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                        {t("talkToEngineer")}
-                      </Link>
-                    </Button>
-                  </div>
-                </Container>
-              </div>
-            </>,
-            document.body
-          )}
-      </Container>
+          {typeof document !== "undefined" &&
+            mobileMenuOpen &&
+            createPortal(
+              <>
+                <div
+                  className="fixed inset-0 lg:hidden bg-black/50 backdrop-blur-sm"
+                  style={{
+                    top: `${HEADER_HEIGHT}rem`,
+                    zIndex: MOBILE_MENU_Z_BACKDROP,
+                  }}
+                  aria-hidden="true"
+                  onClick={() => setMobileMenuOpen(false)}
+                />
+                <div
+                  ref={menuRef}
+                  id="mobile-menu"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label={tA11y("mobileNav")}
+                  className={cn(
+                    "fixed inset-x-0 bottom-0 lg:hidden overflow-y-auto scrollbar-thin",
+                    "bg-background text-foreground border-t border-border",
+                    "animate-[slideUp_0.2s_ease-out]"
+                  )}
+                  style={{
+                    top: `${HEADER_HEIGHT}rem`,
+                    zIndex: MOBILE_MENU_Z_PANEL,
+                    maxHeight: `calc(100dvh - ${HEADER_HEIGHT}rem)`,
+                    paddingBottom: "env(safe-area-inset-bottom, 0px)",
+                  }}
+                >
+                  <Container className="py-6">
+                    <div className="flex flex-col">
+                      {navItems.map((item, index) => (
+                        <Link
+                          key={item.key}
+                          ref={index === 0 ? firstFocusableRef : undefined}
+                          href={item.href}
+                          className={cn(
+                            "py-4 text-body font-medium border-b border-border last:border-b-0",
+                            "transition-colors duration-200 hover:bg-muted/20 hover:text-foreground",
+                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                            isActive(item.href) ? "text-foreground" : "text-muted-foreground"
+                          )}
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {t(item.key)}
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="mt-6 pt-6 border-t border-border flex flex-wrap items-center gap-3 gap-y-4 min-w-0">
+                      <LanguageSwitcher inMobileMenu />
+                      <RegionSelector inMobileMenu />
+                      <ThemeToggle />
+                    </div>
+                    <div className="mt-6">
+                      <Button asChild className="w-full" size="lg">
+                        <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
+                          {t("talkToEngineer")}
+                        </Link>
+                      </Button>
+                    </div>
+                  </Container>
+                </div>
+              </>,
+              document.body
+            )}
+        </div>
+      </div>
     </header>
   );
 }
