@@ -6,7 +6,6 @@ import { Process } from "@/components/sections/Process";
 import { CaseStudies } from "@/components/sections/CaseStudies";
 import { Trust } from "@/components/sections/Trust";
 import { CTA } from "@/components/sections/CTA";
-import { ClientLogos } from "@/components/sections/ClientLogos";
 
 export async function generateMetadata({
   params,
@@ -34,7 +33,6 @@ export default async function Home({
   return (
     <>
       <Hero />
-      <ClientLogos />
       <Services />
       <Process />
       <CaseStudies />
