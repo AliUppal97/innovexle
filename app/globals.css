@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  /* Futuristic cyan-teal accent — Vercel/Linear-inspired, tech-forward */
+  /* Futuristic cyan-teal accent - Vercel/Linear-inspired, tech-forward */
   :root {
     --background: 0 0% 98%;
     --foreground: 0 0% 9%;
@@ -101,12 +101,12 @@
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
-  /* Section spacing — consistent throughout */
+  /* Section spacing - consistent throughout */
   .section-padding {
     @apply py-16 sm:py-20 lg:py-24;
   }
 
-  /* First section: premium nav-to-content spacing — 48–80px gap from 64px nav */
+  /* First section: premium nav-to-content spacing - 48–80px gap from 64px nav */
   main > section:first-of-type:not(.section-hero) {
     padding-top: 3rem; /* 48px gap on mobile */
   }
@@ -117,7 +117,7 @@
   }
   @media (min-width: 1024px) {
     main > section:first-of-type:not(.section-hero) {
-      padding-top: 5rem; /* 80px gap on desktop — industry standard */
+      padding-top: 5rem; /* 80px gap on desktop - industry standard */
     }
   }
 
@@ -132,7 +132,7 @@
   }
   @media (min-width: 1024px) {
     main > section.section-hero {
-      padding-top: 9rem; /* 80px gap: title at 144px — recommended nav-to-headline spacing */
+      padding-top: 9rem; /* 80px gap: title at 144px - recommended nav-to-headline spacing */
     }
   }
 
@@ -153,7 +153,7 @@
 }
 
 @layer utilities {
-  /* Clean scrollbars — thin, rounded, theme-aware for overflow containers */
+  /* Clean scrollbars - thin, rounded, theme-aware for overflow containers */
   .scrollbar-thin {
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--muted-foreground) / 0.35) transparent;
