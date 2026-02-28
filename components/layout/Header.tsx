@@ -19,6 +19,8 @@ const MOBILE_MENU_Z_BACKDROP = 9998;
 const MOBILE_MENU_Z_PANEL = 9999;
 const HEADER_HEIGHT = 4; // 4rem = 16 (h-16)
 const SCROLL_THRESHOLD = 8; // px - Material/Apple-style: subtle threshold for premium feel
+/** When scrolled: pt-4 (1rem) + h-16 (4rem) = 5rem */
+const ELEVATED_MENU_TOP = 5;
 
 const navItems = [
   { key: "services", href: "/services" },
@@ -127,7 +129,7 @@ export function Header() {
     return cleanPath === href || cleanPath.startsWith(href + "/");
   };
 
-  const showElevatedNav = isScrolled || mobileMenuOpen;
+  const showElevatedNav = isScrolled;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full">
@@ -145,8 +147,13 @@ export function Header() {
             "mx-auto w-full transition-all duration-300 ease-out motion-reduce:transition-none",
             "min-w-0 max-w-7xl",
             showElevatedNav
-              ? "rounded-2xl border border-border bg-background/80 shadow-nav-floating dark:shadow-nav-floating-dark backdrop-blur-xl supports-[backdrop-filter]:bg-background/75 dark:supports-[backdrop-filter]:bg-background/80"
-              : "rounded-none border-0 border-transparent bg-transparent shadow-none"
+              ? "border border-border bg-background/80 shadow-nav-floating dark:shadow-nav-floating-dark backdrop-blur-xl supports-[backdrop-filter]:bg-background/75 dark:supports-[backdrop-filter]:bg-background/80"
+              : "rounded-none border-0 border-transparent bg-transparent shadow-none",
+            showElevatedNav && mobileMenuOpen
+              ? "rounded-t-2xl rounded-b-none"
+              : showElevatedNav
+                ? "rounded-2xl"
+                : ""
           )}
         >
           <nav
@@ -209,7 +216,7 @@ export function Header() {
                 <div
                   className="fixed inset-0 lg:hidden bg-black/50 backdrop-blur-sm"
                   style={{
-                    top: `${HEADER_HEIGHT}rem`,
+                    top: `${isScrolled ? ELEVATED_MENU_TOP : HEADER_HEIGHT}rem`,
                     zIndex: MOBILE_MENU_Z_BACKDROP,
                   }}
                   aria-hidden="true"
@@ -222,49 +229,57 @@ export function Header() {
                   aria-modal="true"
                   aria-label={tA11y("mobileNav")}
                   className={cn(
-                    "fixed inset-x-0 bottom-0 lg:hidden overflow-y-auto scrollbar-thin",
-                    "bg-background text-foreground border-t border-border",
-                    "animate-[slideUp_0.2s_ease-out]"
+                    "fixed lg:hidden overflow-y-auto scrollbar-thin",
+                    "bg-background text-foreground",
+                    "animate-[slideUp_0.2s_ease-out]",
+                    isScrolled
+                      ? "left-4 right-4 sm:left-5 sm:right-5 lg:left-8 lg:right-8 mx-auto max-w-7xl rounded-b-2xl border border-t-0 border-border shadow-lg"
+                      : "inset-x-0 left-0 right-0 w-full min-h-0 border-t border-border"
                   )}
                   style={{
-                    top: `${HEADER_HEIGHT}rem`,
+                    top: `${isScrolled ? ELEVATED_MENU_TOP : HEADER_HEIGHT}rem`,
                     zIndex: MOBILE_MENU_Z_PANEL,
-                    maxHeight: `calc(100dvh - ${HEADER_HEIGHT}rem)`,
+                    height: isScrolled ? undefined : "auto",
+                    maxHeight: `calc(100dvh - ${isScrolled ? ELEVATED_MENU_TOP : HEADER_HEIGHT}rem)`,
                     paddingBottom: "env(safe-area-inset-bottom, 0px)",
                   }}
                 >
-                  <Container className="py-6">
-                    <div className="flex flex-col">
-                      {navItems.map((item, index) => (
-                        <Link
-                          key={item.key}
-                          ref={index === 0 ? firstFocusableRef : undefined}
-                          href={item.href}
-                          className={cn(
-                            "py-4 text-body font-medium border-b border-border last:border-b-0",
-                            "transition-colors duration-200 hover:bg-muted/20 hover:text-foreground",
-                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                            isActive(item.href) ? "text-foreground" : "text-muted-foreground"
-                          )}
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {t(item.key)}
-                        </Link>
-                      ))}
-                    </div>
-                    <div className="mt-6 pt-6 border-t border-border flex flex-wrap items-center gap-3 gap-y-4 min-w-0">
-                      <LanguageSwitcher inMobileMenu />
-                      <RegionSelector inMobileMenu />
-                      <ThemeToggle />
-                    </div>
-                    <div className="mt-6">
-                      <Button asChild className="w-full" size="lg">
-                        <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                          {t("talkToEngineer")}
-                        </Link>
-                      </Button>
-                    </div>
-                  </Container>
+                  <div className="py-6">
+                    <Container size="default">
+                      <div className="flex flex-col gap-1">
+                        {navItems.map((item, index) => (
+                          <Link
+                            key={item.key}
+                            ref={index === 0 ? firstFocusableRef : undefined}
+                            href={item.href}
+                            className={cn(
+                              "text-body font-medium min-h-[2.75rem] flex items-center px-3 py-2.5 rounded-lg",
+                              "transition-colors duration-150 ease-out hover:bg-muted/10 hover:text-foreground active:bg-muted/15",
+                              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                              isActive(item.href)
+                                ? "text-foreground font-semibold"
+                                : "text-muted-foreground"
+                            )}
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            {t(item.key)}
+                          </Link>
+                        ))}
+                      </div>
+                      <div className="mt-6 pt-6 border-t border-border flex flex-wrap items-center gap-3 gap-y-4 min-w-0">
+                        <LanguageSwitcher inMobileMenu />
+                        <RegionSelector inMobileMenu />
+                        <ThemeToggle />
+                      </div>
+                      <div className="mt-6">
+                        <Button asChild className="w-full" size="lg">
+                          <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
+                            {t("talkToEngineer")}
+                          </Link>
+                        </Button>
+                      </div>
+                    </Container>
+                  </div>
                 </div>
               </>,
               document.body
