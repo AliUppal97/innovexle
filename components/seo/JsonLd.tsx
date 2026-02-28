@@ -118,7 +118,6 @@ export function getOrganizationSchema(): OrganizationSchema {
       return {
         "@type": "PostalAddress" as const,
         addressLocality: primary.city,
-        ...(primary.region && { addressRegion: primary.region }),
         addressCountry: primary.country || primary.address,
       };
     })(),

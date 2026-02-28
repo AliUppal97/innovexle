@@ -10,7 +10,7 @@ export const siteConfig = {
     { number: "+44 7501 701609", href: "tel:+447501701609" },
   ],
   offices: [
-    { city: "Lahore", region: "Punjab", country: "Pakistan", address: "Lahore, Punjab, Pakistan" },
+    { city: "Lahore", country: "Pakistan", address: "Lahore, Pakistan" },
     { city: "London", country: "UK", address: "London, UK" },
     { city: "Manchester", country: "UK", address: "Manchester, UK" },
     { city: "USA", address: "USA" },
