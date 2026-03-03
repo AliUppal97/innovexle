@@ -125,7 +125,18 @@ export function RegionSelector({ className, inMobileMenu = false }: RegionSelect
       if (inMobileMenu) {
         openAbove = true;
         maxHeight = Math.min(DROPDOWN_MAX_HEIGHT, Math.max(spaceAbove - DROPDOWN_GAP, 0));
-        alignRight = false;
+        const spaceRight = window.innerWidth - VIEWPORT_PADDING - rect.right;
+        const spaceLeft = rect.left - VIEWPORT_PADDING;
+        const leftAlignFits = window.innerWidth - VIEWPORT_PADDING - rect.left >= DROPDOWN_WIDTH;
+        const rightAlignFits = rect.right - VIEWPORT_PADDING >= DROPDOWN_WIDTH;
+        alignRight =
+          rightAlignFits && !leftAlignFits
+            ? true
+            : !rightAlignFits && leftAlignFits
+              ? false
+              : spaceRight >= spaceLeft
+                ? false
+                : true;
       } else {
         openAbove = spaceAbove > spaceBelow;
         const availableSpace = openAbove ? spaceAbove - DROPDOWN_GAP : spaceBelow - DROPDOWN_GAP;
@@ -152,8 +163,7 @@ export function RegionSelector({ className, inMobileMenu = false }: RegionSelect
   };
 
   const dropdownPlacement = position.openAbove ? "bottom-full mb-2" : "top-full mt-2";
-  const dropdownAlignment =
-    inMobileMenu || !position.alignRight ? "left-0 right-auto" : "right-0 left-auto";
+  const dropdownAlignment = position.alignRight ? "right-0 left-auto" : "left-0 right-auto";
 
   return (
     <div ref={ref} className={cn("relative", className)}>
@@ -181,7 +191,7 @@ export function RegionSelector({ className, inMobileMenu = false }: RegionSelect
             maxHeight: position.maxHeight,
             width: DROPDOWN_WIDTH,
             minWidth: DROPDOWN_WIDTH,
-            maxWidth: `min(${DROPDOWN_WIDTH}px, calc(100vw - 2rem))`,
+            maxWidth: `min(${DROPDOWN_WIDTH}px, calc(100vw - ${VIEWPORT_PADDING * 2}px))`,
           }}
         >
           {regions.map((r) => {
