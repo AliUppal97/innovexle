@@ -1,43 +1,18 @@
-import { ImageResponse } from "next/og";
+import { NextResponse } from "next/server";
 
 export const runtime = "edge";
 
-const size = { width: 32, height: 32 };
-
-export async function GET() {
-  return new ImageResponse(
-    (
-      <svg
-        width="32"
-        height="32"
-        viewBox="0 0 32 32"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M16 5.5L27 11.5v11L16 28.5l-11-6v-11z"
-          stroke="#FAFAFA"
-          strokeWidth="2"
-          strokeLinejoin="round"
-          fill="none"
-        />
-        <path
-          d="M16 10.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 1 0 0-3.2z"
-          fill="#FAFAFA"
-        />
-        <path
-          d="M16 15.5V25"
-          stroke="#FAFAFA"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
-    {
-      ...size,
-      headers: {
-        "Cache-Control": "public, max-age=31536000, immutable",
-      },
-    }
-  );
+export async function GET(request: Request) {
+  const base = new URL(request.url).origin;
+  const res = await fetch(`${base}/logo-icon.png`);
+  if (!res.ok) {
+    return new NextResponse(null, { status: 404 });
+  }
+  const buffer = await res.arrayBuffer();
+  return new NextResponse(buffer, {
+    headers: {
+      "Content-Type": "image/png",
+      "Cache-Control": "public, max-age=31536000, immutable",
+    },
+  });
 }

@@ -39,7 +39,7 @@
       ]
     },
     {
-      "source": "/favicon.svg",
+      "source": "/logo-icon.png",
       "headers": [
         {
           "key": "Cache-Control",
@@ -48,7 +48,16 @@
       ]
     },
     {
-      "source": "/icon.svg",
+      "source": "/logo-horizontal.png",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/logo-stacked.png",
       "headers": [
         {
           "key": "Cache-Control",
