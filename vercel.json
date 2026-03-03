@@ -48,7 +48,16 @@
       ]
     },
     {
-      "source": "/logo-horizontal.png",
+      "source": "/logo-horizontal-light.png",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/logo-horizontal-dark.png",
       "headers": [
         {
           "key": "Cache-Control",

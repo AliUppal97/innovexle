@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useTheme } from "@/components/providers/ThemeProvider";
 import { cn } from "@/lib/utils";
 
 /** Horizontal logo ~4:1 ratio (icon + text). Use min 48px height for readability. */
@@ -22,6 +25,7 @@ export function Logo({
   className,
   iconOnly = false,
 }: LogoProps) {
+  const { resolvedTheme } = useTheme();
   const resolvedVariant = iconOnly ? "icon" : variant;
 
   if (resolvedVariant === "icon") {
@@ -50,10 +54,13 @@ export function Logo({
     );
   }
 
-  // horizontal (default) – icon + text side by side
+  // horizontal (default) – theme-aware: white logo for dark, black for light
+  const horizontalSrc =
+    resolvedTheme === "dark" ? "/logo-horizontal-dark.png" : "/logo-horizontal-light.png";
+
   return (
     <Image
-      src="/logo-horizontal.png"
+      src={horizontalSrc}
       alt="Innovexle"
       width={LOGO_SIZES.horizontal.width}
       height={LOGO_SIZES.horizontal.height}
