@@ -29,11 +29,11 @@ export default async function Image() {
         }}
       >
         <img
-          src={`${baseUrl}/logo-horizontal-dark.png`}
+          src={`${baseUrl}/logo-og.png`}
           alt=""
-          width={380}
-          height={95}
-          style={{ objectFit: "contain", marginBottom: 48 }}
+          width={320}
+          height={140}
+          style={{ objectFit: "contain", marginBottom: 40 }}
         />
 
         <div
