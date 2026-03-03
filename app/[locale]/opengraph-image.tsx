@@ -10,6 +10,10 @@ export const size = {
 };
 export const contentType = "image/png";
 
+const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : siteConfig.url;
+
 export default async function Image() {
   return new ImageResponse(
     (
@@ -21,80 +25,39 @@ export default async function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#0A0A0A",
-          backgroundImage:
-            "radial-gradient(circle at 25px 25px, #262626 2%, transparent 0%), radial-gradient(circle at 75px 75px, #262626 2%, transparent 0%)",
-          backgroundSize: "100px 100px",
+          background: "linear-gradient(135deg, #0A0A0A 0%, #0F0F14 50%, #0A0A0E 100%)",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: 40,
-          }}
-        >
-          <svg
-            width="80"
-            height="80"
-            viewBox="0 0 100 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M50 8L86.4 29v42L50 92l-36.4-21V29z"
-              stroke="#FAFAFA"
-              strokeWidth="7"
-              strokeLinejoin="round"
-              fill="none"
-            />
-            <path
-              d="M50 25.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 1 0 0-9z"
-              fill="#FAFAFA"
-            />
-            <path
-              d="M50 42V76"
-              stroke="#FAFAFA"
-              strokeWidth="7"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
+        <img
+          src={`${baseUrl}/logo-horizontal-dark.png`}
+          alt=""
+          width={380}
+          height={95}
+          style={{ objectFit: "contain", marginBottom: 48 }}
+        />
 
         <div
           style={{
             display: "flex",
-            fontSize: 72,
-            fontWeight: 700,
-            color: "#EDEDED",
-            marginBottom: 20,
-            letterSpacing: "-0.02em",
-          }}
-        >
-          {siteConfig.name}
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            fontSize: 32,
-            color: "#A3A3A3",
+            fontSize: 28,
+            color: "rgba(255, 255, 255, 0.7)",
             textAlign: "center",
-            maxWidth: 800,
-            lineHeight: 1.4,
+            maxWidth: 820,
+            lineHeight: 1.5,
+            paddingLeft: 60,
+            paddingRight: 60,
           }}
         >
-          Backend engineering for companies that can&apos;t afford downtime
+          Your vision. Our craft. Full-stack engineering that ships. Fintech, SaaS, healthcare, AI.
         </div>
 
         <div
           style={{
             display: "flex",
-            width: 100,
+            width: 120,
             height: 4,
-            backgroundColor: "#0d9488",
-            marginTop: 40,
+            background: "linear-gradient(90deg, #0d9488, #8B5CF6)",
+            marginTop: 48,
             borderRadius: 2,
           }}
         />

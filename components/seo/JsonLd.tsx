@@ -102,7 +102,7 @@ export function getOrganizationSchema(): OrganizationSchema {
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/icon.svg`,
+    logo: `${siteConfig.url}/logo-icon.png`,
     description: siteConfig.description,
     email: siteConfig.email,
     sameAs: [siteConfig.links.github, siteConfig.links.linkedin],
