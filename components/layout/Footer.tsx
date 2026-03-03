@@ -35,7 +35,7 @@ export function Footer() {
                 className="flex items-center font-semibold text-foreground"
                 aria-label={`${siteConfig.name} home`}
               >
-                <Logo />
+                <Logo variant="horizontal" className="h-10 w-auto max-w-[160px] md:h-12 md:max-w-[192px]" />
               </Link>
               <p className="mt-4 max-w-md text-body text-muted">
                 {tMeta("siteDescription")}

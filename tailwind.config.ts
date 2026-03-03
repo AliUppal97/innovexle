@@ -17,6 +17,7 @@ const config: Config = {
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
+          secondary: "hsl(var(--accent-secondary))",
           foreground: "hsl(var(--accent-foreground))",
         },
         border: "hsl(var(--border))",
@@ -66,6 +67,8 @@ const config: Config = {
           "0 4px 6px -1px rgb(0 0 0 / 0.07), 0 10px 20px -5px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.04)",
         "nav-floating-dark":
           "0 4px 6px -1px rgb(0 0 0 / 0.3), 0 10px 20px -5px rgb(0 0 0 / 0.25), 0 2px 4px -2px rgb(0 0 0 / 0.2)",
+        "button-glow":
+          "0 8px 30px -4px hsl(var(--accent-secondary) / 0.35)",
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-out forwards",

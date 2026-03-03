@@ -162,10 +162,10 @@ export function Header() {
           >
           <Link
             href="/"
-            className="flex min-w-0 shrink items-center gap-2 font-semibold text-foreground overflow-hidden"
+            className="flex min-w-0 shrink items-center gap-2 font-semibold text-foreground"
             aria-label={`${siteConfig.name} home`}
           >
-            <Logo />
+            <Logo variant="horizontal" className="h-10 w-auto max-w-[160px] sm:h-11 sm:max-w-[176px] lg:h-12 lg:max-w-[192px]" />
           </Link>
 
           <div className="hidden lg:flex lg:items-center lg:gap-4 xl:gap-6 lg:min-w-0 lg:flex-1 lg:justify-end">

@@ -5,13 +5,14 @@
 @tailwind utilities;
 
 @layer base {
-  /* Futuristic cyan-teal accent - Vercel/Linear-inspired, tech-forward */
+  /* Innovexle brand: cyan–teal to violet (logo gradient) */
   :root {
     --background: 0 0% 98%;
     --foreground: 0 0% 9%;
     --muted: 0 0% 45%;
     --muted-foreground: 0 0% 40%;
     --accent: 188 86% 42%;
+    --accent-secondary: 262 83% 58%;
     --accent-foreground: 0 0% 100%;
     --border: 0 0% 90%;
     --card: 0 0% 100%;
@@ -28,6 +29,7 @@
     --muted: 0 0% 64%;
     --muted-foreground: 0 0% 60%;
     --accent: 188 78% 55%;
+    --accent-secondary: 262 83% 65%;
     --accent-foreground: 220 25% 8%;
     --border: 0 0% 15%;
     --card: 0 0% 7%;
@@ -80,9 +82,9 @@
     outline-offset: 2px;
   }
 
-  /* Selection color */
+  /* Selection color – brand gradient hint */
   ::selection {
-    background-color: hsl(var(--accent) / 0.2);
+    background: linear-gradient(135deg, hsl(var(--accent) / 0.25), hsl(var(--accent-secondary) / 0.2));
     color: hsl(var(--foreground));
   }
 

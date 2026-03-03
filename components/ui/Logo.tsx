@@ -1,63 +1,64 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-interface LogoMarkProps {
-  className?: string;
-}
+/** Horizontal logo ~4:1 ratio (icon + text). Use min 48px height for readability. */
+const LOGO_SIZES = {
+  horizontal: { width: 320, height: 80 }, // 4:1 – scales to any height
+  vertical: { width: 120, height: 140 },  // stacked: icon above text
+  icon: { width: 32, height: 32 },
+} as const;
 
-export function LogoMark({ className }: LogoMarkProps) {
-  return (
-    <svg
-      viewBox="0 0 100 100"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={cn("h-8 w-8", className)}
-      aria-hidden="true"
-    >
-      <path
-        d="M50 8L86.4 29v42L50 92l-36.4-21V29z"
-        stroke="currentColor"
-        strokeWidth="7"
-        strokeLinejoin="round"
-        fill="none"
-      />
-      <circle cx="50" cy="30" r="4.5" fill="currentColor" />
-      <line
-        x1="50"
-        y1="42"
-        x2="50"
-        y2="76"
-        stroke="currentColor"
-        strokeWidth="7"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
+export type LogoVariant = keyof typeof LOGO_SIZES;
 
 interface LogoProps {
+  variant?: LogoVariant;
   className?: string;
-  showText?: boolean;
-  textClassName?: string;
+  /** Only for variant="icon" – use icon-only logo elsewhere (e.g. favicon) */
+  iconOnly?: boolean;
 }
 
 export function Logo({
+  variant = "horizontal",
   className,
-  showText = true,
-  textClassName,
+  iconOnly = false,
 }: LogoProps) {
+  const resolvedVariant = iconOnly ? "icon" : variant;
+
+  if (resolvedVariant === "icon") {
+    return (
+      <Image
+        src="/logo-icon.png"
+        alt="Innovexle"
+        width={LOGO_SIZES.icon.width}
+        height={LOGO_SIZES.icon.height}
+        className={cn("shrink-0 object-contain", className)}
+        priority
+      />
+    );
+  }
+
+  if (resolvedVariant === "vertical") {
+    return (
+      <Image
+        src="/logo-stacked.png"
+        alt="Innovexle"
+        width={LOGO_SIZES.vertical.width}
+        height={LOGO_SIZES.vertical.height}
+        className={cn("shrink-0 object-contain", className)}
+        priority
+      />
+    );
+  }
+
+  // horizontal (default) – icon + text side by side
   return (
-    <span className={cn("inline-flex min-w-0 items-center gap-2", className)}>
-      <LogoMark className="shrink-0" />
-      {showText && (
-        <span
-          className={cn(
-            "truncate text-body font-semibold tracking-tight text-foreground",
-            textClassName
-          )}
-        >
-          Innovexle
-        </span>
-      )}
-    </span>
+    <Image
+      src="/logo-horizontal.png"
+      alt="Innovexle"
+      width={LOGO_SIZES.horizontal.width}
+      height={LOGO_SIZES.horizontal.height}
+      className={cn("shrink-0 object-contain", className)}
+      priority
+    />
   );
 }
