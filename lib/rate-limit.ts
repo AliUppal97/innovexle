@@ -2,6 +2,10 @@ import { promises as fs } from "fs";
 import path from "path";
 
 const RATE_LIMIT_FILE = path.join(process.cwd(), ".data", "rate-limits.json");
+const IS_SERVERLESS = process.env.VERCEL === "1";
+
+/** In-memory fallback for Vercel/serverless (read-only filesystem) */
+const memoryStore: Record<string, { count: number; resetTime: number }> = {};
 
 interface RateLimitEntry {
   count: number;
@@ -11,6 +15,7 @@ interface RateLimitEntry {
 type RateLimitStore = Record<string, RateLimitEntry>;
 
 async function readStore(): Promise<RateLimitStore> {
+  if (IS_SERVERLESS) return memoryStore as RateLimitStore;
   try {
     const raw = await fs.readFile(RATE_LIMIT_FILE, "utf-8");
     return JSON.parse(raw);
@@ -20,9 +25,18 @@ async function readStore(): Promise<RateLimitStore> {
 }
 
 async function writeStore(store: RateLimitStore): Promise<void> {
-  const dir = path.dirname(RATE_LIMIT_FILE);
-  await fs.mkdir(dir, { recursive: true });
-  await fs.writeFile(RATE_LIMIT_FILE, JSON.stringify(store), "utf-8");
+  if (IS_SERVERLESS) {
+    Object.assign(memoryStore, store);
+    return;
+  }
+  try {
+    const dir = path.dirname(RATE_LIMIT_FILE);
+    await fs.mkdir(dir, { recursive: true });
+    await fs.writeFile(RATE_LIMIT_FILE, JSON.stringify(store), "utf-8");
+  } catch {
+    // Fallback to memory if file write fails (e.g. read-only fs)
+    Object.assign(memoryStore, store);
+  }
 }
 
 export interface RateLimitConfig {
@@ -47,7 +61,6 @@ export async function checkRateLimit(
   if (!entry || now > entry.resetTime) {
     store[key] = { count: 1, resetTime: now + config.windowMs };
 
-    // Prune expired entries
     for (const k of Object.keys(store)) {
       if (store[k].resetTime < now) delete store[k];
     }
