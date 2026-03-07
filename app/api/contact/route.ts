@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { sendContactEmail } from "@/lib/email";
+import { sendContactEmail, EmailSendError } from "@/lib/email";
 import { checkRateLimit } from "@/lib/rate-limit";
 
 function getRateLimitKey(request: NextRequest): string {
@@ -110,7 +110,7 @@ export async function POST(request: NextRequest) {
     await sendContactEmail({
       name: data.name,
       email: data.email,
-      company: data.company,
+      company: data.company?.trim() || undefined,
       message: data.message,
     });
 
@@ -119,7 +119,12 @@ export async function POST(request: NextRequest) {
       message: "Thank you for reaching out. We'll respond within one business day.",
     });
   } catch (error) {
-    console.error("Contact form error:", error);
+    const isEmailError = error instanceof EmailSendError;
+    console.error("Contact form error:", {
+      name: error instanceof Error ? error.name : "Error",
+      message: error instanceof Error ? error.message : String(error),
+      ...(isEmailError && { code: (error as EmailSendError).code }),
+    });
     return NextResponse.json(
       { error: "An unexpected error occurred. Please try again." },
       { status: 500 }

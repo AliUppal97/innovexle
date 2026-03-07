@@ -12,13 +12,21 @@ To receive contact form submissions at **hello@innovexle.com** on your published
 - [ ] **3. Domain verification** – In Resend dashboard, add domain `innovexle.com` and add the DNS records (SPF, DKIM) to your DNS provider
 - [ ] **4. Redeploy** – After adding env vars, trigger a new deployment in Vercel
 
+## Quick start (before domain verification)
+
+To send emails **immediately** without waiting for domain verification:
+
+1. Add `RESEND_FROM_EMAIL=onboarding@resend.dev` to Vercel env vars
+2. **Note:** Resend's onboarding address can only deliver to the email you signed up with. For `hello@innovexle.com`, either use that as your Resend account email, or verify your domain (recommended).
+3. Once `innovexle.com` is verified in Resend, remove `RESEND_FROM_EMAIL` to use `noreply@innovexle.com`
+
 ## Verify
 
 1. Submit a test message from your live contact form
 2. Check **hello@innovexle.com** inbox (and spam folder)
 3. If you see "Contact form is not configured" – `RESEND_API_KEY` is missing in Vercel
-4. If Resend returns an error – domain may not be verified; check Resend dashboard
+4. If Resend returns an error – check Vercel logs for `[Email] Send failed:` details; domain may need verification
 
 ## Local development
 
-Without `RESEND_API_KEY`, submissions are logged to the console and the form shows success. Add the key to `.env.local` to test real delivery.
+Without `RESEND_API_KEY`, submissions are logged to the console and the form shows success. Add the key to `.env.local` to test real delivery. Use `RESEND_FROM_EMAIL=onboarding@resend.dev` in `.env.local` to test before domain verification.
