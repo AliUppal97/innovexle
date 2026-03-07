@@ -17,6 +17,7 @@ import { RegionProvider } from "@/components/ui/RegionSelector";
 import { siteConfig } from "@/lib/constants";
 import { JsonLd, getOrganizationSchema, getWebSiteSchema } from "@/components/seo";
 import { Analytics } from "@/components/analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { WebVitals } from "@/components/analytics/WebVitals";
 import { locales, localeDirection, type Locale } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
@@ -168,6 +169,7 @@ export default async function RootLayout({
                   <Analytics />
                   <WebVitals />
                 </Suspense>
+                <VercelAnalytics />
               </ToastProvider>
             </RegionProvider>
           </ThemeProvider>
