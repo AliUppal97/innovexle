@@ -11,10 +11,18 @@ interface ContactEmailPayload {
   message: string;
 }
 
+const isProduction =
+  process.env.VERCEL === "1" || process.env.NODE_ENV === "production";
+
 export async function sendContactEmail(data: ContactEmailPayload) {
   const recipient = process.env.CONTACT_EMAIL || "hello@innovexle.com";
 
   if (!resend) {
+    if (isProduction) {
+      throw new Error(
+        "Contact form is not configured. Add RESEND_API_KEY to Vercel environment variables. See .env.example and CONTACT_SETUP.md."
+      );
+    }
     console.log("[Email] Resend not configured - logging submission:", {
       to: recipient,
       from: data.email,
