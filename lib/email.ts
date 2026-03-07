@@ -38,8 +38,17 @@ function getFromAddress(): string {
   return `Innovexle Contact <noreply@${domain}>`;
 }
 
+/** Parse CONTACT_EMAIL: supports comma-separated list for multiple recipients */
+function getRecipients(): string[] {
+  const raw = process.env.CONTACT_EMAIL || "hello@innovexle.com";
+  return raw
+    .split(",")
+    .map((e) => e.trim())
+    .filter(Boolean);
+}
+
 export async function sendContactEmail(data: ContactEmailPayload) {
-  const recipient = process.env.CONTACT_EMAIL || "hello@innovexle.com";
+  const recipients = getRecipients();
 
   if (!resend) {
     if (isProduction) {
@@ -48,7 +57,7 @@ export async function sendContactEmail(data: ContactEmailPayload) {
       );
     }
     console.log("[Email] Resend not configured - logging submission:", {
-      to: recipient,
+      to: recipients,
       from: data.email,
       name: data.name,
       company: data.company,
@@ -61,7 +70,7 @@ export async function sendContactEmail(data: ContactEmailPayload) {
   const payload = {
     from,
     replyTo: data.email,
-    to: [recipient],
+    to: recipients,
     subject: `New inquiry from ${data.name}${data.company ? ` (${data.company})` : ""}`,
     text: formatPlainText(data),
     html: formatHtml(data),
@@ -77,14 +86,14 @@ export async function sendContactEmail(data: ContactEmailPayload) {
       code,
       message,
       from,
-      to: recipient,
+      to: recipients,
       resendError: JSON.stringify(err, null, 2),
     });
     throw new EmailSendError(message, code);
   }
 
   if (sendData?.id) {
-    console.log("[Email] Sent successfully:", { id: sendData.id, to: recipient });
+    console.log("[Email] Sent successfully:", { id: sendData.id, to: recipients });
   }
 
   return { success: true };
