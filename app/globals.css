@@ -82,9 +82,48 @@
     outline-offset: 2px;
   }
 
-  /* Selection color – brand gradient hint */
+  /* Selection – solid color (gradients not supported in ::selection). Visible in both themes. */
   ::selection {
-    background: linear-gradient(135deg, hsl(var(--accent) / 0.25), hsl(var(--accent-secondary) / 0.2));
+    background-color: hsl(var(--accent) / 0.5);
+    color: hsl(var(--foreground));
+  }
+
+  ::-moz-selection {
+    background-color: hsl(var(--accent) / 0.5);
+    color: hsl(var(--foreground));
+  }
+
+  input::selection,
+  textarea::selection {
+    background-color: hsl(var(--accent) / 0.55);
+    color: hsl(var(--foreground));
+  }
+
+  input::-moz-selection,
+  textarea::-moz-selection {
+    background-color: hsl(var(--accent) / 0.55);
+    color: hsl(var(--foreground));
+  }
+
+  .dark ::selection {
+    background-color: hsl(var(--accent) / 0.55);
+    color: hsl(var(--foreground));
+  }
+
+  .dark ::-moz-selection {
+    background-color: hsl(var(--accent) / 0.55);
+    color: hsl(var(--foreground));
+  }
+
+  .dark input::selection,
+  .dark textarea::selection {
+    background-color: hsl(var(--accent) / 0.6);
+    color: hsl(var(--foreground));
+  }
+
+  .dark input::-moz-selection,
+  .dark textarea::-moz-selection {
+    background-color: hsl(var(--accent) / 0.6);
     color: hsl(var(--foreground));
   }
 
