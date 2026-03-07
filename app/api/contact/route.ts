@@ -142,6 +142,16 @@ export async function POST(request: NextRequest) {
       message: error instanceof Error ? error.message : String(error),
       ...(isEmailError && { code: (error as EmailSendError).code }),
     });
+    const recipient =
+      process.env.CONTACT_EMAIL || CONTACT_EMAIL_FALLBACK;
+    if (isEmailError) {
+      return NextResponse.json(
+        {
+          error: `Unable to send your message right now. Please try again later or email us directly at ${recipient}.`,
+        },
+        { status: 503 }
+      );
+    }
     return NextResponse.json(
       { error: "An unexpected error occurred. Please try again." },
       { status: 500 }
