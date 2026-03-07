@@ -51,8 +51,25 @@ function sanitizeInput(input: string): string {
     .replace(/'/g, "&#x27;");
 }
 
+const CONTACT_EMAIL_FALLBACK = "hello@innovexle.com";
+
 export async function POST(request: NextRequest) {
   try {
+    const recipient =
+      process.env.CONTACT_EMAIL || CONTACT_EMAIL_FALLBACK;
+    const isConfigured = !!process.env.RESEND_API_KEY?.trim();
+    const isProduction =
+      process.env.VERCEL === "1" || process.env.NODE_ENV === "production";
+
+    if (isProduction && !isConfigured) {
+      return NextResponse.json(
+        {
+          error: `Contact form is temporarily unavailable. Please email us directly at ${recipient}.`,
+        },
+        { status: 503 }
+      );
+    }
+
     const rateLimitKey = getRateLimitKey(request);
     const rateLimitResult = await checkRateLimit(rateLimitKey, {
       windowMs: 60_000,
