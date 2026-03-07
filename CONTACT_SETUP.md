@@ -25,7 +25,8 @@ To send emails **immediately** without waiting for domain verification:
 1. Submit a test message from your live contact form
 2. Check **hello@innovexle.com** inbox (and spam folder)
 3. If you see "Contact form is not configured" – `RESEND_API_KEY` is missing in Vercel
-4. If Resend returns an error – check Vercel logs for `[Email] Send failed:` details; domain may need verification
+4. If you get "Unable to send your message right now" (503) – Resend API failed; usually domain not verified. **Fix:** Add `RESEND_FROM_EMAIL=onboarding@resend.dev` to Vercel env vars, redeploy, then test again
+5. Check Vercel → Project → Logs (or Deployments → Function logs) for `[Email] Send failed:` to see the exact Resend error
 
 ## Local development
 
