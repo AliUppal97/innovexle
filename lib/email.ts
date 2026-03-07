@@ -11,8 +11,32 @@ interface ContactEmailPayload {
   message: string;
 }
 
+/** Resend error shape – message and optional code/status */
+interface ResendError {
+  message?: string;
+  name?: string;
+  statusCode?: number;
+  [key: string]: unknown;
+}
+
 const isProduction =
   process.env.VERCEL === "1" || process.env.NODE_ENV === "production";
+
+/**
+ * Returns the "from" address for outgoing contact emails.
+ * - RESEND_FROM_EMAIL: use if set (e.g. onboarding@resend.dev before domain verification)
+ * - Otherwise: Innovexle Contact <noreply@{domain}>
+ */
+function getFromAddress(): string {
+  const custom = process.env.RESEND_FROM_EMAIL?.trim();
+  if (custom) {
+    return custom.includes("<")
+      ? custom
+      : `Innovexle Contact <${custom}>`;
+  }
+  const domain = getDomain();
+  return `Innovexle Contact <noreply@${domain}>`;
+}
 
 export async function sendContactEmail(data: ContactEmailPayload) {
   const recipient = process.env.CONTACT_EMAIL || "hello@innovexle.com";
@@ -33,24 +57,51 @@ export async function sendContactEmail(data: ContactEmailPayload) {
     return { success: true };
   }
 
-  const { error } = await resend.emails.send({
-    from: `Innovexle Contact <noreply@${getDomain()}>`,
+  const from = getFromAddress();
+  const payload = {
+    from,
     replyTo: data.email,
     to: [recipient],
     subject: `New inquiry from ${data.name}${data.company ? ` (${data.company})` : ""}`,
     text: formatPlainText(data),
     html: formatHtml(data),
-  });
+  };
+
+  const { data: sendData, error } = await resend.emails.send(payload);
 
   if (error) {
-    console.error("[Email] Send failed:", error);
-    throw new Error("Failed to send email");
+    const err = error as ResendError;
+    const message = typeof err?.message === "string" ? err.message : "Unknown error";
+    const code = err?.statusCode ?? err?.name ?? "unknown";
+    console.error("[Email] Send failed:", {
+      code,
+      message,
+      from,
+      to: recipient,
+      resendError: JSON.stringify(err, null, 2),
+    });
+    throw new EmailSendError(message, code);
+  }
+
+  if (sendData?.id) {
+    console.log("[Email] Sent successfully:", { id: sendData.id, to: recipient });
   }
 
   return { success: true };
 }
 
-function getDomain() {
+/** Thrown when Resend API returns an error – preserves cause for logging */
+export class EmailSendError extends Error {
+  constructor(
+    message: string,
+    public readonly code?: string | number
+  ) {
+    super(message);
+    this.name = "EmailSendError";
+  }
+}
+
+function getDomain(): string {
   const url = process.env.NEXT_PUBLIC_SITE_URL || "https://innovexle.com";
   try {
     return new URL(url).hostname;
