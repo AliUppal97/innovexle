@@ -4,13 +4,13 @@ To receive contact form submissions at **hello@innovexle.com** on your published
 
 ## Checklist
 
-- [ ] **1. Resend API key** – Create at [resend.com](https://resend.com), copy key (starts with `re_`)
-- [ ] **2. Vercel env vars** – Add to your Vercel project:
-  - `RESEND_API_KEY` = your Resend API key
+- [ ] **1. Resend API key** – Sign up at [resend.com](https://resend.com), go to **API Keys**, create a key (starts with `re_`), copy it
+- [ ] **2. Vercel env vars** – In Vercel: Project → Settings → Environment Variables, add:
+  - `RESEND_API_KEY` = your Resend API key **(required – form returns "temporarily unavailable" without it)**
   - `CONTACT_EMAIL` = `hello@innovexle.com` (optional, this is the default)
-  - `NEXT_PUBLIC_SITE_URL` = `https://innovexle.com`
-- [ ] **3. Domain verification** – In Resend dashboard, add domain `innovexle.com` and add the DNS records (SPF, DKIM) to your DNS provider
-- [ ] **4. Redeploy** – After adding env vars, trigger a new deployment in Vercel
+  - `NEXT_PUBLIC_SITE_URL` = `https://www.innovexle.com` (or your production URL)
+- [ ] **3. Redeploy** – After adding env vars, go to Deployments → ⋮ on latest → Redeploy (or push a new commit)
+- [ ] **4. Domain verification** (for custom sender) – In Resend dashboard, add domain `innovexle.com` and add the DNS records (SPF, DKIM). Until then, use `RESEND_FROM_EMAIL=onboarding@resend.dev` (see Quick start below)
 
 ## Quick start (before domain verification)
 
