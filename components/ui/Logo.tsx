@@ -54,18 +54,27 @@ export function Logo({
     );
   }
 
-  // horizontal (default) – theme-aware: white logo for dark, black for light
+  // horizontal (default) – dark logo on light theme, light logo on dark theme
   const horizontalSrc =
-    resolvedTheme === "dark" ? "/logo-horizontal-dark.png" : "/logo-horizontal-light.png";
+    resolvedTheme === "dark" ? "/logo-horizontal-light.png" : "/logo-horizontal-dark.png";
+  const isDark = resolvedTheme === "dark";
 
   return (
-    <Image
-      src={horizontalSrc}
-      alt="Innovexle"
-      width={LOGO_SIZES.horizontal.width}
-      height={LOGO_SIZES.horizontal.height}
-      className={cn("shrink-0 object-contain", className)}
-      priority
-    />
+    <span
+      className={cn(
+        "inline-block shrink-0",
+        isDark && "[mix-blend-mode:screen]",
+        className
+      )}
+    >
+      <Image
+        src={horizontalSrc}
+        alt="Innovexle"
+        width={LOGO_SIZES.horizontal.width}
+        height={LOGO_SIZES.horizontal.height}
+        className="block size-full object-contain"
+        priority
+      />
+    </span>
   );
 }
