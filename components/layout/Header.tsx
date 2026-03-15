@@ -12,8 +12,20 @@ import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 import { RegionSelector } from "@/components/ui/RegionSelector";
 import { Logo } from "@/components/ui/Logo";
-import { siteConfig } from "@/lib/constants";
+import { siteConfig, careersEnabled } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+
+const allNavItems = [
+  { key: "services", href: "/services" },
+  { key: "caseStudies", href: "/case-studies" },
+  { key: "careers", href: "/careers" },
+  { key: "about", href: "/about" },
+  { key: "contact", href: "/contact" },
+] as const;
+
+const navItems = allNavItems.filter((item) =>
+  item.key === "careers" ? careersEnabled : true
+);
 
 const MOBILE_MENU_Z_BACKDROP = 9998;
 const MOBILE_MENU_Z_PANEL = 9999;
@@ -21,14 +33,6 @@ const HEADER_HEIGHT = 4; // 4rem = 16 (h-16)
 const SCROLL_THRESHOLD = 8; // px - Material/Apple-style: subtle threshold for premium feel
 /** When scrolled: pt-4 (1rem) + h-16 (4rem) = 5rem */
 const ELEVATED_MENU_TOP = 5;
-
-const navItems = [
-  { key: "services", href: "/services" },
-  { key: "caseStudies", href: "/case-studies" },
-  { key: "careers", href: "/careers" },
-  { key: "about", href: "/about" },
-  { key: "contact", href: "/contact" },
-] as const;
 
 export function Header() {
   const t = useTranslations("nav");

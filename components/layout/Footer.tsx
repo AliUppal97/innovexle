@@ -2,15 +2,19 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
-import { siteConfig } from "@/lib/constants";
+import { siteConfig, careersEnabled } from "@/lib/constants";
 
-const companyLinks = [
+const allCompanyLinks = [
   { key: "about", href: "/about" },
   { key: "services", href: "/services" },
   { key: "caseStudies", href: "/case-studies" },
   { key: "careers", href: "/careers" },
   { key: "contact", href: "/contact" },
 ] as const;
+
+const companyLinks = allCompanyLinks.filter((item) =>
+  item.key === "careers" ? careersEnabled : true
+);
 
 const legalLinks = [
   { key: "privacyPolicy", href: "/privacy" },
