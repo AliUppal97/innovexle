@@ -1,3 +1,6 @@
+/** Careers page is hidden in production until fully completed. */
+export const careersEnabled = process.env.NODE_ENV !== "production";
+
 export const siteConfig = {
   name: "Innovexle",
   description:
