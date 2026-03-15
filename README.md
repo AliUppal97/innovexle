@@ -1,5 +1,7 @@
 # Innovexle
 
+> **Supabase**: Job applications and resumes are stored in Supabase when configured. See [SUPABASE_SETUP.md](./SUPABASE_SETUP.md) for setup.
+
 A world-class website for a backend engineering company. Built with Next.js 14, TypeScript, and Tailwind CSS.
 
 ## Features
@@ -9,7 +11,8 @@ A world-class website for a backend engineering company. Built with Next.js 14, 
 - **Accessibility**: WCAG 2.1 compliant, focus management, screen reader support
 - **Analytics Ready**: Privacy-aware analytics with support for Plausible, GA4, Fathom
 - **Contact Form**: Working form with rate limiting, spam protection, and email delivery
-- **Security**: HSTS, CSP, XSS protection, and other security headers
+- **Job Applications**: Supabase-backed storage for applications and resume uploads (file fallback for local dev)
+- **Security**: HSTS, CSP, XSS protection, rate limiting, API key protection for sensitive endpoints
 
 ## Tech Stack
 
