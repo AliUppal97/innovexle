@@ -23,6 +23,7 @@
   "dependencies": {
     "@fontsource/noto-nastaliq-urdu": "^5.2.8",
     "@heroicons/react": "^2.2.0",
+    "@supabase/supabase-js": "^2.99.1",
     "@vercel/analytics": "^1.6.1",
     "clsx": "^2.1.0",
     "framer-motion": "^12.34.2",
