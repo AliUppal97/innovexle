@@ -1,58 +1,83 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
+
 import { getJobById } from "@/lib/data/jobs";
 import { createFileStorage, saveFile } from "@/lib/storage";
+import {
+  createApplication,
+  getApplications,
+  isSupabaseConfigured,
+  type ApplicationRecord,
+} from "@/lib/supabase";
+import { checkRateLimit } from "@/lib/rate-limit";
 
-interface ApplicationRecord {
-  id: string;
-  jobId: string;
-  jobCode: string;
-  jobTitle: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  linkedIn?: string;
-  portfolio?: string;
-  currentCompany?: string;
-  currentTitle?: string;
-  yearsOfExperience: string;
-  expectedSalary?: string;
-  noticePeriod: string;
-  workAuthorization: string;
-  coverLetter?: string;
-  heardAbout?: string;
-  resumeFileName?: string;
-  resumeFileSize?: number;
-  resumeStoredAs?: string;
-  submittedAt: string;
-  applicationReference: string;
+function getRateLimitKey(request: NextRequest): string {
+  const forwarded = request.headers.get("x-forwarded-for");
+  const ip = forwarded ? forwarded.split(",")[0].trim() : "unknown";
+  return `applications:${ip}`;
+}
+
+function sanitizeInput(input: string): string {
+  return input
+    .trim()
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;");
+}
+
+function isAuthorizedForGet(request: NextRequest): boolean {
+  const apiKey = process.env.APPLICATIONS_API_KEY;
+  if (!apiKey?.trim()) return false;
+  const bearer = request.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
+  const headerKey = request.headers.get("x-api-key");
+  return bearer === apiKey || headerKey === apiKey;
 }
 
 const applicationStore = createFileStorage<ApplicationRecord>("applications");
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
+    // Rate limit: 5 applications per hour per IP
+    const rateLimitKey = getRateLimitKey(request);
+    const rateLimitResult = await checkRateLimit(rateLimitKey, {
+      windowMs: 60 * 60 * 1000,
+      maxRequests: 5,
+    });
+
+    if (!rateLimitResult.allowed) {
+      return NextResponse.json(
+        { success: false, message: "Too many applications. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(rateLimitResult.retryAfterSeconds ?? 3600),
+            "X-RateLimit-Remaining": "0",
+          },
+        }
+      );
+    }
+
     const formData = await request.formData();
 
-    const jobId = formData.get("jobId") as string;
-    const jobCode = formData.get("jobCode") as string;
-    const jobTitle = formData.get("jobTitle") as string;
-    const firstName = formData.get("firstName") as string;
-    const lastName = formData.get("lastName") as string;
-    const email = formData.get("email") as string;
-    const phone = formData.get("phone") as string;
-    const linkedIn = formData.get("linkedIn") as string;
-    const portfolio = formData.get("portfolio") as string;
-    const currentCompany = formData.get("currentCompany") as string;
-    const currentTitle = formData.get("currentTitle") as string;
-    const yearsOfExperience = formData.get("yearsOfExperience") as string;
-    const expectedSalary = formData.get("expectedSalary") as string;
-    const noticePeriod = formData.get("noticePeriod") as string;
-    const workAuthorization = formData.get("workAuthorization") as string;
-    const coverLetter = formData.get("coverLetter") as string;
-    const heardAbout = formData.get("heardAbout") as string;
+    const jobId = (formData.get("jobId") as string)?.trim() || "";
+    const jobCode = (formData.get("jobCode") as string)?.trim() || "";
+    const jobTitle = (formData.get("jobTitle") as string)?.trim() || "";
+    const firstName = sanitizeInput((formData.get("firstName") as string) || "");
+    const lastName = sanitizeInput((formData.get("lastName") as string) || "");
+    const email = sanitizeInput((formData.get("email") as string) || "");
+    const phone = sanitizeInput((formData.get("phone") as string) || "");
+    const linkedIn = sanitizeInput((formData.get("linkedIn") as string) || "");
+    const portfolio = sanitizeInput((formData.get("portfolio") as string) || "");
+    const currentCompany = sanitizeInput((formData.get("currentCompany") as string) || "");
+    const currentTitle = sanitizeInput((formData.get("currentTitle") as string) || "");
+    const yearsOfExperience = (formData.get("yearsOfExperience") as string) || "";
+    const expectedSalary = sanitizeInput((formData.get("expectedSalary") as string) || "");
+    const noticePeriod = (formData.get("noticePeriod") as string) || "";
+    const workAuthorization = (formData.get("workAuthorization") as string) || "";
+    const coverLetter = sanitizeInput((formData.get("coverLetter") as string) || "");
+    const heardAbout = sanitizeInput((formData.get("heardAbout") as string) || "");
     const resume = formData.get("resume") as File | null;
 
     if (!jobId || !firstName || !lastName || !email || !phone) {
@@ -90,12 +115,6 @@ export async function POST(request: Request) {
 
     const applicationReference = `${jobCode}-${Date.now().toString(36).toUpperCase()}`;
 
-    let resumeStoredAs: string | undefined;
-    if (resume && resume.size > 0) {
-      const buffer = Buffer.from(await resume.arrayBuffer());
-      resumeStoredAs = await saveFile(resume.name, buffer);
-    }
-
     const application: ApplicationRecord = {
       id: applicationReference,
       jobId,
@@ -117,19 +136,47 @@ export async function POST(request: Request) {
       heardAbout: heardAbout || undefined,
       resumeFileName: resume?.name,
       resumeFileSize: resume?.size,
-      resumeStoredAs,
+      resumeStoredAs: undefined,
       submittedAt: new Date().toISOString(),
       applicationReference,
     };
 
-    await applicationStore.create(application);
+    if (isSupabaseConfigured()) {
+      // Supabase: upload resume to Storage, insert into DB
+      let resumeFile: { buffer: Buffer; name: string; size: number; mimeType: string } | undefined;
+      if (resume && resume.size > 0) {
+        if (resume.size > 5 * 1024 * 1024) {
+          return NextResponse.json(
+            { success: false, message: "Resume must be less than 5MB" },
+            { status: 400 }
+          );
+        }
+        const buffer = Buffer.from(await resume.arrayBuffer());
+        resumeFile = {
+          buffer,
+          name: resume.name,
+          size: resume.size,
+          mimeType: resume.type || "application/octet-stream",
+        };
+      }
+      await createApplication(application, resumeFile);
+    } else {
+      // Fallback: file-based storage (local dev without Supabase)
+      let resumeStoredAs: string | undefined;
+      if (resume && resume.size > 0) {
+        const buffer = Buffer.from(await resume.arrayBuffer());
+        resumeStoredAs = await saveFile(resume.name, buffer);
+      }
+      application.resumeStoredAs = resumeStoredAs;
+      await applicationStore.create(application);
+    }
 
     console.log("New application persisted:", {
       reference: applicationReference,
       job: jobTitle,
       applicant: `${firstName} ${lastName}`,
       email,
-      resumeStored: !!resumeStoredAs,
+      storage: isSupabaseConfigured() ? "supabase" : "file",
     });
 
     return NextResponse.json({
@@ -151,15 +198,29 @@ export async function POST(request: Request) {
   }
 }
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   try {
+    // Require API key in production to protect PII
+    const isProduction = process.env.VERCEL === "1" || process.env.NODE_ENV === "production";
+    if (isProduction && !isAuthorizedForGet(request)) {
+      return NextResponse.json(
+        { success: false, message: "Unauthorized" },
+        { status: 401 }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
     const jobId = searchParams.get("jobId");
 
-    let applications = await applicationStore.getAll();
+    let applications: ApplicationRecord[];
 
-    if (jobId) {
-      applications = applications.filter((app) => app.jobId === jobId);
+    if (isSupabaseConfigured()) {
+      applications = await getApplications(jobId ?? undefined);
+    } else {
+      applications = await applicationStore.getAll();
+      if (jobId) {
+        applications = applications.filter((app) => app.jobId === jobId);
+      }
     }
 
     return NextResponse.json({
