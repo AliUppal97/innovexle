@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { JobApplicationForm } from "@/components/sections/JobApplicationForm";
 import { ShareJob } from "@/components/sections/ShareJob";
 import { JsonLd, getJobPostingSchema, getBreadcrumbSchema } from "@/components/seo";
-import { siteConfig } from "@/lib/constants";
+import { siteConfig, careersEnabled } from "@/lib/constants";
 import {
   jobs,
   getJobById,
@@ -57,6 +57,10 @@ export async function generateMetadata({ params }: JobPageProps): Promise<Metada
 }
 
 export default async function JobPage({ params }: JobPageProps) {
+  if (!careersEnabled) {
+    notFound();
+  }
+
   const { locale, id } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("careers");

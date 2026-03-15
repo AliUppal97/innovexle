@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/constants";
+import { siteConfig, careersEnabled } from "@/lib/constants";
 import { getActiveJobs } from "@/lib/data/jobs";
 import { services } from "@/lib/data/services";
 import { caseStudies } from "@/lib/data/case-studies";
@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: "", priority: 1, changeFrequency: "weekly" },
     { route: "/services", priority: 0.9, changeFrequency: "weekly" },
     { route: "/case-studies", priority: 0.9, changeFrequency: "weekly" },
-    { route: "/careers", priority: 0.9, changeFrequency: "weekly" },
+    ...(careersEnabled ? [{ route: "/careers", priority: 0.9, changeFrequency: "weekly" }] as const : []),
     { route: "/about", priority: 0.8, changeFrequency: "monthly" },
     { route: "/contact", priority: 0.8, changeFrequency: "monthly" },
     { route: "/accessibility", priority: 0.3, changeFrequency: "yearly" },
@@ -39,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
   }));
 
-  const jobs = getActiveJobs();
+  const jobs = careersEnabled ? getActiveJobs() : [];
   const jobRoutes: SitemapEntry[] = jobs.map((job) => ({
     route: `/careers/${job.id}`,
     priority: 0.7,
