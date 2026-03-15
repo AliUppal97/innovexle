@@ -28,6 +28,7 @@ export default async function Image() {
           background: "linear-gradient(135deg, #0A0A0A 0%, #0F0F14 50%, #0A0A0E 100%)",
         }}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse (next/og) requires img; next/image doesn't support Satori rendering */}
         <img
           src={`${baseUrl}/logo-og.png`}
           alt=""
